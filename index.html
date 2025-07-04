@@ -61,6 +61,178 @@
       <h3 class="text-xl font-semibold mb-2">Bài học quốc tế</h3>
       <p class="text-gray-600">Tiếp thu kinh nghiệm từ các mô hình thành công như HTV, Hunan TV, Mango TV.</p>
     </div>
+<!-- Chat Widget: Digitized Brains Agent -->
+<div id="chat-widget-toggle" class="fixed bottom-6 right-6 z-50 group">
+  <button onclick="toggleChatWidget()" class="bg-gradient-to-tr from-yellow-300 via-pink-400 to-blue-400 rounded-full shadow-2xl p-1 hover:scale-110 transition-transform focus:outline-none flex items-center justify-center ring-4 ring-pink-300 animate-pulse group-hover:ring-blue-400 group-hover:animate-none">
+    <!-- Animated Dancing Cat as Button (CSS Animation + Glow) -->
+    <div class="w-20 h-20 flex items-center justify-center">
+      <div class="relative w-16 h-16">
+        <!-- Cat Body (glow effect) -->
+        <div class="absolute left-4 top-6 w-8 h-8 bg-orange-300 rounded-full shadow-lg animate-body-glow"></div>
+        <!-- Cat Head (glow effect) -->
+        <div class="absolute left-6 top-2 w-6 h-6 bg-orange-400 rounded-full shadow-md animate-head-glow"></div>
+        <!-- Cat Ears (colorful) -->
+        <div class="absolute left-6 top-0 w-2 h-2 bg-pink-400 rounded-tl-full rounded-tr-full rotate-[-20deg]"></div>
+        <div class="absolute left-10 top-0 w-2 h-2 bg-blue-400 rounded-tl-full rounded-tr-full rotate-[20deg]"></div>
+        <!-- Cat Tail (Animated, color change) -->
+        <div class="absolute left-2 top-10 w-8 h-2">
+          <div class="w-8 h-2 bg-gradient-to-r from-yellow-300 via-pink-400 to-blue-400 rounded-full origin-left animate-tail-glow"></div>
+        </div>
+        <!-- Cat Face (Eyes, blinking) -->
+        <div class="absolute left-8 top-5 w-1 h-1 bg-black rounded-full animate-eye-blink"></div>
+        <div class="absolute left-11 top-5 w-1 h-1 bg-black rounded-full animate-eye-blink"></div>
+        <!-- Cat Smile (highlighted) -->
+        <div class="absolute left-9 top-7 w-2 h-1 border-b-2 border-pink-500 rounded-b-full"></div>
+      </div>
+    </div>
+    <!-- Attention ping -->
+    <span class="absolute -top-2 -right-2 flex h-4 w-4">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-4 w-4 bg-pink-500"></span>
+    </span>
+  </button>
+  <span class="absolute right-24 bottom-1 bg-gradient-to-r from-pink-400 to-blue-400 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg opacity-90 animate-bounce pointer-events-none select-none">Chat với AI!</span>
+</div>
+<div id="chat-widget" class="fixed bottom-20 right-6 z-50 w-[350px] max-w-full bg-black rounded-lg shadow-lg border border-gray-200 hidden transition-all duration-300" style="height: 480px;">
+  <div class="flex justify-between items-center bg-blue-600 text-white px-4 py-2 rounded-t-lg">
+    <span class="font-semibold">Digitized Brains Agent</span>
+    <div class="flex items-center space-x-2">
+      <button id="chat-minimize-btn" onclick="resizeChatWidget('minimize')" title="Thu nhỏ" class="text-white hover:text-gray-200 focus:outline-none text-lg leading-none px-1">
+        <svg xmlns="http://www.w3.org/2000/svg" class="inline w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" /></svg>
+      </button>
+      <button id="chat-maximize-btn" onclick="resizeChatWidget('maximize')" title="Phóng to" class="text-white hover:text-gray-200 focus:outline-none text-lg leading-none px-1">
+        <svg xmlns="http://www.w3.org/2000/svg" class="inline w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="4" y="4" width="16" height="16" rx="2" stroke-width="2" stroke="currentColor" fill="none"/></svg>
+      </button>
+      <button onclick="toggleChatWidget()" class="text-white hover:text-gray-200 focus:outline-none text-2xl leading-none px-1" title="Đóng">&times;</button>
+    </div>
+  </div>
+  <div id="chat-content" style="height: 400px;">
+    <iframe
+      src="https://ducnguyen1978-digitizedbrains-agent.hf.space"
+      frameborder="0"
+      width="100%"
+      height="400"
+      class="rounded-b-lg"
+      style="display:block;background:transparent;"
+      allow="clipboard-write"
+      id="chat-iframe"
+    ></iframe>
+  </div>
+  <!-- Minimized bar -->
+  <div id="chat-minimized-bar" class="hidden bg-blue-600 text-white px-4 py-2 rounded-b-lg flex items-center justify-between cursor-pointer" onclick="restoreChatWidget()">
+    <span class="font-semibold">Digitized Brains Agent (Đã thu nhỏ)</span>
+    <svg xmlns="http://www.w3.org/2000/svg" class="inline w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
+  </div>
+</div>
+<style>
+@keyframes tail-wag-glow {
+  0%, 100% { transform: rotate(20deg) scale(1); filter: drop-shadow(0 0 6px #fbbf24); }
+  50% { transform: rotate(-30deg) scale(1.1); filter: drop-shadow(0 0 12px #f472b6); }
+}
+@keyframes body-glow {
+  0%, 100% { box-shadow: 0 0 8px 2px #fbbf24; }
+  50% { box-shadow: 0 0 16px 4px #f472b6; }
+}
+@keyframes head-glow {
+  0%, 100% { box-shadow: 0 0 6px 1px #f472b6; }
+  50% { box-shadow: 0 0 12px 3px #60a5fa; }
+}
+@keyframes eye-blink {
+  0%, 92%, 100% { height: 0.25rem; }
+  95% { height: 0.05rem; }
+  97% { height: 0.25rem; }
+}
+.animate-tail-glow {
+  animation: tail-wag-glow 0.7s infinite;
+}
+.animate-body-glow {
+  animation: body-glow 1.2s infinite;
+}
+.animate-head-glow {
+  animation: head-glow 1.2s infinite;
+}
+.animate-eye-blink {
+  animation: eye-blink 2.5s infinite;
+}
+</style>
+<script>
+  let isChatMaximized = false;
+
+  function toggleChatWidget() {
+    const widget = document.getElementById('chat-widget');
+    const minimizedBar = document.getElementById('chat-minimized-bar');
+    const chatContent = document.getElementById('chat-content');
+    if (widget.classList.contains('hidden')) {
+      widget.classList.remove('hidden');
+      minimizedBar.classList.add('hidden');
+      chatContent.classList.remove('hidden');
+      widget.style.width = '350px';
+      widget.style.maxWidth = '100%';
+      widget.style.height = '480px';
+      document.getElementById('chat-iframe').style.height = '400px';
+      isChatMaximized = false;
+    } else {
+      widget.classList.add('hidden');
+      minimizedBar.classList.add('hidden');
+      chatContent.classList.remove('hidden');
+      isChatMaximized = false;
+    }
+    if (!widget.classList.contains('hidden')) {
+      widget.classList.add('ring', 'ring-pink-400');
+      setTimeout(() => widget.classList.remove('ring', 'ring-pink-400'), 500);
+    }
+  }
+
+  function resizeChatWidget(action) {
+    const widget = document.getElementById('chat-widget');
+    const iframe = document.getElementById('chat-iframe');
+    const chatContent = document.getElementById('chat-content');
+    const minimizedBar = document.getElementById('chat-minimized-bar');
+    if (action === 'maximize') {
+      if (!isChatMaximized) {
+        widget.style.width = '95vw';
+        widget.style.maxWidth = '900px';
+        widget.style.height = '80vh';
+        iframe.style.height = 'calc(80vh - 48px)';
+        chatContent.classList.remove('hidden');
+        minimizedBar.classList.add('hidden');
+        isChatMaximized = true;
+      } else {
+        // Restore to default size
+        widget.style.width = '350px';
+        widget.style.maxWidth = '100%';
+        widget.style.height = '480px';
+        iframe.style.height = '400px';
+        chatContent.classList.remove('hidden');
+        minimizedBar.classList.add('hidden');
+        isChatMaximized = false;
+      }
+    } else if (action === 'minimize') {
+      // Hide chat content, show minimized bar
+      chatContent.classList.add('hidden');
+      minimizedBar.classList.remove('hidden');
+      widget.style.width = '350px';
+      widget.style.maxWidth = '100%';
+      widget.style.height = 'auto';
+      isChatMaximized = false;
+    }
+  }
+
+  function restoreChatWidget() {
+    const chatContent = document.getElementById('chat-content');
+    const minimizedBar = document.getElementById('chat-minimized-bar');
+    const widget = document.getElementById('chat-widget');
+    chatContent.classList.remove('hidden');
+    minimizedBar.classList.add('hidden');
+    widget.style.width = '350px';
+    widget.style.maxWidth = '100%';
+    widget.style.height = '480px';
+    document.getElementById('chat-iframe').style.height = '400px';
+    isChatMaximized = false;
+  }
+</script>
+
+</section>
   </section>
   <!-- Footer -->
   <footer class="bg-gray-100 text-center py-4 mt-10">
