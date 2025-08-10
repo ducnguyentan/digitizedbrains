@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="page-title">An ninh mạng & Tuân thủ - DigitizedBrains</title>
+  <meta name="description" content="Giải pháp an ninh mạng và tuân thủ pháp lý cho doanh nghiệp Việt Nam" id="page-description">
+  <link href="../../css/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    .font-nunito { 
+      font-family: 'Nunito', sans-serif; 
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Navigation styles */
+    .nav-link {
+      color: #374151;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .nav-link:hover { color: #ed7354; background-color: #fef2f2; }
+    .nav-link.active { color: #ed7354; font-weight: 600; }
+
+    /* Logo gradient - cam sang hồng */
+    .logo-gradient {
+      background: linear-gradient(135deg, #fb923c 0%, #ec4899 100%);
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Language Switcher Styles */
+    .language-switcher {
+      position: relative;
+    }
+    
+    .language-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      min-width: 160px;
+      display: none;
+      z-index: 1000;
+    }
+    
+    .language-menu.show {
+      display: block;
+    }
+    
+    .language-option {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+    
+    .language-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    /* Hero Section Styles */
+    .hero-section {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 120px 0;
+      color: white;
+    }
+
+    /* Scroll Reveal Animation */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+    
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Feature Cards */
+    .feature-card {
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Button Styles */
+    .btn-primary {
+      background: linear-gradient(135deg, #ed7354, #dc2626);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+    }
+
+    /* Statistics Cards */
+    .stat-card {
+      background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+      border: 1px solid #d1d5db;
+    }
+
+    .stat-card:hover {
+      background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+      border-color: #fca5a5;
+    }
+
+    /* Security Icon Styles */
+    .security-icon {
+      background: linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%);
+    }
+
+    .compliance-icon {
+      background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    }
+
+    .protection-icon {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+  <!-- Header -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <div class="logo-gradient w-10 h-10 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-lg">DB</span>
+          </div>
+          <a href="../../index.html" class="text-2xl font-bold text-gray-800">DigitizedBrains</a>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="hidden md:flex space-x-4">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../../pages/about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="../index.html" class="nav-link active" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="../../pages/ai-solutions/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="../../pages/blog/index.html" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="../../pages/resources/index.html" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="../../pages/contact/index.html" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+        </nav>
+
+        <!-- Language Switcher -->
+        <div class="hidden md:block">
+          <div class="language-switcher">
+            <button id="language-btn" class="flex items-center space-x-1 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+              <img id="current-flag" src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+              <span id="current-lang">EN</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="language-menu" class="language-menu">
+              <a href="#" onclick="changeLanguage('en')" class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                English
+              </a>
+              <a href="#" onclick="changeLanguage('vi')" class="language-option" data-lang="vi">
+                <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                Tiếng Việt
+              </a>
+              <a href="#" onclick="changeLanguage('de')" class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                Deutsch
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <nav class="flex flex-col space-y-2">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../../pages/about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="../index.html" class="nav-link active" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="../../pages/ai-solutions/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="../../pages/blog/index.html" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="../../pages/resources/index.html" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="../../pages/contact/index.html" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 scroll-reveal" data-translate="hero.title">An ninh mạng & Tuân thủ cho Doanh nghiệp Việt Nam</h1>
+        <p class="text-xl opacity-90 mb-8 scroll-reveal" data-translate="hero.subtitle">Bảo vệ doanh nghiệp với giải pháp an ninh mạng toàn diện và tuân thủ pháp lý Việt Nam</p>
+        <div class="flex flex-wrap justify-center gap-4 scroll-reveal">
+          <a href="#solutions" class="btn-primary px-8 py-3 rounded-full font-semibold text-white" data-translate="hero.cta">Khám phá Giải pháp Bảo mật</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tình hình An ninh mạng VN -->
+  <section class="py-20 bg-red-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto mb-16 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal text-red-600" data-translate="threat.title">Tình hình An ninh mạng Việt Nam 2024</h2>
+        <p class="text-xl text-gray-600 scroll-reveal" data-translate="threat.subtitle">
+          Doanh nghiệp Việt Nam đang đối mặt với nguy cơ tấn công mạng nghiêm trọng
+        </p>
+      </div>
+
+      <!-- Statistics Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div class="stat-card rounded-xl p-6 text-center scroll-reveal">
+          <div class="text-4xl font-bold text-red-600 mb-2" data-translate="stats.attacks.number">46.15%</div>
+          <p class="text-gray-600" data-translate="stats.attacks.description">tổ chức VN bị tấn công mạng</p>
+        </div>
+        
+        <div class="stat-card rounded-xl p-6 text-center scroll-reveal">
+          <div class="text-4xl font-bold text-red-600 mb-2" data-translate="stats.damage.number">16.23 tỷ USD</div>
+          <p class="text-gray-600" data-translate="stats.damage.description">thiệt hại do tấn công mạng</p>
+        </div>
+        
+        <div class="stat-card rounded-xl p-6 text-center scroll-reveal">
+          <div class="text-4xl font-bold text-red-600 mb-2" data-translate="stats.shortage.number">500,000</div>
+          <p class="text-gray-600" data-translate="stats.shortage.description">thiếu hụt chuyên gia bảo mật</p>
+        </div>
+        
+        <div class="stat-card rounded-xl p-6 text-center scroll-reveal">
+          <div class="text-4xl font-bold text-red-600 mb-2" data-translate="stats.incidents.number">10,000+</div>
+          <p class="text-gray-600" data-translate="stats.incidents.description">sự cố an ninh mạng 2024</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section id="solutions" class="py-20">
+    <div class="container mx-auto px-4">
+      <!-- Overview Section -->
+      <div class="max-w-4xl mx-auto mb-16 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal" data-translate="content.overview.title">Giải pháp An ninh mạng Toàn diện</h2>
+        <p class="text-xl text-gray-600 scroll-reveal" data-translate="content.overview.description">
+          Bảo vệ doanh nghiệp với hệ thống an ninh mạng tiên tiến và tuân thủ đầy đủ quy định pháp lý Việt Nam
+        </p>
+      </div>
+
+      <!-- Solutions Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <!-- Threat Detection -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 security-icon rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.detection.title">Phát hiện và Ứng phó Mối đe dọa</h3>
+          <p class="text-gray-600" data-translate="content.solutions.detection.description">Hệ thống giám sát 24/7 phát hiện sớm các cuộc tấn công mạng, ransomware và APT nhằm vào doanh nghiệp Việt Nam</p>
+        </div>
+
+        <!-- Data Protection -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 protection-icon rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.protection.title">Bảo vệ Dữ liệu Cá nhân</h3>
+          <p class="text-gray-600" data-translate="content.solutions.protection.description">Tuân thủ Nghị định 13/2023 về bảo vệ dữ liệu cá nhân với mã hóa dữ liệu và kiểm soát truy cập nghiêm ngặt</p>
+        </div>
+
+        <!-- Compliance Management -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 compliance-icon rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.compliance.title">Quản lý Tuân thủ Pháp lý</h3>
+          <p class="text-gray-600" data-translate="content.solutions.compliance.description">Đảm bảo tuân thủ Luật An ninh mạng, Luật Dữ liệu và các quy định mới của Việt Nam</p>
+        </div>
+
+        <!-- Risk Assessment -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.assessment.title">Đánh giá Rủi ro An ninh</h3>
+          <p class="text-gray-600" data-translate="content.solutions.assessment.description">Phân tích và đánh giá toàn diện rủi ro an ninh mạng cho hạ tầng và quy trình kinh doanh</p>
+        </div>
+
+        <!-- Incident Response -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.response.title">Ứng phó Sự cố Nhanh chóng</h3>
+          <p class="text-gray-600" data-translate="content.solutions.response.description">Đội ngũ chuyên gia sẵn sàng 24/7 ứng phó khi xảy ra sự cố an ninh mạng và khôi phục hoạt động</p>
+        </div>
+
+        <!-- Training -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.training.title">Đào tạo Nhận thức Bảo mật</h3>
+          <p class="text-gray-600" data-translate="content.solutions.training.description">Chương trình đào tạo toàn diện cho nhân viên về nhận thức an ninh mạng và quy trình bảo mật</p>
+        </div>
+      </div>
+
+      <!-- Framework Section -->
+      <div class="max-w-4xl mx-auto mb-16">
+        <h2 class="text-3xl font-bold mb-8 text-center scroll-reveal" data-translate="content.framework.title">Tuân thủ Tiêu chuẩn Quốc tế</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- ISO 27001 -->
+          <div class="bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                <span class="text-blue-600 font-bold text-lg">ISO</span>
+              </div>
+              <h3 class="text-xl font-semibold" data-translate="content.framework.iso.title">ISO 27001:2022</h3>
+            </div>
+            <p class="text-gray-600 mb-4" data-translate="content.framework.iso.description">Chứng chỉ quốc tế về hệ thống quản lý bảo mật thông tin được công nhận toàn cầu</p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li data-translate="content.framework.iso.benefit1">• Được công nhận tại 150 quốc gia</li>
+              <li data-translate="content.framework.iso.benefit2">• Tăng cường lòng tin khách hàng và đối tác</li>
+              <li data-translate="content.framework.iso.benefit3">• Quản lý rủi ro có hệ thống</li>
+            </ul>
+          </div>
+
+          <!-- NIST CSF -->
+          <div class="bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                <span class="text-green-600 font-bold text-lg">NIST</span>
+              </div>
+              <h3 class="text-xl font-semibold" data-translate="content.framework.nist.title">Khung An ninh mạng NIST</h3>
+            </div>
+            <p class="text-gray-600 mb-4" data-translate="content.framework.nist.description">Khung làm việc linh hoạt giúp doanh nghiệp xây dựng chương trình an ninh mạng hiệu quả</p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li data-translate="content.framework.nist.benefit1">• Miễn phí và dễ triển khai</li>
+              <li data-translate="content.framework.nist.benefit2">• Phù hợp với doanh nghiệp nhỏ</li>
+              <li data-translate="content.framework.nist.benefit3">• Tự đánh giá và cải thiện liên tục</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Benefits Section -->
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8 text-center scroll-reveal" data-translate="content.benefits.title">Lợi ích của An ninh mạng cho Doanh nghiệp</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Financial Protection -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.financial.title">Bảo vệ Tài chính</h3>
+              <p class="text-gray-600" data-translate="content.benefits.financial.description">Tránh thiệt hại trung bình 200,000 USD/vụ tấn công và 60% doanh nghiệp phải đóng cửa sau 6 tháng</p>
+            </div>
+          </div>
+
+          <!-- Legal Compliance -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16l3-3m-3 3l-3-3"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.compliance.title">Tuân thủ Pháp lý</h3>
+              <p class="text-gray-600" data-translate="content.benefits.compliance.description">Đảm bảo tuân thủ Nghị định 13/2023, Luật An ninh mạng và tránh phạt hành chính</p>
+            </div>
+          </div>
+
+          <!-- Business Trust -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.trust.title">Xây dựng Lòng tin</h3>
+              <p class="text-gray-600" data-translate="content.benefits.trust.description">Tăng cường niềm tin khách hàng, đối tác và nhà đầu tư với cam kết bảo mật mạnh mẽ</p>
+            </div>
+          </div>
+
+          <!-- Competitive Advantage -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.advantage.title">Lợi thế Cạnh tranh</h3>
+              <p class="text-gray-600" data-translate="content.benefits.advantage.description">Mở rộng thị trường quốc tế với chứng chỉ an ninh mạng được công nhận toàn cầu</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Digital Transformation Connection -->
+  <section class="py-20 bg-gradient-to-r from-orange-50 to-pink-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal text-gray-800" data-translate="connection.title">Dịch vụ Chuyển đổi Số của chúng tôi</h2>
+        <p class="text-xl text-gray-600 mb-8 scroll-reveal" data-translate="connection.description">
+          An ninh mạng & Tuân thủ là nền tảng quan trọng cho chuyển đổi số thành công
+        </p>
+        <div class="bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
+          <div class="flex items-center justify-center mb-6">
+            <div class="logo-gradient w-16 h-16 rounded-xl flex items-center justify-center">
+              <span class="text-white font-bold text-2xl">DB</span>
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 text-gray-800" data-translate="connection.service.title">An ninh mạng & Tuân thủ</h3>
+          <p class="text-gray-600 mb-6" data-translate="connection.service.description">
+            Tích hợp liền mạch với giải pháp chuyển đổi số toàn diện để bảo vệ doanh nghiệp trong môi trường số
+          </p>
+          <a href="../index.html" class="btn-primary px-8 py-3 rounded-full font-semibold text-white inline-block" data-translate="connection.cta">
+            Tìm hiểu về Chuyển đổi Số
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-gray-900 text-white py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal" data-translate="cta.title">Bảo vệ Doanh nghiệp với An ninh mạng Toàn diện</h2>
+        <p class="text-xl opacity-90 mb-8 scroll-reveal" data-translate="cta.description">Liên hệ với chúng tôi ngay hôm nay để đánh giá tình trạng an ninh mạng và xây dựng chiến lược bảo mật phù hợp</p>
+        <a href="../../pages/contact/index.html" class="btn-primary px-8 py-3 rounded-full font-semibold inline-block scroll-reveal text-white" data-translate="cta.button">Tư vấn miễn phí</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="logo-gradient w-10 h-10 rounded-lg flex items-center justify-center">
+              <span class="text-white font-bold text-lg">DB</span>
+            </div>
+            <span class="text-2xl font-bold">DigitizedBrains</span>
+          </div>
+          <p class="text-gray-400" data-translate="footer.description">Nhà cung cấp giải pháp an ninh mạng và tuân thủ hàng đầu cho doanh nghiệp Việt Nam</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.quickLinks">Liên kết nhanh</h4>
+          <div class="grid grid-cols-2 gap-2">
+            <ul class="space-y-2">
+              <li><a href="../../index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.home">Trang chủ</a></li>
+              <li><a href="../../pages/about/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.about">Giới thiệu</a></li>
+              <li><a href="../index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.digitalTransformation">Chuyển đổi số</a></li>
+              <li><a href="../../pages/ai-solutions/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.aiAgent">AI Agent</a></li>
+            </ul>
+            <ul class="space-y-2">
+              <li><a href="../../pages/blog/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.blog">Blog</a></li>
+              <li><a href="../../pages/resources/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.resources">Tài nguyên</a></li>
+              <li><a href="../../pages/contact/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.contact">Liên hệ</a></li>
+              <li><a href="cybersecurity-compliance.html" class="text-gray-400 hover:text-white transition-colors">An ninh mạng</a></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.contact">Liên hệ</h4>
+          <ul class="space-y-2">
+            <li class="text-gray-400">security@digitizedbrains.com</li>
+            <li class="text-gray-400" data-translate="footer.location">Thành phố Hồ Chí Minh, Việt Nam</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-gray-400" data-translate="footer.copyright">© 2025 DigitizedBrains. Bản quyền thuộc về DigitizedBrains.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Language Switcher Script -->
+  <script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Language switcher functionality
+    document.getElementById('language-btn').addEventListener('click', function() {
+      const languageMenu = document.getElementById('language-menu');
+      languageMenu.classList.toggle('show');
+    });
+
+    // Close language menu when clicking outside
+    document.addEventListener('click', function(e) {
+      const languageMenu = document.getElementById('language-menu');
+      const languageBtn = document.getElementById('language-btn');
+      
+      if (!languageBtn.contains(e.target)) {
+        languageMenu.classList.remove('show');
+      }
+    });
+
+    // Scroll reveal animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all scroll-reveal elements
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Language initialization will be handled by cybersecurity-languages.js
+  </script>
+
+  <!-- Language Switcher Script -->
+  <script src="../../assets/js/cybersecurity-languages.js"></script>
+  
+  <!-- Chatbot Integration -->
+  <script src="../../assets/js/chatbot.js"></script>
+  <script>
+    // Initialize Chatbot
+    window.addEventListener('load', function() {
+      const chatbot = new DigitizedBrainsChatbot({
+        iframeSrc: 'https://ducnguyen1978-digitizedbrains-gemini.hf.space',
+        widgetTitle: 'Digitized Brains AI Agent',
+        position: { bottom: '30px', right: '30px' },
+        size: { width: '420px', height: '600px' }
+      });
+    });
+  </script>
+</body>
+</html>

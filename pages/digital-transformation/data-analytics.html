@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="page-title">Phân tích Dữ liệu & Thông tin cho Doanh nghiệp Việt Nam - DigitizedBrains</title>
+  <meta name="description" content="Giải pháp phân tích dữ liệu & thông tin toàn diện giúp doanh nghiệp Việt Nam ra quyết định thông minh, tối ưu vận hành và tăng trưởng bền vững." id="page-description">
+  <link href="../../css/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; box-sizing: border-box; }
+    .font-nunito { font-family: 'Nunito', sans-serif; }
+    * { box-sizing: border-box; }
+    html, body { width: 100%; overflow-x: hidden; position: relative; }
+    .nav-link { color: #374151; padding: 0.5rem 1rem; transition: all 0.3s ease; border-radius: 0.5rem; font-size: 1rem; font-weight: 500; }
+    .nav-link:hover { color: #ed7354; background-color: #fef2f2; }
+    .nav-link.active { color: #ed7354; font-weight: 600; }
+    .language-switcher { position: relative; }
+    .language-menu { position: absolute; top: 100%; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); min-width: 160px; display: none; z-index: 1000; }
+    .language-menu.show { display: block; }
+    .language-option { display: flex; align-items: center; padding: 8px 12px; text-decoration: none; color: #374151; font-size: 14px; transition: background-color 0.2s; gap: 8px; }
+    .language-option:hover { background-color: #f3f4f6; }
+    .language-option.active { background-color: #fef2f2; color: #dc2626; }
+    .language-flag { width: 20px; height: 15px; border-radius: 2px; object-fit: cover; }
+    .hero-section { background: linear-gradient(135deg, #fb923c 0%, #ec4899 100%); background-size: 400% 400%; animation: gradientShift 15s ease infinite; color: white; padding: 120px 0; }
+    @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    .scroll-reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+    .scroll-reveal.active { opacity: 1; transform: translateY(0); }
+    .feature-card { transition: all 0.3s ease; }
+    .feature-card:hover { transform: translateY(-5px); }
+    .btn-primary { background: linear-gradient(135deg, #ed7354, #ec4899); transition: all 0.3s ease; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(236, 72, 153, 0.2); }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+  <!-- Header -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <div class="w-10 h-10 bg-gradient-to-r from-orange-400 to-pink-500 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-lg">DB</span>
+          </div>
+          <a href="../../index.html" class="text-2xl font-bold text-gray-800">Digitized Brains</a>
+        </div>
+        <!-- Navigation -->
+        <nav class="hidden md:flex space-x-4">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="../blog/index.html" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+        </nav>
+        <!-- Language Switcher -->
+        <div class="hidden md:block">
+          <div class="language-switcher">
+            <button id="language-btn" class="flex items-center space-x-1 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+              <img id="current-flag" src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+              <span id="current-lang">VI</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="language-menu" class="language-menu">
+              <a href="#" onclick="changeLanguage('en')" class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                English
+              </a>
+              <a href="#" onclick="changeLanguage('vi')" class="language-option" data-lang="vi">
+                <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                Tiếng Việt
+              </a>
+              <a href="#" onclick="changeLanguage('de')" class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                Deutsch
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <nav class="flex flex-col space-y-2">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="../blog/index.html" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1500&q=80'); background-size: cover; background-position: center; padding: 120px 0; color: white;">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 scroll-reveal" data-translate="hero.title">Phân tích Dữ liệu & Thông tin cho Doanh nghiệp Việt Nam</h1>
+        <p class="text-xl opacity-90 mb-8 scroll-reveal" data-translate="hero.subtitle">Data & Analytics for Vietnamese Enterprises – Empowering smart decisions, operational excellence, and sustainable growth.</p>
+        <div class="flex flex-wrap justify-center gap-4 scroll-reveal">
+          <a href="index.html" class="btn-primary px-8 py-3 rounded-full font-semibold" data-translate="hero.cta">Dịch vụ Chuyển đổi số của chúng tôi</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section id="solutions" class="py-20">
+    <div class="container mx-auto px-4">
+      <!-- Overview Section -->
+      <div class="max-w-4xl mx-auto mb-16 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal" data-translate="content.overview.title">Tổng quan về Phân tích Dữ liệu & Thông tin</h2>
+        <p class="text-xl text-gray-600 scroll-reveal" data-translate="content.overview.description">
+          Trong kỷ nguyên số, dữ liệu là tài sản quý giá nhất của doanh nghiệp. Phân tích dữ liệu & thông tin giúp doanh nghiệp Việt Nam chuyển đổi từ quản lý dựa trên cảm tính sang ra quyết định dựa trên dữ liệu, tối ưu hóa quy trình, nâng cao hiệu quả vận hành và phát triển bền vững.<br><br><b>Data & Analytics</b> empowers Vietnamese enterprises to unlock the value of their data, enabling data-driven decision making, process optimization, and sustainable growth in the digital era.
+        </p>
+      </div>
+      <!-- Solutions Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+            <span style="color: #fb923c; font-size: 24px; font-weight: bold;">📊</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.integration.title">Chuẩn hóa & tích hợp dữ liệu</h3>
+          <p class="text-gray-600" data-translate="content.solutions.integration.description">Chuẩn hóa và tích hợp dữ liệu từ nhiều nguồn (ERP, CRM, IoT, v.v.) giúp doanh nghiệp có cái nhìn toàn diện và chính xác.</p>
+        </div>
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+            <span style="color: #3b82f6; font-size: 24px; font-weight: bold;">📈</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.analysis.title">Phân tích & trực quan hóa</h3>
+          <p class="text-gray-600" data-translate="content.solutions.analysis.description">Phân tích dữ liệu đa chiều, trực quan hóa thông tin giúp phát hiện xu hướng, cơ hội và rủi ro tiềm ẩn.</p>
+        </div>
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mb-4">
+            <span style="color: #ec4899; font-size: 24px; font-weight: bold;">🤖</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.ai.title">AI/ML & Dự báo thông minh</h3>
+          <p class="text-gray-600" data-translate="content.solutions.ai.description">Ứng dụng AI/ML để dự báo xu hướng, tự động hóa phân tích và hỗ trợ ra quyết định thông minh.</p>
+        </div>
+      </div>
+      <!-- Benefits Section -->
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8 text-center scroll-reveal" data-translate="content.benefits.title">Lợi ích & Ứng dụng</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+              <span style="color: #22c55e; font-size: 20px;">💡</span>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.decision.title">Ra quyết định thông minh</h3>
+              <p class="text-gray-600" data-translate="content.benefits.decision.description">Hỗ trợ lãnh đạo doanh nghiệp đưa ra quyết định dựa trên dữ liệu thực tế, giảm rủi ro và tăng hiệu quả.</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+              <span style="color: #3b82f6; font-size: 20px;">⚡</span>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.optimization.title">Tối ưu hóa vận hành</h3>
+              <p class="text-gray-600" data-translate="content.benefits.optimization.description">Phân tích dữ liệu giúp phát hiện điểm nghẽn, tối ưu quy trình và giảm chi phí vận hành.</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-pink-100 rounded-full flex items-center justify-center">
+              <span style="color: #ec4899; font-size: 20px;">📅</span>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.forecasting.title">Dự báo & phát triển bền vững</h3>
+              <p class="text-gray-600" data-translate="content.benefits.forecasting.description">Ứng dụng AI/ML để dự báo xu hướng thị trường, nhu cầu khách hàng và xây dựng chiến lược phát triển dài hạn.</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+              <span style="color: #fb923c; font-size: 20px;">🔗</span>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.ecosystem.title">Kết nối hệ sinh thái số</h3>
+              <p class="text-gray-600" data-translate="content.benefits.ecosystem.description">Tích hợp dữ liệu và phân tích giúp doanh nghiệp kết nối hệ sinh thái số, mở rộng hợp tác và phát triển.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-gray-900 text-white py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal" data-translate="cta.title">Sẵn sàng chuyển đổi doanh nghiệp với Phân tích Dữ liệu?</h2>
+        <p class="text-xl opacity-90 mb-8 scroll-reveal" data-translate="cta.description">Liên hệ với chúng tôi để được tư vấn giải pháp phân tích dữ liệu & thông tin phù hợp cho doanh nghiệp của bạn.</p>
+        <a href="../contact/index.html" class="btn-primary px-8 py-3 rounded-full font-semibold inline-block scroll-reveal" data-translate="cta.button">Bắt đầu ngay</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: linear-gradient(to right, #fb923c, #ec4899);">
+              <span class="text-white font-bold text-lg" style="color: white !important;">DB</span>
+            </div>
+            <span class="text-2xl font-bold">Digitized Brains</span>
+          </div>
+          <p class="text-gray-400" data-translate="footer.description">Giải pháp phân tích dữ liệu & thông tin toàn diện cho doanh nghiệp Việt Nam. Trao quyền cho doanh nghiệp với các quyết định dựa trên dữ liệu và công nghệ hiện đại.</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.quickLinks">Liên kết nhanh</h4>
+          <div class="grid grid-cols-2 gap-4">
+            <ul class="space-y-2">
+              <li><a href="../../index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.home">Trang chủ</a></li>
+              <li><a href="../about/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.about">Giới thiệu</a></li>
+              <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.digitalTransformation">Chuyển đổi số</a></li>
+              <li><a href="../ai-agents/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.aiAgent">AI Agent</a></li>
+            </ul>
+            <ul class="space-y-2">
+              <li><a href="../blog/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.blog">Blog</a></li>
+              <li><a href="../resources/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.resources">Tài nguyên</a></li>
+              <li><a href="../contact/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.contact">Liên hệ</a></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.contact">Liên hệ</h4>
+          <ul class="space-y-2">
+            <li class="text-gray-400">contact@digitizedbrains.com</li>
+            <li class="text-gray-400" data-translate="footer.location">Thành phố Hồ Chí Minh, Việt Nam</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-gray-400" data-translate="footer.copyright">© 2025 DigitizedBrains. Bản quyền thuộc về DigitizedBrains.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Language Switcher Script -->
+  <script src="../../js/data-analytics-languages.js"></script>
+  <!-- Chatbot Integration -->
+  <script src="../../js/chatbot.js"></script>
+</body>
+</html>

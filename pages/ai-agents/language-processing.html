@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="page-title">Xử lý Ngôn ngữ tự nhiên - DigitizedBrains</title>
+  <meta name="description" content="Giải pháp xử lý ngôn ngữ tự nhiên và chuyển đổi số cho doanh nghiệp Việt Nam" id="page-description">
+  <link href="../../css/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    .font-nunito { 
+      font-family: 'Nunito', sans-serif; 
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Modern Orange + Pink Color Scheme */
+    :root {
+      --primary-orange: #f97316;
+      --secondary-pink: #ec4899;
+      --gradient-primary: linear-gradient(135deg, #f97316, #ec4899);
+      --gradient-secondary: linear-gradient(135deg, #fb923c, #f472b6);
+    }
+
+    /* Navigation styles */
+    .nav-link {
+      color: #374151;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .nav-link:hover { color: #f97316; background-color: #fff7ed; }
+    .nav-link.active { color: #f97316; font-weight: 600; }
+
+    /* Language Switcher Styles */
+    .language-switcher {
+      position: relative;
+    }
+    
+    .language-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      min-width: 160px;
+      display: none;
+      z-index: 1000;
+    }
+    
+    .language-menu.show {
+      display: block;
+    }
+    
+    .language-option {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option.active {
+      background-color: #fff7ed;
+      color: #f97316;
+    }
+    
+    .language-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    /* Hero Section Styles */
+    .hero-section {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 120px 0;
+      color: white;
+    }
+
+    /* Scroll Reveal Animation */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+    
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Feature Cards */
+    .feature-card {
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      border-color: #f97316;
+      box-shadow: 0 10px 25px rgba(249, 115, 22, 0.1);
+    }
+
+    /* Button Styles */
+    .btn-primary {
+      background: var(--gradient-primary);
+      transition: all 0.3s ease;
+      color: white;
+      text-decoration: none;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+      color: white;
+    }
+
+    .btn-secondary {
+      background: var(--gradient-secondary);
+      transition: all 0.3s ease;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+    }
+
+    /* Icon containers with gradient backgrounds */
+    .icon-gradient-orange {
+      background: linear-gradient(135deg, #fed7aa, #fb923c);
+    }
+
+    .icon-gradient-pink {
+      background: linear-gradient(135deg, #fce7f3, #f472b6);
+    }
+
+    .icon-gradient-purple {
+      background: linear-gradient(135deg, #ede9fe, #a855f7);
+    }
+
+    .icon-gradient-blue {
+      background: linear-gradient(135deg, #dbeafe, #3b82f6);
+    }
+
+    .icon-gradient-green {
+      background: linear-gradient(135deg, #d1fae5, #10b981);
+    }
+
+    .icon-gradient-red {
+      background: linear-gradient(135deg, #fee2e2, #ef4444);
+    }
+
+    /* CTA Section with gradient background */
+    .cta-section {
+      background: var(--gradient-primary);
+    }
+
+    /* Footer quick links layout */
+    .footer-links-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .footer-links-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+  <!-- Header -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <div class="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, #f97316, #ec4899) !important;">
+            <span class="text-white font-bold text-lg" style="color: white !important;">DB</span>
+          </div>
+          <a href="../../index.html" class="text-2xl font-bold text-gray-800">Digitized Brains</a>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="hidden md:flex space-x-4">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="../blog/index.html" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+        </nav>
+
+        <!-- Language Switcher -->
+        <div class="hidden md:block">
+          <div class="language-switcher">
+            <button id="language-btn" class="flex items-center space-x-1 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+              <img id="current-flag" src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+              <span id="current-lang">EN</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="language-menu" class="language-menu">
+              <a href="#" onclick="changeLanguage('en')" class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                English
+              </a>
+              <a href="#" onclick="changeLanguage('vi')" class="language-option" data-lang="vi">
+                <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                Tiếng Việt
+              </a>
+              <a href="#" onclick="changeLanguage('de')" class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                Deutsch
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <nav class="flex flex-col space-y-2">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="../blog/index.html" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 scroll-reveal" data-translate="hero.title">Xử lý Ngôn ngữ tự nhiên cho Doanh nghiệp Việt Nam</h1>
+        <p class="text-xl opacity-90 mb-8 scroll-reveal" data-translate="hero.subtitle">Chuyển đổi cách thức giao tiếp và xử lý thông tin với các giải pháp xử lý ngôn ngữ tiên tiến được thiết kế riêng cho doanh nghiệp Việt Nam</p>
+        <div class="flex flex-wrap justify-center gap-4 scroll-reveal">
+          <a href="#solutions" class="btn-primary px-8 py-3 rounded-full font-semibold" data-translate="hero.cta">Khám phá Giải pháp NLP</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section id="solutions" class="py-20">
+    <div class="container mx-auto px-4">
+      <!-- Overview Section -->
+      <div class="max-w-4xl mx-auto mb-16 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal" data-translate="content.overview.title">Giải pháp Xử lý Ngôn ngữ tự nhiên Toàn diện</h2>
+        <p class="text-xl text-gray-600 scroll-reveal" data-translate="content.overview.description">
+          Tận dụng sức mạnh của trí tuệ nhân tạo để hiểu, phân tích và xử lý ngôn ngữ tự nhiên, hỗ trợ doanh nghiệp Việt Nam trong quá trình chuyển đổi số
+        </p>
+      </div>
+
+      <!-- Language Processing Solutions Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <!-- Natural Language Processing -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 icon-gradient-orange rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.nlp.title">Xử lý Ngôn ngữ tự nhiên</h3>
+          <p class="text-gray-600" data-translate="content.solutions.nlp.description">Giải pháp NLP tiên tiến hiểu và xử lý ngôn ngữ tiếng Việt, hỗ trợ phân tích văn bản, trích xuất thông tin và tương tác tự nhiên</p>
+        </div>
+
+        <!-- Text Analysis -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 icon-gradient-pink rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.textAnalysis.title">Phân tích và Hiểu văn bản</h3>
+          <p class="text-gray-600" data-translate="content.solutions.textAnalysis.description">Phân tích cảm xúc, ý định và ngữ nghĩa từ các tài liệu và nội dung văn bản, giúp doanh nghiệp hiểu rõ hơn về khách hàng và thị trường</p>
+        </div>
+
+        <!-- Multilingual Support -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 icon-gradient-blue rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.multilingual.title">Hỗ trợ Đa ngôn ngữ</h3>
+          <p class="text-gray-600" data-translate="content.solutions.multilingual.description">Xử lý và hiểu nhiều ngôn ngữ khác nhau, đặc biệt tối ưu cho tiếng Việt, hỗ trợ doanh nghiệp mở rộng thị trường quốc tế</p>
+        </div>
+
+        <!-- Document Processing -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 icon-gradient-green rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.documentProcessing.title">Xử lý và Dịch thuật Tài liệu</h3>
+          <p class="text-gray-600" data-translate="content.solutions.documentProcessing.description">Tự động hóa việc xử lý, phân loại và dịch thuật tài liệu, tiết kiệm thời gian và nâng cao hiệu quả làm việc</p>
+        </div>
+
+        <!-- Voice Recognition -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 icon-gradient-purple rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.voiceRecognition.title">Nhận dạng và Tổng hợp Giọng nói</h3>
+          <p class="text-gray-600" data-translate="content.solutions.voiceRecognition.description">Công nghệ nhận dạng giọng nói và chuyển đổi văn bản thành giọng nói, hỗ trợ tương tác bằng giọng nói cho ứng dụng và dịch vụ</p>
+        </div>
+
+        <!-- AI Agent Integration -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 icon-gradient-red rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.aiAgent.title">Tích hợp AI Agent thông minh</h3>
+          <p class="text-gray-600 mb-4" data-translate="content.solutions.aiAgent.description">
+            Kết hợp xử lý ngôn ngữ với AI Agent tiên tiến để tạo ra các giải pháp tương tác thông minh và tự động hóa quy trình
+          </p>
+          <div class="bg-gradient-to-r from-orange-50 to-pink-50 p-4 rounded-lg border-l-4 border-orange-500">
+            <p class="text-sm text-gray-700 mb-2" data-translate="content.solutions.aiAgent.exploreMore">
+              <strong>🚀 Khám phá thêm:</strong> Tìm hiểu về các giải pháp AI Agent toàn diện
+            </p>
+            <a href="index.html" class="inline-flex items-center bg-gradient-to-r from-orange-500 to-pink-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-orange-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+              <span data-translate="content.solutions.aiAgent.viewButton">Xem AI Agent Solutions</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Benefits Section -->
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8 text-center scroll-reveal" data-translate="content.benefits.title">Lợi ích của Xử lý Ngôn ngữ tự nhiên</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Communication Enhancement -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.communication.title">Nâng cao Giao tiếp Khách hàng</h3>
+              <p class="text-gray-600" data-translate="content.benefits.communication.description">Cải thiện trải nghiệm khách hàng thông qua chatbot thông minh, phân tích cảm xúc và hỗ trợ đa ngôn ngữ tự nhiên</p>
+            </div>
+          </div>
+
+          <!-- Data Insights -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-pink-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.insights.title">Thông tin Kinh doanh Sâu sắc</h3>
+              <p class="text-gray-600" data-translate="content.benefits.insights.description">Khai thác dữ liệu văn bản để hiểu xu hướng thị trường, ý kiến khách hàng và cơ hội kinh doanh mới</p>
+            </div>
+          </div>
+
+          <!-- Process Automation -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.automation.title">Tự động hóa Quy trình Thông minh</h3>
+              <p class="text-gray-600" data-translate="content.benefits.automation.description">Tự động hóa các tác vụ xử lý văn bản, phân loại tài liệu và phản hồi khách hàng, giảm thiểu sai sót và tăng hiệu quả</p>
+            </div>
+          </div>
+
+          <!-- Competitive Advantage -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.advantage.title">Lợi thế Cạnh tranh Vượt trội</h3>
+              <p class="text-gray-600" data-translate="content.benefits.advantage.description">Tạo ra lợi thế cạnh tranh thông qua khả năng xử lý và hiểu ngôn ngữ tự nhiên, đặc biệt tối ưu cho thị trường Việt Nam</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Digital Transformation Benefits -->
+  <section class="bg-gray-50 py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal" data-translate="transformation.title">Xử lý Ngôn ngữ trong Chuyển đổi Số</h2>
+        <p class="text-xl text-gray-600 mb-12 scroll-reveal" data-translate="transformation.description">
+          Giải pháp xử lý ngôn ngữ tự nhiên đóng vai trò quan trọng trong quá trình chuyển đổi số của doanh nghiệp Việt Nam
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+            <div class="w-16 h-16 icon-gradient-orange rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3" data-translate="transformation.efficiency.title">Hiệu quả Vận hành</h3>
+            <p class="text-gray-600" data-translate="transformation.efficiency.description">Tăng tốc độ xử lý thông tin và giảm thiểu thời gian phản hồi khách hàng thông qua tự động hóa ngôn ngữ</p>
+          </div>
+          
+          <div class="bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+            <div class="w-16 h-16 icon-gradient-pink rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3" data-translate="transformation.innovation.title">Đổi mới Sản phẩm</h3>
+            <p class="text-gray-600" data-translate="transformation.innovation.description">Phát triển các sản phẩm và dịch vụ mới với khả năng tương tác ngôn ngữ tự nhiên, nâng cao trải nghiệm người dùng</p>
+          </div>
+          
+          <div class="bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+            <div class="w-16 h-16 icon-gradient-blue rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3" data-translate="transformation.scalability.title">Mở rộng Thị trường</h3>
+            <p class="text-gray-600" data-translate="transformation.scalability.description">Hỗ trợ đa ngôn ngữ giúp doanh nghiệp mở rộng ra thị trường quốc tế và phục vụ khách hàng đa dạng</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section text-white py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal" data-translate="cta.title">Sẵn sàng Chuyển đổi với Xử lý Ngôn ngữ tự nhiên?</h2>
+        <p class="text-xl opacity-90 mb-8 scroll-reveal" data-translate="cta.description">Liên hệ với chúng tôi ngay hôm nay để khám phá cách các giải pháp xử lý ngôn ngữ có thể thúc đẩy quá trình chuyển đổi số của doanh nghiệp bạn</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="../contact/index.html" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold inline-block scroll-reveal hover:bg-white hover:text-orange-600 transition-colors" data-translate="cta.button">Bắt đầu ngay</a>
+          <a href="index.html" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold inline-block scroll-reveal hover:bg-white hover:text-orange-600 transition-colors" data-translate="cta.aiAgentButton">Khám phá AI Agent</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, #f97316, #ec4899) !important;">
+              <span class="text-white font-bold text-lg" style="color: white !important;">DB</span>
+            </div>
+            <span class="text-2xl font-bold">Digitized Brains</span>
+          </div>
+          <p class="text-gray-400" data-translate="footer.description">Nhà cung cấp giải pháp xử lý ngôn ngữ tự nhiên hàng đầu cho doanh nghiệp Việt Nam</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.quickLinks">Liên kết nhanh</h4>
+          <div class="footer-links-grid">
+            <ul class="space-y-2">
+              <li><a href="../../index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.home">Trang chủ</a></li>
+              <li><a href="../about/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.about">Giới thiệu</a></li>
+              <li><a href="../digital-transformation/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.digitalTransformation">Chuyển đổi số</a></li>
+              <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.aiAgent">AI Agent</a></li>
+            </ul>
+            <ul class="space-y-2">
+              <li><a href="../blog/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.blog">Blog</a></li>
+              <li><a href="../resources/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.resources">Tài nguyên</a></li>
+              <li><a href="../contact/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.contact">Liên hệ</a></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.contact">Liên hệ</h4>
+          <ul class="space-y-2">
+            <li class="text-gray-400">contact@digitizedbrains.com</li>
+            <li class="text-gray-400" data-translate="footer.location">Thành phố Hồ Chí Minh, Việt Nam</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-gray-400" data-translate="footer.copyright">© 2025 DigitizedBrains. Bản quyền thuộc về DigitizedBrains.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Language Switcher Script -->
+  <script src="../../js/multilang.js"></script>
+
+  <!-- Chatbot Integration -->
+  <script src="../../js/chatbot.js"></script>
+  
+  <script>
+    // Initialize multilingual support
+    document.addEventListener('DOMContentLoaded', function() {
+      const pageTranslations = {
+        en: {
+          nav: { home: "Home", about: "About", digitalTransformation: "Digital Transformation", aiAgent: "AI Agent", blog: "Blog", resources: "Resources", contact: "Contact" },
+          language: { current: "Language:" },
+          hero: {
+            title: "Natural Language Processing for Vietnamese Enterprises",
+            subtitle: "Transform communication and information processing with advanced natural language processing solutions designed specifically for Vietnamese businesses",
+            cta: "Explore NLP Solutions"
+          },
+          footer: {
+            description: "Leading natural language processing solution provider for Vietnamese enterprises",
+            quickLinks: "Quick Links",
+            contact: "Contact",
+            location: "Ho Chi Minh City, Vietnam",
+            copyright: "© 2025 DigitizedBrains. All rights reserved."
+          }
+        },
+        vi: {
+          nav: { home: "Trang chủ", about: "Giới thiệu", digitalTransformation: "Chuyển đổi số", aiAgent: "AI Agent", blog: "Blog", resources: "Tài nguyên", contact: "Liên hệ" },
+          language: { current: "Ngôn ngữ:" },
+          hero: {
+            title: "Xử lý Ngôn ngữ tự nhiên cho Doanh nghiệp Việt Nam",
+            subtitle: "Chuyển đổi cách thức giao tiếp và xử lý thông tin với các giải pháp xử lý ngôn ngữ tiên tiến được thiết kế riêng cho doanh nghiệp Việt Nam",
+            cta: "Khám phá Giải pháp NLP"
+          },
+          footer: {
+            description: "Nhà cung cấp giải pháp xử lý ngôn ngữ tự nhiên hàng đầu cho doanh nghiệp Việt Nam",
+            quickLinks: "Liên kết nhanh",
+            contact: "Liên hệ",
+            location: "Thành phố Hồ Chí Minh, Việt Nam",
+            copyright: "© 2025 DigitizedBrains. Bản quyền thuộc về DigitizedBrains."
+          }
+        },
+        de: {
+          nav: { home: "Startseite", about: "Über uns", digitalTransformation: "Digitale Transformation", aiAgent: "KI-Agent", blog: "Blog", resources: "Ressourcen", contact: "Kontakt" },
+          language: { current: "Sprache:" },
+          hero: {
+            title: "Natürliche Sprachverarbeitung für vietnamesische Unternehmen",
+            subtitle: "Transformieren Sie Kommunikation und Informationsverarbeitung mit fortschrittlichen NLP-Lösungen, die speziell für vietnamesische Unternehmen entwickelt wurden",
+            cta: "NLP-Lösungen erkunden"
+          },
+          footer: {
+            description: "Führender Anbieter von natürlichen Sprachverarbeitungslösungen für vietnamesische Unternehmen",
+            quickLinks: "Schnelllinks",
+            contact: "Kontakt",
+            location: "Ho-Chi-Minh-Stadt, Vietnam",
+            copyright: "© 2025 DigitizedBrains. Alle Rechte vorbehalten."
+          }
+        }
+      };
+      
+      if (typeof initializeMultilingual === 'function') {
+        initializeMultilingual(pageTranslations);
+      }
+    });
+
+    // Language switcher functionality is handled by multilang.js
+
+    // Scroll reveal animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all scroll-reveal elements
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

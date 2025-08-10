@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+<html lang="vi" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="page-title">AI Agent trong Kinh doanh: Cuộc Cách mạng Tự động hóa - DigitizedBrains</title>
+  <meta name="description" content="Khám phá cách AI Agent đang tạo ra cuộc cách mạng tự động hóa trong doanh nghiệp Việt Nam và thay đổi cách thức hoạt động kinh doanh" id="page-description">
+  <link href="../../css/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    .font-nunito { 
+      font-family: 'Nunito', sans-serif; 
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Navigation styles */
+    .nav-link {
+      color: #374151;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .nav-link:hover { color: #ed7354; background-color: #fef2f2; }
+    .nav-link.active { color: #ed7354; font-weight: 600; }
+
+    /* Language Switcher Styles */
+    .language-switcher {
+      position: relative;
+    }
+    
+    .language-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      min-width: 160px;
+      display: none;
+      z-index: 1000;
+    }
+    
+    .language-menu.show {
+      display: block;
+    }
+    
+    .language-option {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+    
+    .language-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    /* Hero Section Styles */
+    .hero-section {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 120px 0;
+      color: white;
+    }
+
+    /* Logo with Orange to Pink Gradient */
+    .logo-gradient {
+      background: linear-gradient(135deg, #fb923c 0%, #ec4899 100%);
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Scroll Reveal Animation */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+    
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Feature Cards */
+    .feature-card {
+      transition: all 0.3s ease;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      border-color: #ed7354;
+    }
+
+    /* Button Styles */
+    .btn-primary {
+      background: linear-gradient(135deg, #ed7354, #dc2626);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+    }
+
+
+    /* Stats Section */
+    .stats-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    /* AI Agent Connection Section */
+    .ai-connection-section {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      border: 2px solid #ed7354;
+      border-radius: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ai-connection-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #fb923c, #ec4899);
+    }
+
+    /* Industry Cards */
+    .industry-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid #e5e7eb;
+    }
+
+    .industry-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      border-color: #ed7354;
+    }
+
+    .industry-icon {
+      width: 4rem;
+      height: 4rem;
+      background: linear-gradient(135deg, #ed7354 0%, #f97316 100%);
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+  <!-- Header -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo with Orange to Pink Gradient -->
+        <div class="flex items-center space-x-2">
+          <div class="logo-gradient">
+            <span class="text-white font-bold text-lg">DB</span>
+          </div>
+          <a href="index.html" class="text-2xl font-bold text-gray-800">Digitized Brains</a>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="hidden md:flex space-x-4">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="index.html" class="nav-link active" data-translate="nav.blog">Blog</a>
+          <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+        </nav>
+
+        <!-- Language Switcher -->
+        <div class="hidden md:block">
+          <div class="language-switcher">
+            <button id="language-btn" class="flex items-center space-x-1 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+              <img id="current-flag" src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+              <span id="current-lang">VI</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="language-menu" class="language-menu">
+              <a href="#" onclick="changeLanguage('en')" class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                English
+              </a>
+              <a href="#" onclick="changeLanguage('vi')" class="language-option" data-lang="vi">
+                <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                Tiếng Việt
+              </a>
+              <a href="#" onclick="changeLanguage('de')" class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                Deutsch
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <nav class="flex flex-col space-y-2">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="index.html" class="nav-link active" data-translate="nav.blog">Blog</a>
+          <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+        </nav>
+        
+        <!-- Mobile Language Switcher -->
+        <div class="pt-4 border-t border-gray-300 mt-4">
+          <div class="language-switcher">
+            <button id="mobile-language-btn" class="flex items-center justify-between w-full px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+              <span data-translate="language.current">Ngôn ngữ:</span>
+              <div class="flex items-center space-x-1">
+                <img id="mobile-current-flag" src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                <span id="mobile-current-lang">VI</span>
+              </div>
+            </button>
+            <div id="mobile-language-menu" class="language-menu mt-2">
+              <a href="#" onclick="changeLanguage('en')" class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                English
+              </a>
+              <a href="#" onclick="changeLanguage('vi')" class="language-option" data-lang="vi">
+                <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                Tiếng Việt
+              </a>
+              <a href="#" onclick="changeLanguage('de')" class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                Deutsch
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 scroll-reveal" data-translate="hero.title">AI Agent trong Kinh doanh: Cuộc Cách mạng Tự động hóa</h1>
+        <p class="text-xl opacity-90 mb-8 scroll-reveal" data-translate="hero.subtitle">Khám phá cách AI Agent đang thay đổi hoàn toàn cách thức hoạt động của doanh nghiệp Việt Nam, từ tự động hóa quy trình đến tối ưu hóa hiệu suất</p>
+        <div class="flex flex-wrap justify-center gap-4 scroll-reveal">
+          <a href="#content" class="btn-primary px-8 py-3 rounded-full font-semibold text-white" data-translate="hero.cta">Khám phá AI Agent</a>
+          <a href="#case-studies" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-gray-800 transition-all" data-translate="hero.cases">Xem Case Studies</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section py-16 text-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4 scroll-reveal" data-translate="situation.title">Tình hình Tự động hóa AI tại Việt Nam 2024-2025</h2>
+        <p class="text-xl opacity-90 scroll-reveal" data-translate="situation.subtitle">AI Agent đang tạo ra làn sóng tự động hóa mạnh mẽ trong các doanh nghiệp Việt Nam, nâng cao hiệu quả và giảm chi phí vận hành</p>
+      </div>
+      
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center scroll-reveal">
+          <div class="text-4xl font-bold mb-2" data-translate="stats.growth.number">520%</div>
+          <p class="opacity-90" data-translate="stats.growth.description">tăng trưởng triển khai AI Agent trong doanh nghiệp Việt Nam</p>
+        </div>
+        <div class="text-center scroll-reveal">
+          <div class="text-4xl font-bold mb-2" data-translate="stats.automation.number">68%</div>
+          <p class="opacity-90" data-translate="stats.automation.description">quy trình kinh doanh được tự động hóa bằng AI Agent</p>
+        </div>
+        <div class="text-center scroll-reveal">
+          <div class="text-4xl font-bold mb-2" data-translate="stats.efficiency.number">85%</div>
+          <p class="opacity-90" data-translate="stats.efficiency.description">cải thiện hiệu suất nhờ AI Agent tự động hóa</p>
+        </div>
+        <div class="text-center scroll-reveal">
+          <div class="text-4xl font-bold mb-2" data-translate="stats.cost.number">45%</div>
+          <p class="opacity-90" data-translate="stats.cost.description">giảm chi phí vận hành thông qua tự động hóa thông minh</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section id="content" class="py-20">
+    <div class="container mx-auto px-4">
+      <!-- Overview Section -->
+      <div class="max-w-4xl mx-auto mb-16 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal" data-translate="content.overview.title">AI Agent - Người Thợ Số của Thời đại Mới</h2>
+        <p class="text-xl text-gray-600 scroll-reveal" data-translate="content.overview.description">
+          AI Agent không chỉ là công cụ tự động hóa mà là những "nhân viên số" thông minh, có khả năng học hỏi, thích ứng và thực hiện các nhiệm vụ phức tạp một cách tự động và hiệu quả
+        </p>
+      </div>
+
+      <!-- AI Agent Types -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <!-- Customer Service Agent -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.agents.customer.title">AI Agent Chăm sóc Khách hàng</h3>
+          <p class="text-gray-600" data-translate="content.agents.customer.description">Chatbot thông minh 24/7 với khả năng hiểu ngữ cảnh, xử lý khiếu nại và cung cấp hỗ trợ cá nhân hóa cho từng khách hàng</p>
+        </div>
+
+        <!-- Sales Agent -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.agents.sales.title">AI Agent Bán hàng</h3>
+          <p class="text-gray-600" data-translate="content.agents.sales.description">Tự động phân tích khách hàng tiềm năng, gợi ý sản phẩm phù hợp và tối ưu hóa quy trình bán hàng để tăng tỷ lệ chuyển đổi</p>
+        </div>
+
+        <!-- Operations Agent -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.agents.operations.title">AI Agent Vận hành</h3>
+          <p class="text-gray-600" data-translate="content.agents.operations.description">Giám sát và tối ưu hóa các quy trình sản xuất, quản lý tồn kho và điều phối nguồn lực một cách thông minh</p>
+        </div>
+
+        <!-- Finance Agent -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.agents.finance.title">AI Agent Tài chính</h3>
+          <p class="text-gray-600" data-translate="content.agents.finance.description">Tự động hóa kế toán, phân tích tài chính, dự báo dòng tiền và phát hiện rủi ro tài chính một cách chính xác</p>
+        </div>
+
+        <!-- HR Agent -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.agents.hr.title">AI Agent Nhân sự</h3>
+          <p class="text-gray-600" data-translate="content.agents.hr.description">Tự động tuyển dụng, đánh giá hiệu suất nhân viên, lập kế hoạch đào tạo và quản lý nhân sự hiệu quả</p>
+        </div>
+
+        <!-- Data Agent -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.agents.data.title">AI Agent Phân tích Dữ liệu</h3>
+          <p class="text-gray-600" data-translate="content.agents.data.description">Thu thập, xử lý và phân tích dữ liệu kinh doanh để tạo ra insights có giá trị và báo cáo tự động</p>
+        </div>
+      </div>
+
+      <!-- Case Studies Section -->
+      <div class="max-w-6xl mx-auto mb-16">
+        <h2 class="text-3xl font-bold mb-8 text-center scroll-reveal" data-translate="content.casestudies.title">Case Studies: Doanh nghiệp Việt Nam Thành công với AI Agent</h2>
+        <p class="text-xl text-gray-600 text-center mb-12 scroll-reveal" data-translate="content.casestudies.subtitle">Những câu chuyện thành công thực tế từ các doanh nghiệp Việt Nam đã triển khai AI Agent</p>
+        
+        <div class="grid md:grid-cols-2 gap-8 mb-16">
+          <!-- Case Study 1 -->
+          <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-200 scroll-reveal">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mr-4">
+                <span class="text-white font-bold text-xl">TN</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold" data-translate="content.casestudies.case1.company">Tập đoàn Thương mại Thành Nam</h3>
+                <p class="text-gray-600" data-translate="content.casestudies.case1.industry">Bán lẻ & Phân phối</p>
+              </div>
+            </div>
+            <div class="mb-4">
+              <h4 class="font-semibold mb-2" data-translate="content.casestudies.case1.challenge.title">Thách thức:</h4>
+              <p class="text-gray-600 text-sm" data-translate="content.casestudies.case1.challenge.description">Quản lý 500+ cửa hàng với hàng nghìn SKU, khó khăn trong dự báo nhu cầu và quản lý tồn kho</p>
+            </div>
+            <div class="mb-4">
+              <h4 class="font-semibold mb-2" data-translate="content.casestudies.case1.solution.title">Giải pháp AI Agent:</h4>
+              <p class="text-gray-600 text-sm" data-translate="content.casestudies.case1.solution.description">Triển khai AI Agent dự báo nhu cầu, tự động đặt hàng và tối ưu hóa phân phối</p>
+            </div>
+            <div class="bg-green-50 p-4 rounded-lg">
+              <h4 class="font-semibold text-green-800 mb-2" data-translate="content.casestudies.case1.results.title">Kết quả:</h4>
+              <ul class="text-sm text-green-700 space-y-1">
+                <li data-translate="content.casestudies.case1.results.item1">• Giảm 35% tồn kho thừa</li>
+                <li data-translate="content.casestudies.case1.results.item2">• Tăng 28% hiệu quả phân phối</li>
+                <li data-translate="content.casestudies.case1.results.item3">• Tiết kiệm 2.5 tỷ đồng/năm</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Case Study 2 -->
+          <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-200 scroll-reveal">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center mr-4">
+                <span class="text-white font-bold text-xl">VB</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold" data-translate="content.casestudies.case2.company">Ngân hàng Việt Bảo</h3>
+                <p class="text-gray-600" data-translate="content.casestudies.case2.industry">Ngân hàng & Tài chính</p>
+              </div>
+            </div>
+            <div class="mb-4">
+              <h4 class="font-semibold mb-2" data-translate="content.casestudies.case2.challenge.title">Thách thức:</h4>
+              <p class="text-gray-600 text-sm" data-translate="content.casestudies.case2.challenge.description">Xử lý 50,000+ giao dịch/ngày, phát hiện gian lận và đánh giá tín dụng mất nhiều thời gian</p>
+            </div>
+            <div class="mb-4">
+              <h4 class="font-semibold mb-2" data-translate="content.casestudies.case2.solution.title">Giải pháp AI Agent:</h4>
+              <p class="text-gray-600 text-sm" data-translate="content.casestudies.case2.solution.description">Triển khai AI Agent phát hiện gian lận, đánh giá tín dụng tự động và chatbot hỗ trợ khách hàng</p>
+            </div>
+            <div class="bg-green-50 p-4 rounded-lg">
+              <h4 class="font-semibold text-green-800 mb-2" data-translate="content.casestudies.case2.results.title">Kết quả:</h4>
+              <ul class="text-sm text-green-700 space-y-1">
+                <li data-translate="content.casestudies.case2.results.item1">• Phát hiện 99.2% giao dịch gian lận</li>
+                <li data-translate="content.casestudies.case2.results.item2">• Giảm 80% thời gian đánh giá tín dụng</li>
+                <li data-translate="content.casestudies.case2.results.item3">• Tăng 95% mức độ hài lòng khách hàng</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Implementation Strategy Section -->
+      <div class="max-w-4xl mx-auto mb-16">
+        <h2 class="text-3xl font-bold mb-8 text-center scroll-reveal" data-translate="content.implementation.title">Chiến lược Triển khai AI Agent</h2>
+        <p class="text-xl text-gray-600 text-center mb-12 scroll-reveal" data-translate="content.implementation.subtitle">Lộ trình từng bước để triển khai thành công AI Agent trong doanh nghiệp</p>
+        
+        <div class="space-y-8">
+          <!-- Phase 1 -->
+          <div class="flex items-start space-x-6 scroll-reveal">
+            <div class="flex-shrink-0 w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-lg">1</div>
+            <div class="flex-1">
+              <h3 class="text-xl font-semibold mb-3" data-translate="content.implementation.phase1.title">Đánh giá và Lập kế hoạch</h3>
+              <p class="text-gray-600 mb-4" data-translate="content.implementation.phase1.description">Phân tích quy trình hiện tại, xác định cơ hội tự động hóa và lập kế hoạch triển khai chi tiết</p>
+              <ul class="text-sm text-gray-600 space-y-1">
+                <li data-translate="content.implementation.phase1.item1">• Audit quy trình kinh doanh hiện tại</li>
+                <li data-translate="content.implementation.phase1.item2">• Xác định ưu tiên triển khai</li>
+                <li data-translate="content.implementation.phase1.item3">• Thiết kế kiến trúc AI Agent</li>
+                <li data-translate="content.implementation.phase1.item4">• Lập timeline và ngân sách</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Phase 2 -->
+          <div class="flex items-start space-x-6 scroll-reveal">
+            <div class="flex-shrink-0 w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-lg">2</div>
+            <div class="flex-1">
+              <h3 class="text-xl font-semibold mb-3" data-translate="content.implementation.phase2.title">Pilot và Thử nghiệm</h3>
+              <p class="text-gray-600 mb-4" data-translate="content.implementation.phase2.description">Triển khai thử nghiệm với phạm vi nhỏ để kiểm chứng hiệu quả và điều chỉnh</p>
+              <ul class="text-sm text-gray-600 space-y-1">
+                <li data-translate="content.implementation.phase2.item1">• Chọn quy trình pilot phù hợp</li>
+                <li data-translate="content.implementation.phase2.item2">• Phát triển và train AI Agent</li>
+                <li data-translate="content.implementation.phase2.item3">• Testing và debugging</li>
+                <li data-translate="content.implementation.phase2.item4">• Thu thập feedback và điều chỉnh</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Phase 3 -->
+          <div class="flex items-start space-x-6 scroll-reveal">
+            <div class="flex-shrink-0 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-lg">3</div>
+            <div class="flex-1">
+              <h3 class="text-xl font-semibold mb-3" data-translate="content.implementation.phase3.title">Mở rộng và Tối ưu</h3>
+              <p class="text-gray-600 mb-4" data-translate="content.implementation.phase3.description">Triển khai rộng rãi và liên tục tối ưu hóa hiệu suất AI Agent</p>
+              <ul class="text-sm text-gray-600 space-y-1">
+                <li data-translate="content.implementation.phase3.item1">• Scale up toàn doanh nghiệp</li>
+                <li data-translate="content.implementation.phase3.item2">• Tích hợp với hệ thống hiện tại</li>
+                <li data-translate="content.implementation.phase3.item3">• Đào tạo nhân viên sử dụng</li>
+                <li data-translate="content.implementation.phase3.item4">• Giám sát và cải thiện liên tục</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Future of AI Agents Section -->
+      <div class="max-w-4xl mx-auto mb-16">
+        <h2 class="text-3xl font-bold mb-8 text-center scroll-reveal" data-translate="content.future.title">Tương lai của AI Agent trong Kinh doanh</h2>
+        <p class="text-xl text-gray-600 text-center mb-12 scroll-reveal" data-translate="content.future.subtitle">Xu hướng và cơ hội phát triển AI Agent trong 5 năm tới</p>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Trend 1 -->
+          <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-xl scroll-reveal">
+            <div class="w-10 h-10 bg-purple-500 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-2" data-translate="content.future.trend1.title">AGI - Trí tuệ Tổng quát</h3>
+            <p class="text-gray-600 text-sm" data-translate="content.future.trend1.description">AI Agent sẽ có khả năng suy luận và học hỏi như con người, xử lý được mọi loại công việc phức tạp</p>
+          </div>
+
+          <!-- Trend 2 -->
+          <div class="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-xl scroll-reveal">
+            <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-2" data-translate="content.future.trend2.title">Multi-Agent Systems</h3>
+            <p class="text-gray-600 text-sm" data-translate="content.future.trend2.description">Nhiều AI Agent sẽ làm việc cùng nhau, phối hợp để giải quyết các vấn đề kinh doanh phức tạp</p>
+          </div>
+
+          <!-- Trend 3 -->
+          <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl scroll-reveal">
+            <div class="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-2" data-translate="content.future.trend3.title">Conversational AI</h3>
+            <p class="text-gray-600 text-sm" data-translate="content.future.trend3.description">AI Agent sẽ giao tiếp tự nhiên như con người, hiểu ngữ cảnh và cảm xúc trong công việc</p>
+          </div>
+
+          <!-- Trend 4 -->
+          <div class="bg-gradient-to-br from-orange-50 to-red-50 p-6 rounded-xl scroll-reveal">
+            <div class="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-2" data-translate="content.future.trend4.title">Edge AI</h3>
+            <p class="text-gray-600 text-sm" data-translate="content.future.trend4.description">AI Agent sẽ hoạt động ngay trên thiết bị, xử lý nhanh hơn và bảo mật thông tin tốt hơn</p>
+          </div>
+
+          <!-- Trend 5 -->
+          <div class="bg-gradient-to-br from-indigo-50 to-purple-50 p-6 rounded-xl scroll-reveal">
+            <div class="w-10 h-10 bg-indigo-500 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-2" data-translate="content.future.trend5.title">No-Code AI</h3>
+            <p class="text-gray-600 text-sm" data-translate="content.future.trend5.description">Người dùng thông thường có thể tạo và tùy chỉnh AI Agent mà không cần kiến thức lập trình</p>
+          </div>
+
+          <!-- Trend 6 -->
+          <div class="bg-gradient-to-br from-pink-50 to-rose-50 p-6 rounded-xl scroll-reveal">
+            <div class="w-10 h-10 bg-pink-500 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-2" data-translate="content.future.trend6.title">Emotional AI</h3>
+            <p class="text-gray-600 text-sm" data-translate="content.future.trend6.description">AI Agent sẽ hiểu và phản ứng với cảm xúc con người, cung cấp trải nghiệm cá nhân hóa tốt hơn</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Automation Benefits -->
+      <div class="max-w-4xl mx-auto mb-16">
+        <h2 class="text-3xl font-bold mb-8 text-center scroll-reveal" data-translate="content.benefits.title">Lợi ích của Cuộc Cách mạng Tự động hóa AI</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- 24/7 Operations -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.availability.title">Hoạt động 24/7 Không ngừng nghỉ</h3>
+              <p class="text-gray-600" data-translate="content.benefits.availability.description">AI Agent làm việc liên tục không cần nghỉ ngơi, đảm bảo doanh nghiệp luôn sẵn sàng phục vụ khách hàng và xử lý công việc</p>
+            </div>
+          </div>
+
+          <!-- Cost Reduction -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.cost.title">Giảm Chi phí Vận hành</h3>
+              <p class="text-gray-600" data-translate="content.benefits.cost.description">Tự động hóa giúp giảm đáng kể chi phí nhân sự, tăng hiệu quả sử dụng tài nguyên và tối ưu hóa quy trình</p>
+            </div>
+          </div>
+
+          <!-- Accuracy -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.accuracy.title">Độ Chính xác Cao</h3>
+              <p class="text-gray-600" data-translate="content.benefits.accuracy.description">AI Agent thực hiện công việc với độ chính xác cao, giảm thiểu sai sót do con người và đảm bảo chất lượng đồng nhất</p>
+            </div>
+          </div>
+
+          <!-- Scalability -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.scalability.title">Khả năng Mở rộng Linh hoạt</h3>
+              <p class="text-gray-600" data-translate="content.benefits.scalability.description">Dễ dàng mở rộng quy mô hoạt động mà không cần tăng tương ứng số lượng nhân sự, thích ứng nhanh với tăng trưởng</p>
+            </div>
+          </div>
+
+          <!-- Data-Driven -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-pink-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.datadriven.title">Quyết định Dựa trên Dữ liệu</h3>
+              <p class="text-gray-600" data-translate="content.benefits.datadriven.description">AI Agent liên tục thu thập và phân tích dữ liệu để đưa ra quyết định tối ưu và cải thiện hiệu suất</p>
+            </div>
+          </div>
+
+          <!-- Learning -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.learning.title">Học hỏi và Cải thiện Liên tục</h3>
+              <p class="text-gray-600" data-translate="content.benefits.learning.description">AI Agent có khả năng tự học từ dữ liệu và kinh nghiệm, ngày càng hoàn thiện và thông minh hơn</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Agent Connection Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="ai-connection-section p-8 max-w-4xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold mb-4 scroll-reveal" data-translate="connection.title">Khả năng của AI Agent</h2>
+          <p class="text-xl text-gray-600 scroll-reveal" data-translate="connection.description">Cuộc cách mạng tự động hóa được thúc đẩy bởi công nghệ AI Agent tiên tiến cho hiệu suất kinh doanh vượt trội</p>
+        </div>
+        
+        <div class="bg-white rounded-lg p-6 shadow-lg scroll-reveal">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+              <div class="logo-gradient w-12 h-12">
+                <span class="text-white font-bold text-xl">DB</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold" data-translate="connection.service.title">Tự động hóa AI</h3>
+                <p class="text-gray-600" data-translate="connection.service.description">Tích hợp với giải pháp AI Agent toàn diện để cung cấp tự động hóa thông minh có thể tự học và thích ứng với môi trường kinh doanh</p>
+              </div>
+            </div>
+            <a href="../ai-agents/index.html" class="btn-primary px-6 py-3 rounded-lg font-semibold text-white" data-translate="connection.cta">Tìm hiểu về AI Agent</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industry Applications -->
+  <section id="applications" class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-3xl font-bold mb-4" data-translate="content.applications.title">Ứng dụng AI Agent theo Ngành nghề</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-translate="content.applications.subtitle">AI Agent được tùy chỉnh riêng cho từng lĩnh vực kinh doanh tại Việt Nam</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- E-commerce & Retail -->
+        <div class="industry-card scroll-reveal">
+          <div class="industry-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4" data-translate="content.applications.ecommerce.title">Thương mại Điện tử & Bán lẻ</h3>
+          <p class="text-gray-600 mb-4" data-translate="content.applications.ecommerce.description">AI Agent tự động quản lý tồn kho, gợi ý sản phẩm, xử lý đơn hàng và chăm sóc khách hàng</p>
+          <ul class="space-y-2">
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.applications.ecommerce.feature1">Gợi ý sản phẩm cá nhân hóa</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.applications.ecommerce.feature2">Tự động quản lý và đặt hàng tồn kho</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.applications.ecommerce.feature3">Chatbot hỗ trợ mua sắm 24/7</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Manufacturing -->
+        <div class="industry-card scroll-reveal">
+          <div class="industry-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4" data-translate="content.applications.manufacturing.title">Sản xuất & Công nghiệp</h3>
+          <p class="text-gray-600 mb-4" data-translate="content.applications.manufacturing.description">AI Agent giám sát sản xuất, dự đoán bảo trì thiết bị và tối ưu hóa chuỗi cung ứng</p>
+          <ul class="space-y-2">
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.applications.manufacturing.feature1">Giám sát chất lượng sản phẩm tự động</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.applications.manufacturing.feature2">Dự đoán bảo trì thiết bị</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.applications.manufacturing.feature3">Tối ưu hóa lịch sản xuất</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Banking & Finance -->
+        <div class="industry-card scroll-reveal">
+          <div class="industry-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4" data-translate="content.applications.banking.title">Ngân hàng & Tài chính</h3>
+          <p class="text-gray-600 mb-4" data-translate="content.applications.banking.description">AI Agent xử lý giao dịch, phân tích rủi ro và cung cấp dịch vụ tài chính cá nhân hóa</p>
+          <ul class="space-y-2">
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.applications.banking.feature1">Phát hiện giao dịch gian lận tự động</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.applications.banking.feature2">Đánh giá tín dụng thông minh</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.applications.banking.feature3">Tư vấn đầu tư cá nhân hóa</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Healthcare -->
+        <div class="industry-card scroll-reveal">
+          <div class="industry-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4" data-translate="content.applications.healthcare.title">Y tế & Chăm sóc Sức khỏe</h3>
+          <p class="text-gray-600 mb-4" data-translate="content.applications.healthcare.description">AI Agent hỗ trợ chẩn đoán, quản lý bệnh nhân và tối ưu hóa vận hành bệnh viện</p>
+          <ul class="space-y-2">
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.applications.healthcare.feature1">Lập lịch khám và nhắc nhở tự động</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.applications.healthcare.feature2">Phân tích hình ảnh y tế</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.applications.healthcare.feature3">Giám sát sức khỏe từ xa</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-gray-900 text-white py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal" data-translate="cta.title">Sẵn sàng Tham gia Cuộc Cách mạng Tự động hóa?</h2>
+        <p class="text-xl opacity-90 mb-8 scroll-reveal" data-translate="cta.description">Cùng DigitizedBrains triển khai AI Agent để tự động hóa doanh nghiệp của bạn và tạo ra lợi thế cạnh tranh vượt trội trong thời đại số</p>
+        <div class="flex flex-wrap justify-center gap-4 scroll-reveal">
+          <a href="index.html" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-gray-800 transition-all" data-translate="cta.backToBlog">Quay lại Blog</a>
+          <a href="../contact/index.html" class="btn-primary px-8 py-3 rounded-full font-semibold text-white" data-translate="cta.button">Bắt đầu Tự động hóa AI</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="logo-gradient">
+              <span class="text-white font-bold text-lg">DB</span>
+            </div>
+            <span class="text-2xl font-bold">Digitized Brains</span>
+          </div>
+          <p class="text-gray-400" data-translate="footer.description">Nhà cung cấp giải pháp AI Agent và tự động hóa hàng đầu cho doanh nghiệp Việt Nam trong kỷ nguyên số</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.quickLinks">Liên kết nhanh</h4>
+          <div class="grid grid-cols-2 gap-4">
+            <ul class="space-y-2">
+              <li><a href="../../index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.home">Trang chủ</a></li>
+              <li><a href="../about/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.about">Giới thiệu</a></li>
+              <li><a href="../digital-transformation/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.digitalTransformation">Chuyển đổi số</a></li>
+              <li><a href="../ai-agents/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.aiAgent">AI Agent</a></li>
+            </ul>
+            <ul class="space-y-2">
+              <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.blog">Blog</a></li>
+              <li><a href="../resources/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.resources">Tài nguyên</a></li>
+              <li><a href="../contact/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.contact">Liên hệ</a></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.contact">Liên hệ</h4>
+          <ul class="space-y-2">
+            <li class="text-gray-400">contact@digitizedbrains.com</li>
+            <li class="text-gray-400" data-translate="footer.location">Thành phố Hồ Chí Minh, Việt Nam</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-gray-400" data-translate="footer.copyright">© 2025 DigitizedBrains. Bản quyền thuộc về DigitizedBrains.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Language Switcher Script -->
+  <script src="../../js/multilang.js"></script>
+
+  <!-- Chatbot Integration -->
+  <script src="../../js/chatbot.js"></script>
+
+  <script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    const pageTranslations = {
+      en: {
+        meta: { 
+          title: "AI Agent in Business: The Automation Revolution - DigitizedBrains", 
+          description: "Discover how AI Agents are creating an automation revolution in Vietnamese businesses and changing the way business operations work" 
+        },
+        nav: { 
+          home: "Home", 
+          about: "About", 
+          digitalTransformation: "Digital Transformation", 
+          aiAgent: "AI Agent", 
+          blog: "Blog", 
+          resources: "Resources", 
+          contact: "Contact" 
+        },
+        language: { current: "Language:" },
+        backToBlog: "Back to Blog",
+        hero: { 
+          title: "AI Agent in Business: The Automation Revolution", 
+          subtitle: "Discover how AI Agents are completely changing the way Vietnamese businesses operate, from process automation to performance optimization", 
+          cta: "Explore AI Agent", 
+          cases: "View Case Studies" 
+        },
+        situation: {
+          title: "AI Automation Situation in Vietnam 2024-2025",
+          subtitle: "AI Agents are creating a powerful automation wave in Vietnamese businesses, improving efficiency and reducing operating costs"
+        },
+        stats: {
+          growth: {
+            number: "520%",
+            description: "growth in AI Agent deployment in Vietnamese businesses"
+          },
+          automation: {
+            number: "68%",
+            description: "of business processes automated by AI Agents"
+          },
+          efficiency: {
+            number: "85%",
+            description: "improvement in performance through AI Agent automation"
+          },
+          cost: {
+            number: "45%",
+            description: "reduction in operating costs through intelligent automation"
+          }
+        },
+        content: {
+          overview: {
+            title: "AI Agent - Digital Workers of the New Era",
+            description: "AI Agents are not just automation tools but intelligent 'digital employees' with the ability to learn, adapt, and perform complex tasks automatically and efficiently"
+          },
+          agents: {
+            customer: {
+              title: "Customer Service AI Agent",
+              description: "24/7 intelligent chatbot with context understanding, complaint handling, and personalized support for each customer"
+            },
+            sales: {
+              title: "Sales AI Agent",
+              description: "Automatically analyze potential customers, suggest suitable products, and optimize sales processes to increase conversion rates"
+            },
+            operations: {
+              title: "Operations AI Agent",
+              description: "Monitor and optimize production processes, manage inventory, and intelligently coordinate resources"
+            },
+            finance: {
+              title: "Finance AI Agent",
+              description: "Automate accounting, financial analysis, cash flow forecasting, and accurate financial risk detection"
+            },
+            hr: {
+              title: "HR AI Agent",
+              description: "Automate recruitment, evaluate employee performance, plan training, and manage HR efficiently"
+            },
+            data: {
+              title: "Data Analytics AI Agent",
+              description: "Collect, process, and analyze business data to create valuable insights and automated reports"
+            }
+          },
+          casestudies: {
+            title: "Case Studies: Vietnamese Businesses Successful with AI Agent",
+            subtitle: "Real success stories from Vietnamese businesses that have deployed AI Agents",
+            case1: {
+              company: "Thanh Nam Trading Group",
+              industry: "Retail & Distribution",
+              challenge: {
+                title: "Challenge:",
+                description: "Managing 500+ stores with thousands of SKUs, difficulties in demand forecasting and inventory management"
+              },
+              solution: {
+                title: "AI Agent Solution:",
+                description: "Deploy AI Agent for demand forecasting, automatic ordering, and distribution optimization"
+              },
+              results: {
+                title: "Results:",
+                item1: "• 35% reduction in excess inventory",
+                item2: "• 28% improvement in distribution efficiency",
+                item3: "• Save 2.5 billion VND/year"
+              }
+            },
+            case2: {
+              company: "Viet Bao Bank",
+              industry: "Banking & Finance",
+              challenge: {
+                title: "Challenge:",
+                description: "Processing 50,000+ transactions/day, fraud detection and credit assessment take a lot of time"
+              },
+              solution: {
+                title: "AI Agent Solution:",
+                description: "Deploy AI Agent for fraud detection, automatic credit assessment, and customer support chatbot"
+              },
+              results: {
+                title: "Results:",
+                item1: "• Detect 99.2% fraudulent transactions",
+                item2: "• 80% reduction in credit assessment time",
+                item3: "• 95% increase in customer satisfaction"
+              }
+            }
+          },
+          implementation: {
+            title: "AI Agent Implementation Strategy",
+            subtitle: "Step-by-step roadmap to successfully implement AI Agents in enterprises",
+            phase1: {
+              title: "Assessment and Planning",
+              description: "Analyze current processes, identify automation opportunities, and create detailed implementation plans",
+              item1: "• Audit current business processes",
+              item2: "• Identify implementation priorities",
+              item3: "• Design AI Agent architecture",
+              item4: "• Set timeline and budget"
+            },
+            phase2: {
+              title: "Pilot and Testing",
+              description: "Deploy pilot testing with small scope to verify effectiveness and adjust",
+              item1: "• Choose suitable pilot process",
+              item2: "• Develop and train AI Agent",
+              item3: "• Testing and debugging",
+              item4: "• Collect feedback and adjust"
+            },
+            phase3: {
+              title: "Expand and Optimize",
+              description: "Deploy widely and continuously optimize AI Agent performance",
+              item1: "• Scale up enterprise-wide",
+              item2: "• Integrate with existing systems",
+              item3: "• Train employees to use",
+              item4: "• Monitor and continuously improve"
+            }
+          },
+          future: {
+            title: "The Future of AI Agents in Business",
+            subtitle: "Trends and development opportunities for AI Agents in the next 5 years",
+            trend1: {
+              title: "AGI - General Intelligence",
+              description: "AI Agents will have human-like reasoning and learning capabilities, handling all types of complex work"
+            },
+            trend2: {
+              title: "Multi-Agent Systems",
+              description: "Multiple AI Agents will work together, coordinating to solve complex business problems"
+            },
+            trend3: {
+              title: "Conversational AI",
+              description: "AI Agents will communicate naturally like humans, understanding context and emotions in work"
+            },
+            trend4: {
+              title: "Edge AI",
+              description: "AI Agents will operate right on devices, processing faster and better information security"
+            },
+            trend5: {
+              title: "No-Code AI",
+              description: "Regular users can create and customize AI Agents without programming knowledge"
+            },
+            trend6: {
+              title: "Emotional AI",
+              description: "AI Agents will understand and respond to human emotions, providing better personalized experiences"
+            }
+          },
+          benefits: {
+            title: "Benefits of the AI Automation Revolution",
+            availability: {
+              title: "24/7 Non-stop Operation",
+              description: "AI Agents work continuously without rest, ensuring businesses are always ready to serve customers and handle work"
+            },
+            cost: {
+              title: "Reduce Operating Costs",
+              description: "Automation significantly reduces personnel costs, increases resource efficiency, and optimizes processes"
+            },
+            accuracy: {
+              title: "High Accuracy",
+              description: "AI Agents perform work with high accuracy, minimizing human errors and ensuring consistent quality"
+            },
+            scalability: {
+              title: "Flexible Scalability",
+              description: "Easy to scale operations without proportionally increasing personnel, quickly adapting to growth"
+            },
+            datadriven: {
+              title: "Data-Based Decision Making",
+              description: "AI Agents continuously collect and analyze data to make optimal decisions and improve performance"
+            },
+            learning: {
+              title: "Continuous Learning and Improvement",
+              description: "AI Agents can self-learn from data and experience, becoming increasingly perfect and intelligent"
+            }
+          },
+          applications: {
+            title: "AI Agent Applications by Industry",
+            subtitle: "AI Agents customized for each business sector in Vietnam",
+            ecommerce: {
+              title: "E-commerce & Retail",
+              description: "AI Agents automatically manage inventory, suggest products, process orders, and customer care",
+              feature1: "Personalized product recommendations",
+              feature2: "Automatic inventory management and ordering",
+              feature3: "24/7 shopping support chatbot"
+            },
+            manufacturing: {
+              title: "Manufacturing & Industry",
+              description: "AI Agents monitor production, predict equipment maintenance, and optimize supply chain",
+              feature1: "Automatic product quality monitoring",
+              feature2: "Equipment maintenance prediction",
+              feature3: "Production schedule optimization"
+            },
+            banking: {
+              title: "Banking & Finance",
+              description: "AI Agents process transactions, analyze risks, and provide personalized financial services",
+              feature1: "Automatic fraud detection",
+              feature2: "Intelligent credit assessment",
+              feature3: "Personalized investment consulting"
+            },
+            healthcare: {
+              title: "Healthcare & Medical Care",
+              description: "AI Agents support diagnosis, patient management, and hospital operation optimization",
+              feature1: "Automatic appointment scheduling and reminders",
+              feature2: "Medical image analysis",
+              feature3: "Remote health monitoring"
+            }
+          }
+        },
+        connection: {
+          title: "AI Agent Capabilities",
+          description: "The automation revolution is driven by advanced AI Agent technology for superior business performance",
+          service: {
+            title: "AI Automation",
+            description: "Integrate with comprehensive AI Agent solutions to provide intelligent automation that can self-learn and adapt to business environments"
+          },
+          cta: "Learn about AI Agent"
+        },
+        cta: {
+          title: "Ready to Join the Automation Revolution?",
+          description: "Partner with DigitizedBrains to deploy AI Agents to automate your business and create superior competitive advantage in the digital age",
+          backToBlog: "Back to Blog",
+          button: "Start AI Automation"
+        },
+        footer: {
+          description: "Leading AI Agent and automation solution provider for Vietnamese businesses in the digital era",
+          quickLinks: "Quick Links",
+          contact: "Contact",
+          location: "Ho Chi Minh City, Vietnam",
+          copyright: "© 2025 DigitizedBrains. All rights reserved."
+        }
+      },
+      vi: {
+        meta: { 
+          title: "AI Agent trong Kinh doanh: Cuộc Cách mạng Tự động hóa - DigitizedBrains", 
+          description: "Khám phá cách AI Agent đang tạo ra cuộc cách mạng tự động hóa trong doanh nghiệp Việt Nam và thay đổi cách thức hoạt động kinh doanh" 
+        },
+        nav: { 
+          home: "Trang chủ", 
+          about: "Giới thiệu", 
+          digitalTransformation: "Chuyển đổi số", 
+          aiAgent: "AI Agent", 
+          blog: "Blog", 
+          resources: "Tài nguyên", 
+          contact: "Liên hệ" 
+        },
+        language: { current: "Ngôn ngữ:" },
+        backToBlog: "Quay lại Blog",
+        hero: { 
+          title: "AI Agent trong Kinh doanh: Cuộc Cách mạng Tự động hóa", 
+          subtitle: "Khám phá cách AI Agent đang thay đổi hoàn toàn cách thức hoạt động của doanh nghiệp Việt Nam, từ tự động hóa quy trình đến tối ưu hóa hiệu suất", 
+          cta: "Khám phá AI Agent", 
+          cases: "Xem Case Studies" 
+        },
+        situation: {
+          title: "Tình hình Tự động hóa AI tại Việt Nam 2024-2025",
+          subtitle: "AI Agent đang tạo ra làn sóng tự động hóa mạnh mẽ trong các doanh nghiệp Việt Nam, nâng cao hiệu quả và giảm chi phí vận hành"
+        },
+        stats: {
+          growth: {
+            number: "520%",
+            description: "tăng trưởng triển khai AI Agent trong doanh nghiệp Việt Nam"
+          },
+          automation: {
+            number: "68%",
+            description: "quy trình kinh doanh được tự động hóa bằng AI Agent"
+          },
+          efficiency: {
+            number: "85%",
+            description: "cải thiện hiệu suất nhờ AI Agent tự động hóa"
+          },
+          cost: {
+            number: "45%",
+            description: "giảm chi phí vận hành thông qua tự động hóa thông minh"
+          }
+        },
+        content: {
+          overview: {
+            title: "AI Agent - Người Thợ Số của Thời đại Mới",
+            description: "AI Agent không chỉ là công cụ tự động hóa mà là những \"nhân viên số\" thông minh, có khả năng học hỏi, thích ứng và thực hiện các nhiệm vụ phức tạp một cách tự động và hiệu quả"
+          },
+          agents: {
+            customer: {
+              title: "AI Agent Chăm sóc Khách hàng",
+              description: "Chatbot thông minh 24/7 với khả năng hiểu ngữ cảnh, xử lý khiếu nại và cung cấp hỗ trợ cá nhân hóa cho từng khách hàng"
+            },
+            sales: {
+              title: "AI Agent Bán hàng",
+              description: "Tự động phân tích khách hàng tiềm năng, gợi ý sản phẩm phù hợp và tối ưu hóa quy trình bán hàng để tăng tỷ lệ chuyển đổi"
+            },
+            operations: {
+              title: "AI Agent Vận hành",
+              description: "Giám sát và tối ưu hóa các quy trình sản xuất, quản lý tồn kho và điều phối nguồn lực một cách thông minh"
+            },
+            finance: {
+              title: "AI Agent Tài chính",
+              description: "Tự động hóa kế toán, phân tích tài chính, dự báo dòng tiền và phát hiện rủi ro tài chính một cách chính xác"
+            },
+            hr: {
+              title: "AI Agent Nhân sự",
+              description: "Tự động tuyển dụng, đánh giá hiệu suất nhân viên, lập kế hoạch đào tạo và quản lý nhân sự hiệu quả"
+            },
+            data: {
+              title: "AI Agent Phân tích Dữ liệu",
+              description: "Thu thập, xử lý và phân tích dữ liệu kinh doanh để tạo ra insights có giá trị và báo cáo tự động"
+            }
+          },
+          casestudies: {
+            title: "Case Studies: Doanh nghiệp Việt Nam Thành công với AI Agent",
+            subtitle: "Những câu chuyện thành công thực tế từ các doanh nghiệp Việt Nam đã triển khai AI Agent",
+            case1: {
+              company: "Tập đoàn Thương mại Thành Nam",
+              industry: "Bán lẻ & Phân phối",
+              challenge: {
+                title: "Thách thức:",
+                description: "Quản lý 500+ cửa hàng với hàng nghìn SKU, khó khăn trong dự báo nhu cầu và quản lý tồn kho"
+              },
+              solution: {
+                title: "Giải pháp AI Agent:",
+                description: "Triển khai AI Agent dự báo nhu cầu, tự động đặt hàng và tối ưu hóa phân phối"
+              },
+              results: {
+                title: "Kết quả:",
+                item1: "• Giảm 35% tồn kho thừa",
+                item2: "• Tăng 28% hiệu quả phân phối",
+                item3: "• Tiết kiệm 2.5 tỷ đồng/năm"
+              }
+            },
+            case2: {
+              company: "Ngân hàng Việt Bảo",
+              industry: "Ngân hàng & Tài chính",
+              challenge: {
+                title: "Thách thức:",
+                description: "Xử lý 50,000+ giao dịch/ngày, phát hiện gian lận và đánh giá tín dụng mất nhiều thời gian"
+              },
+              solution: {
+                title: "Giải pháp AI Agent:",
+                description: "Triển khai AI Agent phát hiện gian lận, đánh giá tín dụng tự động và chatbot hỗ trợ khách hàng"
+              },
+              results: {
+                title: "Kết quả:",
+                item1: "• Phát hiện 99.2% giao dịch gian lận",
+                item2: "• Giảm 80% thời gian đánh giá tín dụng",
+                item3: "• Tăng 95% mức độ hài lòng khách hàng"
+              }
+            }
+          },
+          implementation: {
+            title: "Chiến lược Triển khai AI Agent",
+            subtitle: "Lộ trình từng bước để triển khai thành công AI Agent trong doanh nghiệp",
+            phase1: {
+              title: "Đánh giá và Lập kế hoạch",
+              description: "Phân tích quy trình hiện tại, xác định cơ hội tự động hóa và lập kế hoạch triển khai chi tiết",
+              item1: "• Audit quy trình kinh doanh hiện tại",
+              item2: "• Xác định ưu tiên triển khai",
+              item3: "• Thiết kế kiến trúc AI Agent",
+              item4: "• Lập timeline và ngân sách"
+            },
+            phase2: {
+              title: "Pilot và Thử nghiệm",
+              description: "Triển khai thử nghiệm với phạm vi nhỏ để kiểm chứng hiệu quả và điều chỉnh",
+              item1: "• Chọn quy trình pilot phù hợp",
+              item2: "• Phát triển và train AI Agent",
+              item3: "• Testing và debugging",
+              item4: "• Thu thập feedback và điều chỉnh"
+            },
+            phase3: {
+              title: "Mở rộng và Tối ưu",
+              description: "Triển khai rộng rãi và liên tục tối ưu hóa hiệu suất AI Agent",
+              item1: "• Scale up toàn doanh nghiệp",
+              item2: "• Tích hợp với hệ thống hiện tại",
+              item3: "• Đào tạo nhân viên sử dụng",
+              item4: "• Giám sát và cải thiện liên tục"
+            }
+          },
+          future: {
+            title: "Tương lai của AI Agent trong Kinh doanh",
+            subtitle: "Xu hướng và cơ hội phát triển AI Agent trong 5 năm tới",
+            trend1: {
+              title: "AGI - Trí tuệ Tổng quát",
+              description: "AI Agent sẽ có khả năng suy luận và học hỏi như con người, xử lý được mọi loại công việc phức tạp"
+            },
+            trend2: {
+              title: "Multi-Agent Systems",
+              description: "Nhiều AI Agent sẽ làm việc cùng nhau, phối hợp để giải quyết các vấn đề kinh doanh phức tạp"
+            },
+            trend3: {
+              title: "Conversational AI",
+              description: "AI Agent sẽ giao tiếp tự nhiên như con người, hiểu ngữ cảnh và cảm xúc trong công việc"
+            },
+            trend4: {
+              title: "Edge AI",
+              description: "AI Agent sẽ hoạt động ngay trên thiết bị, xử lý nhanh hơn và bảo mật thông tin tốt hơn"
+            },
+            trend5: {
+              title: "No-Code AI",
+              description: "Người dùng thông thường có thể tạo và tùy chỉnh AI Agent mà không cần kiến thức lập trình"
+            },
+            trend6: {
+              title: "Emotional AI",
+              description: "AI Agent sẽ hiểu và phản ứng với cảm xúc con người, cung cấp trải nghiệm cá nhân hóa tốt hơn"
+            }
+          },
+          benefits: {
+            title: "Lợi ích của Cuộc Cách mạng Tự động hóa AI",
+            availability: {
+              title: "Hoạt động 24/7 Không ngừng nghỉ",
+              description: "AI Agent làm việc liên tục không cần nghỉ ngơi, đảm bảo doanh nghiệp luôn sẵn sàng phục vụ khách hàng và xử lý công việc"
+            },
+            cost: {
+              title: "Giảm Chi phí Vận hành",
+              description: "Tự động hóa giúp giảm đáng kể chi phí nhân sự, tăng hiệu quả sử dụng tài nguyên và tối ưu hóa quy trình"
+            },
+            accuracy: {
+              title: "Độ Chính xác Cao",
+              description: "AI Agent thực hiện công việc với độ chính xác cao, giảm thiểu sai sót do con người và đảm bảo chất lượng đồng nhất"
+            },
+            scalability: {
+              title: "Khả năng Mở rộng Linh hoạt",
+              description: "Dễ dàng mở rộng quy mô hoạt động mà không cần tăng tương ứng số lượng nhân sự, thích ứng nhanh với tăng trưởng"
+            },
+            datadriven: {
+              title: "Quyết định Dựa trên Dữ liệu",
+              description: "AI Agent liên tục thu thập và phân tích dữ liệu để đưa ra quyết định tối ưu và cải thiện hiệu suất"
+            },
+            learning: {
+              title: "Học hỏi và Cải thiện Liên tục",
+              description: "AI Agent có khả năng tự học từ dữ liệu và kinh nghiệm, ngày càng hoàn thiện và thông minh hơn"
+            }
+          },
+          applications: {
+            title: "Ứng dụng AI Agent theo Ngành nghề",
+            subtitle: "AI Agent được tùy chỉnh riêng cho từng lĩnh vực kinh doanh tại Việt Nam",
+            ecommerce: {
+              title: "Thương mại Điện tử & Bán lẻ",
+              description: "AI Agent tự động quản lý tồn kho, gợi ý sản phẩm, xử lý đơn hàng và chăm sóc khách hàng",
+              feature1: "Gợi ý sản phẩm cá nhân hóa",
+              feature2: "Tự động quản lý và đặt hàng tồn kho",
+              feature3: "Chatbot hỗ trợ mua sắm 24/7"
+            },
+            manufacturing: {
+              title: "Sản xuất & Công nghiệp",
+              description: "AI Agent giám sát sản xuất, dự đoán bảo trì thiết bị và tối ưu hóa chuỗi cung ứng",
+              feature1: "Giám sát chất lượng sản phẩm tự động",
+              feature2: "Dự đoán bảo trì thiết bị",
+              feature3: "Tối ưu hóa lịch sản xuất"
+            },
+            banking: {
+              title: "Ngân hàng & Tài chính",
+              description: "AI Agent xử lý giao dịch, phân tích rủi ro và cung cấp dịch vụ tài chính cá nhân hóa",
+              feature1: "Phát hiện giao dịch gian lận tự động",
+              feature2: "Đánh giá tín dụng thông minh",
+              feature3: "Tư vấn đầu tư cá nhân hóa"
+            },
+            healthcare: {
+              title: "Y tế & Chăm sóc Sức khỏe",
+              description: "AI Agent hỗ trợ chẩn đoán, quản lý bệnh nhân và tối ưu hóa vận hành bệnh viện",
+              feature1: "Lập lịch khám và nhắc nhở tự động",
+              feature2: "Phân tích hình ảnh y tế",
+              feature3: "Giám sát sức khỏe từ xa"
+            }
+          }
+        },
+        connection: {
+          title: "Khả năng của AI Agent",
+          description: "Cuộc cách mạng tự động hóa được thúc đẩy bởi công nghệ AI Agent tiên tiến cho hiệu suất kinh doanh vượt trội",
+          service: {
+            title: "Tự động hóa AI",
+            description: "Tích hợp với giải pháp AI Agent toàn diện để cung cấp tự động hóa thông minh có thể tự học và thích ứng với môi trường kinh doanh"
+          },
+          cta: "Tìm hiểu về AI Agent"
+        },
+        cta: {
+          title: "Sẵn sàng Tham gia Cuộc Cách mạng Tự động hóa?",
+          description: "Cùng DigitizedBrains triển khai AI Agent để tự động hóa doanh nghiệp của bạn và tạo ra lợi thế cạnh tranh vượt trội trong thời đại số",
+          backToBlog: "Quay lại Blog",
+          button: "Bắt đầu Tự động hóa AI"
+        },
+        footer: {
+          description: "Nhà cung cấp giải pháp AI Agent và tự động hóa hàng đầu cho doanh nghiệp Việt Nam trong kỷ nguyên số",
+          quickLinks: "Liên kết nhanh",
+          contact: "Liên hệ",
+          location: "Thành phố Hồ Chí Minh, Việt Nam",
+          copyright: "© 2025 DigitizedBrains. Bản quyền thuộc về DigitizedBrains."
+        }
+      },
+      de: {
+        meta: { 
+          title: "KI-Agent im Geschäft: Die Automatisierungsrevolution - DigitizedBrains", 
+          description: "Entdecken Sie, wie KI-Agenten eine Automatisierungsrevolution in vietnamesischen Unternehmen schaffen und die Art der Geschäftstätigkeit verändern" 
+        },
+        nav: { 
+          home: "Startseite", 
+          about: "Über uns", 
+          digitalTransformation: "Digitale Transformation", 
+          aiAgent: "KI-Agent", 
+          blog: "Blog", 
+          resources: "Ressourcen", 
+          contact: "Kontakt" 
+        },
+        language: { current: "Sprache:" },
+        backToBlog: "Zurück zum Blog",
+        hero: { 
+          title: "KI-Agent im Geschäft: Die Automatisierungsrevolution", 
+          subtitle: "Entdecken Sie, wie KI-Agenten die Arbeitsweise vietnamesischer Unternehmen völlig verändern, von der Prozessautomatisierung bis zur Leistungsoptimierung", 
+          cta: "KI-Agent erkunden", 
+          cases: "Fallstudien ansehen" 
+        },
+        situation: {
+          title: "KI-Automatisierungssituation in Vietnam 2024-2025",
+          subtitle: "KI-Agenten schaffen eine mächtige Automatisierungswelle in vietnamesischen Unternehmen, verbessern die Effizienz und reduzieren Betriebskosten"
+        },
+        stats: {
+          growth: {
+            number: "520%",
+            description: "Wachstum bei der KI-Agent-Bereitstellung in vietnamesischen Unternehmen"
+          },
+          automation: {
+            number: "68%",
+            description: "der Geschäftsprozesse durch KI-Agenten automatisiert"
+          },
+          efficiency: {
+            number: "85%",
+            description: "Leistungsverbesserung durch KI-Agent-Automatisierung"
+          },
+          cost: {
+            number: "45%",
+            description: "Reduzierung der Betriebskosten durch intelligente Automatisierung"
+          }
+        },
+        content: {
+          overview: {
+            title: "KI-Agent - Digitale Arbeiter der neuen Ära",
+            description: "KI-Agenten sind nicht nur Automatisierungstools, sondern intelligente 'digitale Mitarbeiter' mit der Fähigkeit zu lernen, sich anzupassen und komplexe Aufgaben automatisch und effizient auszuführen"
+          },
+          agents: {
+            customer: {
+              title: "Kundenservice-KI-Agent",
+              description: "24/7 intelligenter Chatbot mit Kontextverständnis, Beschwerdebearbeitung und personalisierter Unterstützung für jeden Kunden"
+            },
+            sales: {
+              title: "Vertriebs-KI-Agent",
+              description: "Automatische Analyse potenzieller Kunden, Vorschlag geeigneter Produkte und Optimierung von Verkaufsprozessen zur Steigerung der Conversion-Rate"
+            },
+            operations: {
+              title: "Betriebs-KI-Agent",
+              description: "Überwachung und Optimierung von Produktionsprozessen, Bestandsverwaltung und intelligente Ressourcenkoordination"
+            },
+            finance: {
+              title: "Finanz-KI-Agent",
+              description: "Automatisierung der Buchhaltung, Finanzanalyse, Cashflow-Prognose und präzise Erkennung finanzieller Risiken"
+            },
+            hr: {
+              title: "Personal-KI-Agent",
+              description: "Automatisierung der Rekrutierung, Bewertung der Mitarbeiterleistung, Schulungsplanung und effiziente Personalverwaltung"
+            },
+            data: {
+              title: "Datenanalyse-KI-Agent",
+              description: "Sammlung, Verarbeitung und Analyse von Geschäftsdaten zur Erstellung wertvoller Einblicke und automatisierter Berichte"
+            }
+          },
+          casestudies: {
+            title: "Fallstudien: Vietnamesische Unternehmen erfolgreich mit KI-Agent",
+            subtitle: "Echte Erfolgsgeschichten vietnamesischer Unternehmen, die KI-Agenten eingesetzt haben",
+            case1: {
+              company: "Thanh Nam Handelsgruppe",
+              industry: "Einzelhandel & Vertrieb",
+              challenge: {
+                title: "Herausforderung:",
+                description: "Verwaltung von 500+ Geschäften mit Tausenden von SKUs, Schwierigkeiten bei der Nachfrageprognose und Bestandsverwaltung"
+              },
+              solution: {
+                title: "KI-Agent-Lösung:",
+                description: "Bereitstellung von KI-Agent für Nachfrageprognose, automatische Bestellung und Vertriebsoptimierung"
+              },
+              results: {
+                title: "Ergebnisse:",
+                item1: "• 35% Reduzierung der Überbestände",
+                item2: "• 28% Verbesserung der Vertriebseffizienz",
+                item3: "• Einsparung von 2,5 Milliarden VND/Jahr"
+              }
+            },
+            case2: {
+              company: "Viet Bao Bank",
+              industry: "Banking & Finanzen",
+              challenge: {
+                title: "Herausforderung:",
+                description: "Verarbeitung von 50.000+ Transaktionen/Tag, Betrugserkennung und Kreditbewertung nehmen viel Zeit in Anspruch"
+              },
+              solution: {
+                title: "KI-Agent-Lösung:",
+                description: "Bereitstellung von KI-Agent für Betrugserkennung, automatische Kreditbewertung und Kundensupport-Chatbot"
+              },
+              results: {
+                title: "Ergebnisse:",
+                item1: "• Erkennung von 99,2% betrügerischer Transaktionen",
+                item2: "• 80% Reduzierung der Kreditbewertungszeit",
+                item3: "• 95% Steigerung der Kundenzufriedenheit"
+              }
+            }
+          },
+          implementation: {
+            title: "KI-Agent-Implementierungsstrategie",
+            subtitle: "Schritt-für-Schritt-Roadmap zur erfolgreichen Implementierung von KI-Agenten in Unternehmen",
+            phase1: {
+              title: "Bewertung und Planung",
+              description: "Analyse aktueller Prozesse, Identifizierung von Automatisierungsmöglichkeiten und Erstellung detaillierter Implementierungspläne",
+              item1: "• Audit aktueller Geschäftsprozesse",
+              item2: "• Identifizierung der Implementierungsprioritäten",
+              item3: "• Entwurf der KI-Agent-Architektur",
+              item4: "• Zeitplan und Budget festlegen"
+            },
+            phase2: {
+              title: "Pilot und Testing",
+              description: "Pilottest mit kleinem Umfang zur Überprüfung der Wirksamkeit und Anpassung",
+              item1: "• Auswahl geeigneter Pilotprozesse",
+              item2: "• Entwicklung und Training des KI-Agent",
+              item3: "• Testing und Debugging",
+              item4: "• Feedback sammeln und anpassen"
+            },
+            phase3: {
+              title: "Erweitern und Optimieren",
+              description: "Breite Bereitstellung und kontinuierliche Optimierung der KI-Agent-Leistung",
+              item1: "• Unternehmensweite Skalierung",
+              item2: "• Integration mit bestehenden Systemen",
+              item3: "• Mitarbeiterschulung zur Nutzung",
+              item4: "• Überwachung und kontinuierliche Verbesserung"
+            }
+          },
+          future: {
+            title: "Die Zukunft von KI-Agenten im Geschäft",
+            subtitle: "Trends und Entwicklungsmöglichkeiten für KI-Agenten in den nächsten 5 Jahren",
+            trend1: {
+              title: "AGI - Allgemeine Intelligenz",
+              description: "KI-Agenten werden menschenähnliche Denk- und Lernfähigkeiten haben und alle Arten komplexer Arbeit bewältigen können"
+            },
+            trend2: {
+              title: "Multi-Agent-Systeme",
+              description: "Mehrere KI-Agenten werden zusammenarbeiten und sich koordinieren, um komplexe Geschäftsprobleme zu lösen"
+            },
+            trend3: {
+              title: "Conversational AI",
+              description: "KI-Agenten werden natürlich wie Menschen kommunizieren und Kontext und Emotionen bei der Arbeit verstehen"
+            },
+            trend4: {
+              title: "Edge AI",
+              description: "KI-Agenten werden direkt auf Geräten arbeiten, schneller verarbeiten und Informationen besser sichern"
+            },
+            trend5: {
+              title: "No-Code AI",
+              description: "Normale Benutzer können KI-Agenten ohne Programmierkenntnisse erstellen und anpassen"
+            },
+            trend6: {
+              title: "Emotional AI",
+              description: "KI-Agenten werden menschliche Emotionen verstehen und darauf reagieren, bessere personalisierte Erfahrungen bieten"
+            }
+          },
+          benefits: {
+            title: "Vorteile der KI-Automatisierungsrevolution",
+            availability: {
+              title: "24/7 ununterbrochener Betrieb",
+              description: "KI-Agenten arbeiten kontinuierlich ohne Pause und stellen sicher, dass Unternehmen immer bereit sind, Kunden zu bedienen und Arbeit zu erledigen"
+            },
+            cost: {
+              title: "Reduzierung der Betriebskosten",
+              description: "Automatisierung reduziert Personalkosten erheblich, steigert die Ressourceneffizienz und optimiert Prozesse"
+            },
+            accuracy: {
+              title: "Hohe Genauigkeit",
+              description: "KI-Agenten führen Arbeit mit hoher Genauigkeit aus, minimieren menschliche Fehler und gewährleisten konsistente Qualität"
+            },
+            scalability: {
+              title: "Flexible Skalierbarkeit",
+              description: "Einfache Skalierung der Betriebe ohne proportionale Erhöhung des Personals, schnelle Anpassung an Wachstum"
+            },
+            datadriven: {
+              title: "Datenbasierte Entscheidungsfindung",
+              description: "KI-Agenten sammeln und analysieren kontinuierlich Daten, um optimale Entscheidungen zu treffen und die Leistung zu verbessern"
+            },
+            learning: {
+              title: "Kontinuierliches Lernen und Verbessern",
+              description: "KI-Agenten können aus Daten und Erfahrungen selbst lernen und werden zunehmend perfekter und intelligenter"
+            }
+          },
+          applications: {
+            title: "KI-Agent-Anwendungen nach Branchen",
+            subtitle: "KI-Agenten, die für jeden Geschäftsbereich in Vietnam angepasst sind",
+            ecommerce: {
+              title: "E-Commerce & Einzelhandel",
+              description: "KI-Agenten verwalten automatisch Bestände, schlagen Produkte vor, bearbeiten Bestellungen und kümmern sich um Kunden",
+              feature1: "Personalisierte Produktempfehlungen",
+              feature2: "Automatische Bestandsverwaltung und Bestellung",
+              feature3: "24/7 Shopping-Support-Chatbot"
+            },
+            manufacturing: {
+              title: "Fertigung & Industrie",
+              description: "KI-Agenten überwachen die Produktion, sagen Gerätewartung voraus und optimieren die Lieferkette",
+              feature1: "Automatische Produktqualitätsüberwachung",
+              feature2: "Vorhersage der Gerätewartung",
+              feature3: "Optimierung des Produktionsplans"
+            },
+            banking: {
+              title: "Banking & Finanzen",
+              description: "KI-Agenten verarbeiten Transaktionen, analysieren Risiken und bieten personalisierte Finanzdienstleistungen",
+              feature1: "Automatische Betrugserkennung",
+              feature2: "Intelligente Kreditbewertung",
+              feature3: "Personalisierte Investmentberatung"
+            },
+            healthcare: {
+              title: "Gesundheitswesen & Medizinische Versorgung",
+              description: "KI-Agenten unterstützen Diagnose, Patientenverwaltung und Optimierung des Krankenhausbetriebs",
+              feature1: "Automatische Terminplanung und Erinnerungen",
+              feature2: "Medizinische Bildanalyse",
+              feature3: "Fernüberwachung der Gesundheit"
+            }
+          }
+        },
+        connection: {
+          title: "KI-Agent-Fähigkeiten",
+          description: "Die Automatisierungsrevolution wird von fortschrittlicher KI-Agent-Technologie für überlegene Geschäftsleistung angetrieben",
+          service: {
+            title: "KI-Automatisierung",
+            description: "Integration mit umfassenden KI-Agent-Lösungen zur Bereitstellung intelligenter Automatisierung, die selbst lernen und sich an Geschäftsumgebungen anpassen kann"
+          },
+          cta: "Über KI-Agent erfahren"
+        },
+        cta: {
+          title: "Bereit, der Automatisierungsrevolution beizutreten?",
+          description: "Arbeiten Sie mit DigitizedBrains zusammen, um KI-Agenten zu implementieren, Ihr Unternehmen zu automatisieren und überlegene Wettbewerbsvorteile im digitalen Zeitalter zu schaffen",
+          backToBlog: "Zurück zum Blog",
+          button: "KI-Automatisierung starten"
+        },
+        footer: {
+          description: "Führender Anbieter von KI-Agent- und Automatisierungslösungen für vietnamesische Unternehmen im digitalen Zeitalter",
+          quickLinks: "Schnelllinks",
+          contact: "Kontakt",
+          location: "Ho-Chi-Minh-Stadt, Vietnam",
+          copyright: "© 2025 DigitizedBrains. Alle Rechte vorbehalten."
+        }
+      }
+    };
+
+    // Initialize multilingual functionality
+    if (typeof initializeMultilingual === 'function') {
+      initializeMultilingual(pageTranslations);  
+    }
+
+    // Scroll reveal animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="vi" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="page-title">Giải pháp AI cho Doanh nghiệp - DigitizedBrains</title>
+  <meta name="description" content="Giải pháp AI và chuyển đổi số cho doanh nghiệp Việt Nam" id="page-description">
+  <link href="../../css/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    .font-nunito { 
+      font-family: 'Nunito', sans-serif; 
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Navigation styles */
+    .nav-link {
+      color: #374151;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .nav-link:hover { color: #ed7354; background-color: #fef2f2; }
+    .nav-link.active { color: #ed7354; font-weight: 600; }
+
+    /* Language Switcher Styles */
+    .language-switcher {
+      position: relative;
+    }
+    
+    .language-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      min-width: 160px;
+      display: none;
+      z-index: 1000;
+    }
+    
+    .language-menu.show {
+      display: block;
+    }
+    
+    .language-option {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+    
+    .language-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    /* Hero Section Styles */
+    .hero-section {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 120px 0;
+      color: white;
+    }
+
+    /* Scroll Reveal Animation */
+    .scroll-reveal {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.6s ease-out;
+    }
+    
+    .scroll-reveal:not(.observed) {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Feature Cards */
+    .feature-card {
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Button Styles */
+    .btn-primary {
+      background: linear-gradient(135deg, #ed7354, #dc2626);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+    }
+
+    /* Mobile Language Switcher */
+    .language-switcher-mobile {
+      position: relative;
+    }
+    
+    .language-menu-mobile {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      display: none;
+      z-index: 1000;
+      margin-top: 4px;
+    }
+    
+    .language-menu-mobile.show {
+      display: block;
+    }
+    
+    .language-option-mobile {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option-mobile:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option-mobile.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+  <!-- Header -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <div class="logo-gradient w-10 h-10 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-lg">DB</span>
+          </div>
+          <a href="../../index.html" class="text-2xl font-bold text-gray-800">Digitized Brains</a>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="hidden md:flex space-x-4">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="#blog" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="#resources" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="#contact" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+        </nav>
+
+        <!-- Language Switcher -->
+        <div class="hidden md:block">
+          <div class="language-switcher">
+            <button id="language-btn" class="flex items-center space-x-1 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+              <img id="current-flag" src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+              <span id="current-lang">VI</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="language-menu" class="language-menu">
+              <a href="#" onclick="changeLanguage('en')" class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                English
+              </a>
+              <a href="#" onclick="changeLanguage('vi')" class="language-option active" data-lang="vi">
+                <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                Tiếng Việt
+              </a>
+              <a href="#" onclick="changeLanguage('de')" class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                Deutsch
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <nav class="flex flex-col space-y-2">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="#blog" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="#resources" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="#contact" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+          
+          <!-- Mobile Language Switcher -->
+          <div class="pt-2 border-t border-gray-200">
+            <div class="language-switcher-mobile">
+              <button id="mobile-language-btn" class="flex items-center justify-between w-full px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                <span data-translate="language.current">Ngôn ngữ:</span>
+                <div class="flex items-center space-x-1">
+                  <img id="mobile-current-flag" src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                  <span id="mobile-current-lang">VI</span>
+                </div>
+              </button>
+              <div id="mobile-language-menu" class="language-menu-mobile">
+                <a href="#" onclick="changeLanguage('en')" class="language-option-mobile" data-lang="en">
+                  <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                  English
+                </a>
+                <a href="#" onclick="changeLanguage('vi')" class="language-option-mobile active" data-lang="vi">
+                  <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                  Tiếng Việt
+                </a>
+                <a href="#" onclick="changeLanguage('de')" class="language-option-mobile" data-lang="de">
+                  <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                  Deutsch
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 scroll-reveal" data-translate="hero.title">Giải pháp AI cho Doanh nghiệp Việt Nam</h1>
+        <p class="text-xl opacity-90 mb-8 scroll-reveal" data-translate="hero.subtitle">Chuyển đổi doanh nghiệp với công nghệ AI tiên tiến được thiết kế riêng cho doanh nghiệp Việt Nam</p>
+        <div class="flex flex-wrap justify-center gap-4 scroll-reveal">
+          <a href="#solutions" class="btn-primary px-8 py-3 rounded-full font-semibold" data-translate="hero.cta">Khám phá Giải pháp AI</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section id="solutions" class="py-20">
+    <div class="container mx-auto px-4">
+      <!-- Overview Section -->
+      <div class="max-w-4xl mx-auto mb-16 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal" data-translate="content.overview.title">Giải pháp AI thúc đẩy Tăng trưởng Doanh nghiệp</h2>
+        <p class="text-xl text-gray-600 scroll-reveal" data-translate="content.overview.description">
+          Mở khóa cơ hội mới và thúc đẩy đổi mới với các giải pháp AI toàn diện được thiết kế riêng cho doanh nghiệp Việt Nam
+        </p>
+      </div>
+
+      <!-- Solutions Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <!-- AI Analytics -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.analytics.title">Phân tích và Thông tin chi tiết bằng AI</h3>
+          <p class="text-gray-600" data-translate="content.solutions.analytics.description">Phân tích dữ liệu tiên tiến được hỗ trợ bởi AI giúp doanh nghiệp đưa ra quyết định tốt hơn và xác định cơ hội tăng trưởng</p>
+        </div>
+
+        <!-- Process Automation -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.automation.title">Tự động hóa Quy trình bằng AI</h3>
+          <p class="text-gray-600" data-translate="content.solutions.automation.description">Tối ưu hóa hoạt động và giảm chi phí thông qua tự động hóa quy trình thông minh được hỗ trợ bởi AI</p>
+        </div>
+
+        <!-- Customer Experience -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.customer.title">Trải nghiệm Khách hàng được Nâng cao bằng AI</h3>
+          <p class="text-gray-600" data-translate="content.solutions.customer.description">Cải thiện sự hài lòng và tương tác của khách hàng với các giải pháp cá nhân hóa và hỗ trợ được hỗ trợ bởi AI</p>
+        </div>
+      </div>
+
+      <!-- Benefits Section -->
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8 text-center scroll-reveal" data-translate="content.benefits.title">Lợi ích của Tích hợp AI</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Efficiency -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.efficiency.title">Tăng Hiệu quả Hoạt động</h3>
+              <p class="text-gray-600" data-translate="content.benefits.efficiency.description">Tối ưu hóa quy trình kinh doanh và giảm chi phí hoạt động thông qua tự động hóa được điều khiển bởi AI và phân bổ tài nguyên thông minh</p>
+            </div>
+          </div>
+
+          <!-- Innovation -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.innovation.title">Nâng cao Khả năng Đổi mới</h3>
+              <p class="text-gray-600" data-translate="content.benefits.innovation.description">Luôn dẫn đầu so với đối thủ cạnh tranh với những thông tin sâu sắc được hỗ trợ bởi AI và các giải pháp sáng tạo được thiết kế riêng cho thị trường Việt Nam</p>
+            </div>
+          </div>
+
+          <!-- Growth -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.growth.title">Thúc đẩy Tăng trưởng Doanh nghiệp</h3>
+              <p class="text-gray-600" data-translate="content.benefits.growth.description">Thúc đẩy tăng trưởng kinh doanh thông qua việc ra quyết định dựa trên dữ liệu và hoạt động được tối ưu hóa bởi AI</p>
+            </div>
+          </div>
+
+          <!-- Competitiveness -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.competitiveness.title">Cải thiện Khả năng Cạnh tranh Thị trường</h3>
+              <p class="text-gray-600" data-translate="content.benefits.competitiveness.description">Củng cố vị thế thị trường của bạn với các khả năng AI tiên tiến và chiến lược dựa trên dữ liệu</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-gray-900 text-white py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal" data-translate="cta.title">Sẵn sàng Chuyển đổi Doanh nghiệp với AI?</h2>
+        <p class="text-xl opacity-90 mb-8 scroll-reveal" data-translate="cta.description">Liên hệ với chúng tôi ngay hôm nay để thảo luận về cách các giải pháp AI của chúng tôi có thể giúp doanh nghiệp của bạn thịnh vượng trong thời đại số</p>
+        <a href="#contact" class="btn-primary px-8 py-3 rounded-full font-semibold inline-block scroll-reveal" data-translate="cta.button">Bắt đầu ngay</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="logo-gradient w-10 h-10 rounded-lg flex items-center justify-center">
+              <span class="text-white font-bold text-lg">DB</span>
+            </div>
+            <span class="text-2xl font-bold">Digitized Brains</span>
+          </div>
+          <p class="text-gray-400" data-translate="footer.description">Nhà cung cấp giải pháp AI hàng đầu cho doanh nghiệp Việt Nam</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.quickLinks">Liên kết nhanh</h4>
+          <ul class="space-y-2">
+            <li><a href="../../index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.home">Trang chủ</a></li>
+            <li><a href="../about/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.about">Giới thiệu</a></li>
+            <li><a href="../digital-transformation/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.digitalTransformation">Chuyển đổi số</a></li>
+            <li><a href="../ai-agents/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.aiAgent">AI Agent</a></li>
+            <li><a href="#blog" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.blog">Blog</a></li>
+            <li><a href="#resources" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.resources">Tài nguyên</a></li>
+            <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.contact">Liên hệ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.contact">Liên hệ</h4>
+          <ul class="space-y-2">
+            <li class="text-gray-400">contact@digitizedbrains.com</li>
+            <li class="text-gray-400" data-translate="footer.location">Thành phố Hồ Chí Minh, Việt Nam</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-gray-400" data-translate="footer.copyright">© 2025 DigitizedBrains. Bản quyền thuộc về DigitizedBrains.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Include JavaScript files -->
+  <script src="../../js/multilang.js"></script>
+  <script src="../../js/chatbot.js"></script>
+  
+  <!-- Page-specific translations -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Page-specific translations
+      const pageTranslations = {
+        en: {
+          meta: {
+            title: "AI Business Solutions - DigitizedBrains",
+            description: "AI and digital transformation solutions for Vietnamese enterprises"
+          },
+          nav: {
+            home: "Home",
+            about: "About",
+            digitalTransformation: "Digital Transformation",
+            aiAgent: "AI Agent",
+            blog: "Blog",
+            resources: "Resources",
+            contact: "Contact"
+          },
+          language: {
+            current: "Language:"
+          },
+          hero: {
+            title: "AI Business Solutions for Vietnamese Enterprises",
+            subtitle: "Transform your business with cutting-edge AI technology designed specifically for Vietnamese enterprises",
+            cta: "Explore AI Solutions"
+          },
+          content: {
+            overview: {
+              title: "AI Solutions Driving Business Growth",
+              description: "Unlock new opportunities and drive innovation with comprehensive AI solutions designed specifically for Vietnamese enterprises"
+            },
+            solutions: {
+              analytics: {
+                title: "AI-Powered Analytics and Insights",
+                description: "Advanced AI-driven data analytics help businesses make better decisions and identify growth opportunities"
+              },
+              automation: {
+                title: "AI-Powered Process Automation",
+                description: "Optimize operations and reduce costs through intelligent AI-powered process automation"
+              },
+              customer: {
+                title: "AI-Enhanced Customer Experience",
+                description: "Improve customer satisfaction and engagement with personalized AI-powered solutions and support"
+              }
+            },
+            benefits: {
+              title: "Benefits of AI Integration",
+              efficiency: {
+                title: "Increased Operational Efficiency",
+                description: "Optimize business processes and reduce operational costs through AI-driven automation and intelligent resource allocation"
+              },
+              innovation: {
+                title: "Enhanced Innovation Capabilities",
+                description: "Stay ahead of competitors with AI-powered insights and innovative solutions tailored for the Vietnamese market"
+              },
+              growth: {
+                title: "Accelerated Business Growth",
+                description: "Drive business growth through data-driven decision making and AI-optimized operations"
+              },
+              competitiveness: {
+                title: "Improved Market Competitiveness",
+                description: "Strengthen your market position with advanced AI capabilities and data-driven strategies"
+              }
+            }
+          },
+          cta: {
+            title: "Ready to Transform Your Business with AI?",
+            description: "Contact us today to discuss how our AI solutions can help your business thrive in the digital age",
+            button: "Get Started"
+          },
+          footer: {
+            description: "Leading AI solution provider for Vietnamese enterprises",
+            quickLinks: "Quick Links",
+            contact: "Contact",
+            location: "Ho Chi Minh City, Vietnam",
+            copyright: "© 2025 DigitizedBrains. All rights reserved."
+          }
+        },
+        vi: {
+          meta: {
+            title: "Giải pháp AI cho Doanh nghiệp - DigitizedBrains",
+            description: "Giải pháp AI và chuyển đổi số cho doanh nghiệp Việt Nam"
+          },
+          nav: {
+            home: "Trang chủ",
+            about: "Giới thiệu",
+            digitalTransformation: "Chuyển đổi số",
+            aiAgent: "AI Agent",
+            blog: "Blog",
+            resources: "Tài nguyên",
+            contact: "Liên hệ"
+          },
+          language: {
+            current: "Ngôn ngữ:"
+          },
+          hero: {
+            title: "Giải pháp AI cho Doanh nghiệp Việt Nam",
+            subtitle: "Chuyển đổi doanh nghiệp với công nghệ AI tiên tiến được thiết kế riêng cho doanh nghiệp Việt Nam",
+            cta: "Khám phá Giải pháp AI"
+          },
+          content: {
+            overview: {
+              title: "Giải pháp AI thúc đẩy Tăng trưởng Doanh nghiệp",
+              description: "Mở khóa cơ hội mới và thúc đẩy đổi mới với các giải pháp AI toàn diện được thiết kế riêng cho doanh nghiệp Việt Nam"
+            },
+            solutions: {
+              analytics: {
+                title: "Phân tích và Thông tin chi tiết bằng AI",
+                description: "Phân tích dữ liệu tiên tiến được hỗ trợ bởi AI giúp doanh nghiệp đưa ra quyết định tốt hơn và xác định cơ hội tăng trưởng"
+              },
+              automation: {
+                title: "Tự động hóa Quy trình bằng AI",
+                description: "Tối ưu hóa hoạt động và giảm chi phí thông qua tự động hóa quy trình thông minh được hỗ trợ bởi AI"
+              },
+              customer: {
+                title: "Trải nghiệm Khách hàng được Nâng cao bằng AI",
+                description: "Cải thiện sự hài lòng và tương tác của khách hàng với các giải pháp cá nhân hóa và hỗ trợ được hỗ trợ bởi AI"
+              }
+            },
+            benefits: {
+              title: "Lợi ích của Tích hợp AI",
+              efficiency: {
+                title: "Tăng Hiệu quả Hoạt động",
+                description: "Tối ưu hóa quy trình kinh doanh và giảm chi phí hoạt động thông qua tự động hóa được điều khiển bởi AI và phân bổ tài nguyên thông minh"
+              },
+              innovation: {
+                title: "Nâng cao Khả năng Đổi mới",
+                description: "Luôn dẫn đầu so với đối thủ cạnh tranh với những thông tin sâu sắc được hỗ trợ bởi AI và các giải pháp sáng tạo được thiết kế riêng cho thị trường Việt Nam"
+              },
+              growth: {
+                title: "Thúc đẩy Tăng trưởng Doanh nghiệp",
+                description: "Thúc đẩy tăng trưởng kinh doanh thông qua việc ra quyết định dựa trên dữ liệu và hoạt động được tối ưu hóa bởi AI"
+              },
+              competitiveness: {
+                title: "Cải thiện Khả năng Cạnh tranh Thị trường",
+                description: "Củng cố vị thế thị trường của bạn với các khả năng AI tiên tiến và chiến lược dựa trên dữ liệu"
+              }
+            }
+          },
+          cta: {
+            title: "Sẵn sàng Chuyển đổi Doanh nghiệp với AI?",
+            description: "Liên hệ với chúng tôi ngay hôm nay để thảo luận về cách các giải pháp AI của chúng tôi có thể giúp doanh nghiệp của bạn thịnh vượng trong thời đại số",
+            button: "Bắt đầu ngay"
+          },
+          footer: {
+            description: "Nhà cung cấp giải pháp AI hàng đầu cho doanh nghiệp Việt Nam",
+            quickLinks: "Liên kết nhanh",
+            contact: "Liên hệ",
+            location: "Thành phố Hồ Chí Minh, Việt Nam",
+            copyright: "© 2025 DigitizedBrains. Bản quyền thuộc về DigitizedBrains."
+          }
+        },
+        de: {
+          meta: {
+            title: "KI-Geschäftslösungen - DigitizedBrains",
+            description: "KI- und digitale Transformationslösungen für vietnamesische Unternehmen"
+          },
+          nav: {
+            home: "Startseite",
+            about: "Über uns",
+            digitalTransformation: "Digitale Transformation",
+            aiAgent: "KI-Agent",
+            blog: "Blog",
+            resources: "Ressourcen",
+            contact: "Kontakt"
+          },
+          language: {
+            current: "Sprache:"
+          },
+          hero: {
+            title: "KI-Geschäftslösungen für vietnamesische Unternehmen",
+            subtitle: "Transformieren Sie Ihr Unternehmen mit modernster KI-Technologie, die speziell für vietnamesische Unternehmen entwickelt wurde",
+            cta: "KI-Lösungen erkunden"
+          },
+          content: {
+            overview: {
+              title: "KI-Lösungen für Unternehmenswachstum",
+              description: "Erschließen Sie neue Möglichkeiten und fördern Sie Innovation mit umfassenden KI-Lösungen, die speziell für vietnamesische Unternehmen entwickelt wurden"
+            },
+            solutions: {
+              analytics: {
+                title: "KI-gestützte Analytik und Einblicke",
+                description: "Fortschrittliche KI-gestützte Datenanalyse hilft Unternehmen bei besseren Entscheidungen und der Identifizierung von Wachstumschancen"
+              },
+              automation: {
+                title: "KI-gestützte Prozessautomatisierung",
+                description: "Optimieren Sie Abläufe und reduzieren Sie Kosten durch intelligente KI-gestützte Prozessautomatisierung"
+              },
+              customer: {
+                title: "KI-verbesserte Kundenerfahrung",
+                description: "Verbessern Sie Kundenzufriedenheit und -engagement mit personalisierten KI-gestützten Lösungen und Support"
+              }
+            },
+            benefits: {
+              title: "Vorteile der KI-Integration",
+              efficiency: {
+                title: "Erhöhte Betriebseffizienz",
+                description: "Optimieren Sie Geschäftsprozesse und reduzieren Sie Betriebskosten durch KI-gesteuerte Automatisierung und intelligente Ressourcenallokation"
+              },
+              innovation: {
+                title: "Verbesserte Innovationsfähigkeiten",
+                description: "Bleiben Sie der Konkurrenz voraus mit KI-gestützten Erkenntnissen und innovativen Lösungen für den vietnamesischen Markt"
+              },
+              growth: {
+                title: "Beschleunigtes Unternehmenswachstum",
+                description: "Fördern Sie Unternehmenswachstum durch datengetriebene Entscheidungsfindung und KI-optimierte Abläufe"
+              },
+              competitiveness: {
+                title: "Verbesserte Marktkonkurrenzfähigkeit",
+                description: "Stärken Sie Ihre Marktposition mit fortgeschrittenen KI-Fähigkeiten und datengesteuerten Strategien"
+              }
+            }
+          },
+          cta: {
+            title: "Bereit, Ihr Unternehmen mit KI zu transformieren?",
+            description: "Kontaktieren Sie uns noch heute, um zu besprechen, wie unsere KI-Lösungen Ihrem Unternehmen im digitalen Zeitalter zum Erfolg verhelfen können",
+            button: "Jetzt starten"
+          },
+          footer: {
+            description: "Führender KI-Lösungsanbieter für vietnamesische Unternehmen",
+            quickLinks: "Schnelle Links",
+            contact: "Kontakt",
+            location: "Ho-Chi-Minh-Stadt, Vietnam",
+            copyright: "© 2025 DigitizedBrains. Alle Rechte vorbehalten."
+          }
+        }
+      };
+
+      // Initialize multilingual with page-specific translations
+      if (typeof initializeMultilingual === 'function') {
+        initializeMultilingual(pageTranslations);
+      }
+
+      // Scroll Reveal Animation
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.scroll-reveal').forEach(el => {
+        el.classList.add('observed');
+        observer.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>

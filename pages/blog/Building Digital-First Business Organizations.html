@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="vi" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="page-title">Xây dựng Tổ chức Ưu tiên Số - DigitizedBrains</title>
+  <meta name="description" content="Hướng dẫn toàn diện để xây dựng văn hóa, quy trình và hạ tầng số giúp doanh nghiệp Việt Nam thành công trong kỷ nguyên chuyển đổi số" id="page-description">
+  <link href="../../css/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    .font-nunito { 
+      font-family: 'Nunito', sans-serif; 
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Navigation styles */
+    .nav-link {
+      color: #374151;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .nav-link:hover { color: #ed7354; background-color: #fef2f2; }
+    .nav-link.active { color: #ed7354; font-weight: 600; }
+
+    /* Language Switcher Styles */
+    .language-switcher {
+      position: relative;
+    }
+    
+    .language-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      min-width: 160px;
+      display: none;
+      z-index: 1000;
+    }
+    
+    .language-menu.show {
+      display: block;
+    }
+    
+    .language-option {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+    
+    .language-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    /* Hero Section Styles */
+    .hero-section {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 120px 0;
+      color: white;
+    }
+
+    /* Logo with Orange to Pink Gradient */
+    .logo-gradient {
+      background: linear-gradient(135deg, #fb923c 0%, #ec4899 100%);
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Scroll Reveal Animation */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+    
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Feature Cards */
+    .feature-card {
+      transition: all 0.3s ease;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      border-color: #ed7354;
+    }
+
+    /* Button Styles */
+    .btn-primary {
+      background: linear-gradient(135deg, #ed7354, #dc2626);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+    }
+
+    /* Stats Section */
+    .stats-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    /* AI Agent Connection Section */
+    .ai-connection-section {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      border: 2px solid #ed7354;
+      border-radius: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ai-connection-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #fb923c, #ec4899);
+    }
+
+    /* Industry Cards */
+    .industry-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid #e5e7eb;
+    }
+
+    .industry-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      border-color: #ed7354;
+    }
+
+    .industry-icon {
+      width: 4rem;
+      height: 4rem;
+      background: linear-gradient(135deg, #ed7354 0%, #f97316 100%);
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+
+    /* Case Study Cards */
+    .case-study-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid #e5e7eb;
+    }
+
+    .case-study-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      border-color: #ed7354;
+    }
+
+    .case-study-icon {
+      width: 4rem;
+      height: 4rem;
+      background: linear-gradient(135deg, #ed7354 0%, #f97316 100%);
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Framework Steps */
+    .framework-step {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-left: 4px solid #ed7354;
+      transition: all 0.3s ease;
+    }
+
+    .framework-step:hover {
+      transform: translateX(5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .step-number {
+      background: linear-gradient(135deg, #ed7354 0%, #f97316 100%);
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+  <!-- Header -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo with Orange to Pink Gradient -->
+        <div class="flex items-center space-x-2">
+          <div class="logo-gradient">
+            <span class="text-white font-bold text-lg">DB</span>
+          </div>
+          <a href="../../index.html" class="text-2xl font-bold text-gray-800">Digitized Brains</a>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="hidden md:flex space-x-4">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="index.html" class="nav-link active" data-translate="nav.blog">Blog</a>
+          <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+        </nav>
+
+        <!-- Language Switcher -->
+        <div class="hidden md:block">
+          <div class="language-switcher">
+            <button id="language-btn" class="flex items-center space-x-1 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+              <img id="current-flag" src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+              <span id="current-lang">VI</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="language-menu" class="language-menu">
+              <a href="#" onclick="changeLanguage('en')" class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                English
+              </a>
+              <a href="#" onclick="changeLanguage('vi')" class="language-option" data-lang="vi">
+                <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                Tiếng Việt
+              </a>
+              <a href="#" onclick="changeLanguage('de')" class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                Deutsch
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <nav class="flex flex-col space-y-2">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="index.html" class="nav-link active" data-translate="nav.blog">Blog</a>
+          <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+        </nav>
+        
+        <!-- Mobile Language Switcher -->
+        <div class="pt-4 border-t border-gray-300 mt-4">
+          <div class="language-switcher">
+            <button id="mobile-language-btn" class="flex items-center justify-between w-full px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+              <span data-translate="language.current">Ngôn ngữ:</span>
+              <div class="flex items-center space-x-1">
+                <img id="mobile-current-flag" src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                <span id="mobile-current-lang">VI</span>
+              </div>
+            </button>
+            <div id="mobile-language-menu" class="language-menu mt-2">
+              <a href="#" onclick="changeLanguage('en')" class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                English
+              </a>
+              <a href="#" onclick="changeLanguage('vi')" class="language-option" data-lang="vi">
+                <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                Tiếng Việt
+              </a>
+              <a href="#" onclick="changeLanguage('de')" class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                Deutsch
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 scroll-reveal" data-translate="hero.title">Xây dựng Tổ chức Ưu tiên Số</h1>
+        <p class="text-xl opacity-90 mb-8 scroll-reveal" data-translate="hero.subtitle">Hướng dẫn toàn diện để xây dựng văn hóa, quy trình và hạ tầng số giúp doanh nghiệp Việt Nam thành công trong kỷ nguyên chuyển đổi số</p>
+        <div class="flex flex-wrap justify-center gap-4 scroll-reveal">
+          <a href="#framework" class="btn-primary px-8 py-3 rounded-full font-semibold text-white" data-translate="hero.cta">Khám phá Framework</a>
+          <a href="#case-studies" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-gray-800 transition-all" data-translate="hero.cases">Xem Case Studies</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section py-16 text-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4 scroll-reveal" data-translate="situation.title">Thực trạng Chuyển đổi Số Việt Nam 2024-2025</h2>
+        <p class="text-xl opacity-90 scroll-reveal" data-translate="situation.subtitle">Doanh nghiệp Việt Nam đang tăng tốc xây dựng tổ chức ưu tiên số để nâng cao năng lực cạnh tranh</p>
+      </div>
+      
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center scroll-reveal">
+          <div class="text-4xl font-bold mb-2" data-translate="stats.digital.number">72%</div>
+          <p class="opacity-90" data-translate="stats.digital.description">doanh nghiệp Việt Nam đã khởi động chuyển đổi số toàn diện</p>
+        </div>
+        <div class="text-center scroll-reveal">
+          <div class="text-4xl font-bold mb-2" data-translate="stats.culture.number">45%</div>
+          <p class="opacity-90" data-translate="stats.culture.description">đã xây dựng văn hóa làm việc ưu tiên số</p>
+        </div>
+        <div class="text-center scroll-reveal">
+          <div class="text-4xl font-bold mb-2" data-translate="stats.productivity.number">280%</div>
+          <p class="opacity-90" data-translate="stats.productivity.description">tăng năng suất làm việc nhờ tổ chức digital-first</p>
+        </div>
+        <div class="text-center scroll-reveal">
+          <div class="text-4xl font-bold mb-2" data-translate="stats.agility.number">65%</div>
+          <p class="opacity-90" data-translate="stats.agility.description">cải thiện khả năng thích ứng với thay đổi thị trường</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section id="framework" class="py-20">
+    <div class="container mx-auto px-4">
+      <!-- Overview Section -->
+      <div class="max-w-4xl mx-auto mb-16 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal" data-translate="content.overview.title">Framework Xây dựng Tổ chức Digital-First</h2>
+        <p class="text-xl text-gray-600 scroll-reveal" data-translate="content.overview.description">
+          Một phương pháp tiếp cận có hệ thống để biến đổi doanh nghiệp thành tổ chức ưu tiên số, tập trung vào văn hóa, công nghệ và quy trình để tạo ra lợi thế cạnh tranh bền vững
+        </p>
+      </div>
+
+      <!-- Core Pillars Grid -->
+      <div class="grid md:grid-cols-3 gap-8 mb-16">
+        <!-- Digital Culture -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.pillars.culture.title">Văn hóa Số</h3>
+          <p class="text-gray-600" data-translate="content.pillars.culture.description">Xây dựng tư duy số trong toàn tổ chức, khuyến khích đổi mới và thử nghiệm công nghệ mới</p>
+        </div>
+
+        <!-- Technology Infrastructure -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.pillars.infrastructure.title">Hạ tầng Công nghệ</h3>
+          <p class="text-gray-600" data-translate="content.pillars.infrastructure.description">Triển khai hạ tầng cloud, API và hệ thống tích hợp để hỗ trợ hoạt động số hiệu quả</p>
+        </div>
+
+        <!-- Digital Processes -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.pillars.processes.title">Quy trình Số</h3>
+          <p class="text-gray-600" data-translate="content.pillars.processes.description">Tự động hóa và tối ưu hóa quy trình kinh doanh bằng công nghệ số và AI</p>
+        </div>
+      </div>
+
+      <!-- Transformation Framework Steps -->
+      <div class="max-w-4xl mx-auto mb-16">
+        <h2 class="text-3xl font-bold mb-8 text-center scroll-reveal" data-translate="content.framework.title">5 Bước Chuyển đổi Digital-First</h2>
+        <div class="space-y-8">
+          <!-- Step 1 -->
+          <div class="framework-step scroll-reveal">
+            <div class="step-number">1</div>
+            <h3 class="text-xl font-semibold mb-3" data-translate="content.framework.step1.title">Đánh giá Hiện trạng Số</h3>
+            <p class="text-gray-600" data-translate="content.framework.step1.description">Phân tích mức độ sẵn sàng số của tổ chức, xác định khoảng cách và cơ hội cải thiện</p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="framework-step scroll-reveal">
+            <div class="step-number">2</div>
+            <h3 class="text-xl font-semibold mb-3" data-translate="content.framework.step2.title">Xây dựng Tầm nhìn Số</h3>
+            <p class="text-gray-600" data-translate="content.framework.step2.description">Thiết lập tầm nhìn rõ ràng về tổ chức digital-first và lộ trình chuyển đổi cụ thể</p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="framework-step scroll-reveal">
+            <div class="step-number">3</div>
+            <h3 class="text-xl font-semibold mb-3" data-translate="content.framework.step3.title">Phát triển Năng lực Số</h3>
+            <p class="text-gray-600" data-translate="content.framework.step3.description">Đầu tư vào công nghệ, đào tạo nhân viên và xây dựng năng lực nội bộ</p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="framework-step scroll-reveal">
+            <div class="step-number">4</div>
+            <h3 class="text-xl font-semibold mb-3" data-translate="content.framework.step4.title">Triển khai Quy trình Số</h3>
+            <p class="text-gray-600" data-translate="content.framework.step4.description">Chuyển đổi quy trình kinh doanh sang mô hình ưu tiên số và tự động hóa</p>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="framework-step scroll-reveal">
+            <div class="step-number">5</div>
+            <h3 class="text-xl font-semibold mb-3" data-translate="content.framework.step5.title">Đo lường và Tối ưu</h3>
+            <p class="text-gray-600" data-translate="content.framework.step5.description">Theo dõi KPI, phân tích hiệu quả và liên tục cải tiến tổ chức số</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Benefits Section -->
+      <div class="max-w-4xl mx-auto mb-16">
+        <h2 class="text-3xl font-bold mb-8 text-center scroll-reveal" data-translate="content.benefits.title">Lợi ích của Tổ chức Digital-First</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Enhanced Agility -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.agility.title">Tăng cường Khả năng Thích ứng</h3>
+              <p class="text-gray-600" data-translate="content.benefits.agility.description">Phản ứng nhanh chóng với thay đổi thị trường và nhu cầu khách hàng</p>
+            </div>
+          </div>
+
+          <!-- Improved Efficiency -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.efficiency.title">Nâng cao Hiệu quả Vận hành</h3>
+              <p class="text-gray-600" data-translate="content.benefits.efficiency.description">Tự động hóa quy trình và giảm thiểu lãng phí thời gian, nguồn lực</p>
+            </div>
+          </div>
+
+          <!-- Innovation Culture -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.innovation.title">Thúc đẩy Văn hóa Đổi mới</h3>
+              <p class="text-gray-600" data-translate="content.benefits.innovation.description">Khuyến khích thử nghiệm và áp dụng công nghệ mới</p>
+            </div>
+          </div>
+
+          <!-- Data-Driven Decision -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.datadriven.title">Quyết định Dựa trên Dữ liệu</h3>
+              <p class="text-gray-600" data-translate="content.benefits.datadriven.description">Sử dụng analytics và AI để đưa ra quyết định chính xác</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Agent Connection Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="ai-connection-section p-8 max-w-4xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold mb-4 scroll-reveal" data-translate="connection.title">Hỗ trợ từ AI Agent</h2>
+          <p class="text-xl text-gray-600 scroll-reveal" data-translate="connection.description">Tận dụng sức mạnh AI Agent để tự động hóa và tối ưu hóa việc xây dựng tổ chức digital-first</p>
+        </div>
+        
+        <div class="bg-white rounded-lg p-6 shadow-lg scroll-reveal">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+              <div class="logo-gradient w-12 h-12">
+                <span class="text-white font-bold text-xl">DB</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold" data-translate="connection.service.title">Giải pháp AI Business</h3>
+                <p class="text-gray-600" data-translate="connection.service.description">Tích hợp AI Agent để hỗ trợ tự động hóa quy trình, phân tích dữ liệu và tối ưu hóa hoạt động tổ chức</p>
+              </div>
+            </div>
+            <a href="../ai-agents/ai-business-solution.html" class="btn-primary px-6 py-3 rounded-lg font-semibold text-white" data-translate="connection.cta">Tìm hiểu AI Agent</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies -->
+  <section id="case-studies" class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-3xl font-bold mb-4" data-translate="content.cases.title">Case Studies Thành công</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-translate="content.cases.subtitle">Những doanh nghiệp Việt Nam đã thành công xây dựng tổ chức digital-first</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Tech Startup -->
+        <div class="case-study-card scroll-reveal">
+          <div class="case-study-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4" data-translate="content.cases.startup.title">Startup Công nghệ TP.HCM</h3>
+          <p class="text-gray-600 mb-4" data-translate="content.cases.startup.description">Xây dựng tổ chức remote-first với AI-driven workflow, tăng 400% năng suất trong 18 tháng</p>
+          <ul class="space-y-2">
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.cases.startup.result1">Giảm 70% thời gian phát triển sản phẩm</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.cases.startup.result2">Tăng 300% tốc độ ra quyết định</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.cases.startup.result3">Mở rộng quy mô 5x trong 12 tháng</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Manufacturing Company -->
+        <div class="case-study-card scroll-reveal">
+          <div class="case-study-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4" data-translate="content.cases.manufacturing.title">Nhà máy Sản xuất Đồng Nai</h3>
+          <p class="text-gray-600 mb-4" data-translate="content.cases.manufacturing.description">Chuyển đổi từ mô hình truyền thống sang smart factory với IoT và AI analytics</p>
+          <ul class="space-y-2">
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.cases.manufacturing.result1">Giảm 40% chi phí vận hành</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.cases.manufacturing.result2">Tăng 25% hiệu suất sản xuất</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.cases.manufacturing.result3">Giảm 60% thời gian downtime</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- E-commerce Platform -->
+        <div class="case-study-card scroll-reveal">
+          <div class="case-study-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4" data-translate="content.cases.ecommerce.title">Nền tảng E-commerce Hà Nội</h3>
+          <p class="text-gray-600 mb-4" data-translate="content.cases.ecommerce.description">Tái cấu trúc tổ chức với data-driven culture và AI-powered personalization</p>
+          <ul class="space-y-2">
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.cases.ecommerce.result1">Tăng 180% conversion rate</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.cases.ecommerce.result2">Giảm 50% customer acquisition cost</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.cases.ecommerce.result3">Tăng 90% customer lifetime value</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Financial Services -->
+        <div class="case-study-card scroll-reveal">
+          <div class="case-study-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4" data-translate="content.cases.fintech.title">Fintech Startup Việt Nam</h3>
+          <p class="text-gray-600 mb-4" data-translate="content.cases.fintech.description">Xây dựng nền tảng digital-first với blockchain và AI để cung cấp dịch vụ tài chính thông minh</p>
+          <ul class="space-y-2">
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.cases.fintech.result1">Giảm 80% thời gian xử lý giao dịch</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.cases.fintech.result2">Tăng 250% số lượng khách hàng</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.cases.fintech.result3">Giảm 95% chi phí compliance</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Success Metrics Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-3xl font-bold mb-4" data-translate="content.metrics.title">Chỉ số Đo lường Thành công</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-translate="content.metrics.subtitle">Các KPI quan trọng để đánh giá hiệu quả của tổ chức digital-first</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Digital Adoption Rate -->
+        <div class="bg-white rounded-xl shadow-lg p-6 text-center scroll-reveal">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2" data-translate="content.metrics.adoption.title">Digital Adoption Rate</h3>
+          <p class="text-gray-600" data-translate="content.metrics.adoption.description">Tỷ lệ nhân viên sử dụng công cụ số trong công việc hàng ngày</p>
+        </div>
+
+        <!-- Process Automation -->
+        <div class="bg-white rounded-xl shadow-lg p-6 text-center scroll-reveal">
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2" data-translate="content.metrics.automation.title">Process Automation</h3>
+          <p class="text-gray-600" data-translate="content.metrics.automation.description">Phần trăm quy trình được tự động hóa bằng công nghệ số</p>
+        </div>
+
+        <!-- Time to Market -->
+        <div class="bg-white rounded-xl shadow-lg p-6 text-center scroll-reveal">
+          <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2" data-translate="content.metrics.timetomarket.title">Time to Market</h3>
+          <p class="text-gray-600" data-translate="content.metrics.timetomarket.description">Thời gian từ ý tưởng đến sản phẩm/dịch vụ ra thị trường</p>
+        </div>
+
+        <!-- Innovation Index -->
+        <div class="bg-white rounded-xl shadow-lg p-6 text-center scroll-reveal">
+          <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2" data-translate="content.metrics.innovation.title">Innovation Index</h3>
+          <p class="text-gray-600" data-translate="content.metrics.innovation.description">Số lượng ý tưởng đổi mới được thực hiện thành công</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-gray-900 text-white py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal" data-translate="cta.title">Sẵn sàng Xây dựng Tổ chức Digital-First?</h2>
+        <p class="text-xl opacity-90 mb-8 scroll-reveal" data-translate="cta.description">Liên hệ với chúng tôi để bắt đầu hành trình chuyển đổi tổ chức và tạo ra lợi thế cạnh tranh bền vững trong kỷ nguyên số</p>
+        <div class="flex flex-wrap justify-center gap-4 scroll-reveal">
+          <a href="index.html" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-gray-800 transition-all" data-translate="cta.backToBlog">Quay lại Blog</a>
+          <a href="../contact/index.html" class="btn-primary px-8 py-3 rounded-full font-semibold text-white" data-translate="cta.button">Bắt đầu Chuyển đổi</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="logo-gradient">
+              <span class="text-white font-bold text-lg">DB</span>
+            </div>
+            <span class="text-2xl font-bold">Digitized Brains</span>
+          </div>
+          <p class="text-gray-400" data-translate="footer.description">Đối tác tin cậy hỗ trợ doanh nghiệp Việt Nam xây dựng tổ chức ưu tiên số trong kỷ nguyên chuyển đổi số</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.quickLinks">Liên kết nhanh</h4>
+          <div class="grid grid-cols-2 gap-4">
+            <ul class="space-y-2">
+              <li><a href="../../index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.home">Trang chủ</a></li>
+              <li><a href="../about/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.about">Giới thiệu</a></li>
+              <li><a href="../digital-transformation/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.digitalTransformation">Chuyển đổi số</a></li>
+              <li><a href="../ai-agents/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.aiAgent">AI Agent</a></li>
+            </ul>
+            <ul class="space-y-2">
+              <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.blog">Blog</a></li>
+              <li><a href="../resources/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.resources">Tài nguyên</a></li>
+              <li><a href="../contact/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.contact">Liên hệ</a></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.contact">Liên hệ</h4>
+          <ul class="space-y-2">
+            <li class="text-gray-400">contact@digitizedbrains.com</li>
+            <li class="text-gray-400" data-translate="footer.location">Thành phố Hồ Chí Minh, Việt Nam</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-gray-400" data-translate="footer.copyright">© 2025 DigitizedBrains. Bản quyền thuộc về DigitizedBrains.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Language Switcher Script -->
+  <script src="../../js/multilang.js"></script>
+
+  <!-- Chatbot Integration -->
+  <script src="../../js/chatbot.js"></script>
+
+  <script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    const pageTranslations = {
+      en: {
+        meta: { 
+          title: "Building Digital-First Organizations - DigitizedBrains", 
+          description: "Comprehensive guide to building digital culture, processes, and infrastructure to help Vietnamese businesses succeed in the digital transformation era" 
+        },
+        nav: { 
+          home: "Home", 
+          about: "About", 
+          digitalTransformation: "Digital Transformation", 
+          aiAgent: "AI Agent", 
+          blog: "Blog", 
+          resources: "Resources", 
+          contact: "Contact" 
+        },
+        language: { current: "Language:" },
+        backToBlog: "Back to Blog",
+        hero: { 
+          title: "Building Digital-First Organizations", 
+          subtitle: "Comprehensive guide to building digital culture, processes, and infrastructure to help Vietnamese businesses succeed in the digital transformation era", 
+          cta: "Explore Framework", 
+          cases: "View Case Studies" 
+        },
+        situation: {
+          title: "Digital Transformation Reality in Vietnam 2024-2025",
+          subtitle: "Vietnamese businesses are accelerating the construction of digital-first organizations to enhance competitive capabilities"
+        },
+        stats: {
+          digital: {
+            number: "72%",
+            description: "of Vietnamese businesses have initiated comprehensive digital transformation"
+          },
+          culture: {
+            number: "45%",
+            description: "have built digital-first work culture"
+          },
+          productivity: {
+            number: "280%",
+            description: "increase in work productivity through digital-first organizations"
+          },
+          agility: {
+            number: "65%",
+            description: "improvement in market adaptability"
+          }
+        },
+        content: {
+          overview: {
+            title: "Digital-First Organization Building Framework",
+            description: "A systematic approach to transform businesses into digital-first organizations, focusing on culture, technology, and processes to create sustainable competitive advantages"
+          },
+          pillars: {
+            culture: {
+              title: "Digital Culture",
+              description: "Build digital thinking throughout the organization, encourage innovation and experimentation with new technologies"
+            },
+            infrastructure: {
+              title: "Technology Infrastructure",
+              description: "Deploy cloud infrastructure, APIs, and integrated systems to support efficient digital operations"
+            },
+            processes: {
+              title: "Digital Processes",
+              description: "Automate and optimize business processes using digital technology and AI"
+            }
+          },
+          framework: {
+            title: "5 Steps to Digital-First Transformation",
+            step1: {
+              title: "Digital Readiness Assessment",
+              description: "Analyze the organization's digital readiness level, identify gaps and improvement opportunities"
+            },
+            step2: {
+              title: "Build Digital Vision",
+              description: "Establish a clear vision of digital-first organization and specific transformation roadmap"
+            },
+            step3: {
+              title: "Develop Digital Capabilities",
+              description: "Invest in technology, train employees, and build internal capabilities"
+            },
+            step4: {
+              title: "Implement Digital Processes",
+              description: "Transform business processes to digital-first model and automation"
+            },
+            step5: {
+              title: "Measure and Optimize",
+              description: "Monitor KPIs, analyze effectiveness, and continuously improve digital organization"
+            }
+          },
+          benefits: {
+            title: "Benefits of Digital-First Organizations",
+            agility: {
+              title: "Enhanced Adaptability",
+              description: "Respond quickly to market changes and customer needs"
+            },
+            efficiency: {
+              title: "Improved Operational Efficiency",
+              description: "Automate processes and minimize waste of time and resources"
+            },
+            innovation: {
+              title: "Drive Innovation Culture",
+              description: "Encourage experimentation and adoption of new technologies"
+            },
+            datadriven: {
+              title: "Data-Driven Decision Making",
+              description: "Use analytics and AI to make accurate decisions"
+            }
+          },
+          cases: {
+            title: "Success Case Studies",
+            subtitle: "Vietnamese businesses that have successfully built digital-first organizations",
+            startup: {
+              title: "Ho Chi Minh City Tech Startup",
+              description: "Built remote-first organization with AI-driven workflow, increased 400% productivity in 18 months",
+              result1: "70% reduction in product development time",
+              result2: "300% increase in decision-making speed",
+              result3: "5x scale expansion in 12 months"
+            },
+            manufacturing: {
+              title: "Dong Nai Manufacturing Plant",
+              description: "Transformed from traditional model to smart factory with IoT and AI analytics",
+              result1: "40% reduction in operating costs",
+              result2: "25% increase in production efficiency",
+              result3: "60% reduction in downtime"
+            },
+            ecommerce: {
+              title: "Hanoi E-commerce Platform",
+              description: "Restructured organization with data-driven culture and AI-powered personalization",
+              result1: "180% increase in conversion rate",
+              result2: "50% reduction in customer acquisition cost",
+              result3: "90% increase in customer lifetime value"
+            },
+            fintech: {
+              title: "Vietnamese Fintech Startup",
+              description: "Built digital-first platform with blockchain and AI to provide intelligent financial services",
+              result1: "80% reduction in transaction processing time",
+              result2: "250% increase in customer numbers",
+              result3: "95% reduction in compliance costs"
+            }
+          },
+          metrics: {
+            title: "Success Measurement Indicators",
+            subtitle: "Important KPIs to evaluate digital-first organization effectiveness",
+            adoption: {
+              title: "Digital Adoption Rate",
+              description: "Percentage of employees using digital tools in daily work"
+            },
+            automation: {
+              title: "Process Automation",
+              description: "Percentage of processes automated by digital technology"
+            },
+            timetomarket: {
+              title: "Time to Market",
+              description: "Time from idea to product/service market launch"
+            },
+            innovation: {
+              title: "Innovation Index",
+              description: "Number of innovation ideas successfully implemented"
+            }
+          },
+          roadmap: {
+            title: "Data-Driven Strategy Implementation Roadmap",
+            phase1: {
+              title: "Phase 1: Assessment",
+              description: "Assess current data status and define objectives",
+              time: "1-2 months"
+            },
+            phase2: {
+              title: "Phase 2: Foundation",
+              description: "Build data infrastructure and processes",
+              time: "2-3 months"
+            },
+            phase3: {
+              title: "Phase 3: Analytics",
+              description: "Deploy analytics and machine learning",
+              time: "3-4 months"
+            },
+            phase4: {
+              title: "Phase 4: Optimization",
+              description: "Optimize and expand system",
+              time: "Continuous"
+            }
+          }
+        },
+        connection: {
+          title: "AI Agent Support",
+          description: "Leverage AI Agent power to automate and optimize digital-first organization building",
+          service: {
+            title: "AI Business Solutions",
+            description: "Integrate AI Agent to support process automation, data analysis, and organizational operations optimization"
+          },
+          cta: "Learn about AI Agent"
+        },
+        cta: {
+          title: "Ready to Build Digital-First Organization?",
+          description: "Contact us to start your organizational transformation journey and create sustainable competitive advantages in the digital era",
+          backToBlog: "Back to Blog",
+          button: "Start Transformation"
+        },
+        footer: {
+          description: "Trusted partner supporting Vietnamese businesses in building digital-first organizations in the digital transformation era",
+          quickLinks: "Quick Links",
+          contact: "Contact",
+          location: "Ho Chi Minh City, Vietnam",
+          copyright: "© 2025 DigitizedBrains. All rights reserved."
+        }
+      },
+      vi: {
+        meta: { 
+          title: "Xây dựng Tổ chức Ưu tiên Số - DigitizedBrains", 
+          description: "Hướng dẫn toàn diện để xây dựng văn hóa, quy trình và hạ tầng số giúp doanh nghiệp Việt Nam thành công trong kỷ nguyên chuyển đổi số" 
+        },
+        nav: { 
+          home: "Trang chủ", 
+          about: "Giới thiệu", 
+          digitalTransformation: "Chuyển đổi số", 
+          aiAgent: "AI Agent", 
+          blog: "Blog", 
+          resources: "Tài nguyên", 
+          contact: "Liên hệ" 
+        },
+        language: { current: "Ngôn ngữ:" },
+        backToBlog: "Quay lại Blog",
+        hero: { 
+          title: "Xây dựng Tổ chức Ưu tiên Số", 
+          subtitle: "Hướng dẫn toàn diện để xây dựng văn hóa, quy trình và hạ tầng số giúp doanh nghiệp Việt Nam thành công trong kỷ nguyên chuyển đổi số", 
+          cta: "Khám phá Framework", 
+          cases: "Xem Case Studies" 
+        },
+        situation: {
+          title: "Thực trạng Chuyển đổi Số Việt Nam 2024-2025",
+          subtitle: "Doanh nghiệp Việt Nam đang tăng tốc xây dựng tổ chức ưu tiên số để nâng cao năng lực cạnh tranh"
+        },
+        stats: {
+          digital: {
+            number: "72%",
+            description: "doanh nghiệp Việt Nam đã khởi động chuyển đổi số toàn diện"
+          },
+          culture: {
+            number: "45%",
+            description: "đã xây dựng văn hóa làm việc ưu tiên số"
+          },
+          productivity: {
+            number: "280%",
+            description: "tăng năng suất làm việc nhờ tổ chức digital-first"
+          },
+          agility: {
+            number: "65%",
+            description: "cải thiện khả năng thích ứng với thay đổi thị trường"
+          }
+        },
+        content: {
+          overview: {
+            title: "Framework Xây dựng Tổ chức Digital-First",
+            description: "Một phương pháp tiếp cận có hệ thống để biến đổi doanh nghiệp thành tổ chức ưu tiên số, tập trung vào văn hóa, công nghệ và quy trình để tạo ra lợi thế cạnh tranh bền vững"
+          },
+          pillars: {
+            culture: {
+              title: "Văn hóa Số",
+              description: "Xây dựng tư duy số trong toàn tổ chức, khuyến khích đổi mới và thử nghiệm công nghệ mới"
+            },
+            infrastructure: {
+              title: "Hạ tầng Công nghệ",
+              description: "Triển khai hạ tầng cloud, API và hệ thống tích hợp để hỗ trợ hoạt động số hiệu quả"
+            },
+            processes: {
+              title: "Quy trình Số",
+              description: "Tự động hóa và tối ưu hóa quy trình kinh doanh bằng công nghệ số và AI"
+            }
+          },
+          framework: {
+            title: "5 Bước Chuyển đổi Digital-First",
+            step1: {
+              title: "Đánh giá Hiện trạng Số",
+              description: "Phân tích mức độ sẵn sàng số của tổ chức, xác định khoảng cách và cơ hội cải thiện"
+            },
+            step2: {
+              title: "Xây dựng Tầm nhìn Số",
+              description: "Thiết lập tầm nhìn rõ ràng về tổ chức digital-first và lộ trình chuyển đổi cụ thể"
+            },
+            step3: {
+              title: "Phát triển Năng lực Số",
+              description: "Đầu tư vào công nghệ, đào tạo nhân viên và xây dựng năng lực nội bộ"
+            },
+            step4: {
+              title: "Triển khai Quy trình Số",
+              description: "Chuyển đổi quy trình kinh doanh sang mô hình ưu tiên số và tự động hóa"
+            },
+            step5: {
+              title: "Đo lường và Tối ưu",
+              description: "Theo dõi KPI, phân tích hiệu quả và liên tục cải tiến tổ chức số"
+            }
+          },
+          benefits: {
+            title: "Lợi ích của Tổ chức Digital-First",
+            agility: {
+              title: "Tăng cường Khả năng Thích ứng",
+              description: "Phản ứng nhanh chóng với thay đổi thị trường và nhu cầu khách hàng"
+            },
+            efficiency: {
+              title: "Nâng cao Hiệu quả Vận hành",
+              description: "Tự động hóa quy trình và giảm thiểu lãng phí thời gian, nguồn lực"
+            },
+            innovation: {
+              title: "Thúc đẩy Văn hóa Đổi mới",
+              description: "Khuyến khích thử nghiệm và áp dụng công nghệ mới"
+            },
+            datadriven: {
+              title: "Quyết định Dựa trên Dữ liệu",
+              description: "Sử dụng analytics và AI để đưa ra quyết định chính xác"
+            }
+          },
+          cases: {
+            title: "Case Studies Thành công",
+            subtitle: "Những doanh nghiệp Việt Nam đã thành công xây dựng tổ chức digital-first",
+            startup: {
+              title: "Startup Công nghệ TP.HCM",
+              description: "Xây dựng tổ chức remote-first với AI-driven workflow, tăng 400% năng suất trong 18 tháng",
+              result1: "Giảm 70% thời gian phát triển sản phẩm",
+              result2: "Tăng 300% tốc độ ra quyết định",
+              result3: "Mở rộng quy mô 5x trong 12 tháng"
+            },
+            manufacturing: {
+              title: "Nhà máy Sản xuất Đồng Nai",
+              description: "Chuyển đổi từ mô hình truyền thống sang smart factory với IoT và AI analytics",
+              result1: "Giảm 40% chi phí vận hành",
+              result2: "Tăng 25% hiệu suất sản xuất",
+              result3: "Giảm 60% thời gian downtime"
+            },
+            ecommerce: {
+              title: "Nền tảng E-commerce Hà Nội",
+              description: "Tái cấu trúc tổ chức với data-driven culture và AI-powered personalization",
+              result1: "Tăng 180% conversion rate",
+              result2: "Giảm 50% customer acquisition cost",
+              result3: "Tăng 90% customer lifetime value"
+            },
+            fintech: {
+              title: "Fintech Startup Việt Nam",
+              description: "Xây dựng nền tảng digital-first với blockchain và AI để cung cấp dịch vụ tài chính thông minh",
+              result1: "Giảm 80% thời gian xử lý giao dịch",
+              result2: "Tăng 250% số lượng khách hàng",
+              result3: "Giảm 95% chi phí compliance"
+            }
+          },
+          metrics: {
+            title: "Chỉ số Đo lường Thành công",
+            subtitle: "Các KPI quan trọng để đánh giá hiệu quả của tổ chức digital-first",
+            adoption: {
+              title: "Digital Adoption Rate",
+              description: "Tỷ lệ nhân viên sử dụng công cụ số trong công việc hàng ngày"
+            },
+            automation: {
+              title: "Process Automation",
+              description: "Phần trăm quy trình được tự động hóa bằng công nghệ số"
+            },
+            timetomarket: {
+              title: "Time to Market",
+              description: "Thời gian từ ý tưởng đến sản phẩm/dịch vụ ra thị trường"
+            },
+            innovation: {
+              title: "Innovation Index",
+              description: "Số lượng ý tưởng đổi mới được thực hiện thành công"
+            }
+          },
+          roadmap: {
+            title: "Lộ trình Triển khai Data-Driven Strategy",
+            phase1: {
+              title: "Giai đoạn 1: Assessment",
+              description: "Đánh giá hiện trạng dữ liệu và xác định mục tiêu",
+              time: "1-2 tháng"
+            },
+            phase2: {
+              title: "Giai đoạn 2: Foundation",
+              description: "Xây dựng hạ tầng dữ liệu và quy trình",
+              time: "2-3 tháng"
+            },
+            phase3: {
+              title: "Giai đoạn 3: Analytics",
+              description: "Triển khai analytics và machine learning",
+              time: "3-4 tháng"
+            },
+            phase4: {
+              title: "Giai đoạn 4: Optimization",
+              description: "Tối ưu hóa và mở rộng hệ thống",
+              time: "Liên tục"
+            }
+          }
+        },
+        connection: {
+          title: "Hỗ trợ từ AI Agent",
+          description: "Tận dụng sức mạnh AI Agent để tự động hóa và tối ưu hóa việc xây dựng tổ chức digital-first",
+          service: {
+            title: "Giải pháp AI Business",
+            description: "Tích hợp AI Agent để hỗ trợ tự động hóa quy trình, phân tích dữ liệu và tối ưu hóa hoạt động tổ chức"
+          },
+          cta: "Tìm hiểu AI Agent"
+        },
+        cta: {
+          title: "Sẵn sàng Xây dựng Tổ chức Digital-First?",
+          description: "Liên hệ với chúng tôi để bắt đầu hành trình chuyển đổi tổ chức và tạo ra lợi thế cạnh tranh bền vững trong kỷ nguyên số",
+          backToBlog: "Quay lại Blog",
+          button: "Bắt đầu Chuyển đổi"
+        },
+        footer: {
+          description: "Đối tác tin cậy hỗ trợ doanh nghiệp Việt Nam xây dựng tổ chức ưu tiên số trong kỷ nguyên chuyển đổi số",
+          quickLinks: "Liên kết nhanh",
+          contact: "Liên hệ",
+          location: "Thành phố Hồ Chí Minh, Việt Nam",
+          copyright: "© 2025 DigitizedBrains. Bản quyền thuộc về DigitizedBrains."
+        }
+      },
+      de: {
+        meta: { 
+          title: "Aufbau digitaler Organisationen - DigitizedBrains", 
+          description: "Umfassender Leitfaden zum Aufbau digitaler Kultur, Prozesse und Infrastruktur, um vietnamesischen Unternehmen im Zeitalter der digitalen Transformation zum Erfolg zu verhelfen" 
+        },
+        nav: { 
+          home: "Startseite", 
+          about: "Über uns", 
+          digitalTransformation: "Digitale Transformation", 
+          aiAgent: "KI-Agent", 
+          blog: "Blog", 
+          resources: "Ressourcen", 
+          contact: "Kontakt" 
+        },
+        language: { current: "Sprache:" },
+        backToBlog: "Zurück zum Blog",
+        hero: { 
+          title: "Aufbau digitaler Organisationen", 
+          subtitle: "Umfassender Leitfaden zum Aufbau digitaler Kultur, Prozesse und Infrastruktur, um vietnamesischen Unternehmen im Zeitalter der digitalen Transformation zum Erfolg zu verhelfen", 
+          cta: "Framework erkunden", 
+          cases: "Fallstudien ansehen" 
+        },
+        situation: {
+          title: "Realität der digitalen Transformation in Vietnam 2024-2025",
+          subtitle: "Vietnamesische Unternehmen beschleunigen den Aufbau digital-first Organisationen zur Stärkung der Wettbewerbsfähigkeit"
+        },
+        stats: {
+          digital: {
+            number: "72%",
+            description: "der vietnamesischen Unternehmen haben eine umfassende digitale Transformation eingeleitet"
+          },
+          culture: {
+            number: "45%",
+            description: "haben eine digital-first Arbeitskultur aufgebaut"
+          },
+          productivity: {
+            number: "280%",
+            description: "Steigerung der Arbeitsproduktivität durch digital-first Organisationen"
+          },
+          agility: {
+            number: "65%",
+            description: "Verbesserung der Marktanpassungsfähigkeit"
+          }
+        },
+        content: {
+          overview: {
+            title: "Framework für den Aufbau digital-first Organisationen",
+            description: "Ein systematischer Ansatz zur Transformation von Unternehmen in digital-first Organisationen, mit Fokus auf Kultur, Technologie und Prozesse zur Schaffung nachhaltiger Wettbewerbsvorteile"
+          },
+          pillars: {
+            culture: {
+              title: "Digitale Kultur",
+              description: "Aufbau digitalen Denkens in der gesamten Organisation, Förderung von Innovation und Experimentieren mit neuen Technologien"
+            },
+            infrastructure: {
+              title: "Technologie-Infrastruktur",
+              description: "Bereitstellung von Cloud-Infrastruktur, APIs und integrierten Systemen zur Unterstützung effizienter digitaler Operationen"
+            },
+            processes: {
+              title: "Digitale Prozesse",
+              description: "Automatisierung und Optimierung von Geschäftsprozessen mit digitaler Technologie und KI"
+            }
+          },
+          framework: {
+            title: "5 Schritte zur Digital-First Transformation",
+            step1: {
+              title: "Bewertung der digitalen Bereitschaft",
+              description: "Analyse des digitalen Bereitschaftsgrads der Organisation, Identifizierung von Lücken und Verbesserungsmöglichkeiten"
+            },
+            step2: {
+              title: "Aufbau einer digitalen Vision",
+              description: "Etablierung einer klaren Vision der digital-first Organisation und spezifischen Transformations-Roadmap"
+            },
+            step3: {
+              title: "Entwicklung digitaler Fähigkeiten",
+              description: "Investition in Technologie, Mitarbeiterschulung und Aufbau interner Fähigkeiten"
+            },
+            step4: {
+              title: "Implementierung digitaler Prozesse",
+              description: "Transformation von Geschäftsprozessen zum digital-first Modell und Automatisierung"
+            },
+            step5: {
+              title: "Messen und Optimieren",
+              description: "KPI-Überwachung, Effektivitätsanalyse und kontinuierliche Verbesserung der digitalen Organisation"
+            }
+          },
+          benefits: {
+            title: "Vorteile von Digital-First Organisationen",
+            agility: {
+              title: "Verbesserte Anpassungsfähigkeit",
+              description: "Schnelle Reaktion auf Marktveränderungen und Kundenbedürfnisse"
+            },
+            efficiency: {
+              title: "Verbesserte operative Effizienz",
+              description: "Automatisierung von Prozessen und Minimierung von Zeit- und Ressourcenverschwendung"
+            },
+            innovation: {
+              title: "Förderung der Innovationskultur",
+              description: "Ermutigung zu Experimenten und Einführung neuer Technologien"
+            },
+            datadriven: {
+              title: "Datengetriebene Entscheidungsfindung",
+              description: "Verwendung von Analytics und KI für präzise Entscheidungen"
+            }
+          },
+          cases: {
+            title: "Erfolgreiche Fallstudien",
+            subtitle: "Vietnamesische Unternehmen, die erfolgreich digital-first Organisationen aufgebaut haben",
+            startup: {
+              title: "Tech-Startup aus Ho-Chi-Minh-Stadt",
+              description: "Aufbau einer remote-first Organisation mit KI-gesteuertem Workflow, 400% Produktivitätssteigerung in 18 Monaten",
+              result1: "70% Reduzierung der Produktentwicklungszeit",
+              result2: "300% Steigerung der Entscheidungsgeschwindigkeit",
+              result3: "5x Skalierung in 12 Monaten"
+            },
+            manufacturing: {
+              title: "Fertigungswerk in Dong Nai",
+              description: "Transformation vom traditionellen Modell zur Smart Factory mit IoT und KI-Analytics",
+              result1: "40% Reduzierung der Betriebskosten",
+              result2: "25% Steigerung der Produktionseffizienz",
+              result3: "60% Reduzierung der Ausfallzeiten"
+            },
+            ecommerce: {
+              title: "E-Commerce-Plattform aus Hanoi",
+              description: "Umstrukturierung der Organisation mit datengetriebener Kultur und KI-gestützter Personalisierung",
+              result1: "180% Steigerung der Conversion-Rate",
+              result2: "50% Reduzierung der Kundenakquisitionskosten",
+              result3: "90% Steigerung des Customer Lifetime Value"
+            },
+            fintech: {
+              title: "Vietnamesisches Fintech-Startup",
+              description: "Aufbau einer digital-first Plattform mit Blockchain und KI zur Bereitstellung intelligenter Finanzdienstleistungen",
+              result1: "80% Reduzierung der Transaktionsverarbeitungszeit",
+              result2: "250% Steigerung der Kundenzahl",
+              result3: "95% Reduzierung der Compliance-Kosten"
+            }
+          },
+          metrics: {
+            title: "Erfolgsmessungsindikatoren",
+            subtitle: "Wichtige KPIs zur Bewertung der Wirksamkeit von digital-first Organisationen",
+            adoption: {
+              title: "Digital Adoption Rate",
+              description: "Prozentsatz der Mitarbeiter, die digitale Tools in der täglichen Arbeit verwenden"
+            },
+            automation: {
+              title: "Prozessautomatisierung",
+              description: "Prozentsatz der durch digitale Technologie automatisierten Prozesse"
+            },
+            timetomarket: {
+              title: "Time to Market",
+              description: "Zeit von der Idee bis zur Markteinführung von Produkten/Dienstleistungen"
+            },
+            innovation: {
+              title: "Innovationsindex",
+              description: "Anzahl erfolgreich umgesetzter Innovationsideen"
+            }
+          },
+          roadmap: {
+            title: "Implementierungs-Roadmap für datengetriebene Strategie",
+            phase1: {
+              title: "Phase 1: Bewertung",
+              description: "Bewertung des aktuellen Datenstatus und Definition von Zielen",
+              time: "1-2 Monate"
+            },
+            phase2: {
+              title: "Phase 2: Fundament",
+              description: "Aufbau von Dateninfrastruktur und Prozessen",
+              time: "2-3 Monate"
+            },
+            phase3: {
+              title: "Phase 3: Analytics",
+              description: "Bereitstellung von Analytics und maschinellem Lernen",
+              time: "3-4 Monate"
+            },
+            phase4: {
+              title: "Phase 4: Optimierung",
+              description: "Optimierung und Erweiterung des Systems",
+              time: "Kontinuierlich"
+            }
+          }
+        },
+        connection: {
+          title: "KI-Agent-Unterstützung",
+          description: "Nutzen Sie die Kraft von KI-Agenten zur Automatisierung und Optimierung des Aufbaus digital-first Organisationen",
+          service: {
+            title: "KI-Business-Lösungen",
+            description: "Integration von KI-Agenten zur Unterstützung der Prozessautomatisierung, Datenanalyse und Organisationsoptimierung"
+          },
+          cta: "Über KI-Agent erfahren"
+        },
+        cta: {
+          title: "Bereit für den Aufbau einer Digital-First Organisation?",
+          description: "Kontaktieren Sie uns, um Ihre Transformationsreise zu beginnen und nachhaltige Wettbewerbsvorteile im digitalen Zeitalter zu schaffen",
+          backToBlog: "Zurück zum Blog",
+          button: "Transformation beginnen"
+        },
+        footer: {
+          description: "Vertrauenspartner zur Unterstützung vietnamesischer Unternehmen beim Aufbau digital-first Organisationen im Zeitalter der digitalen Transformation",
+          quickLinks: "Schnelllinks",
+          contact: "Kontakt",
+          location: "Ho-Chi-Minh-Stadt, Vietnam",
+          copyright: "© 2025 DigitizedBrains. Alle Rechte vorbehalten."
+        }
+      }
+    };
+
+    // Initialize multilingual system
+    if (typeof initializeMultilingual === 'function') {
+      initializeMultilingual(pageTranslations);
+    }
+
+    // Scroll reveal animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all scroll-reveal elements
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>

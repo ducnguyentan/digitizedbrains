@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="page-title">Blog - DigitizedBrains</title>
+  <meta name="description" content="Latest insights and trends in digital transformation, AI technology, and Vietnamese business developments" id="page-description">
+  <link href="../../css/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+    body { font-family: 'Poppins', sans-serif; }
+    .font-nunito { font-family: 'Nunito', sans-serif; }
+    .nav-link { 
+      color: #374151; 
+      padding: 0.5rem 1rem; 
+      transition: all 0.3s ease; 
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .nav-link:hover { color: #ed7354; background-color: #fef2f2; }
+    .nav-link.active { color: #ed7354; font-weight: 600; }
+    .btn-primary { 
+      background: linear-gradient(135deg, #ed7354 0%, #f97316 100%); 
+      transition: all 0.3s ease; 
+      box-shadow: 0 4px 15px rgba(237, 115, 84, 0.3);
+    }
+    .logo-gradient {
+      background: linear-gradient(135deg, #fb923c 0%, #ec4899 100%);
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(237, 115, 84, 0.4); }
+    .hero-bg { 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .blog-card {
+      transition: all 0.3s ease;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      border-color: #ed7354;
+    }
+    .blog-card:hover img {
+      transform: scale(1.1);
+    }
+    .blog-card img {
+      transition: transform 0.3s ease;
+    }
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Language Switcher Styles */
+    .language-switcher {
+      position: relative;
+    }
+    
+    .language-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      min-width: 160px;
+      display: none;
+      z-index: 1000;
+    }
+    
+    .language-menu.show {
+      display: block;
+    }
+    
+    .language-option {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+    
+    .language-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+    
+    /* Mobile Language Switcher */
+    .language-switcher-mobile {
+      position: relative;
+    }
+    
+    .language-menu-mobile {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      display: none;
+      z-index: 1000;
+    }
+    
+    .language-menu-mobile.show {
+      display: block;
+    }
+    
+    .language-option-mobile {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option-mobile:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option-mobile.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+    /* Language transition effects */
+    .lang-transition {
+      transition: opacity 0.3s ease-in-out;
+    }
+    
+    .lang-transition.changing {
+      opacity: 0.7;
+    }
+
+    /* Blog specific styles */
+    .category-tag {
+      background: linear-gradient(135deg, #ed7354 0%, #f97316 100%);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .read-time {
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+
+    .featured-post {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <div class="logo-gradient w-8 h-8 bg-gradient-to-r from-orange-400 to-pink-500 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-sm">DB</span>
+          </div>
+          <a href="../../index.html" class="text-xl font-bold text-gray-800">Digitized Brains</a>
+        </div>
+        
+        <!-- Navigation and Language Switcher -->
+        <div class="hidden md:flex items-center space-x-4">
+          <nav class="flex space-x-2">
+            <a href="../../index.html" class="nav-link" data-translate="nav.home">Home</a>
+            <a href="../about/index.html" class="nav-link" data-translate="nav.about">About</a>
+            <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Digital Transformation</a>
+            <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+            <a href="index.html" class="nav-link active" data-translate="nav.blog">Blog</a>
+            <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Resources</a>
+            <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Contact</a>
+          </nav>
+          
+          <!-- Language Switcher -->
+          <div class="language-switcher">
+            <button id="language-btn" class="flex items-center space-x-1 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+              <img id="current-flag" src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+              <span id="current-lang">EN</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="language-menu" class="language-menu">
+              <a href="#" onclick="changeLanguage('en')" class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                English
+              </a>
+              <a href="#" onclick="changeLanguage('vi')" class="language-option" data-lang="vi">
+                <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                Tiếng Việt
+              </a>
+              <a href="#" onclick="changeLanguage('de')" class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                Deutsch
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <div class="flex flex-col space-y-2">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Home</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">About</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Digital Transformation</a>
+          <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="index.html" class="nav-link active" data-translate="nav.blog">Blog</a>
+          <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Resources</a>
+          <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Contact</a>
+          
+          <!-- Mobile Language Switcher -->
+          <div class="pt-2 border-t border-gray-200">
+            <div class="language-switcher-mobile">
+              <button id="mobile-language-btn" class="flex items-center justify-between w-full px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                <span data-translate="language.current">Language:</span>
+                <div class="flex items-center space-x-1">
+                  <img id="mobile-current-flag" src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                  <span id="mobile-current-lang">EN</span>
+                </div>
+              </button>
+              <div id="mobile-language-menu" class="language-menu-mobile">
+                <a href="#" onclick="changeLanguage('en')" class="language-option-mobile" data-lang="en">
+                  <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                  English
+                </a>
+                <a href="#" onclick="changeLanguage('vi')" class="language-option-mobile" data-lang="vi">
+                  <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                  Tiếng Việt
+                </a>
+                <a href="#" onclick="changeLanguage('de')" class="language-option-mobile" data-lang="de">
+                  <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                  Deutsch
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-bg py-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+    <div class="relative z-10 text-center max-w-4xl mx-auto px-4">
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 scroll-reveal" data-translate="blog.hero.title">
+        Latest Insights & Trends
+      </h1>
+      <p class="text-xl text-white mb-8 font-light max-w-2xl mx-auto scroll-reveal" data-translate="blog.hero.subtitle">
+        Stay updated with the latest developments in digital transformation, AI technology, and Vietnamese business
+      </p>
+    </div>
+  </section>
+
+  <!-- Featured Post Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12 scroll-reveal">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4" data-translate="blog.featured.title">Featured Article</h2>
+      </div>
+      
+      <div class="max-w-4xl mx-auto">
+        <article class="featured-post blog-card bg-white rounded-2xl shadow-lg overflow-hidden scroll-reveal">
+          <div class="md:flex">
+            <div class="md:w-1/2">
+              <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80" alt="Digital Transformation" class="w-full h-64 md:h-full object-cover">
+            </div>
+            <div class="md:w-1/2 p-8">
+              <div class="flex items-center mb-4">
+                <span class="category-tag mr-3" data-translate="blog.categories.digitalTransformation">Digital Transformation</span>
+                <span class="read-time" data-translate="blog.readTime">5 min read</span>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-800 mb-4" data-translate="blog.featured.articleTitle">
+                The Future of Vietnamese Business: AI-Driven Digital Transformation
+              </h3>
+              <p class="text-gray-600 mb-6" data-translate="blog.featured.articleExcerpt">
+                Exploring how artificial intelligence is revolutionizing business processes, decision-making, and customer engagement in Vietnam's rapidly evolving economic landscape.
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=32&h=32&q=80" alt="Author" class="w-8 h-8 rounded-full">
+                  <div>
+                    <p class="text-sm font-semibold text-gray-800" data-translate="blog.author.name">Dr. Nguyen Tan Duc</p>
+                    <p class="text-xs text-gray-500" data-translate="blog.author.date">January 25, 2025</p>
+                  </div>
+                </div>
+                <a href="AI-Driven Digital Transformation.html" class="btn-primary text-white px-6 py-2 rounded-full text-sm font-semibold" data-translate="blog.readMore">
+                  Read More
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Posts Grid -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4" data-translate="blog.recent.title">Recent Articles</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-translate="blog.recent.subtitle">
+          Discover insights, trends, and innovations shaping the future of business technology
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Blog Post 1 -->
+        <article class="blog-card bg-white rounded-2xl shadow-lg overflow-hidden scroll-reveal">
+          <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=400&q=80" alt="AI Technology" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <div class="flex items-center mb-3">
+              <span class="category-tag mr-3" data-translate="blog.categories.ai">AI Technology</span>
+              <span class="read-time" data-translate="blog.readTime">3 min read</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3" data-translate="blog.post1.title">
+              AI Agents in Business: Automation Revolution
+            </h3>
+            <p class="text-gray-600 mb-4" data-translate="blog.post1.excerpt">
+              How intelligent AI agents are transforming business operations, process automation, and customer service in modern enterprises.
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=24&h=24&q=80" alt="Author" class="w-6 h-6 rounded-full">
+                <p class="text-sm text-gray-600" data-translate="blog.author.name2">Sarah Chen</p>
+              </div>
+              <a href="Automation Revolution.html" class="text-orange-500 hover:text-orange-600 text-sm font-semibold">Read More</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Blog Post 2 -->
+        <article class="blog-card bg-white rounded-2xl shadow-lg overflow-hidden scroll-reveal">
+          <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=400&q=80" alt="Media Strategy" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <div class="flex items-center mb-3">
+              <span class="category-tag mr-3" data-translate="blog.categories.strategy">Strategy</span>
+              <span class="read-time" data-translate="blog.readTime">4 min read</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3" data-translate="blog.post2.title">
+              Building Digital-First Business Organizations
+            </h3>
+            <p class="text-gray-600 mb-4" data-translate="blog.post2.excerpt">
+              Strategic frameworks for transforming traditional businesses into agile, technology-driven organizations ready for the future.
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=24&h=24&q=80" alt="Author" class="w-6 h-6 rounded-full">
+                <p class="text-sm text-gray-600" data-translate="blog.author.name3">Michael Tran</p>
+              </div>
+              <a href="Building Digital-First Business Organizations.html" class="text-orange-500 hover:text-orange-600 text-sm font-semibold">Read More</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Blog Post 3 -->
+        <article class="blog-card bg-white rounded-2xl shadow-lg overflow-hidden scroll-reveal">
+          <img src="https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?auto=format&fit=crop&w=400&q=80" alt="Data Analytics" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <div class="flex items-center mb-3">
+              <span class="category-tag mr-3" data-translate="blog.categories.analytics">Analytics</span>
+              <span class="read-time" data-translate="blog.readTime">6 min read</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3" data-translate="blog.post3.title">
+              Customer Intelligence: Data-Driven Business Strategy
+            </h3>
+            <p class="text-gray-600 mb-4" data-translate="blog.post3.excerpt">
+              Leveraging advanced analytics and machine learning to understand customer behavior and optimize business performance.
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=24&h=24&q=80" alt="Author" class="w-6 h-6 rounded-full">
+                <p class="text-sm text-gray-600" data-translate="blog.author.name4">Lisa Nguyen</p>
+              </div>
+              <a href="Data-Driven Business Strategy.html" class="text-orange-500 hover:text-orange-600 text-sm font-semibold">Read More</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Blog Post 4 -->
+        <article class="blog-card bg-white rounded-2xl shadow-lg overflow-hidden scroll-reveal">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=400&q=80" alt="Cloud Technology" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <div class="flex items-center mb-3">
+              <span class="category-tag mr-3" data-translate="blog.categories.cloud">Cloud Tech</span>
+              <span class="read-time" data-translate="blog.readTime">5 min read</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3" data-translate="blog.post4.title">
+              Cloud Infrastructure for Business Scalability
+            </h3>
+            <p class="text-gray-600 mb-4" data-translate="blog.post4.excerpt">
+              How cloud-native architectures enable businesses to scale operations, reduce costs, and improve service delivery.
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=24&h=24&q=80" alt="Author" class="w-6 h-6 rounded-full">
+                <p class="text-sm text-gray-600" data-translate="blog.author.name5">David Lee</p>
+              </div>
+              <a href="Cloud Infrastructure for Business Scalability.html" class="text-orange-500 hover:text-orange-600 text-sm font-semibold">Read More</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Blog Post 5 -->
+        <article class="blog-card bg-white rounded-2xl shadow-lg overflow-hidden scroll-reveal">
+          <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=400&q=80" alt="Mobile Technology" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <div class="flex items-center mb-3">
+              <span class="category-tag mr-3" data-translate="blog.categories.mobile">Mobile</span>
+              <span class="read-time" data-translate="blog.readTime">4 min read</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3" data-translate="blog.post5.title">
+              Mobile-First Business Solution Strategies
+            </h3>
+            <p class="text-gray-600 mb-4" data-translate="blog.post5.excerpt">
+              Optimizing business applications and user experience for mobile platforms in Vietnam's mobile-first business environment.
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=24&h=24&q=80" alt="Author" class="w-6 h-6 rounded-full">
+                <p class="text-sm text-gray-600" data-translate="blog.author.name6">Anna Pham</p>
+              </div>
+              <a href="Mobile-First Business Solution Strategies.html" class="text-orange-500 hover:text-orange-600 text-sm font-semibold">Read More</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Blog Post 6 -->
+        <article class="blog-card bg-white rounded-2xl shadow-lg overflow-hidden scroll-reveal">
+          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=400&q=80" alt="Future Tech" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <div class="flex items-center mb-3">
+              <span class="category-tag mr-3" data-translate="blog.categories.innovation">Innovation</span>
+              <span class="read-time" data-translate="blog.readTime">7 min read</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3" data-translate="blog.post6.title">
+              The Next Frontier: Immersive Business Technologies
+            </h3>
+            <p class="text-gray-600 mb-4" data-translate="blog.post6.excerpt">
+              Exploring VR, AR, and mixed reality applications in business operations and how they're reshaping customer engagement.
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=24&h=24&q=80" alt="Author" class="w-6 h-6 rounded-full">
+                <p class="text-sm text-gray-600" data-translate="blog.author.name7">James Kim</p>
+              </div>
+              <a href="Immersive Business Technologies.html" class="text-orange-500 hover:text-orange-600 text-sm font-semibold">Read More</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Load More Button -->
+      <div class="text-center mt-12 scroll-reveal">
+        <button class="btn-primary text-white px-8 py-3 rounded-full font-semibold" data-translate="blog.loadMore">
+          Load More Articles
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-2xl mx-auto text-center scroll-reveal">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4" data-translate="blog.newsletter.title">Stay Updated</h2>
+        <p class="text-xl text-gray-600 mb-8" data-translate="blog.newsletter.subtitle">
+          Subscribe to our newsletter for the latest insights and industry updates
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+          <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent" data-translate="blog.newsletter.placeholder">
+          <button class="btn-primary text-white px-6 py-3 rounded-lg font-semibold whitespace-nowrap" data-translate="blog.newsletter.subscribe">
+            Subscribe
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <!-- Logo & Description -->
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="logo-gradient w-10 h-10 bg-gradient-to-r from-orange-400 to-pink-500 rounded-lg flex items-center justify-center">
+              <span class="text-white font-bold text-lg">DB</span>
+            </div>
+            <span class="text-2xl font-bold">DigitizedBrains</span>
+          </div>
+          <p class="text-gray-400 mb-4" data-translate="footer.description">
+            Leading digital transformation solutions for Vietnamese enterprises. Empowering businesses with AI and cutting-edge technology.
+          </p>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.quickLinks">Quick Links</h4>
+          <div class="grid grid-cols-2 gap-4">
+            <ul class="space-y-2">
+              <li><a href="../../index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.home">Home</a></li>
+              <li><a href="../about/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.about">About</a></li>
+              <li><a href="../digital-transformation/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.digitalTransformation">Digital Transformation</a></li>
+              <li><a href="../ai-agents/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.aiAgent">AI Agent</a></li>
+            </ul>
+            <ul class="space-y-2">
+              <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.blog">Blog</a></li>
+              <li><a href="../resources/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.resources">Resources</a></li>
+              <li><a href="../contact/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Contact Info -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.contact">Contact</h4>
+          <ul class="space-y-2">
+            <li class="text-gray-400">email@digitizedbrains.com</li>
+            <li class="text-gray-400">+84 123 456 789</li>
+            <li class="text-gray-400" data-translate="footer.location">Ho Chi Minh City, Vietnam</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-gray-400" data-translate="footer.copyright">
+          © 2025 DigitizedBrains. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chatbot Integration -->
+  <script src="../../js/chatbot.js"></script>
+
+  <!-- JavaScript for Language Switching and Functionality -->
+  <script>
+    // Language data
+    const languages = {
+      en: {
+        meta: {
+          title: "Blog - DigitizedBrains",
+          description: "Latest insights and trends in digital transformation, AI technology, and Vietnamese business developments"
+        },
+        nav: {
+          home: "Home",
+          about: "About",
+          digitalTransformation: "Digital Transformation",
+          aiAgent: "AI Agent",
+          blog: "Blog",
+          resources: "Resources",
+          contact: "Contact"
+        },
+        blog: {
+          hero: {
+            title: "Latest Insights & Trends",
+            subtitle: "Stay updated with the latest developments in digital transformation, AI technology, and Vietnamese business"
+          },
+          featured: {
+            title: "Featured Article",
+            articleTitle: "The Future of Vietnamese Business: AI-Driven Digital Transformation",
+            articleExcerpt: "Exploring how artificial intelligence is revolutionizing business processes, decision-making, and customer engagement in Vietnam's rapidly evolving economic landscape."
+          },
+          recent: {
+            title: "Recent Articles",
+            subtitle: "Discover insights, trends, and innovations shaping the future of business technology"
+          },
+          categories: {
+            digitalTransformation: "Digital Transformation",
+            ai: "AI Technology",
+            strategy: "Strategy",
+            analytics: "Analytics",
+            cloud: "Cloud Tech",
+            mobile: "Mobile",
+            innovation: "Innovation"
+          },
+          readTime: "5 min read",
+          readMore: "Read More",
+          loadMore: "Load More Articles",
+          author: {
+            name: "Dr. Nguyen Tan Duc",
+            name2: "Sarah Chen",
+            name3: "Michael Tran",
+            name4: "Lisa Nguyen",
+            name5: "David Lee",
+            name6: "Anna Pham",
+            name7: "James Kim",
+            date: "January 25, 2025"
+          },
+          post1: {
+            title: "AI Agents in Business: Automation Revolution",
+            excerpt: "How intelligent AI agents are transforming business operations, process automation, and customer service in modern enterprises."
+          },
+          post2: {
+            title: "Building Digital-First Business Organizations",
+            excerpt: "Strategic frameworks for transforming traditional businesses into agile, technology-driven organizations ready for the future."
+          },
+          post3: {
+            title: "Customer Intelligence: Data-Driven Business Strategy",
+            excerpt: "Leveraging advanced analytics and machine learning to understand customer behavior and optimize business performance."
+          },
+          post4: {
+            title: "Cloud Infrastructure for Business Scalability",
+            excerpt: "How cloud-native architectures enable businesses to scale operations, reduce costs, and improve service delivery."
+          },
+          post5: {
+            title: "Mobile-First Business Solution Strategies",
+            excerpt: "Optimizing business applications and user experience for mobile platforms in Vietnam's mobile-first business environment."
+          },
+          post6: {
+            title: "The Next Frontier: Immersive Business Technologies",
+            excerpt: "Exploring VR, AR, and mixed reality applications in business operations and how they're reshaping customer engagement."
+          },
+          date1: "Jan 20, 2025",
+          date2: "Jan 18, 2025",
+          date3: "Jan 15, 2025",
+          date4: "Jan 12, 2025",
+          date5: "Jan 10, 2025",
+          date6: "Jan 8, 2025",
+          newsletter: {
+            title: "Stay Updated",
+            subtitle: "Subscribe to our newsletter for the latest insights and industry updates",
+            placeholder: "Enter your email",
+            subscribe: "Subscribe"
+          }
+        },
+        footer: {
+          description: "Leading digital transformation solutions for Vietnamese enterprises. Empowering businesses with AI and cutting-edge technology.",
+          quickLinks: "Quick Links",
+          contact: "Contact",
+          location: "Ho Chi Minh City, Vietnam",
+          copyright: "© 2025 DigitizedBrains. All rights reserved."
+        }
+      },
+      vi: {
+        meta: {
+          title: "Blog - DigitizedBrains",
+          description: "Những thông tin mới nhất và xu hướng trong chuyển đổi số, công nghệ AI và phát triển doanh nghiệp Việt Nam"
+        },
+        nav: {
+          home: "Trang chủ",
+          about: "Giới thiệu",
+          digitalTransformation: "Chuyển đổi số",
+          aiAgent: "AI Agent",
+          blog: "Blog",
+          resources: "Tài nguyên",
+          contact: "Liên hệ"
+        },
+        blog: {
+          hero: {
+            title: "Thông tin & Xu hướng mới nhất",
+            subtitle: "Cập nhật những phát triển mới nhất trong chuyển đổi số, công nghệ AI và doanh nghiệp Việt Nam"
+          },
+          featured: {
+            title: "Bài viết nổi bật",
+            articleTitle: "Tương lai của Doanh nghiệp Việt Nam: Chuyển đổi số được thúc đẩy bởi AI",
+            articleExcerpt: "Khám phá cách trí tuệ nhân tạo đang cách mạng hóa quy trình kinh doanh, ra quyết định và tương tác khách hàng trong bối cảnh kinh tế Việt Nam phát triển nhanh chóng."
+          },
+          recent: {
+            title: "Bài viết gần đây",
+            subtitle: "Khám phá những hiểu biết, xu hướng và đổi mới định hình tương lai của công nghệ kinh doanh"
+          },
+          categories: {
+            digitalTransformation: "Chuyển đổi số",
+            ai: "Công nghệ AI",
+            strategy: "Chiến lược",
+            analytics: "Phân tích dữ liệu",
+            cloud: "Công nghệ đám mây",
+            mobile: "Di động",
+            innovation: "Đổi mới"
+          },
+          readTime: "5 phút đọc",
+          readMore: "Đọc thêm",
+          loadMore: "Xem thêm bài viết",
+          author: {
+            name: "TS. Nguyễn Tấn Đức",
+            name2: "Sarah Chen",
+            name3: "Michael Trần",
+            name4: "Lisa Nguyễn",
+            name5: "David Lee",
+            name6: "Anna Phạm",
+            name7: "James Kim",
+            date: "25 tháng 1, 2025"
+          },
+          post1: {
+            title: "AI Agents trong Kinh doanh: Cuộc cách mạng Tự động hóa",
+            excerpt: "Cách các AI agents thông minh đang chuyển đổi hoạt động kinh doanh, tự động hóa quy trình và dịch vụ khách hàng trong doanh nghiệp hiện đại."
+          },
+          post2: {
+            title: "Xây dựng Tổ chức Kinh doanh Ưu tiên Số",
+            excerpt: "Khung chiến lược để chuyển đổi các doanh nghiệp truyền thống thành tổ chức linh hoạt, được thúc đẩy bởi công nghệ sẵn sàng cho tương lai."
+          },
+          post3: {
+            title: "Thông minh Khách hàng: Chiến lược Kinh doanh dựa trên Dữ liệu",
+            excerpt: "Tận dụng phân tích nâng cao và học máy để hiểu hành vi khách hàng và tối ưu hóa hiệu suất kinh doanh."
+          },
+          post4: {
+            title: "Hạ tầng Đám mây cho Khả năng Mở rộng Kinh doanh",
+            excerpt: "Cách kiến trúc cloud-native cho phép các doanh nghiệp mở rộng hoạt động, giảm chi phí và cải thiện phân phối dịch vụ."
+          },
+          post5: {
+            title: "Chiến lược Giải pháp Kinh doanh Ưu tiên Di động",
+            excerpt: "Tối ưu hóa ứng dụng kinh doanh và trải nghiệm người dùng cho các nền tảng di động trong môi trường kinh doanh ưu tiên di động của Việt Nam."
+          },
+          post6: {
+            title: "Biên giới Tiếp theo: Công nghệ Kinh doanh Nhập vai",
+            excerpt: "Khám phá ứng dụng VR, AR và thực tế hỗn hợp trong hoạt động kinh doanh và cách chúng định hình lại sự tương tác của khách hàng."
+          },
+          date1: "20 tháng 1, 2025",
+          date2: "18 tháng 1, 2025",
+          date3: "15 tháng 1, 2025",
+          date4: "12 tháng 1, 2025",
+          date5: "10 tháng 1, 2025",
+          date6: "8 tháng 1, 2025",
+          newsletter: {
+            title: "Luôn cập nhật",
+            subtitle: "Đăng ký nhận bản tin để có những thông tin và cập nhật ngành mới nhất",
+            placeholder: "Nhập email của bạn",
+            subscribe: "Đăng ký"
+          }
+        },
+        footer: {
+          description: "Giải pháp chuyển đổi số hàng đầu cho doanh nghiệp Việt Nam. Trao quyền cho doanh nghiệp với AI và công nghệ tiên tiến.",
+          quickLinks: "Liên kết nhanh",
+          contact: "Liên hệ",
+          location: "Thành phố Hồ Chí Minh, Việt Nam",
+          copyright: "© 2025 DigitizedBrains. Tất cả quyền được bảo lưu."
+        }
+      },
+      de: {
+        meta: {
+          title: "Blog - DigitizedBrains",
+          description: "Neueste Einblicke und Trends in der digitalen Transformation, KI-Technologie und Entwicklungen vietnamesischer Unternehmen"
+        },
+        nav: {
+          home: "Startseite",
+          about: "Über uns",
+          digitalTransformation: "Digitale Transformation",
+          aiAgent: "KI-Agent",
+          blog: "Blog",
+          resources: "Ressourcen",
+          contact: "Kontakt"
+        },
+        blog: {
+          hero: {
+            title: "Neueste Einblicke & Trends",
+            subtitle: "Bleiben Sie auf dem Laufenden über die neuesten Entwicklungen in der digitalen Transformation, KI-Technologie und vietnamesischen Unternehmen"
+          },
+          featured: {
+            title: "Hauptartikel",
+            articleTitle: "Die Zukunft vietnamesischer Unternehmen: KI-gesteuerte digitale Transformation",
+            articleExcerpt: "Erkundung, wie künstliche Intelligenz Geschäftsprozesse, Entscheidungsfindung und Kundenbindung in Vietnams sich schnell entwickelnder Wirtschaftslandschaft revolutioniert."
+          },
+          recent: {
+            title: "Aktuelle Artikel",
+            subtitle: "Entdecken Sie Einblicke, Trends und Innovationen, die die Zukunft der Unternehmenstechnologie prägen"
+          },
+          categories: {
+            digitalTransformation: "Digitale Transformation",
+            ai: "KI-Technologie",
+            strategy: "Strategie",
+            analytics: "Analytik",
+            cloud: "Cloud-Tech",
+            mobile: "Mobil",
+            innovation: "Innovation"
+          },
+          readTime: "5 Min. Lesezeit",
+          readMore: "Weiterlesen",
+          loadMore: "Weitere Artikel laden",
+          author: {
+            name: "Dr. Nguyen Tan Duc",
+            name2: "Sarah Chen",
+            name3: "Michael Tran",
+            name4: "Lisa Nguyen",
+            name5: "David Lee",
+            name6: "Anna Pham",
+            name7: "James Kim",
+            date: "25. Januar 2025"
+          },
+          post1: {
+            title: "KI-Agenten im Geschäftswesen: Automatisierungsrevolution",
+            excerpt: "Wie intelligente KI-Agenten Geschäftsabläufe, Prozessautomatisierung und Kundenservice in modernen Unternehmen transformieren."
+          },
+          post2: {
+            title: "Aufbau digital-erster Geschäftsorganisationen",
+            excerpt: "Strategische Frameworks für die Transformation traditioneller Unternehmen in agile, technologiegetriebene Organisationen, die für die Zukunft bereit sind."
+          },
+          post3: {
+            title: "Kunden-Intelligence: Datengesteuerte Geschäftsstrategie",
+            excerpt: "Nutzung fortgeschrittener Analytik und maschinellem Lernen, um Kundenverhalten zu verstehen und Geschäftsleistung zu optimieren."
+          },
+          post4: {
+            title: "Cloud-Infrastruktur für Geschäfts-Skalierbarkeit",
+            excerpt: "Wie Cloud-native Architekturen Unternehmen ermöglichen, Operationen zu skalieren, Kosten zu reduzieren und Service-Bereitstellung zu verbessern."
+          },
+          post5: {
+            title: "Mobile-First Geschäftslösungsstrategien",
+            excerpt: "Optimierung von Geschäftsanwendungen und Nutzererfahrung für mobile Plattformen in Vietnams mobile-first Geschäftsumgebung."
+          },
+          post6: {
+            title: "Die nächste Grenze: Immersive Geschäftstechnologien",
+            excerpt: "Erkundung von VR-, AR- und Mixed-Reality-Anwendungen in Geschäftsabläufen und wie sie die Kundenbindung neu gestalten."
+          },
+          date1: "20. Jan 2025",
+          date2: "18. Jan 2025",
+          date3: "15. Jan 2025",
+          date4: "12. Jan 2025",
+          date5: "10. Jan 2025",
+          date6: "8. Jan 2025",
+          newsletter: {
+            title: "Bleiben Sie informiert",
+            subtitle: "Abonnieren Sie unseren Newsletter für die neuesten Einblicke und Branchenupdates",
+            placeholder: "E-Mail eingeben",
+            subscribe: "Abonnieren"
+          }
+        },
+        footer: {
+          description: "Führende digitale Transformationslösungen für vietnamesische Unternehmen. Stärkung von Unternehmen mit KI und modernster Technologie.",
+          quickLinks: "Schnelle Links",
+          contact: "Kontakt",
+          location: "Ho-Chi-Minh-Stadt, Vietnam",
+          copyright: "© 2025 DigitizedBrains. Alle Rechte vorbehalten."
+        }
+      }
+    };
+
+    // Language configuration
+    const languageConfig = {
+      en: { flag: "https://flagcdn.com/24x18/us.png", code: "EN", alt: "English" },
+      vi: { flag: "https://flagcdn.com/24x18/vn.png", code: "VN", alt: "Tiếng Việt" },
+      de: { flag: "https://flagcdn.com/24x18/de.png", code: "DE", alt: "Deutsch" }
+    };
+
+    // Current language
+    let currentLanguage = localStorage.getItem('preferredLanguage') || 'en';
+
+    // DOM elements
+    const languageToggle = document.getElementById('language-btn');
+    const languageOptions = document.getElementById('language-menu');
+    const currentFlag = document.getElementById('current-flag');
+    const currentLang = document.getElementById('current-lang');
+    const htmlRoot = document.getElementById('html-root');
+    const pageTitle = document.getElementById('page-title');
+    const pageDescription = document.getElementById('page-description');
+    
+    // Mobile language elements
+    const mobileLanguageToggle = document.getElementById('mobile-language-btn');
+    const mobileLanguageOptions = document.getElementById('mobile-language-menu');
+    const mobileCurrentFlag = document.getElementById('mobile-current-flag');
+    const mobileCurrentLang = document.getElementById('mobile-current-lang');
+
+    // Function to update language display
+    function updateLanguageDisplay() {
+      const config = languageConfig[currentLanguage];
+      if (currentFlag) {
+        currentFlag.src = config.flag;
+        currentFlag.alt = config.alt;
+      }
+      if (currentLang) {
+        currentLang.textContent = config.code;
+      }
+      if (mobileCurrentFlag) {
+        mobileCurrentFlag.src = config.flag;
+        mobileCurrentFlag.alt = config.alt;
+      }
+      if (mobileCurrentLang) {
+        mobileCurrentLang.textContent = config.code;
+      }
+      
+      // Update current language in dropdown options
+      document.querySelectorAll('.language-option, .language-option-mobile').forEach(option => {
+        option.classList.remove('current', 'active');
+        if (option.dataset.lang === currentLanguage) {
+          option.classList.add('active');
+        }
+      });
+    }
+
+    // Function to translate content
+    function translateContent(targetLanguage) {
+      const data = languages[targetLanguage];
+      if (!data) return;
+
+      // Add transition effect
+      document.body.classList.add('lang-transition', 'changing');
+
+      setTimeout(() => {
+        // Update meta tags
+        htmlRoot.lang = targetLanguage === 'vi' ? 'vi' : targetLanguage === 'de' ? 'de' : 'en';
+        pageTitle.textContent = data.meta.title;
+        pageDescription.content = data.meta.description;
+
+        // Update all translatable elements
+        document.querySelectorAll('[data-translate]').forEach(element => {
+          const key = element.getAttribute('data-translate');
+          const keys = key.split('.');
+          let value = data;
+          
+          for (let k of keys) {
+            value = value[k];
+            if (!value) break;
+          }
+          
+          if (value) {
+            element.textContent = value;
+          }
+        });
+
+        // Remove transition effect
+        document.body.classList.remove('changing');
+      }, 150);
+
+      setTimeout(() => {
+        document.body.classList.remove('lang-transition');
+      }, 450);
+    }
+
+    // Function to change language
+    function changeLanguage(newLanguage) {
+      if (newLanguage === currentLanguage) return;
+      
+      currentLanguage = newLanguage;
+      localStorage.setItem('preferredLanguage', newLanguage);
+      
+      updateLanguageDisplay();
+      translateContent(newLanguage);
+    }
+
+    // Make changeLanguage available globally for onclick handlers
+    window.changeLanguage = changeLanguage;
+
+    // Language switcher event listeners
+    if (languageToggle) {
+      languageToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        languageToggle.classList.toggle('active');
+        if (languageOptions) {
+          languageOptions.classList.toggle('show');
+        }
+      });
+    }
+
+    if (mobileLanguageToggle) {
+      mobileLanguageToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        mobileLanguageToggle.classList.toggle('active');
+        if (mobileLanguageOptions) {
+          mobileLanguageOptions.classList.toggle('show');
+        }
+      });
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function() {
+      if (languageToggle) languageToggle.classList.remove('active');
+      if (languageOptions) languageOptions.classList.remove('show');
+      if (mobileLanguageToggle) mobileLanguageToggle.classList.remove('active');
+      if (mobileLanguageOptions) mobileLanguageOptions.classList.remove('show');
+    });
+
+    // Prevent dropdown from closing when clicking inside options
+    if (languageOptions) {
+      languageOptions.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+    }
+    if (mobileLanguageOptions) {
+      mobileLanguageOptions.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+    }
+
+    // Language option click handlers
+    document.querySelectorAll('.language-option, .language-option-mobile').forEach(option => {
+      option.addEventListener('click', function(e) {
+        e.preventDefault();
+        const selectedLanguage = this.dataset.lang;
+        changeLanguage(selectedLanguage);
+        if (languageToggle) languageToggle.classList.remove('active');
+        if (languageOptions) languageOptions.classList.remove('show');
+        if (mobileLanguageToggle) mobileLanguageToggle.classList.remove('active');
+        if (mobileLanguageOptions) mobileLanguageOptions.classList.remove('show');
+      });
+    });
+
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Scroll reveal animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      updateLanguageDisplay();
+      translateContent(currentLanguage);
+    });
+  </script>
+</body>
+</html>

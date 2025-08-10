@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="page-title">Tích hợp Công nghệ Thông minh - DigitizedBrains</title>
+  <meta name="description" content="Giải pháp tích hợp công nghệ thông minh toàn diện cho doanh nghiệp Việt Nam" id="page-description">
+  <link href="../../css/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    .font-nunito { 
+      font-family: 'Nunito', sans-serif; 
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Navigation styles */
+    .nav-link {
+      color: #374151;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .nav-link:hover { color: #ed7354; background-color: #fef2f2; }
+    .nav-link.active { color: #ed7354; font-weight: 600; }
+
+    /* Language Switcher Styles */
+    .language-switcher {
+      position: relative;
+    }
+    
+    .language-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      min-width: 160px;
+      display: none;
+      z-index: 1000;
+    }
+    
+    .language-menu.show {
+      display: block;
+    }
+    
+    .language-option {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+    
+    .language-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    /* Hero Section Styles */
+    .hero-section {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 120px 0;
+      color: white;
+    }
+
+    /* Scroll Reveal Animation */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+    
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Feature Cards */
+    .feature-card {
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Button Styles */
+    .btn-primary {
+      background: linear-gradient(135deg, #ed7354, #dc2626);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+  <!-- Header -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <div class="logo-gradient w-10 h-10 bg-gradient-to-r from-orange-400 to-pink-500 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-lg">DB</span>
+          </div>
+          <a href="../../index.html" class="text-2xl font-bold text-gray-800">DigitizedBrains</a>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="hidden md:flex space-x-4">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="../blog/index.html" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+        </nav>
+
+        <!-- Language Switcher -->
+        <div class="hidden md:block">
+          <div class="language-switcher">
+            <button id="language-btn" class="flex items-center space-x-1 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+              <img id="current-flag" src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+              <span id="current-lang">EN</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="language-menu" class="language-menu">
+              <a href="#" onclick="changeLanguage('en')" class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                English
+              </a>
+              <a href="#" onclick="changeLanguage('vi')" class="language-option" data-lang="vi">
+                <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                Tiếng Việt
+              </a>
+              <a href="#" onclick="changeLanguage('de')" class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                Deutsch
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <nav class="flex flex-col space-y-2">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="../blog/index.html" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 scroll-reveal" data-translate="hero.title">Tích hợp Công nghệ Thông minh</h1>
+        <p class="text-xl opacity-90 mb-8 scroll-reveal" data-translate="hero.description">
+          Giải pháp tích hợp công nghệ thông minh toàn diện giúp doanh nghiệp Việt Nam kết nối liền mạch các hệ thống, tối ưu hiệu suất và tăng cường khả năng cạnh tranh trong kỷ nguyên số.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4 scroll-reveal">
+          <a href="#solutions" class="btn-primary px-8 py-3 rounded-full font-semibold text-white" data-translate="hero.cta">Khám phá Giải pháp Tích hợp Công nghệ</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Features -->
+  <section id="solutions" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4" data-translate="features.title">Giải pháp Tích hợp Công nghệ Thông minh</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-translate="features.subtitle">
+          Chúng tôi cung cấp các giải pháp toàn diện giúp doanh nghiệp khai thác sức mạnh của công nghệ tiên tiến
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- IoT Integration -->
+        <div class="feature-card bg-white rounded-xl p-6 shadow-lg transition-all duration-300 scroll-reveal">
+          <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">🔌</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="features.iot.title">Tích hợp IoT</h3>
+          <p class="text-gray-600" data-translate="features.iot.description">
+            Kết nối và quản lý thiết bị IoT trong một hệ sinh thái thống nhất, thu thập dữ liệu giá trị và tự động hóa quy trình kinh doanh theo thời gian thực.
+          </p>
+        </div>
+
+        <!-- Cloud Integration -->
+        <div class="feature-card bg-white rounded-xl p-6 shadow-lg transition-all duration-300 scroll-reveal">
+          <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">☁️</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="features.cloud.title">Tích hợp Đám mây</h3>
+          <p class="text-gray-600" data-translate="features.cloud.description">
+            Chuyển đổi và tích hợp hệ thống vào nền tảng đám mây để tăng tính linh hoạt, khả năng mở rộng và hiệu quả chi phí trong mọi hoạt động kinh doanh.
+          </p>
+        </div>
+
+        <!-- API Integration -->
+        <div class="feature-card bg-white rounded-xl p-6 shadow-lg transition-all duration-300 scroll-reveal">
+          <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">🔄</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="features.api.title">Tích hợp API</h3>
+          <p class="text-gray-600" data-translate="features.api.description">
+            Kết nối liền mạch các ứng dụng và dịch vụ thông qua API hiện đại, tạo ra hệ sinh thái số linh hoạt và có khả năng mở rộng theo nhu cầu kinh doanh.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Solutions -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12" data-translate="solutions.title">Các Giải pháp Tích hợp Công nghệ của Chúng tôi</h2>
+        
+        <!-- System Integration -->
+        <div class="mb-12 scroll-reveal">
+          <div class="flex items-start">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+              <span class="text-2xl">🔄</span>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-3" data-translate="solutions.system.title">Tích hợp Hệ thống Doanh nghiệp</h3>
+              <p class="text-gray-600 mb-4" data-translate="solutions.system.description">
+                Kết nối liền mạch các hệ thống nội bộ và bên ngoài để tạo ra một quy trình làm việc thống nhất:
+              </p>
+              <ul class="list-disc list-inside text-gray-600 space-y-2">
+                <li data-translate="solutions.system.feature1">Tích hợp ERP, CRM, HRM và các hệ thống quản lý doanh nghiệp khác</li>
+                <li data-translate="solutions.system.feature2">Xây dựng giải pháp middleware tùy chỉnh cho kết nối đa nền tảng</li>
+                <li data-translate="solutions.system.feature3">Triển khai kiến trúc hướng dịch vụ (SOA) và microservices</li>
+                <li data-translate="solutions.system.feature4">Bảo mật tích hợp đầu cuối và quản lý danh tính</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Smart Technology Ecosystem -->
+        <div class="mb-12 scroll-reveal">
+          <div class="flex items-start">
+            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+              <span class="text-2xl">🌐</span>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-3" data-translate="solutions.ecosystem.title">Hệ sinh thái Công nghệ Thông minh</h3>
+              <p class="text-gray-600 mb-4" data-translate="solutions.ecosystem.description">
+                Xây dựng một hệ sinh thái công nghệ thống nhất kết nối con người, quy trình và hệ thống:
+              </p>
+              <ul class="list-disc list-inside text-gray-600 space-y-2">
+                <li data-translate="solutions.ecosystem.feature1">Tích hợp IoT và các thiết bị thông minh vào môi trường làm việc</li>
+                <li data-translate="solutions.ecosystem.feature2">Xây dựng giải pháp văn phòng thông minh và không gian làm việc kỹ thuật số</li>
+                <li data-translate="solutions.ecosystem.feature3">Triển khai hệ thống phân tích dữ liệu thời gian thực từ nhiều nguồn</li>
+                <li data-translate="solutions.ecosystem.feature4">Tự động hóa quy trình thông qua tích hợp công nghệ thông minh</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Data Integration & Analytics -->
+        <div class="mb-12 scroll-reveal">
+          <div class="flex items-start">
+            <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
+              <span class="text-2xl">📊</span>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-3" data-translate="solutions.data.title">Tích hợp Dữ liệu & Phân tích</h3>
+              <p class="text-gray-600 mb-4" data-translate="solutions.data.description">
+                Kết hợp và phân tích dữ liệu từ nhiều nguồn để cung cấp thông tin chi tiết có giá trị:
+              </p>
+              <ul class="list-disc list-inside text-gray-600 space-y-2">
+                <li data-translate="solutions.data.feature1">Tích hợp dữ liệu từ nhiều nguồn và định dạng khác nhau</li>
+                <li data-translate="solutions.data.feature2">Xây dựng data lakes và kho dữ liệu thống nhất</li>
+                <li data-translate="solutions.data.feature3">Triển khai giải pháp phân tích dữ liệu lớn và học máy</li>
+                <li data-translate="solutions.data.feature4">Tạo bảng điều khiển và báo cáo trực quan để ra quyết định dựa trên dữ liệu</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Benefits Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-8 text-center scroll-reveal" data-translate="content.benefits.title">Lợi ích của Tích hợp Công nghệ Thông minh</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Efficiency -->
+        <div class="bg-white p-6 rounded-xl shadow-md scroll-reveal">
+          <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+            <span class="text-2xl">⚡</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.efficiency.title">Tăng Hiệu suất Hoạt động</h3>
+            <p class="text-gray-600" data-translate="content.benefits.efficiency.description">Tự động hóa quy trình và loại bỏ các tác vụ thủ công, giúp tiết kiệm thời gian và nguồn lực, đồng thời giảm thiểu lỗi do con người.</p>
+          </div>
+        </div>
+        
+        <!-- Insights -->
+        <div class="bg-white p-6 rounded-xl shadow-md scroll-reveal">
+          <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+            <span class="text-2xl">🔍</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.insights.title">Phân tích Dữ liệu Sâu sắc</h3>
+            <p class="text-gray-600" data-translate="content.benefits.insights.description">Khai thác thông tin chi tiết từ dữ liệu tích hợp để đưa ra quyết định kinh doanh thông minh hơn và dự đoán xu hướng thị trường.</p>
+          </div>
+        </div>
+        
+        <!-- Agility -->
+        <div class="bg-white p-6 rounded-xl shadow-md scroll-reveal">
+          <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mb-4">
+            <span class="text-2xl">🚀</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.agility.title">Tăng Tính Linh hoạt</h3>
+            <p class="text-gray-600" data-translate="content.benefits.agility.description">Phản ứng nhanh hơn với thay đổi thị trường và nhu cầu khách hàng thông qua hệ thống linh hoạt và có khả năng mở rộng.</p>
+          </div>
+        </div>
+        
+        <!-- Innovation -->
+        <div class="bg-white p-6 rounded-xl shadow-md scroll-reveal">
+          <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+            <span class="text-2xl">💡</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.innovation.title">Thúc đẩy Đổi mới</h3>
+            <p class="text-gray-600" data-translate="content.benefits.innovation.description">Tạo nền tảng vững chắc cho sự đổi mới và phát triển sản phẩm mới bằng cách tích hợp công nghệ tiên tiến vào mọi khía cạnh của doanh nghiệp.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-12 text-center" data-translate="caseStudies.title">Câu chuyện Thành công từ Doanh nghiệp Việt Nam</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <!-- Case Study 1 -->
+        <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md scroll-reveal">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2" data-translate="caseStudies.case1.title">Doanh nghiệp Sản xuất Tích hợp IoT</h3>
+            <p class="text-gray-600 mb-4" data-translate="caseStudies.case1.description">
+              Một doanh nghiệp sản xuất tại Việt Nam đã tăng năng suất sản xuất lên 35% và giảm 25% chi phí bảo trì thông qua việc triển khai hệ thống IoT tích hợp cho việc giám sát thiết bị và bảo trì dự đoán.
+            </p>
+            <div class="flex items-center text-orange-600">
+              <span class="font-semibold mr-2" data-translate="caseStudies.readMore">Xem thêm</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Case Study 2 -->
+        <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md scroll-reveal">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2" data-translate="caseStudies.case2.title">Doanh nghiệp Bán lẻ Tích hợp Đa kênh</h3>
+            <p class="text-gray-600 mb-4" data-translate="caseStudies.case2.description">
+              Một chuỗi bán lẻ đã tăng doanh số bán hàng lên 45% thông qua việc triển khai giải pháp tích hợp đa kênh, kết nối liền mạch hệ thống bán hàng online, cửa hàng vật lý và ứng dụng di động.
+            </p>
+            <div class="flex items-center text-orange-600">
+              <span class="font-semibold mr-2" data-translate="caseStudies.readMore">Xem thêm</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology Partners Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-8 text-center scroll-reveal" data-translate="partners.title">Đối tác Công nghệ</h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto text-center mb-12" data-translate="partners.description">
+        Chúng tôi hợp tác với các công ty công nghệ hàng đầu để mang đến giải pháp tích hợp tốt nhất cho khách hàng
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+        <div class="flex items-center justify-center p-4 grayscale hover:grayscale-0 transition-all duration-300">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Microsoft_Azure.svg/1200px-Microsoft_Azure.svg.png" alt="Microsoft Azure" class="h-12">
+        </div>
+        <div class="flex items-center justify-center p-4 grayscale hover:grayscale-0 transition-all duration-300">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Amazon_Web_Services_Logo.svg/1280px-Amazon_Web_Services_Logo.svg.png" alt="AWS" class="h-12">
+        </div>
+        <div class="flex items-center justify-center p-4 grayscale hover:grayscale-0 transition-all duration-300">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Google_Cloud_Logo.svg/1200px-Google_Cloud_Logo.svg.png" alt="Google Cloud" class="h-12">
+        </div>
+        <div class="flex items-center justify-center p-4 grayscale hover:grayscale-0 transition-all duration-300">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/SAS_wordmark.svg/1200px-SAS_wordmark.svg.png" alt="SAS" class="h-12">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-6" data-translate="contact.title">Sẵn sàng Nâng cấp Hệ thống Công nghệ của Doanh nghiệp?</h2>
+        <p class="text-gray-600 mb-8" data-translate="contact.description">
+          Liên hệ với chúng tôi để thảo luận về cách chúng tôi có thể giúp doanh nghiệp của bạn tích hợp công nghệ thông minh và đạt được lợi thế cạnh tranh.
+        </p>
+        <a href="../contact/index.html" class="btn-primary inline-block text-white px-8 py-3 rounded-lg font-semibold transition-colors" data-translate="contact.button">
+          Liên hệ Ngay
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <!-- Logo & Description -->
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <a href="../../index.html" class="w-10 h-10 logo-gradient rounded-xl flex items-center justify-center">
+              <span class="text-white font-bold text-lg">DB</span>
+            </a>
+            <div>
+              <a href="../../index.html" class="text-xl font-bold text-white">Digitized</a>
+              <a href="../../index.html" class="text-xl font-bold text-orange-400">Brains</a>
+            </div>
+          </div>
+          <p class="text-gray-400 mb-4" data-translate="footer.description">
+            Giải pháp tích hợp công nghệ thông minh hàng đầu cho doanh nghiệp Việt Nam. Trao quyền cho doanh nghiệp với công nghệ hiện đại và đổi mới tiên tiến.
+          </p>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.quickLinks">Quick Links</h4>
+          <div class="grid grid-cols-2 gap-4">
+            <ul class="space-y-2">
+              <li><a href="../../index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.home">Home</a></li>
+              <li><a href="../about/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.about">About</a></li>
+              <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.digitalTransformation">Digital Transformation</a></li>
+              <li><a href="digital-infrastructure-modernization.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.digitalInfrastructure">Digital Infrastructure</a></li>
+            </ul>
+            <ul class="space-y-2">
+              <li><a href="process-automation.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.digitalProcess">Digital Process</a></li>
+              <li><a href="../ai-agents/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.aiAgent">AI Agent</a></li>
+              <li><a href="../blog/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.blog">Blog</a></li>
+              <li><a href="../resources/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.resources">Resources</a></li>
+              <li><a href="../contact/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Contact Info -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.contact">Contact</h4>
+          <ul class="space-y-2">
+            <li class="text-gray-400">email@digitizedbrains.com</li>
+            <li class="text-gray-400">+84 123 456 789</li>
+            <li class="text-gray-400" data-translate="footer.location">Ho Chi Minh City, Vietnam</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-gray-400" data-translate="footer.copyright">
+          © 2025 DigitizedBrains. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Language Switcher Script -->
+  <script>
+    // Language data
+    const languages = {
+      en: {
+        meta: {
+          title: "Smart Technology Integration - DigitizedBrains",
+          description: "Comprehensive smart technology integration solutions for Vietnamese enterprises"
+        },
+        nav: {
+          home: "Home",
+          about: "About",
+          digitalTransformation: "Digital Transformation",
+          digitalInfrastructure: "Digital Infrastructure",
+          digitalProcess: "Digital Process",
+          aiAgent: "AI Agent",
+          blog: "Blog",
+          resources: "Resources",
+          contact: "Contact"
+        },
+        hero: {
+          title: "Smart Technology Integration",
+          description: "Comprehensive smart technology integration solutions helping Vietnamese businesses seamlessly connect systems, optimize performance, and enhance competitiveness in the digital era.",
+          cta: "Explore Integration Solutions"
+        },
+        features: {
+          title: "Smart Technology Integration Solutions",
+          subtitle: "We provide comprehensive solutions that help businesses harness the power of advanced technologies",
+          iot: {
+            title: "IoT Integration",
+            description: "Connect and manage IoT devices in a unified ecosystem, collecting valuable data and automating business processes in real-time."
+          },
+          cloud: {
+            title: "Cloud Integration",
+            description: "Transform and integrate systems into cloud platforms to increase flexibility, scalability, and cost-efficiency across all business operations."
+          },
+          api: {
+            title: "API Integration",
+            description: "Seamlessly connect applications and services through modern APIs, creating a flexible and scalable digital ecosystem that can grow with your business needs."
+          }
+        },
+        solutions: {
+          title: "Our Technology Integration Solutions",
+          system: {
+            title: "Enterprise System Integration",
+            description: "Seamlessly connect internal and external systems to create a unified workflow:",
+            feature1: "Integration of ERP, CRM, HRM, and other enterprise management systems",
+            feature2: "Building custom middleware solutions for multi-platform connectivity",
+            feature3: "Implementation of Service-Oriented Architecture (SOA) and microservices",
+            feature4: "End-to-end integration security and identity management"
+          },
+          ecosystem: {
+            title: "Smart Technology Ecosystem",
+            description: "Build a unified technology ecosystem connecting people, processes, and systems:",
+            feature1: "Integration of IoT and smart devices into the work environment",
+            feature2: "Building smart office solutions and digital workspaces",
+            feature3: "Implementation of real-time data analytics from multiple sources",
+            feature4: "Process automation through smart technology integration"
+          },
+          data: {
+            title: "Data Integration & Analytics",
+            description: "Combine and analyze data from multiple sources to provide valuable insights:",
+            feature1: "Integration of data from diverse sources and formats",
+            feature2: "Building data lakes and unified data warehouses",
+            feature3: "Implementation of big data analytics and machine learning solutions",
+            feature4: "Creating visual dashboards and reports for data-driven decision making"
+          }
+        },
+        content: {
+          benefits: {
+            title: "Benefits of Smart Technology Integration",
+            efficiency: {
+              title: "Increased Operational Efficiency",
+              description: "Automate processes and eliminate manual tasks, saving time and resources while minimizing human errors."
+            },
+            insights: {
+              title: "Deep Data Insights",
+              description: "Extract insights from integrated data to make smarter business decisions and predict market trends."
+            },
+            agility: {
+              title: "Enhanced Agility",
+              description: "Respond faster to market changes and customer needs through flexible and scalable systems."
+            },
+            innovation: {
+              title: "Drive Innovation",
+              description: "Create a solid foundation for innovation and new product development by integrating cutting-edge technologies into every aspect of your business."
+            }
+          }
+        },
+        caseStudies: {
+          title: "Success Stories from Vietnamese Businesses",
+          readMore: "Read more",
+          case1: {
+            title: "Manufacturing Company IoT Integration",
+            description: "A Vietnamese manufacturing company increased production efficiency by 35% and reduced maintenance costs by 25% through the implementation of an integrated IoT system for equipment monitoring and predictive maintenance."
+          },
+          case2: {
+            title: "Retail Business Omnichannel Integration",
+            description: "A retail chain increased sales by 45% through the implementation of an omnichannel integration solution, seamlessly connecting online sales systems, physical stores, and mobile applications."
+          }
+        },
+        partners: {
+          title: "Technology Partners",
+          description: "We partner with leading technology companies to bring the best integration solutions to our clients"
+        },
+        contact: {
+          title: "Ready to Upgrade Your Technology Systems?",
+          description: "Contact us to discuss how we can help your business integrate smart technologies and gain a competitive edge.",
+          button: "Get in Touch"
+        },
+        footer: {
+          description: "Leading smart technology integration solutions for Vietnamese enterprises. Empowering businesses with modern technology and cutting-edge innovations.",
+          quickLinks: "Quick Links",
+          contact: "Contact",
+          location: "Ho Chi Minh City, Vietnam",
+          copyright: "© 2025 DigitizedBrains. All rights reserved."
+        }
+      },
+      vi: {
+        meta: {
+          title: "Tích hợp Công nghệ Thông minh - DigitizedBrains",
+          description: "Giải pháp tích hợp công nghệ thông minh toàn diện cho doanh nghiệp Việt Nam"
+        },
+        nav: {
+          home: "Trang chủ",
+          about: "Giới thiệu",
+          digitalTransformation: "Chuyển đổi số",
+          digitalInfrastructure: "Hạ tầng số",
+          digitalProcess: "Quy trình số",
+          aiAgent: "AI Agent",
+          blog: "Blog",
+          resources: "Tài nguyên",
+          contact: "Liên hệ"
+        },
+        hero: {
+          title: "Tích hợp Công nghệ Thông minh",
+          description: "Giải pháp tích hợp công nghệ thông minh toàn diện giúp doanh nghiệp Việt Nam kết nối liền mạch các hệ thống, tối ưu hiệu suất và tăng cường khả năng cạnh tranh trong kỷ nguyên số.",
+          cta: "Khám phá Giải pháp Tích hợp Công nghệ"
+        },
+        features: {
+          title: "Giải pháp Tích hợp Công nghệ Thông minh",
+          subtitle: "Chúng tôi cung cấp các giải pháp toàn diện giúp doanh nghiệp khai thác sức mạnh của công nghệ tiên tiến",
+          iot: {
+            title: "Tích hợp IoT",
+            description: "Kết nối và quản lý thiết bị IoT trong một hệ sinh thái thống nhất, thu thập dữ liệu giá trị và tự động hóa quy trình kinh doanh theo thời gian thực."
+          },
+          cloud: {
+            title: "Tích hợp Đám mây",
+            description: "Chuyển đổi và tích hợp hệ thống vào nền tảng đám mây để tăng tính linh hoạt, khả năng mở rộng và hiệu quả chi phí trong mọi hoạt động kinh doanh."
+          },
+          api: {
+            title: "Tích hợp API",
+            description: "Kết nối liền mạch các ứng dụng và dịch vụ thông qua API hiện đại, tạo ra hệ sinh thái số linh hoạt và có khả năng mở rộng theo nhu cầu kinh doanh."
+          }
+        },
+        solutions: {
+          title: "Các Giải pháp Tích hợp Công nghệ của Chúng tôi",
+          system: {
+            title: "Tích hợp Hệ thống Doanh nghiệp",
+            description: "Kết nối liền mạch các hệ thống nội bộ và bên ngoài để tạo ra một quy trình làm việc thống nhất:",
+            feature1: "Tích hợp ERP, CRM, HRM và các hệ thống quản lý doanh nghiệp khác",
+            feature2: "Xây dựng giải pháp middleware tùy chỉnh cho kết nối đa nền tảng",
+            feature3: "Triển khai kiến trúc hướng dịch vụ (SOA) và microservices",
+            feature4: "Bảo mật tích hợp đầu cuối và quản lý danh tính"
+          },
+          ecosystem: {
+            title: "Hệ sinh thái Công nghệ Thông minh",
+            description: "Xây dựng một hệ sinh thái công nghệ thống nhất kết nối con người, quy trình và hệ thống:",
+            feature1: "Tích hợp IoT và các thiết bị thông minh vào môi trường làm việc",
+            feature2: "Xây dựng giải pháp văn phòng thông minh và không gian làm việc kỹ thuật số",
+            feature3: "Triển khai hệ thống phân tích dữ liệu thời gian thực từ nhiều nguồn",
+            feature4: "Tự động hóa quy trình thông qua tích hợp công nghệ thông minh"
+          },
+          data: {
+            title: "Tích hợp Dữ liệu & Phân tích",
+            description: "Kết hợp và phân tích dữ liệu từ nhiều nguồn để cung cấp thông tin chi tiết có giá trị:",
+            feature1: "Tích hợp dữ liệu từ nhiều nguồn và định dạng khác nhau",
+            feature2: "Xây dựng data lakes và kho dữ liệu thống nhất",
+            feature3: "Triển khai giải pháp phân tích dữ liệu lớn và học máy",
+            feature4: "Tạo bảng điều khiển và báo cáo trực quan để ra quyết định dựa trên dữ liệu"
+          }
+        },
+        content: {
+          benefits: {
+            title: "Lợi ích của Tích hợp Công nghệ Thông minh",
+            efficiency: {
+              title: "Tăng Hiệu suất Hoạt động",
+              description: "Tự động hóa quy trình và loại bỏ các tác vụ thủ công, giúp tiết kiệm thời gian và nguồn lực, đồng thời giảm thiểu lỗi do con người."
+            },
+            insights: {
+              title: "Phân tích Dữ liệu Sâu sắc",
+              description: "Khai thác thông tin chi tiết từ dữ liệu tích hợp để đưa ra quyết định kinh doanh thông minh hơn và dự đoán xu hướng thị trường."
+            },
+            agility: {
+              title: "Tăng Tính Linh hoạt",
+              description: "Phản ứng nhanh hơn với thay đổi thị trường và nhu cầu khách hàng thông qua hệ thống linh hoạt và có khả năng mở rộng."
+            },
+            innovation: {
+              title: "Thúc đẩy Đổi mới",
+              description: "Tạo nền tảng vững chắc cho sự đổi mới và phát triển sản phẩm mới bằng cách tích hợp công nghệ tiên tiến vào mọi khía cạnh của doanh nghiệp."
+            }
+          }
+        },
+        caseStudies: {
+          title: "Câu chuyện Thành công từ Doanh nghiệp Việt Nam",
+          readMore: "Xem thêm",
+          case1: {
+            title: "Doanh nghiệp Sản xuất Tích hợp IoT",
+            description: "Một doanh nghiệp sản xuất tại Việt Nam đã tăng năng suất sản xuất lên 35% và giảm 25% chi phí bảo trì thông qua việc triển khai hệ thống IoT tích hợp cho việc giám sát thiết bị và bảo trì dự đoán."
+          },
+          case2: {
+            title: "Doanh nghiệp Bán lẻ Tích hợp Đa kênh",
+            description: "Một chuỗi bán lẻ đã tăng doanh số bán hàng lên 45% thông qua việc triển khai giải pháp tích hợp đa kênh, kết nối liền mạch hệ thống bán hàng online, cửa hàng vật lý và ứng dụng di động."
+          }
+        },
+        partners: {
+          title: "Đối tác Công nghệ",
+          description: "Chúng tôi hợp tác với các công ty công nghệ hàng đầu để mang đến giải pháp tích hợp tốt nhất cho khách hàng"
+        },
+        contact: {
+          title: "Sẵn sàng Nâng cấp Hệ thống Công nghệ của Doanh nghiệp?",
+          description: "Liên hệ với chúng tôi để thảo luận về cách chúng tôi có thể giúp doanh nghiệp của bạn tích hợp công nghệ thông minh và đạt được lợi thế cạnh tranh.",
+          button: "Liên hệ Ngay"
+        },
+        footer: {
+          description: "Giải pháp tích hợp công nghệ thông minh hàng đầu cho doanh nghiệp Việt Nam. Trao quyền cho doanh nghiệp với công nghệ hiện đại và đổi mới tiên tiến.",
+          quickLinks: "Liên kết Nhanh",
+          contact: "Liên hệ",
+          location: "TP. Hồ Chí Minh, Việt Nam",
+          copyright: "© 2025 DigitizedBrains. Đã đăng ký bản quyền."
+        }
+      },
+      de: {
+        meta: {
+          title: "Intelligente Technologieintegration - DigitizedBrains",
+          description: "Umfassende Lösungen zur Integration intelligenter Technologien für vietnamesische Unternehmen"
+        },
+        nav: {
+          home: "Startseite",
+          about: "Über uns",
+          digitalTransformation: "Digitale Transformation",
+          digitalInfrastructure: "Digitale Infrastruktur",
+          digitalProcess: "Digitale Prozesse",
+          aiAgent: "KI-Agent",
+          blog: "Blog",
+          resources: "Ressourcen",
+          contact: "Kontakt"
+        },
+        hero: {
+          title: "Intelligente Technologieintegration",
+          description: "Umfassende Lösungen zur Integration intelligenter Technologien, die vietnamesischen Unternehmen helfen, Systeme nahtlos zu verbinden, die Leistung zu optimieren und die Wettbewerbsfähigkeit im digitalen Zeitalter zu steigern.",
+          cta: "Integrationslösungen entdecken"
+        },
+        features: {
+          title: "Lösungen für intelligente Technologieintegration",
+          subtitle: "Wir bieten umfassende Lösungen, die Unternehmen helfen, die Kraft fortschrittlicher Technologien zu nutzen",
+          iot: {
+            title: "IoT-Integration",
+            description: "Verbinden und verwalten Sie IoT-Geräte in einem einheitlichen Ökosystem, sammeln Sie wertvolle Daten und automatisieren Sie Geschäftsprozesse in Echtzeit."
+          },
+          cloud: {
+            title: "Cloud-Integration",
+            description: "Transformieren und integrieren Sie Systeme in Cloud-Plattformen, um Flexibilität, Skalierbarkeit und Kosteneffizienz in allen Geschäftsbereichen zu steigern."
+          },
+          api: {
+            title: "API-Integration",
+            description: "Verbinden Sie Anwendungen und Dienste nahtlos durch moderne APIs und schaffen Sie ein flexibles und skalierbares digitales Ökosystem, das mit Ihren Geschäftsanforderungen wachsen kann."
+          }
+        },
+        solutions: {
+          title: "Unsere Technologieintegrationslösungen"
+        },
+        content: {
+          benefits: {
+            title: "Vorteile der intelligenten Technologieintegration"
+          }
+        },
+        caseStudies: {
+          title: "Erfolgsgeschichten vietnamesischer Unternehmen",
+          readMore: "Mehr lesen"
+        },
+        partners: {
+          title: "Technologiepartner",
+          description: "Wir arbeiten mit führenden Technologieunternehmen zusammen, um unseren Kunden die besten Integrationslösungen zu bieten"
+        },
+        contact: {
+          title: "Bereit für ein Upgrade Ihrer Technologiesysteme?",
+          description: "Kontaktieren Sie uns, um zu besprechen, wie wir Ihrem Unternehmen helfen können, intelligente Technologien zu integrieren und einen Wettbewerbsvorteil zu erlangen.",
+          button: "Kontakt aufnehmen"
+        },
+        footer: {
+          description: "Führende Lösungen für intelligente Technologieintegration für vietnamesische Unternehmen. Wir stärken Unternehmen mit moderner Technologie und wegweisenden Innovationen.",
+          quickLinks: "Schnelllinks",
+          contact: "Kontakt",
+          location: "Ho-Chi-Minh-Stadt, Vietnam",
+          copyright: "© 2025 DigitizedBrains. Alle Rechte vorbehalten."
+        }
+      }
+    };
+
+    // Initialize language functionality
+    let currentLanguage = localStorage.getItem('preferredLanguage') || 'en';
+
+    function changeLanguage(language) {
+      currentLanguage = language;
+      localStorage.setItem('preferredLanguage', language);
+      
+      // Update UI elements
+      document.body.classList.add('lang-transition', 'changing');
+      
+      setTimeout(() => {
+        translateContent(language);
+        document.body.classList.remove('changing');
+      }, 300);
+      
+      // Update language menu UI
+      document.querySelectorAll('.language-option').forEach(option => {
+        if (option.getAttribute('data-lang') === language) {
+          option.classList.add('active');
+        } else {
+          option.classList.remove('active');
+        }
+      });
+      
+      // Update current language display
+      const flagMap = {
+        'en': 'https://flagcdn.com/24x18/us.png',
+        'vi': 'https://flagcdn.com/24x18/vn.png',
+        'de': 'https://flagcdn.com/24x18/de.png'
+      };
+      
+      const langDisplay = {
+        'en': 'EN',
+        'vi': 'VI',
+        'de': 'DE'
+      };
+      
+      document.getElementById('current-flag').src = flagMap[language];
+      document.getElementById('current-lang').textContent = langDisplay[language];
+      
+      // Close dropdown
+      document.getElementById('language-menu').classList.remove('show');
+    }
+
+    function translateContent(targetLanguage) {
+      const data = languages[targetLanguage];
+      if (!data) return;
+
+      // Translate all elements with data-translate attribute
+      document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        const keys = key.split('.');
+        let value = data;
+        
+        // Navigate through the nested object
+        for (const k of keys) {
+          if (value[k] !== undefined) {
+            value = value[k];
+          } else {
+            // If key doesn't exist, stop
+            value = null;
+            break;
+          }
+        }
+        
+        if (typeof value === 'string') {
+          element.innerHTML = value;
+        }
+      });
+
+      // Update meta tags
+      document.title = data.meta.title;
+      document.querySelector('meta[name="description"]').content = data.meta.description;
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      translateContent(currentLanguage);
+      
+      // Language switcher functionality
+      const languageBtn = document.getElementById('language-btn');
+      const languageMenu = document.getElementById('language-menu');
+      
+      languageBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        languageMenu.classList.toggle('show');
+      });
+      
+      document.addEventListener('click', function() {
+        languageMenu.classList.remove('show');
+      });
+      
+      // Mobile menu functionality
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+      });
+      
+      // Scroll reveal animation
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.scroll-reveal').forEach(el => {
+        observer.observe(el);
+      });
+    });
+  </script>
+
+  <!-- Chatbot Integration -->
+  <script src="../../js/chatbot.js"></script>
+</body>
+</html>

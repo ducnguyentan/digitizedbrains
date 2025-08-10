@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="page-title">Resources & Downloads - DigitizedBrains</title>
+  <meta name="description" content="Comprehensive resources, guides, whitepapers, and tools for digital transformation in Vietnamese enterprises" id="page-description">
+  <link href="../../css/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+    body { font-family: 'Poppins', sans-serif; }
+    .font-nunito { font-family: 'Nunito', sans-serif; }
+    .nav-link { 
+      color: #374151; 
+      padding: 0.5rem 1rem; 
+      transition: all 0.3s ease; 
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .nav-link:hover { color: #ed7354; background-color: #fef2f2; }
+    .nav-link.active { color: #ed7354; font-weight: 600; }
+    .btn-primary { 
+      background: linear-gradient(135deg, #ed7354 0%, #f97316 100%); 
+      transition: all 0.3s ease; 
+      box-shadow: 0 4px 15px rgba(237, 115, 84, 0.3);
+    }
+    .logo-gradient {
+      background: linear-gradient(135deg, #fb923c 0%, #ec4899 100%);
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(237, 115, 84, 0.4); }
+    .hero-bg { 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .resource-card {
+      transition: all 0.3s ease;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+    .resource-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      border-color: #ed7354;
+    }
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Language Switcher Styles */
+    .language-switcher {
+      position: relative;
+    }
+    
+    .language-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      min-width: 160px;
+      display: none;
+      z-index: 1000;
+    }
+    
+    .language-menu.show {
+      display: block;
+    }
+    
+    .language-option {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+    
+    .language-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+    
+    /* Mobile Language Switcher */
+    .language-switcher-mobile {
+      position: relative;
+    }
+    
+    .language-menu-mobile {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      display: none;
+      z-index: 1000;
+    }
+    
+    .language-menu-mobile.show {
+      display: block;
+    }
+    
+    .language-option-mobile {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option-mobile:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option-mobile.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+    
+    .language-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .language-toggle {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 6px 8px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      min-width: 80px;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .language-toggle:hover {
+      border-color: #ed7354;
+      box-shadow: 0 4px 12px rgba(237, 115, 84, 0.2);
+    }
+    
+    .language-toggle.active {
+      border-color: #ed7354;
+      background: #fef2f2;
+    }
+    
+    .language-options {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      min-width: 100px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-5px);
+      transition: all 0.2s ease;
+      margin-top: 2px;
+      overflow: hidden;
+    }
+    
+    .language-options.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .language-option {
+      display: flex;
+      align-items: center;
+      padding: 6px 8px;
+      color: #374151;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: 'Poppins', sans-serif;
+      transition: all 0.2s ease;
+      border-bottom: 1px solid #f3f4f6;
+      cursor: pointer;
+    }
+    
+    .language-option:last-child {
+      border-bottom: none;
+    }
+    
+    .language-option:hover {
+      background: #f9fafb;
+      color: #ed7354;
+    }
+    
+    .language-option.current {
+      background: #ed7354;
+      color: white;
+    }
+    
+    .language-option.current:hover {
+      background: #dc6544;
+    }
+    
+    .chevron-icon {
+      margin-left: 4px;
+      transition: transform 0.2s ease;
+      width: 12px;
+      height: 12px;
+    }
+    
+    .language-toggle.active .chevron-icon {
+      transform: rotate(180deg);
+    }
+
+    /* Language transition effects */
+    .lang-transition {
+      transition: opacity 0.3s ease-in-out;
+    }
+    
+    .lang-transition.changing {
+      opacity: 0.7;
+    }
+
+    /* Resources specific styles */
+    .resource-type {
+      background: linear-gradient(135deg, #ed7354 0%, #f97316 100%);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .file-size {
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+
+    .category-filter {
+      transition: all 0.3s ease;
+      border: 2px solid #e5e7eb;
+      background: white;
+    }
+
+    .category-filter.active {
+      border-color: #ed7354;
+      background: #ed7354;
+      color: white;
+    }
+
+    .category-filter:hover {
+      border-color: #ed7354;
+      background: #fef2f2;
+    }
+
+    .category-filter.active:hover {
+      background: #dc6544;
+    }
+
+    .download-icon {
+      width: 3rem;
+      height: 3rem;
+      background: linear-gradient(135deg, #ed7354 0%, #f97316 100%);
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <div class="logo-gradient w-8 h-8 bg-gradient-to-r from-orange-400 to-pink-500 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-sm">DB</span>
+          </div>
+          <a href="../../index.html" class="text-xl font-bold text-gray-800">Digitized Brains</a>
+        </div>
+        
+        <!-- Navigation and Language Switcher -->
+        <div class="hidden md:flex items-center space-x-4">
+          <nav class="flex space-x-2">
+            <a href="../../index.html" class="nav-link" data-translate="nav.home">Home</a>
+            <a href="../about/index.html" class="nav-link" data-translate="nav.about">About</a>
+            <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Digital Transformation</a>
+            <a href="../ai-agent/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+            <a href="../blog/index.html" class="nav-link" data-translate="nav.blog">Blog</a>
+            <a href="index.html" class="nav-link active" data-translate="nav.resources">Resources</a>
+            <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Contact</a>
+          </nav>
+          
+          <!-- Language Switcher -->
+          <div class="language-switcher">
+            <button id="language-btn" class="flex items-center space-x-1 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+              <img id="current-flag" src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+              <span id="current-lang">EN</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="language-menu" class="language-menu">
+              <a href="#" onclick="changeLanguage('en')" class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                English
+              </a>
+              <a href="#" onclick="changeLanguage('vi')" class="language-option" data-lang="vi">
+                <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                Tiếng Việt
+              </a>
+              <a href="#" onclick="changeLanguage('de')" class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                Deutsch
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <div class="flex flex-col space-y-2">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Home</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">About</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Digital Transformation</a>
+          <a href="../ai-agent/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="../blog/index.html" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="index.html" class="nav-link active" data-translate="nav.resources">Resources</a>
+          <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Contact</a>
+          
+          <!-- Mobile Language Switcher -->
+          <div class="pt-2 border-t border-gray-200">
+            <div class="language-switcher-mobile">
+              <button id="mobile-language-btn" class="flex items-center justify-between w-full px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                <span data-translate="language.current">Language:</span>
+                <div class="flex items-center space-x-1">
+                  <img id="mobile-current-flag" src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                  <span id="mobile-current-lang">EN</span>
+                </div>
+              </button>
+              <div id="mobile-language-menu" class="language-menu-mobile">
+                <a href="#" onclick="changeLanguage('en')" class="language-option-mobile" data-lang="en">
+                  <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                  English
+                </a>
+                <a href="#" onclick="changeLanguage('vi')" class="language-option-mobile" data-lang="vi">
+                  <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                  Tiếng Việt
+                </a>
+                <a href="#" onclick="changeLanguage('de')" class="language-option-mobile" data-lang="de">
+                  <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                  Deutsch
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-bg py-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+    <div class="relative z-10 text-center max-w-4xl mx-auto px-4">
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 scroll-reveal" data-translate="resources.hero.title">
+        Resources & Downloads
+      </h1>
+      <p class="text-xl text-white mb-8 font-light max-w-2xl mx-auto scroll-reveal" data-translate="resources.hero.subtitle">
+        Comprehensive guides, whitepapers, tools, and documentation for digital transformation in Vietnamese enterprises
+      </p>
+    </div>
+  </section>
+
+  <!-- Filter Section -->
+  <section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-8 scroll-reveal">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4" data-translate="resources.filter.title">Browse by Category</h2>
+      </div>
+      
+      <div class="flex flex-wrap justify-center gap-4 scroll-reveal">
+        <button class="category-filter px-6 py-3 rounded-full font-semibold active" data-category="all" data-translate="resources.filter.all">All Resources</button>
+        <button class="category-filter px-6 py-3 rounded-full font-semibold" data-category="guides" data-translate="resources.filter.guides">Guides</button>
+        <button class="category-filter px-6 py-3 rounded-full font-semibold" data-category="whitepapers" data-translate="resources.filter.whitepapers">Whitepapers</button>
+        <button class="category-filter px-6 py-3 rounded-full font-semibold" data-category="tools" data-translate="resources.filter.tools">Tools</button>
+        <button class="category-filter px-6 py-3 rounded-full font-semibold" data-category="templates" data-translate="resources.filter.templates">Templates</button>
+        <button class="category-filter px-6 py-3 rounded-full font-semibold" data-category="case-studies" data-translate="resources.filter.caseStudies">Case Studies</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources Grid -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="resources-grid">
+        
+        <!-- Resource 1 -->
+        <div class="resource-card bg-white rounded-2xl p-6 shadow-lg scroll-reveal" data-category="guides">
+          <div class="download-icon">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+          </div>
+          <div class="flex items-center mb-3">
+            <span class="resource-type mr-3" data-translate="resources.types.guide">Guide</span>
+            <span class="file-size" data-translate="resources.size1">2.5 MB PDF</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3" data-translate="resources.resource1.title">
+            Digital Transformation Guide for Vietnamese Enterprises
+          </h3>
+          <p class="text-gray-600 mb-6" data-translate="resources.resource1.description">
+            Comprehensive step-by-step guide for implementing digital transformation strategies in Vietnamese businesses and enterprises.
+          </p>
+          <a href="All Resources/Digital Transformation Guide for Vietnamese Enterprises.pdf" target="_blank" class="btn-primary text-white px-6 py-2 rounded-full text-sm font-semibold w-full inline-block text-center" data-translate="resources.download">
+            Download
+          </a>
+        </div>
+
+        <!-- Resource 2 -->
+        <div class="resource-card bg-white rounded-2xl p-6 shadow-lg scroll-reveal" data-category="whitepapers">
+          <div class="download-icon">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+          </div>
+          <div class="flex items-center mb-3">
+            <span class="resource-type mr-3" data-translate="resources.types.whitepaper">Whitepaper</span>
+            <span class="file-size" data-translate="resources.size2">1.8 MB PDF</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3" data-translate="resources.resource2.title">
+            AI in Vietnamese Business Industry 2025
+          </h3>
+          <p class="text-gray-600 mb-6" data-translate="resources.resource2.description">
+            In-depth analysis of AI adoption trends, challenges, and opportunities in Vietnam's business landscape with practical implementation strategies.
+          </p>
+          <a href="All Resources/AI in Vietnamese Business Industry 2025.pdf" target="_blank" class="btn-primary text-white px-6 py-2 rounded-full text-sm font-semibold w-full inline-block text-center" data-translate="resources.download">
+            Download
+          </a>
+        </div>
+
+        <!-- Resource 3 -->
+        <div class="resource-card bg-white rounded-2xl p-6 shadow-lg scroll-reveal" data-category="tools">
+          <div class="download-icon">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"></path>
+            </svg>
+          </div>
+          <div class="flex items-center mb-3">
+            <span class="resource-type mr-3" data-translate="resources.types.tool">Tool</span>
+            <span class="file-size" data-translate="resources.size3">Web App</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3" data-translate="resources.resource3.title">
+            Digital Readiness Assessment Tool
+          </h3>
+          <p class="text-gray-600 mb-6" data-translate="resources.resource3.description">
+            Interactive assessment tool to evaluate your organization's digital transformation readiness and receive personalized recommendations.
+          </p>
+          <a href="All Resources/Digital Readiness Assessment Tool.pdf" target="_blank" class="btn-primary text-white px-6 py-2 rounded-full text-sm font-semibold w-full inline-block text-center" data-translate="resources.access">
+            Access Tool
+          </a>
+        </div>
+
+        <!-- Resource 4 -->
+        <div class="resource-card bg-white rounded-2xl p-6 shadow-lg scroll-reveal" data-category="templates">
+          <div class="download-icon">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+            </svg>
+          </div>
+          <div class="flex items-center mb-3">
+            <span class="resource-type mr-3" data-translate="resources.types.template">Template</span>
+            <span class="file-size" data-translate="resources.size4">850 KB DOCX</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3" data-translate="resources.resource4.title">
+            Digital Strategy Template
+          </h3>
+          <p class="text-gray-600 mb-6" data-translate="resources.resource4.description">
+            Ready-to-use template for creating comprehensive digital transformation strategies tailored for Vietnamese business organizations.
+          </p>
+          <a href="All Resources/Digital Strategy Template.pdf" target="_blank" class="btn-primary text-white px-6 py-2 rounded-full text-sm font-semibold w-full inline-block text-center" data-translate="resources.download">
+            Download
+          </a>
+        </div>
+
+        <!-- Resource 5 -->
+        <div class="resource-card bg-white rounded-2xl p-6 shadow-lg scroll-reveal" data-category="case-studies">
+          <div class="download-icon">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+          </div>
+          <div class="flex items-center mb-3">
+            <span class="resource-type mr-3" data-translate="resources.types.caseStudy">Case Study</span>
+            <span class="file-size" data-translate="resources.size5">3.2 MB PDF</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3" data-translate="resources.resource5.title">
+            Vietnamese Enterprise Digital Transformation Success Story
+          </h3>
+          <p class="text-gray-600 mb-6" data-translate="resources.resource5.description">
+            Detailed case study of how Vietnamese enterprises successfully implemented AI-driven digital transformation strategies.
+          </p>
+          <a href="All Resources/Vietnamese Enterprise Digital Transformation Success Story.pdf" target="_blank" class="btn-primary text-white px-6 py-2 rounded-full text-sm font-semibold w-full inline-block text-center" data-translate="resources.download">
+            Download
+          </a>
+        </div>
+
+        <!-- Resource 6 -->
+        <div class="resource-card bg-white rounded-2xl p-6 shadow-lg scroll-reveal" data-category="guides">
+          <div class="download-icon">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <div class="flex items-center mb-3">
+            <span class="resource-type mr-3" data-translate="resources.types.guide">Guide</span>
+            <span class="file-size" data-translate="resources.size6">1.9 MB PDF</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3" data-translate="resources.resource6.title">
+            AI Agent Implementation Guide
+          </h3>
+          <p class="text-gray-600 mb-6" data-translate="resources.resource6.description">
+            Technical guide for implementing AI agents in business environments with practical examples and best practices.
+          </p>
+          <a href="All Resources/AI Agent Implementation Guide.pdf" target="_blank" class="btn-primary text-white px-6 py-2 rounded-full text-sm font-semibold w-full inline-block text-center" data-translate="resources.download">
+            Download
+          </a>
+        </div>
+
+        <!-- Resource 7 -->
+        <div class="resource-card bg-white rounded-2xl p-6 shadow-lg scroll-reveal" data-category="guides">
+          <div class="download-icon">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
+            </svg>
+          </div>
+          <div class="flex items-center mb-3">
+            <span class="resource-type mr-3" data-translate="resources.types.guide">Guide</span>
+            <span class="file-size">1.5 MB PDF</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">
+            Cloud Infrastructure Guide
+          </h3>
+          <p class="text-gray-600 mb-6">
+            Comprehensive guide for building and managing cloud infrastructure for Vietnamese enterprises, including best practices and security considerations.
+          </p>
+          <a href="All Resources/Cloud Infrastructure Guide.pdf" target="_blank" class="btn-primary text-white px-6 py-2 rounded-full text-sm font-semibold w-full inline-block text-center" data-translate="resources.download">
+            Download
+          </a>
+        </div>
+
+        <!-- Resource 8 -->
+        <div class="resource-card bg-white rounded-2xl p-6 shadow-lg scroll-reveal" data-category="guides">
+          <div class="download-icon">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+          </div>
+          <div class="flex items-center mb-3">
+            <span class="resource-type mr-3" data-translate="resources.types.guide">Guide</span>
+            <span class="file-size">1.2 MB PDF</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">
+            Data Analytics Guide
+          </h3>
+          <p class="text-gray-600 mb-6">
+            Essential guide for implementing data analytics solutions in Vietnamese businesses, covering data collection, processing, and visualization techniques.
+          </p>
+          <a href="All Resources/Data Analytics Guide.pdf" target="_blank" class="btn-primary text-white px-6 py-2 rounded-full text-sm font-semibold w-full inline-block text-center" data-translate="resources.download">
+            Download
+          </a>
+        </div>
+
+        <!-- Resource 9 -->
+        <div class="resource-card bg-white rounded-2xl p-6 shadow-lg scroll-reveal" data-category="guides">
+          <div class="download-icon">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+            </svg>
+          </div>
+          <div class="flex items-center mb-3">
+            <span class="resource-type mr-3" data-translate="resources.types.guide">Guide</span>
+            <span class="file-size">1.0 MB PDF</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">
+            Digital Strategy Guide
+          </h3>
+          <p class="text-gray-600 mb-6">
+            Strategic guide for developing effective digital strategies that align with Vietnamese business objectives and market conditions.
+          </p>
+          <a href="All Resources/Digital Strategy Guide.pdf" target="_blank" class="btn-primary text-white px-6 py-2 rounded-full text-sm font-semibold w-full inline-block text-center" data-translate="resources.download">
+            Download
+          </a>
+        </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-2xl mx-auto text-center scroll-reveal">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4" data-translate="resources.newsletter.title">Get New Resources First</h2>
+        <p class="text-xl text-gray-600 mb-8" data-translate="resources.newsletter.subtitle">
+          Subscribe to receive notifications when new resources, guides, and tools are available
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+          <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent" data-translate="resources.newsletter.placeholder">
+          <button class="btn-primary text-white px-6 py-3 rounded-lg font-semibold whitespace-nowrap" data-translate="resources.newsletter.subscribe">
+            Subscribe
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <!-- Logo & Description -->
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="logo-gradient w-10 h-10 bg-gradient-to-r from-orange-400 to-pink-500 rounded-lg flex items-center justify-center">
+              <span class="text-white font-bold text-lg">DB</span>
+            </div>
+            <span class="text-2xl font-bold">DigitizedBrains</span>
+          </div>
+          <p class="text-gray-400 mb-4" data-translate="footer.description">
+            Leading digital transformation solutions for Vietnamese enterprises. Empowering businesses with AI and cutting-edge technology.
+          </p>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.quickLinks">Quick Links</h4>
+          <div class="grid grid-cols-2 gap-4">
+            <ul class="space-y-2">
+              <li><a href="../../index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.home">Home</a></li>
+              <li><a href="../about/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.about">About</a></li>
+              <li><a href="../digital-transformation/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.digitalTransformation">Digital Transformation</a></li>
+              <li><a href="../ai-agent/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.aiAgent">AI Agent</a></li>
+            </ul>
+            <ul class="space-y-2">
+              <li><a href="../blog/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.blog">Blog</a></li>
+              <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.resources">Resources</a></li>
+              <li><a href="../contact/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Contact Info -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.contact">Contact</h4>
+          <ul class="space-y-2">
+            <li class="text-gray-400">email@digitizedbrains.com</li>
+            <li class="text-gray-400">+84 123 456 789</li>
+            <li class="text-gray-400" data-translate="footer.location">Ho Chi Minh City, Vietnam</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-gray-400" data-translate="footer.copyright">
+          © 2025 DigitizedBrains. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chatbot Integration -->
+  <script src="../../js/chatbot.js"></script>
+
+  <!-- JavaScript for Language Switching and Functionality -->
+  <script>
+    // Language data
+    const languages = {
+      en: {
+        meta: {
+          title: "Resources & Downloads - DigitizedBrains",
+          description: "Comprehensive resources, guides, whitepapers, and tools for digital transformation in Vietnamese enterprises"
+        },
+        nav: {
+          home: "Home",
+          about: "About",
+          digitalTransformation: "Digital Transformation",
+          aiAgent: "AI Agent",
+          blog: "Blog",
+          resources: "Resources",
+          contact: "Contact"
+        },
+        resources: {
+          hero: {
+            title: "Resources & Downloads",
+            subtitle: "Comprehensive guides, whitepapers, tools, and documentation for digital transformation in Vietnamese enterprises"
+          },
+          filter: {
+            title: "Browse by Category",
+            all: "All Resources",
+            guides: "Guides",
+            whitepapers: "Whitepapers",
+            tools: "Tools",
+            templates: "Templates",
+            caseStudies: "Case Studies"
+          },
+          types: {
+            guide: "Guide",
+            whitepaper: "Whitepaper",
+            tool: "Tool",
+            template: "Template",
+            caseStudy: "Case Study"
+          },
+          download: "Download",
+          access: "Access Tool",
+          size1: "2.5 MB PDF",
+          size2: "1.8 MB PDF",
+          size3: "Web App",
+          size4: "850 KB DOCX",
+          size5: "3.2 MB PDF",
+          size6: "1.9 MB PDF",
+          resource1: {
+            title: "Digital Transformation Guide for Vietnamese Enterprises",
+            description: "Comprehensive step-by-step guide for implementing digital transformation strategies in Vietnamese businesses and enterprises."
+          },
+          resource2: {
+            title: "AI in Vietnamese Business Industry 2025",
+            description: "In-depth analysis of AI adoption trends, challenges, and opportunities in Vietnam's business landscape with practical implementation strategies."
+          },
+          resource3: {
+            title: "Digital Readiness Assessment Tool",
+            description: "Interactive assessment tool to evaluate your organization's digital transformation readiness and receive personalized recommendations."
+          },
+          resource4: {
+            title: "Digital Strategy Template",
+            description: "Ready-to-use template for creating comprehensive digital transformation strategies tailored for Vietnamese business organizations."
+          },
+          resource5: {
+            title: "Vietnamese Enterprise Digital Transformation Success Story",
+            description: "Detailed case study of how Vietnamese enterprises successfully implemented AI-driven digital transformation strategies."
+          },
+          resource6: {
+            title: "AI Agent Implementation Guide",
+            description: "Technical guide for implementing AI agents in business environments with practical examples and best practices."
+          },
+          newsletter: {
+            title: "Get New Resources First",
+            subtitle: "Subscribe to receive notifications when new resources, guides, and tools are available",
+            placeholder: "Enter your email",
+            subscribe: "Subscribe"
+          }
+        },
+        footer: {
+          description: "Leading digital transformation solutions for Vietnamese enterprises. Empowering businesses with AI and cutting-edge technology.",
+          quickLinks: "Quick Links",
+          contact: "Contact",
+          location: "Ho Chi Minh City, Vietnam",
+          copyright: "© 2025 DigitizedBrains. All rights reserved."
+        }
+      },
+      vi: {
+        meta: {
+          title: "Tài nguyên & Tải xuống - DigitizedBrains",
+          description: "Tài nguyên toàn diện, hướng dẫn, báo cáo và công cụ cho chuyển đổi số trong doanh nghiệp Việt Nam"
+        },
+        nav: {
+          home: "Trang chủ",
+          about: "Giới thiệu",
+          digitalTransformation: "Chuyển đổi số",
+          aiAgent: "AI Agent",
+          blog: "Blog",
+          resources: "Tài nguyên",
+          contact: "Liên hệ"
+        },
+        resources: {
+          hero: {
+            title: "Tài nguyên & Tải xuống",
+            subtitle: "Hướng dẫn toàn diện, báo cáo, công cụ và tài liệu cho chuyển đổi số trong doanh nghiệp Việt Nam"
+          },
+          filter: {
+            title: "Duyệt theo Danh mục",
+            all: "Tất cả Tài nguyên",
+            guides: "Hướng dẫn",
+            whitepapers: "Báo cáo",
+            tools: "Công cụ",
+            templates: "Mẫu",
+            caseStudies: "Nghiên cứu Trường hợp"
+          },
+          types: {
+            guide: "Hướng dẫn",
+            whitepaper: "Báo cáo",
+            tool: "Công cụ",
+            template: "Mẫu",
+            caseStudy: "Nghiên cứu TH"
+          },
+          download: "Tải xuống",
+          access: "Truy cập Công cụ",
+          size1: "2.5 MB PDF",
+          size2: "1.8 MB PDF",
+          size3: "Ứng dụng Web",
+          size4: "850 KB DOCX",
+          size5: "3.2 MB PDF",
+          size6: "1.9 MB PDF",
+          resource1: {
+            title: "Hướng dẫn Chuyển đổi số cho Doanh nghiệp Việt Nam",
+            description: "Hướng dẫn từng bước toàn diện để thực hiện các chiến lược chuyển đổi số trong các doanh nghiệp và công ty Việt Nam."
+          },
+          resource2: {
+            title: "AI trong Ngành Kinh doanh Việt Nam 2025",
+            description: "Phân tích sâu về xu hướng áp dụng AI, thách thức và cơ hội trong bối cảnh kinh doanh Việt Nam với chiến lược thực hiện thực tế."
+          },
+          resource3: {
+            title: "Công cụ Đánh giá Sẵn sàng Số",
+            description: "Công cụ đánh giá tương tác để đánh giá mức độ sẵn sàng chuyển đổi số của tổ chức và nhận đề xuất cá nhân hóa."
+          },
+          resource4: {
+            title: "Mẫu Chiến lược Số",
+            description: "Mẫu sẵn sàng sử dụng để tạo chiến lược chuyển đổi số toàn diện được thiết kế riêng cho các tổ chức kinh doanh Việt Nam."
+          },
+          resource5: {
+            title: "Câu chuyện Thành công Chuyển đổi số Doanh nghiệp Việt Nam",
+            description: "Nghiên cứu trường hợp chi tiết về cách các doanh nghiệp Việt Nam thành công thực hiện các chiến lược chuyển đổi số được thúc đẩy bởi AI."
+          },
+          resource6: {
+            title: "Hướng dẫn Triển khai AI Agent",
+            description: "Hướng dẫn kỹ thuật để triển khai AI agents trong môi trường kinh doanh với các ví dụ thực tế và thực tiễn tốt nhất."
+          },
+          newsletter: {
+            title: "Nhận Tài nguyên Mới Đầu tiên",
+            subtitle: "Đăng ký để nhận thông báo khi có tài nguyên, hướng dẫn và công cụ mới",
+            placeholder: "Nhập email của bạn",
+            subscribe: "Đăng ký"
+          }
+        },
+        footer: {
+          description: "Giải pháp chuyển đổi số hàng đầu cho doanh nghiệp Việt Nam. Trao quyền cho doanh nghiệp với AI và công nghệ tiên tiến.",
+          quickLinks: "Liên kết nhanh",
+          contact: "Liên hệ",
+          location: "Thành phố Hồ Chí Minh, Việt Nam",
+          copyright: "© 2025 DigitizedBrains. Tất cả quyền được bảo lưu."
+        }
+      },
+      de: {
+        meta: {
+          title: "Ressourcen & Downloads - DigitizedBrains",
+          description: "Umfassende Ressourcen, Leitfäden, Whitepapers und Tools für die digitale Transformation in vietnamesischen Unternehmen"
+        },
+        nav: {
+          home: "Startseite",
+          about: "Über uns",
+          digitalTransformation: "Digitale Transformation",
+          aiAgent: "KI-Agent",
+          blog: "Blog",
+          resources: "Ressourcen",
+          contact: "Kontakt"
+        },
+        resources: {
+          hero: {
+            title: "Ressourcen & Downloads",
+            subtitle: "Umfassende Leitfäden, Whitepapers, Tools und Dokumentation für die digitale Transformation in vietnamesischen Unternehmen"
+          },
+          filter: {
+            title: "Nach Kategorie durchsuchen",
+            all: "Alle Ressourcen",
+            guides: "Leitfäden",
+            whitepapers: "Whitepapers",
+            tools: "Tools",
+            templates: "Vorlagen",
+            caseStudies: "Fallstudien"
+          },
+          types: {
+            guide: "Leitfaden",
+            whitepaper: "Whitepaper",
+            tool: "Tool",
+            template: "Vorlage",
+            caseStudy: "Fallstudie"
+          },
+          download: "Herunterladen",
+          access: "Tool zugreifen",
+          size1: "2.5 MB PDF",
+          size2: "1.8 MB PDF",
+          size3: "Web-App",
+          size4: "850 KB DOCX",
+          size5: "3.2 MB PDF",
+          size6: "1.9 MB PDF",
+          resource1: {
+            title: "Digitaler Transformationsleitfaden für vietnamesische Unternehmen",
+            description: "Umfassender Schritt-für-Schritt-Leitfaden zur Implementierung digitaler Transformationsstrategien in vietnamesischen Unternehmen und Betrieben."
+          },
+          resource2: {
+            title: "KI in der vietnamesischen Geschäftsindustrie 2025",
+            description: "Tiefgreifende Analyse von KI-Adoptionstrends, Herausforderungen und Chancen in Vietnams Geschäftslandschaft mit praktischen Implementierungsstrategien."
+          },
+          resource3: {
+            title: "Tool zur Bewertung der digitalen Bereitschaft",
+            description: "Interaktives Bewertungstool zur Evaluierung der digitalen Transformationsbereitschaft Ihrer Organisation und personalisierten Empfehlungen."
+          },
+          resource4: {
+            title: "Digital-Strategie-Vorlage",
+            description: "Gebrauchsfertige Vorlage zur Erstellung umfassender digitaler Transformationsstrategien, zugeschnitten auf vietnamesische Geschäftsorganisationen."
+          },
+          resource5: {
+            title: "Vietnamesisches Unternehmen Digital Transformation Erfolgsgeschichte",
+            description: "Detaillierte Fallstudie darüber, wie vietnamesische Unternehmen erfolgreich KI-gesteuerte digitale Transformationsstrategien implementierten."
+          },
+          resource6: {
+            title: "KI-Agent Implementierungsleitfaden",
+            description: "Technischer Leitfaden zur Implementierung von KI-Agenten in Geschäftsumgebungen mit praktischen Beispielen und Best Practices."
+          },
+          newsletter: {
+            title: "Neue Ressourcen zuerst erhalten",
+            subtitle: "Abonnieren Sie, um Benachrichtigungen zu erhalten, wenn neue Ressourcen, Leitfäden und Tools verfügbar sind",
+            placeholder: "E-Mail eingeben",
+            subscribe: "Abonnieren"
+          }
+        },
+        footer: {
+          description: "Führende digitale Transformationslösungen für vietnamesische Unternehmen. Stärkung von Unternehmen mit KI und modernster Technologie.",
+          quickLinks: "Schnelle Links",
+          contact: "Kontakt",
+          location: "Ho-Chi-Minh-Stadt, Vietnam",
+          copyright: "© 2025 DigitizedBrains. Alle Rechte vorbehalten."
+        }
+      }
+    };
+
+    // Language configuration
+    const languageConfig = {
+      en: { flag: "https://flagcdn.com/24x18/us.png", code: "EN", alt: "English" },
+      vi: { flag: "https://flagcdn.com/24x18/vn.png", code: "VN", alt: "Tiếng Việt" },
+      de: { flag: "https://flagcdn.com/24x18/de.png", code: "DE", alt: "Deutsch" }
+    };
+
+    // Current language
+    let currentLanguage = localStorage.getItem('preferredLanguage') || 'en';
+
+    // DOM elements
+    const languageToggle = document.getElementById('language-btn');
+    const languageOptions = document.getElementById('language-menu');
+    const currentFlag = document.getElementById('current-flag');
+    const currentLang = document.getElementById('current-lang');
+    const htmlRoot = document.getElementById('html-root');
+    const pageTitle = document.getElementById('page-title');
+    const pageDescription = document.getElementById('page-description');
+    
+    // Mobile language elements
+    const mobileLanguageToggle = document.getElementById('mobile-language-btn');
+    const mobileLanguageOptions = document.getElementById('mobile-language-menu');
+    const mobileCurrentFlag = document.getElementById('mobile-current-flag');
+    const mobileCurrentLang = document.getElementById('mobile-current-lang');
+
+    // Function to update language display
+    function updateLanguageDisplay() {
+      const config = languageConfig[currentLanguage];
+      if (currentFlag) {
+        currentFlag.src = config.flag;
+        currentFlag.alt = config.alt;
+      }
+      if (currentLang) {
+        currentLang.textContent = config.code;
+      }
+      if (mobileCurrentFlag) {
+        mobileCurrentFlag.src = config.flag;
+        mobileCurrentFlag.alt = config.alt;
+      }
+      if (mobileCurrentLang) {
+        mobileCurrentLang.textContent = config.code;
+      }
+      
+      // Update current language in dropdown options
+      document.querySelectorAll('.language-option, .language-option-mobile').forEach(option => {
+        option.classList.remove('current', 'active');
+        if (option.dataset.lang === currentLanguage) {
+          option.classList.add('active');
+        }
+      });
+    }
+
+    // Function to translate content
+    function translateContent(targetLanguage) {
+      const data = languages[targetLanguage];
+      if (!data) return;
+
+      // Add transition effect
+      document.body.classList.add('lang-transition', 'changing');
+
+      setTimeout(() => {
+        // Update meta tags
+        htmlRoot.lang = targetLanguage === 'vi' ? 'vi' : targetLanguage === 'de' ? 'de' : 'en';
+        pageTitle.textContent = data.meta.title;
+        pageDescription.content = data.meta.description;
+
+        // Update all translatable elements
+        document.querySelectorAll('[data-translate]').forEach(element => {
+          const key = element.getAttribute('data-translate');
+          const keys = key.split('.');
+          let value = data;
+          
+          for (let k of keys) {
+            value = value[k];
+            if (!value) break;
+          }
+          
+          if (value) {
+            element.textContent = value;
+          }
+        });
+
+        // Remove transition effect
+        document.body.classList.remove('changing');
+      }, 150);
+
+      setTimeout(() => {
+        document.body.classList.remove('lang-transition');
+      }, 450);
+    }
+
+    // Function to change language
+    function changeLanguage(newLanguage) {
+      if (newLanguage === currentLanguage) return;
+      
+      currentLanguage = newLanguage;
+      localStorage.setItem('preferredLanguage', newLanguage);
+      
+      updateLanguageDisplay();
+      translateContent(newLanguage);
+    }
+
+    // Make changeLanguage available globally for onclick handlers
+    window.changeLanguage = changeLanguage;
+
+    // Category filter functionality
+    function filterResources(category) {
+      const resourceCards = document.querySelectorAll('.resource-card');
+      const filterButtons = document.querySelectorAll('.category-filter');
+      
+      // Update active filter button
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      // Filter resources
+      resourceCards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Language switcher event listeners
+    if (languageToggle) {
+      languageToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        languageToggle.classList.toggle('active');
+        if (languageOptions) {
+          languageOptions.classList.toggle('show');
+        }
+      });
+    }
+
+    if (mobileLanguageToggle) {
+      mobileLanguageToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        mobileLanguageToggle.classList.toggle('active');
+        if (mobileLanguageOptions) {
+          mobileLanguageOptions.classList.toggle('show');
+        }
+      });
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function() {
+      if (languageToggle) languageToggle.classList.remove('active');
+      if (languageOptions) languageOptions.classList.remove('show');
+      if (mobileLanguageToggle) mobileLanguageToggle.classList.remove('active');
+      if (mobileLanguageOptions) mobileLanguageOptions.classList.remove('show');
+    });
+
+    // Prevent dropdown from closing when clicking inside options
+    if (languageOptions) {
+      languageOptions.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+    }
+    if (mobileLanguageOptions) {
+      mobileLanguageOptions.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+    }
+
+    // Language option click handlers
+    document.querySelectorAll('.language-option, .language-option-mobile').forEach(option => {
+      option.addEventListener('click', function(e) {
+        e.preventDefault();
+        const selectedLanguage = this.dataset.lang;
+        changeLanguage(selectedLanguage);
+        if (languageToggle) languageToggle.classList.remove('active');
+        if (languageOptions) languageOptions.classList.remove('show');
+        if (mobileLanguageToggle) mobileLanguageToggle.classList.remove('active');
+        if (mobileLanguageOptions) mobileLanguageOptions.classList.remove('show');
+      });
+    });
+
+    // Category filter event listeners
+    document.querySelectorAll('.category-filter').forEach(button => {
+      button.addEventListener('click', function() {
+        const category = this.dataset.category;
+        filterResources(category);
+      });
+    });
+
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Scroll reveal animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      updateLanguageDisplay();
+      translateContent(currentLanguage);
+    });
+  </script>
+</body>
+</html>

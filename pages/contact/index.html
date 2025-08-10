@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="page-title">Contact Us - DigitizedBrains</title>
+  <meta name="description" content="Get in touch with DigitizedBrains for digital transformation solutions in Vietnamese enterprises" id="page-description">
+  <link href="../../css/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+    body { font-family: 'Poppins', sans-serif; }
+    .font-nunito { font-family: 'Nunito', sans-serif; }
+    .nav-link { 
+      color: #374151; 
+      padding: 0.5rem 1rem; 
+      transition: all 0.3s ease; 
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .nav-link:hover { color: #ed7354; background-color: #fef2f2; }
+    .nav-link.active { color: #ed7354; font-weight: 600; }
+    .btn-primary { 
+      background: linear-gradient(135deg, #ed7354 0%, #f97316 100%); 
+      transition: all 0.3s ease; 
+      box-shadow: 0 4px 15px rgba(237, 115, 84, 0.3);
+    }
+    .logo-gradient {
+      background: linear-gradient(135deg, #fb923c 0%, #ec4899 100%);
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(237, 115, 84, 0.4); }
+    .hero-bg { 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Language Switcher Styles */
+    .language-switcher {
+      position: relative;
+    }
+    
+    .language-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      min-width: 160px;
+      display: none;
+      z-index: 1000;
+    }
+    
+    .language-menu.show {
+      display: block;
+    }
+    
+    .language-option {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+    
+    .language-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+    
+    /* Mobile Language Switcher */
+    .language-switcher-mobile {
+      position: relative;
+    }
+    
+    .language-menu-mobile {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      display: none;
+      z-index: 1000;
+    }
+    
+    .language-menu-mobile.show {
+      display: block;
+    }
+    
+    .language-option-mobile {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option-mobile:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option-mobile.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+    
+    .language-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .language-toggle {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 6px 8px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      min-width: 80px;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .language-toggle:hover {
+      border-color: #ed7354;
+      box-shadow: 0 4px 12px rgba(237, 115, 84, 0.2);
+    }
+    
+    .language-toggle.active {
+      border-color: #ed7354;
+      background: #fef2f2;
+    }
+    
+    .language-options {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      min-width: 100px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-5px);
+      transition: all 0.2s ease;
+      margin-top: 2px;
+      overflow: hidden;
+    }
+    
+    .language-options.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .language-option {
+      display: flex;
+      align-items: center;
+      padding: 6px 8px;
+      color: #374151;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: 'Poppins', sans-serif;
+      transition: all 0.2s ease;
+      border-bottom: 1px solid #f3f4f6;
+      cursor: pointer;
+    }
+    
+    .language-option:last-child {
+      border-bottom: none;
+    }
+    
+    .language-option:hover {
+      background: #f9fafb;
+      color: #ed7354;
+    }
+    
+    .language-option.current {
+      background: #ed7354;
+      color: white;
+    }
+    
+    .language-option.current:hover {
+      background: #dc6544;
+    }
+    
+    .chevron-icon {
+      margin-left: 4px;
+      transition: transform 0.2s ease;
+      width: 12px;
+      height: 12px;
+    }
+    
+    .language-toggle.active .chevron-icon {
+      transform: rotate(180deg);
+    }
+
+    /* Language transition effects */
+    .lang-transition {
+      transition: opacity 0.3s ease-in-out;
+    }
+    
+    .lang-transition.changing {
+      opacity: 0.7;
+    }
+
+    .contact-card {
+      transition: all 0.3s ease;
+    }
+    
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .form-input {
+      transition: all 0.3s ease;
+    }
+    
+    .form-input:focus {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(237, 115, 84, 0.2);
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <div class="logo-gradient w-8 h-8 bg-gradient-to-r from-orange-400 to-pink-500 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-sm">DB</span>
+          </div>
+          <a href="../../index.html" class="text-xl font-bold text-gray-800">Digitized Brains</a>
+        </div>
+        
+        <!-- Navigation and Language Switcher -->
+        <div class="hidden md:flex items-center space-x-4">
+          <nav class="flex space-x-2">
+            <a href="../../index.html" class="nav-link" data-translate="nav.home">Home</a>
+            <a href="../about/index.html" class="nav-link" data-translate="nav.about">About</a>
+            <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Digital Transformation</a>
+            <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+            <a href="../blog/index.html" class="nav-link" data-translate="nav.blog">Blog</a>
+            <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Resources</a>
+            <a href="index.html" class="nav-link active" data-translate="nav.contact">Contact</a>
+          </nav>
+          
+          <!-- Language Switcher -->
+          <div class="language-switcher">
+            <button id="language-btn" class="flex items-center space-x-1 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+              <img id="current-flag" src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+              <span id="current-lang">EN</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="language-menu" class="language-menu">
+              <a href="#" onclick="changeLanguage('en')" class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                English
+              </a>
+              <a href="#" onclick="changeLanguage('vi')" class="language-option" data-lang="vi">
+                <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                Tiếng Việt
+              </a>
+              <a href="#" onclick="changeLanguage('de')" class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                Deutsch
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <div class="flex flex-col space-y-2">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Home</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">About</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Digital Transformation</a>
+          <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="../blog/index.html" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Resources</a>
+          <a href="index.html" class="nav-link active" data-translate="nav.contact">Contact</a>
+          
+          <!-- Mobile Language Switcher -->
+          <div class="pt-2 border-t border-gray-200">
+            <div class="language-switcher-mobile">
+              <button id="mobile-language-btn" class="flex items-center justify-between w-full px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                <span data-translate="language.current">Language:</span>
+                <div class="flex items-center space-x-1">
+                  <img id="mobile-current-flag" src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                  <span id="mobile-current-lang">EN</span>
+                </div>
+              </button>
+              <div id="mobile-language-menu" class="language-menu-mobile">
+                <a href="#" onclick="changeLanguage('en')" class="language-option-mobile" data-lang="en">
+                  <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                  English
+                </a>
+                <a href="#" onclick="changeLanguage('vi')" class="language-option-mobile" data-lang="vi">
+                  <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                  Tiếng Việt
+                </a>
+                <a href="#" onclick="changeLanguage('de')" class="language-option-mobile" data-lang="de">
+                  <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                  Deutsch
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-bg py-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+    <div class="relative z-10 container mx-auto px-4 text-center">
+      <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 scroll-reveal" data-translate="contact.hero.title">
+        Get in Touch
+      </h1>
+      <p class="text-xl md:text-2xl text-white font-light max-w-3xl mx-auto scroll-reveal" data-translate="contact.hero.subtitle">
+        Ready to transform your business? Let's discuss how we can help you achieve your digital transformation goals.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Information Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4" data-translate="contact.info.title">Contact Information</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-translate="contact.info.subtitle">
+          Multiple ways to reach our team of digital transformation experts
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="contact-card bg-white rounded-2xl p-8 shadow-lg text-center scroll-reveal">
+          <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl mx-auto mb-6 flex items-center justify-center">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="contact.info.office.title">Our Office</h3>
+          <p class="text-gray-600 mb-2" data-translate="contact.info.office.address">123 Digital Street, District 1</p>
+          <p class="text-gray-600" data-translate="contact.info.office.city">Ho Chi Minh City, Vietnam</p>
+        </div>
+        
+        <div class="contact-card bg-white rounded-2xl p-8 shadow-lg text-center scroll-reveal">
+          <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-600 rounded-2xl mx-auto mb-6 flex items-center justify-center">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="contact.info.phone.title">Phone</h3>
+          <p class="text-gray-600 mb-2">+84 123 456 789</p>
+          <p class="text-gray-600 text-sm" data-translate="contact.info.phone.hours">Mon - Fri: 9:00 AM - 6:00 PM</p>
+        </div>
+        
+        <div class="contact-card bg-white rounded-2xl p-8 shadow-lg text-center scroll-reveal">
+          <div class="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl mx-auto mb-6 flex items-center justify-center">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="contact.info.email.title">Email</h3>
+          <p class="text-gray-600 mb-2">info@digitizedbrains.com</p>
+          <p class="text-gray-600 text-sm" data-translate="contact.info.email.response">Response within 24 hours</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16 scroll-reveal">
+          <h2 class="text-4xl font-bold text-gray-800 mb-4" data-translate="contact.form.title">Send us a Message</h2>
+          <p class="text-xl text-gray-600" data-translate="contact.form.subtitle">
+            Tell us about your project and how we can help you achieve your digital transformation goals
+          </p>
+        </div>
+        
+        <div class="bg-gray-50 rounded-2xl p-8 lg:p-12 scroll-reveal">
+          <form class="space-y-6" id="contact-form">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2" data-translate="contact.form.firstName">First Name *</label>
+                <input type="text" id="firstName" name="firstName" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+              </div>
+              <div>
+                <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2" data-translate="contact.form.lastName">Last Name *</label>
+                <input type="text" id="lastName" name="lastName" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+              </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-2" data-translate="contact.form.email">Email Address *</label>
+                <input type="email" id="email" name="email" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+              </div>
+              <div>
+                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2" data-translate="contact.form.phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+              </div>
+            </div>
+            
+            <div>
+              <label for="company" class="block text-sm font-medium text-gray-700 mb-2" data-translate="contact.form.company">Company/Organization</label>
+              <input type="text" id="company" name="company" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+            </div>
+            
+            <div>
+              <label for="subject" class="block text-sm font-medium text-gray-700 mb-2" data-translate="contact.form.subject">Subject *</label>
+              <select id="subject" name="subject" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                <option value="" data-translate="contact.form.subjectOptions.select">Select a subject</option>
+                <option value="digital-transformation" data-translate="contact.form.subjectOptions.digitalTransformation">Digital Transformation Consultation</option>
+                <option value="ai-solutions" data-translate="contact.form.subjectOptions.aiSolutions">AI Solutions for Business</option>
+                <option value="infrastructure" data-translate="contact.form.subjectOptions.infrastructure">Infrastructure Modernization</option>
+                <option value="partnership" data-translate="contact.form.subjectOptions.partnership">Partnership Opportunities</option>
+                <option value="other" data-translate="contact.form.subjectOptions.other">Other</option>
+              </select>
+            </div>
+            
+            <div>
+              <label for="message" class="block text-sm font-medium text-gray-700 mb-2" data-translate="contact.form.message">Message *</label>
+              <textarea id="message" name="message" rows="6" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent resize-none" placeholder="" data-placeholder="contact.form.messagePlaceholder"></textarea>
+            </div>
+            
+            <div class="flex items-start space-x-3">
+              <input type="checkbox" id="agreement" name="agreement" required class="mt-1 h-4 w-4 text-orange-500 focus:ring-orange-500 border-gray-300 rounded">
+              <label for="agreement" class="text-sm text-gray-600" data-translate="contact.form.agreement">
+                I agree to the processing of my personal data and consent to be contacted by DigitizedBrains regarding digital transformation solutions.
+              </label>
+            </div>
+            
+            <button type="submit" class="w-full btn-primary text-white px-8 py-4 rounded-lg font-semibold text-lg" data-translate="contact.form.submit">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16 scroll-reveal">
+          <h2 class="text-4xl font-bold text-gray-800 mb-4" data-translate="contact.faq.title">Frequently Asked Questions</h2>
+          <p class="text-xl text-gray-600" data-translate="contact.faq.subtitle">
+            Common questions about our digital transformation services
+          </p>
+        </div>
+        
+        <div class="space-y-6">
+          <div class="bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="contact.faq.q1.question">How long does a typical digital transformation project take?</h3>
+            <p class="text-gray-600" data-translate="contact.faq.q1.answer">
+              Project timelines vary depending on scope and complexity. Most comprehensive digital transformation projects for business organizations take 6-18 months, with initial results visible within the first 3 months.
+            </p>
+          </div>
+          
+          <div class="bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="contact.faq.q2.question">Do you provide ongoing support after project completion?</h3>
+            <p class="text-gray-600" data-translate="contact.faq.q2.answer">
+              Yes, we offer comprehensive post-implementation support including training, maintenance, and continuous optimization to ensure your digital transformation delivers lasting value.
+            </p>
+          </div>
+          
+          <div class="bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="contact.faq.q3.question">Can you work with existing systems and infrastructure?</h3>
+            <p class="text-gray-600" data-translate="contact.faq.q3.answer">
+              Absolutely. Our solutions are designed to integrate seamlessly with existing business infrastructure while providing clear migration paths for legacy systems.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <!-- Logo & Description -->
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="logo-gradient w-10 h-10 bg-gradient-to-r from-orange-400 to-pink-500 rounded-lg flex items-center justify-center">
+              <span class="text-white font-bold text-lg">DB</span>
+            </div>
+            <span class="text-2xl font-bold">DigitizedBrains</span>
+          </div>
+          <p class="text-gray-400 mb-4" data-translate="footer.description">
+            Leading digital transformation solutions for Vietnamese enterprises. Empowering businesses with AI and cutting-edge technology.
+          </p>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.quickLinks">Quick Links</h4>
+          <div class="grid grid-cols-2 gap-4">
+            <ul class="space-y-2">
+              <li><a href="../../index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.home">Home</a></li>
+              <li><a href="../about/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.about">About</a></li>
+              <li><a href="../digital-transformation/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.digitalTransformation">Digital Transformation</a></li>
+              <li><a href="../ai-agents/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.aiAgent">AI Agent</a></li>
+            </ul>
+            <ul class="space-y-2">
+              <li><a href="../blog/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.blog">Blog</a></li>
+              <li><a href="../resources/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.resources">Resources</a></li>
+              <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Contact Info -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.contact">Contact</h4>
+          <ul class="space-y-2">
+            <li class="text-gray-400">info@digitizedbrains.com</li>
+            <li class="text-gray-400">+84 123 456 789</li>
+            <li class="text-gray-400" data-translate="footer.location">Ho Chi Minh City, Vietnam</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-gray-400" data-translate="footer.copyright">
+          © 2025 DigitizedBrains. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chatbot Integration -->
+  <script src="js/chatbot.js"></script>
+
+  <!-- JavaScript for Language Switching and Functionality -->
+  <script>
+    // Language data
+    const languages = {
+      en: {
+        meta: {
+          title: "Contact Us - DigitizedBrains",
+          description: "Get in touch with DigitizedBrains for digital transformation solutions in Vietnamese enterprises"
+        },
+        nav: {
+          home: "Home",
+          about: "About",
+          digitalTransformation: "Digital Transformation",
+          aiAgent: "AI Agent",
+          blog: "Blog",
+          resources: "Resources",
+          contact: "Contact"
+        },
+        contact: {
+          hero: {
+            title: "Get in Touch",
+            subtitle: "Ready to transform your business? Let's discuss how we can help you achieve your digital transformation goals."
+          },
+          info: {
+            title: "Contact Information",
+            subtitle: "Multiple ways to reach our team of digital transformation experts",
+            office: {
+              title: "Our Office",
+              address: "123 Digital Street, District 1",
+              city: "Ho Chi Minh City, Vietnam"
+            },
+            phone: {
+              title: "Phone",
+              hours: "Mon - Fri: 9:00 AM - 6:00 PM"
+            },
+            email: {
+              title: "Email",
+              response: "Response within 24 hours"
+            }
+          },
+          form: {
+            title: "Send us a Message",
+            subtitle: "Tell us about your project and how we can help you achieve your digital transformation goals",
+            firstName: "First Name *",
+            lastName: "Last Name *",
+            email: "Email Address *",
+            phone: "Phone Number",
+            company: "Company/Organization",
+            subject: "Subject *",
+            subjectOptions: {
+              select: "Select a subject",
+              digitalTransformation: "Digital Transformation Consultation",
+              aiSolutions: "AI Solutions for Business",
+              infrastructure: "Infrastructure Modernization",
+              partnership: "Partnership Opportunities",
+              other: "Other"
+            },
+            message: "Message *",
+            messagePlaceholder: "Please describe your project, requirements, and how we can help you...",
+            agreement: "I agree to the processing of my personal data and consent to be contacted by DigitizedBrains regarding digital transformation solutions.",
+            submit: "Send Message"
+          },
+          faq: {
+            title: "Frequently Asked Questions",
+            subtitle: "Common questions about our digital transformation services",
+            q1: {
+              question: "How long does a typical digital transformation project take?",
+              answer: "Project timelines vary depending on scope and complexity. Most comprehensive digital transformation projects for business organizations take 6-18 months, with initial results visible within the first 3 months."
+            },
+            q2: {
+              question: "Do you provide ongoing support after project completion?",
+              answer: "Yes, we offer comprehensive post-implementation support including training, maintenance, and continuous optimization to ensure your digital transformation delivers lasting value."
+            },
+            q3: {
+              question: "Can you work with existing systems and infrastructure?",
+              answer: "Absolutely. Our solutions are designed to integrate seamlessly with existing business infrastructure while providing clear migration paths for legacy systems."
+            }
+          }
+        },
+        footer: {
+          description: "Leading digital transformation solutions for Vietnamese enterprises. Empowering businesses with AI and cutting-edge technology.",
+          quickLinks: "Quick Links",
+          contact: "Contact",
+          location: "Ho Chi Minh City, Vietnam",
+          copyright: "© 2025 DigitizedBrains. All rights reserved."
+        }
+      },
+      vi: {
+        meta: {
+          title: "Liên hệ - DigitizedBrains",
+          description: "Liên hệ với DigitizedBrains để được tư vấn giải pháp chuyển đổi số cho doanh nghiệp Việt Nam"
+        },
+        nav: {
+          home: "Trang chủ",
+          about: "Giới thiệu",
+          digitalTransformation: "Chuyển đổi số",
+          aiAgent: "AI Agent",
+          blog: "Blog",
+          resources: "Tài nguyên",
+          contact: "Liên hệ"
+        },
+        contact: {
+          hero: {
+            title: "Liên hệ với chúng tôi",
+            subtitle: "Sẵn sàng chuyển đổi doanh nghiệp của bạn? Hãy thảo luận về cách chúng tôi có thể giúp bạn đạt được mục tiêu chuyển đổi số."
+          },
+          info: {
+            title: "Thông tin Liên hệ",
+            subtitle: "Nhiều cách để liên hệ với đội ngũ chuyên gia chuyển đổi số của chúng tôi",
+            office: {
+              title: "Văn phòng",
+              address: "123 Đường Số hóa, Quận 1",
+              city: "Thành phố Hồ Chí Minh, Việt Nam"
+            },
+            phone: {
+              title: "Điện thoại",
+              hours: "Thứ 2 - Thứ 6: 9:00 - 18:00"
+            },
+            email: {
+              title: "Email",
+              response: "Phản hồi trong vòng 24 giờ"
+            }
+          },
+          form: {
+            title: "Gửi tin nhắn cho chúng tôi",
+            subtitle: "Hãy cho chúng tôi biết về dự án của bạn và cách chúng tôi có thể giúp bạn đạt được mục tiêu chuyển đổi số",
+            firstName: "Tên *",
+            lastName: "Họ *",
+            email: "Địa chỉ Email *",
+            phone: "Số điện thoại",
+            company: "Công ty/Tổ chức",
+            subject: "Chủ đề *",
+            subjectOptions: {
+              select: "Chọn chủ đề",
+              digitalTransformation: "Tư vấn Chuyển đổi số",
+              aiSolutions: "Giải pháp AI cho Doanh nghiệp",
+              infrastructure: "Hiện đại hóa Hạ tầng",
+              partnership: "Cơ hội Hợp tác",
+              other: "Khác"
+            },
+            message: "Tin nhắn *",
+            messagePlaceholder: "Vui lòng mô tả dự án, yêu cầu của bạn và cách chúng tôi có thể giúp đỡ...",
+            agreement: "Tôi đồng ý với việc xử lý dữ liệu cá nhân và cho phép DigitizedBrains liên hệ với tôi về các giải pháp chuyển đổi số.",
+            submit: "Gửi tin nhắn"
+          },
+          faq: {
+            title: "Câu hỏi Thường gặp",
+            subtitle: "Các câu hỏi phổ biến về dịch vụ chuyển đổi số của chúng tôi",
+            q1: {
+              question: "Một dự án chuyển đổi số thông thường mất bao lâu?",
+              answer: "Thời gian dự án tùy thuộc vào phạm vi và độ phức tạp. Hầu hết các dự án chuyển đổi số toàn diện cho các tổ chức kinh doanh mất 6-18 tháng, với kết quả ban đầu có thể thấy trong 3 tháng đầu."
+            },
+            q2: {
+              question: "Bạn có cung cấp hỗ trợ liên tục sau khi hoàn thành dự án không?",
+              answer: "Có, chúng tôi cung cấp hỗ trợ toàn diện sau triển khai bao gồm đào tạo, bảo trì và tối ưu hóa liên tục để đảm bảo chuyển đổi số của bạn mang lại giá trị lâu dài."
+            },
+            q3: {
+              question: "Bạn có thể làm việc với hệ thống và hạ tầng hiện có không?",
+              answer: "Hoàn toàn có thể. Các giải pháp của chúng tôi được thiết kế để tích hợp liền mạch với hạ tầng kinh doanh hiện có đồng thời cung cấp lộ trình di chuyển rõ ràng cho các hệ thống cũ."
+            }
+          }
+        },
+        footer: {
+          description: "Giải pháp chuyển đổi số hàng đầu cho doanh nghiệp Việt Nam. Trao quyền cho doanh nghiệp với AI và công nghệ tiên tiến.",
+          quickLinks: "Liên kết nhanh",
+          contact: "Liên hệ",
+          location: "Thành phố Hồ Chí Minh, Việt Nam",
+          copyright: "© 2025 DigitizedBrains. Tất cả quyền được bảo lưu."
+        }
+      },
+      de: {
+        meta: {
+          title: "Kontakt - DigitizedBrains",
+          description: "Kontaktieren Sie DigitizedBrains für digitale Transformationslösungen in vietnamesischen Unternehmen"
+        },
+        nav: {
+          home: "Startseite",
+          about: "Über uns",
+          digitalTransformation: "Digitale Transformation",
+          aiAgent: "KI-Agent",
+          blog: "Blog",
+          resources: "Ressourcen",
+          contact: "Kontakt"
+        },
+        contact: {
+          hero: {
+            title: "Kontaktieren Sie uns",
+            subtitle: "Bereit, Ihr Unternehmen zu transformieren? Lassen Sie uns besprechen, wie wir Ihnen bei der Erreichung Ihrer digitalen Transformationsziele helfen können."
+          },
+          info: {
+            title: "Kontaktinformationen",
+            subtitle: "Mehrere Wege, unser Team von Experten für digitale Transformation zu erreichen",
+            office: {
+              title: "Unser Büro",
+              address: "123 Digital Street, Bezirk 1",
+              city: "Ho-Chi-Minh-Stadt, Vietnam"
+            },
+            phone: {
+              title: "Telefon",
+              hours: "Mo - Fr: 9:00 - 18:00 Uhr"
+            },
+            email: {
+              title: "E-Mail",
+              response: "Antwort innerhalb von 24 Stunden"
+            }
+          },
+          form: {
+            title: "Senden Sie uns eine Nachricht",
+            subtitle: "Erzählen Sie uns von Ihrem Projekt und wie wir Ihnen bei der Erreichung Ihrer digitalen Transformationsziele helfen können",
+            firstName: "Vorname *",
+            lastName: "Nachname *",
+            email: "E-Mail-Adresse *",
+            phone: "Telefonnummer",
+            company: "Unternehmen/Organisation",
+            subject: "Betreff *",
+            subjectOptions: {
+              select: "Betreff auswählen",
+              digitalTransformation: "Beratung zur digitalen Transformation",
+              aiSolutions: "KI-Lösungen für Unternehmen",
+              infrastructure: "Infrastruktur-Modernisierung",
+              partnership: "Partnerschaftsmöglichkeiten",
+              other: "Sonstiges"
+            },
+            message: "Nachricht *",
+            messagePlaceholder: "Bitte beschreiben Sie Ihr Projekt, Ihre Anforderungen und wie wir Ihnen helfen können...",
+            agreement: "Ich stimme der Verarbeitung meiner persönlichen Daten zu und erlaube DigitizedBrains, mich bezüglich digitaler Transformationslösungen zu kontaktieren.",
+            submit: "Nachricht senden"
+          },
+          faq: {
+            title: "Häufig gestellte Fragen",
+            subtitle: "Häufige Fragen zu unseren digitalen Transformationsdiensten",
+            q1: {
+              question: "Wie lange dauert ein typisches digitales Transformationsprojekt?",
+              answer: "Die Projektlaufzeiten variieren je nach Umfang und Komplexität. Die meisten umfassenden digitalen Transformationsprojekte für Geschäftsorganisationen dauern 6-18 Monate, wobei erste Ergebnisse innerhalb der ersten 3 Monate sichtbar werden."
+            },
+            q2: {
+              question: "Bieten Sie kontinuierliche Unterstützung nach Projektabschluss?",
+              answer: "Ja, wir bieten umfassende Unterstützung nach der Implementierung, einschließlich Schulungen, Wartung und kontinuierlicher Optimierung, um sicherzustellen, dass Ihre digitale Transformation dauerhaften Wert liefert."
+            },
+            q3: {
+              question: "Können Sie mit bestehenden Systemen und Infrastrukturen arbeiten?",
+              answer: "Absolut. Unsere Lösungen sind darauf ausgelegt, sich nahtlos in bestehende Geschäftsinfrastrukturen zu integrieren und gleichzeitig klare Migrationspfade für Legacy-Systeme zu bieten."
+            }
+          }
+        },
+        footer: {
+          description: "Führende digitale Transformationslösungen für vietnamesische Unternehmen. Stärkung von Unternehmen mit KI und modernster Technologie.",
+          quickLinks: "Schnelle Links",
+          contact: "Kontakt",
+          location: "Ho-Chi-Minh-Stadt, Vietnam",
+          copyright: "© 2025 DigitizedBrains. Alle Rechte vorbehalten."
+        }
+      }
+    };
+
+    // Language configuration
+    const languageConfig = {
+      en: { flag: "https://flagcdn.com/24x18/us.png", code: "EN", alt: "English" },
+      vi: { flag: "https://flagcdn.com/24x18/vn.png", code: "VN", alt: "Tiếng Việt" },
+      de: { flag: "https://flagcdn.com/24x18/de.png", code: "DE", alt: "Deutsch" }
+    };
+
+    // Current language
+    let currentLanguage = localStorage.getItem('preferredLanguage') || 'en';
+
+    // DOM elements
+    const languageToggle = document.getElementById('language-btn');
+    const languageOptions = document.getElementById('language-menu');
+    const currentFlag = document.getElementById('current-flag');
+    const currentLang = document.getElementById('current-lang');
+    const htmlRoot = document.getElementById('html-root');
+    const pageTitle = document.getElementById('page-title');
+    const pageDescription = document.getElementById('page-description');
+    
+    // Mobile language elements
+    const mobileLanguageToggle = document.getElementById('mobile-language-btn');
+    const mobileLanguageOptions = document.getElementById('mobile-language-menu');
+    const mobileCurrentFlag = document.getElementById('mobile-current-flag');
+    const mobileCurrentLang = document.getElementById('mobile-current-lang');
+
+    // Function to update language display
+    function updateLanguageDisplay() {
+      const config = languageConfig[currentLanguage];
+      if (currentFlag) {
+        currentFlag.src = config.flag;
+        currentFlag.alt = config.alt;
+      }
+      if (currentLang) {
+        currentLang.textContent = config.code;
+      }
+      if (mobileCurrentFlag) {
+        mobileCurrentFlag.src = config.flag;
+        mobileCurrentFlag.alt = config.alt;
+      }
+      if (mobileCurrentLang) {
+        mobileCurrentLang.textContent = config.code;
+      }
+      
+      // Update current language in dropdown options
+      document.querySelectorAll('.language-option, .language-option-mobile').forEach(option => {
+        option.classList.remove('current', 'active');
+        if (option.dataset.lang === currentLanguage) {
+          option.classList.add('active');
+        }
+      });
+    }
+
+    // Function to translate content
+    function translateContent(targetLanguage) {
+      const data = languages[targetLanguage];
+      if (!data) return;
+
+      // Add transition effect
+      document.body.classList.add('lang-transition', 'changing');
+
+      setTimeout(() => {
+        // Update meta tags
+        htmlRoot.lang = targetLanguage === 'vi' ? 'vi' : targetLanguage === 'de' ? 'de' : 'en';
+        pageTitle.textContent = data.meta.title;
+        pageDescription.content = data.meta.description;
+
+        // Update all translatable elements
+        document.querySelectorAll('[data-translate]').forEach(element => {
+          const key = element.getAttribute('data-translate');
+          const keys = key.split('.');
+          let value = data;
+          
+          for (let k of keys) {
+            value = value[k];
+            if (!value) break;
+          }
+          
+          if (value) {
+            element.textContent = value;
+          }
+        });
+
+        // Update placeholder
+        const messagePlaceholder = document.querySelector('[data-placeholder]');
+        if (messagePlaceholder && data.contact.form.messagePlaceholder) {
+          messagePlaceholder.placeholder = data.contact.form.messagePlaceholder;
+        }
+
+        // Remove transition effect
+        document.body.classList.remove('changing');
+      }, 150);
+
+      setTimeout(() => {
+        document.body.classList.remove('lang-transition');
+      }, 450);
+    }
+
+    // Function to change language
+    function changeLanguage(newLanguage) {
+      if (newLanguage === currentLanguage) return;
+      
+      currentLanguage = newLanguage;
+      localStorage.setItem('preferredLanguage', newLanguage);
+      
+      updateLanguageDisplay();
+      translateContent(newLanguage);
+    }
+
+    // Make changeLanguage available globally for onclick handlers
+    window.changeLanguage = changeLanguage;
+
+    // Language switcher event listeners
+    if (languageToggle) {
+      languageToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        languageToggle.classList.toggle('active');
+        if (languageOptions) {
+          languageOptions.classList.toggle('show');
+        }
+      });
+    }
+
+    if (mobileLanguageToggle) {
+      mobileLanguageToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        mobileLanguageToggle.classList.toggle('active');
+        if (mobileLanguageOptions) {
+          mobileLanguageOptions.classList.toggle('show');
+        }
+      });
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function() {
+      if (languageToggle) languageToggle.classList.remove('active');
+      if (languageOptions) languageOptions.classList.remove('show');
+      if (mobileLanguageToggle) mobileLanguageToggle.classList.remove('active');
+      if (mobileLanguageOptions) mobileLanguageOptions.classList.remove('show');
+    });
+
+    // Prevent dropdown from closing when clicking inside options
+    if (languageOptions) {
+      languageOptions.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+    }
+    if (mobileLanguageOptions) {
+      mobileLanguageOptions.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+    }
+
+    // Language option click handlers
+    document.querySelectorAll('.language-option, .language-option-mobile').forEach(option => {
+      option.addEventListener('click', function(e) {
+        e.preventDefault();
+        const selectedLanguage = this.dataset.lang;
+        changeLanguage(selectedLanguage);
+        if (languageToggle) languageToggle.classList.remove('active');
+        if (languageOptions) languageOptions.classList.remove('show');
+        if (mobileLanguageToggle) mobileLanguageToggle.classList.remove('active');
+        if (mobileLanguageOptions) mobileLanguageOptions.classList.remove('show');
+      });
+    });
+
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // Contact form submission
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData);
+      
+      // Simple validation
+      if (!data.firstName || !data.lastName || !data.email || !data.subject || !data.message || !data.agreement) {
+        alert('Please fill in all required fields and accept the agreement.');
+        return;
+      }
+      
+      // Show success message (in a real implementation, you would send this to a server)
+      alert('Thank you for your message! We will get back to you within 24 hours.');
+      
+      // Reset form
+      this.reset();
+    });
+
+    // Scroll reveal animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      updateLanguageDisplay();
+      translateContent(currentLanguage);
+    });
+  </script>
+</body>
+</html>

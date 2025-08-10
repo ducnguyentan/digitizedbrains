@@ -1,0 +1,151 @@
+%PDF-1.4
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+
+2 0 obj
+<<
+/Type /Pages
+/Kids [3 0 R]
+/Count 1
+>>
+endobj
+
+3 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 612 792]
+/Contents 4 0 R
+/Resources <<
+/Font <<
+/F1 5 0 R
+>>
+>>
+>>
+endobj
+
+4 0 obj
+<<
+/Length 2200
+>>
+stream
+BT
+/F1 18 Tf
+50 720 Td
+(Digital Readiness Assessment Tool) Tj
+0 -30 Td
+/F1 12 Tf
+(Introduction) Tj
+0 -20 Td
+/F1 10 Tf
+(This comprehensive assessment tool helps Vietnamese enterprises) Tj
+0 -15 Td
+(evaluate their digital transformation readiness across key business) Tj
+0 -15 Td
+(dimensions. Complete this assessment to receive personalized) Tj
+0 -15 Td
+(recommendations for your digital transformation journey.) Tj
+0 -30 Td
+/F1 12 Tf
+(Assessment Categories) Tj
+0 -20 Td
+/F1 10 Tf
+(1. Technology Infrastructure Readiness) Tj
+0 -15 Td
+(- Current IT systems and hardware capabilities) Tj
+0 -15 Td
+(- Cloud computing adoption level) Tj
+0 -15 Td
+(- Cybersecurity measures and data protection) Tj
+0 -15 Td
+(- Network connectivity and bandwidth capacity) Tj
+0 -20 Td
+(2. Digital Skills and Workforce Capability) Tj
+0 -15 Td
+(- Employee digital literacy levels) Tj
+0 -15 Td
+(- Management digital leadership skills) Tj
+0 -15 Td
+(- Training and development programs) Tj
+0 -15 Td
+(- Change management readiness) Tj
+0 -20 Td
+(3. Business Process Digitization) Tj
+0 -15 Td
+(- Current process automation level) Tj
+0 -15 Td
+(- Data collection and analytics capabilities) Tj
+0 -15 Td
+(- Customer interaction digitization) Tj
+0 -15 Td
+(- Supply chain digital integration) Tj
+0 -20 Td
+(4. Customer Experience Digital Maturity) Tj
+0 -15 Td
+(- Digital customer touchpoints) Tj
+0 -15 Td
+(- Online service delivery capabilities) Tj
+0 -15 Td
+(- Customer data utilization) Tj
+0 -15 Td
+(- Omnichannel experience delivery) Tj
+0 -30 Td
+/F1 12 Tf
+(Scoring Framework) Tj
+0 -20 Td
+/F1 10 Tf
+(Each category is scored from 1-5 points:) Tj
+0 -15 Td
+(1 - Basic/Traditional approach) Tj
+0 -15 Td
+(2 - Limited digital adoption) Tj
+0 -15 Td
+(3 - Moderate digital implementation) Tj
+0 -15 Td
+(4 - Advanced digital capabilities) Tj
+0 -15 Td
+(5 - Digital-first organization) Tj
+0 -30 Td
+/F1 12 Tf
+(Recommendations Based on Score) Tj
+0 -20 Td
+/F1 10 Tf
+(Score 16-20: Digital Leader - Focus on innovation and optimization) Tj
+0 -15 Td
+(Score 12-15: Digital Adopter - Expand existing capabilities) Tj
+0 -15 Td
+(Score 8-11: Digital Beginner - Implement foundational systems) Tj
+0 -15 Td
+(Score 4-7: Digital Starter - Begin with basic digitization) Tj
+ET
+endstream
+endobj
+
+5 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+>>
+endobj
+
+xref
+0 6
+0000000000 65535 f 
+0000000010 00000 n 
+0000000053 00000 n 
+0000000100 00000 n 
+0000000249 00000 n 
+0000002501 00000 n 
+trailer
+<<
+/Size 6
+/Root 1 0 R
+>>
+startxref
+2570
+%%EOF

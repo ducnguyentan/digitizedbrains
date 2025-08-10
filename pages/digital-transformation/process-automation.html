@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="page-title">Tự động hóa Quy trình - DigitizedBrains</title>
+  <meta name="description" content="Giải pháp tự động hóa quy trình toàn diện cho doanh nghiệp Việt Nam" id="page-description">
+  <link href="../../css/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    .font-nunito { 
+      font-family: 'Nunito', sans-serif; 
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Navigation styles */
+    .nav-link {
+      color: #374151;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .nav-link:hover { color: #ed7354; background-color: #fef2f2; }
+    .nav-link.active { color: #ed7354; font-weight: 600; }
+
+    /* Language Switcher Styles */
+    .language-switcher {
+      position: relative;
+    }
+    
+    .language-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      min-width: 160px;
+      display: none;
+      z-index: 1000;
+    }
+    
+    .language-menu.show {
+      display: block;
+    }
+    
+    .language-option {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+    
+    .language-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    /* Hero Section Styles */
+    .hero-section {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 120px 0;
+      color: white;
+    }
+
+    /* Scroll Reveal Animation */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+    
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Feature Cards */
+    .feature-card {
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Button Styles */
+    .btn-primary {
+      background: linear-gradient(135deg, #ed7354, #dc2626);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+  <!-- Header -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: linear-gradient(to right, #fb923c, #ec4899);">
+            <span class="text-white font-bold text-lg" style="color: white !important;">DB</span>
+          </div>
+          <a href="../../index.html" class="text-2xl font-bold text-gray-800">Digitized Brains</a>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="hidden md:flex space-x-4">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="../ai-agent/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="../blog/index.html" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+        </nav>
+
+        <!-- Language Switcher -->
+        <div class="hidden md:block">
+          <div class="language-switcher">
+            <button id="language-btn" class="flex items-center space-x-1 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+              <img id="current-flag" src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+              <span id="current-lang">EN</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="language-menu" class="language-menu">
+              <a href="#" onclick="changeLanguage('en')" class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                English
+              </a>
+              <a href="#" onclick="changeLanguage('vi')" class="language-option" data-lang="vi">
+                <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                Tiếng Việt
+              </a>
+              <a href="#" onclick="changeLanguage('de')" class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                Deutsch
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <nav class="flex flex-col space-y-2">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="../ai-agent/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="../blog/index.html" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 scroll-reveal" data-translate="hero.title">Tự động hóa Quy trình cho Doanh nghiệp Việt Nam</h1>
+        <p class="text-xl opacity-90 mb-8 scroll-reveal" data-translate="hero.subtitle">Nâng cao hiệu quả và giảm chi phí vận hành với giải pháp tự động hóa quy trình thông minh được thiết kế riêng cho doanh nghiệp Việt Nam</p>
+        <div class="flex flex-wrap justify-center gap-4 scroll-reveal">
+          <a href="#solutions" class="btn-primary px-8 py-3 rounded-full font-semibold" data-translate="hero.cta">Khám phá Giải pháp Tự động hóa</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section id="solutions" class="py-20">
+    <div class="container mx-auto px-4">
+      <!-- Overview Section -->
+      <div class="max-w-4xl mx-auto mb-16 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal" data-translate="content.overview.title">Giải pháp Tự động hóa Quy trình Thúc đẩy Hiệu quả Doanh nghiệp</h2>
+        <p class="text-xl text-gray-600 scroll-reveal" data-translate="content.overview.description">
+          Tối ưu hóa hoạt động kinh doanh và giảm chi phí với các giải pháp tự động hóa quy trình toàn diện được thiết kế riêng cho nhu cầu doanh nghiệp Việt Nam
+        </p>
+      </div>
+
+      <!-- Solutions Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <!-- Workflow Automation -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.workflow.title">Tự động hóa Quy trình Làm việc</h3>
+          <p class="text-gray-600" data-translate="content.solutions.workflow.description">Chuyển đổi quy trình thủ công sang quy trình làm việc số tự động và thông minh giúp tiết kiệm thời gian và giảm lỗi con người</p>
+        </div>
+
+        <!-- Intelligent Document Processing -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.document.title">Xử lý Tài liệu Thông minh</h3>
+          <p class="text-gray-600" data-translate="content.solutions.document.description">Tự động hóa thu thập, phân loại và xử lý dữ liệu từ các loại tài liệu doanh nghiệp với độ chính xác cao và tiết kiệm thời gian</p>
+        </div>
+
+        <!-- Process Integration -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.integration.title">Tích hợp Quy trình</h3>
+          <p class="text-gray-600" data-translate="content.solutions.integration.description">Kết nối liền mạch các hệ thống và quy trình riêng biệt để tạo ra luồng công việc thông suốt và hiệu quả trong toàn doanh nghiệp</p>
+        </div>
+
+        <!-- RPA (Robotic Process Automation) -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.rpa.title">Tự động hóa Quy trình bằng Robot (RPA)</h3>
+          <p class="text-gray-600" data-translate="content.solutions.rpa.description">Triển khai robot phần mềm để tự động hóa các tác vụ lặp đi lặp lại, giải phóng nhân viên khỏi công việc đơn điệu và tăng năng suất</p>
+        </div>
+
+        <!-- AI-Powered Automation -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.ai.title">Tự động hóa Thông minh với AI</h3>
+          <p class="text-gray-600" data-translate="content.solutions.ai.description">Kết hợp trí tuệ nhân tạo và học máy để tạo ra các giải pháp tự động hóa thông minh có khả năng học hỏi, thích nghi và tự cải thiện</p>
+        </div>
+
+        <!-- Continuous Improvement -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.improvement.title">Cải tiến Quy trình Liên tục</h3>
+          <p class="text-gray-600" data-translate="content.solutions.improvement.description">Sử dụng công nghệ phân tích dữ liệu tiên tiến để theo dõi, đo lường và tối ưu hóa liên tục các quy trình kinh doanh tự động</p>
+        </div>
+      </div>
+
+      <!-- Benefits Section -->
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8 text-center scroll-reveal" data-translate="content.benefits.title">Lợi ích của Tự động hóa Quy trình</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Efficiency -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.efficiency.title">Tăng Hiệu quả Hoạt động</h3>
+              <p class="text-gray-600" data-translate="content.benefits.efficiency.description">Tối ưu hóa quy trình kinh doanh và giảm chi phí hoạt động thông qua tự động hóa thông minh và phân bổ tài nguyên tối ưu, giúp doanh nghiệp Việt Nam tiết kiệm đến 30-40% chi phí vận hành</p>
+            </div>
+          </div>
+
+          <!-- Quality -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.quality.title">Nâng cao Chất lượng</h3>
+              <p class="text-gray-600" data-translate="content.benefits.quality.description">Cải thiện tính nhất quán và chất lượng của sản phẩm và dịch vụ thông qua các quy trình được tiêu chuẩn hóa và tự động hóa, giảm thiểu lỗi con người và đảm bảo tuân thủ quy định</p>
+            </div>
+          </div>
+
+          <!-- Agility -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.agility.title">Tăng Tính Linh hoạt</h3>
+              <p class="text-gray-600" data-translate="content.benefits.agility.description">Phản ứng nhanh hơn với thay đổi thị trường và nhu cầu khách hàng thông qua các quy trình kinh doanh linh hoạt và có thể điều chỉnh, giúp doanh nghiệp Việt Nam thích nghi nhanh chóng với môi trường kinh doanh năng động</p>
+            </div>
+          </div>
+
+          <!-- Data-driven Decisions -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.data.title">Ra quyết định Dựa trên Dữ liệu</h3>
+              <p class="text-gray-600" data-translate="content.benefits.data.description">Tiếp cận thông tin chi tiết về hiệu suất quy trình theo thời gian thực để đưa ra quyết định kinh doanh sáng suốt hơn, giúp lãnh đạo doanh nghiệp Việt Nam đưa ra chiến lược phù hợp dựa trên dữ liệu chính xác</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-12 text-center" data-translate="caseStudies.title">Chúng tôi đã Giúp Doanh nghiệp Việt Nam Thành công</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <!-- Case Study 1 -->
+        <div class="bg-white rounded-xl overflow-hidden shadow-md scroll-reveal">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2" data-translate="caseStudies.case1.title">Doanh nghiệp Sản xuất Tự động hóa Chuỗi Cung ứng</h3>
+            <p class="text-gray-600 mb-4" data-translate="caseStudies.case1.description">
+              Chúng tôi đã giúp một doanh nghiệp sản xuất hàng đầu tại Việt Nam tự động hóa và tối ưu hóa quy trình chuỗi cung ứng của họ, giúp cắt giảm 30% chi phí vận hành và giảm 45% thời gian chu kỳ đơn hàng.
+            </p>
+            <div class="flex items-center text-orange-600">
+              <span class="font-semibold mr-2" data-translate="caseStudies.readMore">Xem thêm</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case Study 2 -->
+        <div class="bg-white rounded-xl overflow-hidden shadow-md scroll-reveal">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2" data-translate="caseStudies.case2.title">Doanh nghiệp Dịch vụ Tài chính Tự động hóa Quy trình</h3>
+            <p class="text-gray-600 mb-4" data-translate="caseStudies.case2.description">
+              Một ngân hàng thương mại tại Việt Nam đã đạt được mức tăng 40% về hiệu quả xử lý và cải thiện 60% về trải nghiệm khách hàng nhờ vào việc tự động hóa quy trình phê duyệt khoản vay và dịch vụ khách hàng.
+            </p>
+            <div class="flex items-center text-orange-600">
+              <span class="font-semibold mr-2" data-translate="caseStudies.readMore">Xem thêm</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-6" data-translate="contact.title">Sẵn sàng Tự động hóa Quy trình Kinh doanh của Bạn?</h2>
+        <p class="text-gray-600 mb-8" data-translate="contact.description">
+          Liên hệ với chúng tôi để thảo luận về cách chúng tôi có thể giúp doanh nghiệp của bạn nâng cao hiệu quả thông qua tự động hóa quy trình thông minh.
+        </p>
+        <a href="../contact/index.html" class="btn-primary inline-block text-white px-8 py-3 rounded-lg font-semibold transition-colors" data-translate="contact.button">
+          Liên hệ Ngay
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: linear-gradient(to right, #fb923c, #ec4899);">
+              <span class="text-white font-bold text-lg" style="color: white !important;">DB</span>
+            </div>
+            <span class="text-2xl font-bold">Digitized Brains</span>
+          </div>
+          <p class="text-gray-400" data-translate="footer.description">Giải pháp tự động hóa quy trình hàng đầu cho doanh nghiệp Việt Nam. Trao quyền cho doanh nghiệp với công nghệ hiện đại và đổi mới tiên tiến.</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.quickLinks">Liên kết nhanh</h4>
+          <div class="grid grid-cols-2 gap-4">
+            <ul class="space-y-2">
+              <li><a href="../../index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.home">Trang chủ</a></li>
+              <li><a href="../about/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.about">Giới thiệu</a></li>
+              <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.digitalTransformation">Chuyển đổi số</a></li>
+              <li><a href="../ai-agent/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.aiAgent">AI Agent</a></li>
+            </ul>
+            <ul class="space-y-2">
+              <li><a href="../blog/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.blog">Blog</a></li>
+              <li><a href="../resources/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.resources">Tài nguyên</a></li>
+              <li><a href="../contact/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.contact">Liên hệ</a></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.contact">Liên hệ</h4>
+          <ul class="space-y-2">
+            <li class="text-gray-400">contact@digitizedbrains.com</li>
+            <li class="text-gray-400" data-translate="footer.location">Thành phố Hồ Chí Minh, Việt Nam</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-gray-400" data-translate="footer.copyright">© 2025 DigitizedBrains. Bản quyền thuộc về DigitizedBrains.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Language Switcher Script -->
+  <script>
+    // Language data
+    const languages = {
+      en: {
+        meta: {
+          title: "Process Automation - DigitizedBrains",
+          description: "Comprehensive process automation solutions for Vietnamese enterprises"
+        },
+        nav: {
+          home: "Home",
+          about: "About",
+          digitalTransformation: "Digital Transformation",
+          aiAgent: "AI Agent",
+          blog: "Blog",
+          resources: "Resources",
+          contact: "Contact"
+        },
+        hero: {
+          title: "Process Automation for Vietnamese Businesses",
+          subtitle: "Enhance efficiency and reduce operational costs with intelligent process automation solutions tailored for Vietnamese enterprises",
+          cta: "Explore Automation Solutions"
+        },
+        content: {
+          overview: {
+            title: "Process Automation Solutions Driving Business Efficiency",
+            description: "Optimize business operations and reduce costs with comprehensive process automation solutions tailored to the needs of Vietnamese enterprises"
+          },
+          solutions: {
+            workflow: {
+              title: "Workflow Automation",
+              description: "Transform manual processes into automated, intelligent digital workflows that save time and reduce human error"
+            },
+            document: {
+              title: "Intelligent Document Processing",
+              description: "Automate the capture, classification, and processing of data from business documents with high accuracy and time efficiency"
+            },
+            integration: {
+              title: "Process Integration",
+              description: "Seamlessly connect disparate systems and processes to create smooth and efficient workflows across the enterprise"
+            },
+            rpa: {
+              title: "Robotic Process Automation (RPA)",
+              description: "Deploy software robots to automate repetitive tasks, freeing employees from mundane work and increasing productivity"
+            },
+            ai: {
+              title: "AI-Powered Automation",
+              description: "Combine artificial intelligence and machine learning to create intelligent automation solutions that learn, adapt, and self-improve"
+            },
+            improvement: {
+              title: "Continuous Process Improvement",
+              description: "Use advanced data analytics to monitor, measure, and continuously optimize automated business processes"
+            }
+          },
+          benefits: {
+            title: "Benefits of Process Automation",
+            efficiency: {
+              title: "Increased Operational Efficiency",
+              description: "Optimize business processes and reduce operational costs through intelligent automation and optimal resource allocation, helping Vietnamese businesses save up to 30-40% in operational expenses"
+            },
+            quality: {
+              title: "Enhanced Quality",
+              description: "Improve consistency and quality of products and services through standardized and automated processes, minimizing human error and ensuring regulatory compliance"
+            },
+            agility: {
+              title: "Increased Agility",
+              description: "Respond faster to market changes and customer needs through flexible and adaptable business processes, helping Vietnamese businesses quickly adapt to dynamic business environments"
+            },
+            data: {
+              title: "Data-driven Decision Making",
+              description: "Access real-time insights into process performance to make more informed business decisions, helping Vietnamese business leaders develop appropriate strategies based on accurate data"
+            }
+          }
+        },
+        caseStudies: {
+          title: "We've Helped Vietnamese Businesses Succeed",
+          readMore: "Read More",
+          case1: {
+            title: "Manufacturing Enterprise Automates Supply Chain",
+            description: "We helped a leading Vietnamese manufacturing company automate and optimize their supply chain processes, resulting in a 30% reduction in operational costs and a 45% decrease in order cycle time."
+          },
+          case2: {
+            title: "Financial Services Business Streamlines Processes",
+            description: "A commercial bank in Vietnam achieved a 40% increase in processing efficiency and a 60% improvement in customer experience by automating their loan approval and customer service processes."
+          }
+        },
+        contact: {
+          title: "Ready to Automate Your Business Processes?",
+          description: "Contact us to discuss how we can help your business improve efficiency through intelligent process automation.",
+          button: "Get in Touch"
+        },
+        cta: {
+          title: "Ready to Transform Your Business with Automation?",
+          description: "Contact us today to discuss how our process automation solutions can help your business thrive in the digital age",
+          button: "Get Started"
+        },
+        footer: {
+          description: "Leading process automation solutions for Vietnamese enterprises. Empowering businesses with modern technology and cutting-edge innovations.",
+          quickLinks: "Quick Links",
+          contact: "Contact",
+          location: "Ho Chi Minh City, Vietnam",
+          copyright: "© 2025 DigitizedBrains. All rights reserved."
+        }
+      },
+      vi: {
+        meta: {
+          title: "Tự động hóa Quy trình - DigitizedBrains",
+          description: "Giải pháp tự động hóa quy trình toàn diện cho doanh nghiệp Việt Nam"
+        },
+        nav: {
+          home: "Trang chủ",
+          about: "Giới thiệu",
+          digitalTransformation: "Chuyển đổi số",
+          aiAgent: "AI Agent",
+          blog: "Blog",
+          resources: "Tài nguyên",
+          contact: "Liên hệ"
+        },
+        hero: {
+          title: "Tự động hóa Quy trình cho Doanh nghiệp Việt Nam",
+          subtitle: "Nâng cao hiệu quả và giảm chi phí vận hành với giải pháp tự động hóa quy trình thông minh được thiết kế riêng cho doanh nghiệp Việt Nam",
+          cta: "Khám phá Giải pháp Tự động hóa"
+        },
+        content: {
+          overview: {
+            title: "Giải pháp Tự động hóa Quy trình Thúc đẩy Hiệu quả Doanh nghiệp",
+            description: "Tối ưu hóa hoạt động kinh doanh và giảm chi phí với các giải pháp tự động hóa quy trình toàn diện được thiết kế riêng cho nhu cầu doanh nghiệp Việt Nam"
+          },
+          solutions: {
+            workflow: {
+              title: "Tự động hóa Quy trình Làm việc",
+              description: "Chuyển đổi quy trình thủ công sang quy trình làm việc số tự động và thông minh giúp tiết kiệm thời gian và giảm lỗi con người"
+            },
+            document: {
+              title: "Xử lý Tài liệu Thông minh",
+              description: "Tự động hóa thu thập, phân loại và xử lý dữ liệu từ các loại tài liệu doanh nghiệp với độ chính xác cao và tiết kiệm thời gian"
+            },
+            integration: {
+              title: "Tích hợp Quy trình",
+              description: "Kết nối liền mạch các hệ thống và quy trình riêng biệt để tạo ra luồng công việc thông suốt và hiệu quả trong toàn doanh nghiệp"
+            },
+            rpa: {
+              title: "Tự động hóa Quy trình bằng Robot (RPA)",
+              description: "Triển khai robot phần mềm để tự động hóa các tác vụ lặp đi lặp lại, giải phóng nhân viên khỏi công việc đơn điệu và tăng năng suất"
+            },
+            ai: {
+              title: "Tự động hóa Thông minh với AI",
+              description: "Kết hợp trí tuệ nhân tạo và học máy để tạo ra các giải pháp tự động hóa thông minh có khả năng học hỏi, thích nghi và tự cải thiện"
+            },
+            improvement: {
+              title: "Cải tiến Quy trình Liên tục",
+              description: "Sử dụng công nghệ phân tích dữ liệu tiên tiến để theo dõi, đo lường và tối ưu hóa liên tục các quy trình kinh doanh tự động"
+            }
+          },
+          benefits: {
+            title: "Lợi ích của Tự động hóa Quy trình",
+            efficiency: {
+              title: "Tăng Hiệu quả Hoạt động",
+              description: "Tối ưu hóa quy trình kinh doanh và giảm chi phí hoạt động thông qua tự động hóa thông minh và phân bổ tài nguyên tối ưu, giúp doanh nghiệp Việt Nam tiết kiệm đến 30-40% chi phí vận hành"
+            },
+            quality: {
+              title: "Nâng cao Chất lượng",
+              description: "Cải thiện tính nhất quán và chất lượng của sản phẩm và dịch vụ thông qua các quy trình được tiêu chuẩn hóa và tự động hóa, giảm thiểu lỗi con người và đảm bảo tuân thủ quy định"
+            },
+            agility: {
+              title: "Tăng Tính Linh hoạt",
+              description: "Phản ứng nhanh hơn với thay đổi thị trường và nhu cầu khách hàng thông qua các quy trình kinh doanh linh hoạt và có thể điều chỉnh, giúp doanh nghiệp Việt Nam thích nghi nhanh chóng với môi trường kinh doanh năng động"
+            },
+            data: {
+              title: "Ra quyết định Dựa trên Dữ liệu",
+              description: "Tiếp cận thông tin chi tiết về hiệu suất quy trình theo thời gian thực để đưa ra quyết định kinh doanh sáng suốt hơn, giúp lãnh đạo doanh nghiệp Việt Nam đưa ra chiến lược phù hợp dựa trên dữ liệu chính xác"
+            }
+          }
+        },
+        caseStudies: {
+          title: "Chúng tôi đã Giúp Doanh nghiệp Việt Nam Thành công",
+          readMore: "Xem thêm",
+          case1: {
+            title: "Doanh nghiệp Sản xuất Tự động hóa Chuỗi Cung ứng",
+            description: "Chúng tôi đã giúp một doanh nghiệp sản xuất hàng đầu tại Việt Nam tự động hóa và tối ưu hóa quy trình chuỗi cung ứng của họ, giúp cắt giảm 30% chi phí vận hành và giảm 45% thời gian chu kỳ đơn hàng."
+          },
+          case2: {
+            title: "Doanh nghiệp Dịch vụ Tài chính Tự động hóa Quy trình",
+            description: "Một ngân hàng thương mại tại Việt Nam đã đạt được mức tăng 40% về hiệu quả xử lý và cải thiện 60% về trải nghiệm khách hàng nhờ vào việc tự động hóa quy trình phê duyệt khoản vay và dịch vụ khách hàng."
+          }
+        },
+        contact: {
+          title: "Sẵn sàng Tự động hóa Quy trình Kinh doanh của Bạn?",
+          description: "Liên hệ với chúng tôi để thảo luận về cách chúng tôi có thể giúp doanh nghiệp của bạn nâng cao hiệu quả thông qua tự động hóa quy trình thông minh.",
+          button: "Liên hệ Ngay"
+        },
+        cta: {
+          title: "Sẵn sàng Chuyển đổi Doanh nghiệp với Tự động hóa?",
+          description: "Liên hệ với chúng tôi ngay hôm nay để thảo luận về cách các giải pháp tự động hóa quy trình của chúng tôi có thể giúp doanh nghiệp của bạn thịnh vượng trong thời đại số",
+          button: "Bắt đầu ngay"
+        },
+        footer: {
+          description: "Giải pháp tự động hóa quy trình hàng đầu cho doanh nghiệp Việt Nam. Trao quyền cho doanh nghiệp với công nghệ hiện đại và đổi mới tiên tiến.",
+          quickLinks: "Liên kết nhanh",
+          contact: "Liên hệ",
+          location: "Thành phố Hồ Chí Minh, Việt Nam",
+          copyright: "© 2025 DigitizedBrains. Bản quyền thuộc về DigitizedBrains."
+        }
+      },
+      de: {
+        meta: {
+          title: "Prozessautomatisierung - DigitizedBrains",
+          description: "Umfassende Prozessautomatisierungslösungen für vietnamesische Unternehmen"
+        },
+        nav: {
+          home: "Startseite",
+          about: "Über uns",
+          digitalTransformation: "Digitale Transformation",
+          aiAgent: "KI-Agent",
+          blog: "Blog",
+          resources: "Ressourcen",
+          contact: "Kontakt"
+        },
+        hero: {
+          title: "Prozessautomatisierung für vietnamesische Unternehmen",
+          subtitle: "Steigern Sie die Effizienz und senken Sie die Betriebskosten mit intelligenten Prozessautomatisierungslösungen, die speziell für vietnamesische Unternehmen entwickelt wurden",
+          cta: "Automatisierungslösungen entdecken"
+        },
+        content: {
+          overview: {
+            title: "Prozessautomatisierungslösungen für mehr Geschäftseffizienz",
+            description: "Optimieren Sie Geschäftsprozesse und reduzieren Sie Kosten mit umfassenden Automatisierungslösungen, die auf die Bedürfnisse vietnamesischer Unternehmen zugeschnitten sind"
+          },
+          solutions: {
+            workflow: {
+              title: "Workflow-Automatisierung",
+              description: "Transformieren Sie manuelle Prozesse in automatisierte, intelligente digitale Workflows, die Zeit sparen und menschliche Fehler reduzieren"
+            },
+            document: {
+              title: "Intelligente Dokumentenverarbeitung",
+              description: "Automatisieren Sie die Erfassung, Klassifizierung und Verarbeitung von Daten aus Geschäftsdokumenten mit hoher Genauigkeit und Zeiteffizienz"
+            },
+            integration: {
+              title: "Prozessintegration",
+              description: "Verbinden Sie nahtlos unterschiedliche Systeme und Prozesse, um reibungslose und effiziente Arbeitsabläufe im gesamten Unternehmen zu schaffen"
+            },
+            rpa: {
+              title: "Robotergestützte Prozessautomatisierung (RPA)",
+              description: "Setzen Sie Software-Roboter ein, um repetitive Aufgaben zu automatisieren, Mitarbeiter von Routinearbeiten zu befreien und die Produktivität zu steigern"
+            },
+            ai: {
+              title: "KI-gestützte Automatisierung",
+              description: "Kombinieren Sie künstliche Intelligenz und maschinelles Lernen, um intelligente Automatisierungslösungen zu schaffen, die lernen, sich anpassen und selbst verbessern"
+            },
+            improvement: {
+              title: "Kontinuierliche Prozessverbesserung",
+              description: "Nutzen Sie fortschrittliche Datenanalysen, um automatisierte Geschäftsprozesse zu überwachen, zu messen und kontinuierlich zu optimieren"
+            }
+          },
+          benefits: {
+            title: "Vorteile der Prozessautomatisierung",
+            efficiency: {
+              title: "Erhöhte Betriebseffizienz",
+              description: "Optimieren Sie Geschäftsprozesse und senken Sie Betriebskosten durch intelligente Automatisierung und optimale Ressourcenzuweisung, was vietnamesischen Unternehmen hilft, bis zu 30-40% ihrer Betriebskosten einzusparen"
+            },
+            quality: {
+              title: "Verbesserte Qualität",
+              description: "Verbessern Sie die Konsistenz und Qualität von Produkten und Dienstleistungen durch standardisierte und automatisierte Prozesse, minimieren Sie menschliche Fehler und stellen Sie die Einhaltung von Vorschriften sicher"
+            },
+            agility: {
+              title: "Erhöhte Agilität",
+              description: "Reagieren Sie schneller auf Marktveränderungen und Kundenbedürfnisse durch flexible und anpassbare Geschäftsprozesse, die vietnamesischen Unternehmen helfen, sich schnell an dynamische Geschäftsumgebungen anzupassen"
+            },
+            data: {
+              title: "Datengestützte Entscheidungsfindung",
+              description: "Greifen Sie auf Echtzeit-Einblicke in die Prozessleistung zu, um fundiertere Geschäftsentscheidungen zu treffen, was vietnamesischen Unternehmensleitern hilft, geeignete Strategien auf Grundlage genauer Daten zu entwickeln"
+            }
+          }
+        },
+        caseStudies: {
+          title: "Wir haben vietnamesischen Unternehmen zum Erfolg verholfen",
+          readMore: "Mehr lesen",
+          case1: {
+            title: "Produktionsunternehmen automatisiert Lieferkette",
+            description: "Wir haben einem führenden vietnamesischen Produktionsunternehmen geholfen, seine Lieferkettenprozesse zu automatisieren und zu optimieren, was zu einer Reduzierung der Betriebskosten um 30% und einer Verkürzung der Auftragsdurchlaufzeit um 45% führte."
+          },
+          case2: {
+            title: "Finanzdienstleister optimiert Prozesse",
+            description: "Eine Geschäftsbank in Vietnam erzielte eine 40%ige Steigerung der Verarbeitungseffizienz und eine 60%ige Verbesserung der Kundenerfahrung durch die Automatisierung ihrer Kreditgenehmigungs- und Kundendienstprozesse."
+          }
+        },
+        contact: {
+          title: "Bereit, Ihre Geschäftsprozesse zu automatisieren?",
+          description: "Kontaktieren Sie uns, um zu besprechen, wie wir Ihrem Unternehmen helfen können, die Effizienz durch intelligente Prozessautomatisierung zu verbessern.",
+          button: "Kontakt aufnehmen"
+        },
+        cta: {
+          title: "Bereit, Ihr Unternehmen mit Automatisierung zu transformieren?",
+          description: "Kontaktieren Sie uns noch heute, um zu besprechen, wie unsere Prozessautomatisierungslösungen Ihrem Unternehmen helfen können, im digitalen Zeitalter zu florieren",
+          button: "Jetzt starten"
+        },
+        footer: {
+          description: "Führende Prozessautomatisierungslösungen für vietnamesische Unternehmen. Wir stärken Unternehmen mit moderner Technologie und wegweisenden Innovationen.",
+          quickLinks: "Schnelllinks",
+          contact: "Kontakt",
+          location: "Ho-Chi-Minh-Stadt, Vietnam",
+          copyright: "© 2025 DigitizedBrains. Alle Rechte vorbehalten."
+        }
+      }
+    };
+
+    // Set the default language
+    let currentLang = 'vi';
+
+    // Function to update the content based on the selected language
+    function updateContent(lang) {
+      const langData = languages[lang];
+      if (!langData) return;
+
+      // Update page title and description
+      document.getElementById('page-title').textContent = langData.meta.title;
+      document.getElementById('page-description').setAttribute('content', langData.meta.description);
+      
+      // Update all elements with data-translate attribute
+      document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        const keys = key.split('.');
+        let value = langData;
+        
+        // Navigate through the nested object to find the translation
+        for (let k of keys) {
+          if (value[k] !== undefined) {
+            value = value[k];
+          } else {
+            console.warn(`Translation key not found: ${key}`);
+            return;
+          }
+        }
+        
+        if (typeof value === 'string') {
+          element.textContent = value;
+        }
+      });
+      
+      // Update the current language display
+      document.getElementById('current-lang').textContent = lang.toUpperCase();
+      
+      // Update the flag
+      const flagMap = { en: 'us', vi: 'vn', de: 'de' };
+      document.getElementById('current-flag').src = `https://flagcdn.com/24x18/${flagMap[lang]}.png`;
+      
+      // Update active class in language menu
+      document.querySelectorAll('.language-option').forEach(option => {
+        option.classList.remove('active');
+        if (option.getAttribute('data-lang') === lang) {
+          option.classList.add('active');
+        }
+      });
+    }
+
+    // Function to change language
+    function changeLanguage(lang) {
+      currentLang = lang;
+      updateContent(lang);
+      toggleLanguageMenu(); // Close the language menu after selection
+    }
+
+    // Toggle language menu
+    function toggleLanguageMenu() {
+      const menu = document.getElementById('language-menu');
+      menu.classList.toggle('show');
+    }
+
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    // Event listeners
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize content with default language
+      updateContent(currentLang);
+      
+      // Language button click event
+      document.getElementById('language-btn').addEventListener('click', toggleLanguageMenu);
+      
+      // Mobile menu button click event
+      document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+      
+      // Scroll reveal animation
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      document.querySelectorAll('.scroll-reveal').forEach(element => {
+        observer.observe(element);
+      });
+
+      // Close language menu when clicking outside
+      document.addEventListener('click', function(event) {
+        const languageMenu = document.getElementById('language-menu');
+        const languageBtn = document.getElementById('language-btn');
+        
+        if (languageMenu.classList.contains('show') && 
+            !languageMenu.contains(event.target) && 
+            !languageBtn.contains(event.target)) {
+          languageMenu.classList.remove('show');
+        }
+      });
+
+      // Expose changeLanguage function globally
+      window.changeLanguage = changeLanguage;
+    });
+  </script>
+
+  <!-- Chatbot Integration -->
+  <script src="../../assets/js/chatbot.js"></script>
+</body>
+</html>

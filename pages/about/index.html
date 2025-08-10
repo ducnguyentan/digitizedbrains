@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="page-title">About Us - DigitizedBrains</title>
+  <meta name="description" content="Learn about DigitizedBrains - Leading digital transformation solutions for Vietnamese enterprises" id="page-description">
+  <link href="../../css/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+    body { font-family: 'Poppins', sans-serif; }
+    .font-nunito { font-family: 'Nunito', sans-serif; }
+    .nav-link { 
+      color: #374151; 
+      padding: 0.5rem 1rem; 
+      transition: all 0.3s ease; 
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .nav-link:hover { color: #ed7354; background-color: #fef2f2; }
+    .nav-link.active { color: #ed7354; font-weight: 600; }
+    .logo-gradient {
+      background: linear-gradient(135deg, #fb923c 0%, #ec4899 100%);
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-primary { 
+      background: linear-gradient(135deg, #ed7354 0%, #f97316 100%); 
+      transition: all 0.3s ease; 
+      box-shadow: 0 4px 15px rgba(237, 115, 84, 0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(237, 115, 84, 0.4); }
+    .hero-bg { 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Language Switcher Styles */
+    .language-switcher {
+      position: relative;
+    }
+    
+    .language-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      min-width: 160px;
+      display: none;
+      z-index: 1000;
+    }
+    
+    .language-menu.show {
+      display: block;
+    }
+    
+    .language-option {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+    
+    .language-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+    
+    /* Mobile Language Switcher */
+    .language-switcher-mobile {
+      position: relative;
+    }
+    
+    .language-menu-mobile {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      display: none;
+      z-index: 1000;
+    }
+    
+    .language-menu-mobile.show {
+      display: block;
+    }
+    
+    .language-option-mobile {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option-mobile:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option-mobile.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+    
+    .language-toggle.active {
+      border-color: #ed7354;
+      background: #fef2f2;
+    }
+    
+    .language-options {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      min-width: 100px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-5px);
+      transition: all 0.2s ease;
+      margin-top: 2px;
+      overflow: hidden;
+    }
+    
+    .language-options.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .language-option {
+      display: flex;
+      align-items: center;
+      padding: 6px 8px;
+      color: #374151;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: 'Poppins', sans-serif;
+      transition: all 0.2s ease;
+      border-bottom: 1px solid #f3f4f6;
+      cursor: pointer;
+    }
+    
+    .language-option:last-child {
+      border-bottom: none;
+    }
+    
+    .language-option:hover {
+      background: #f9fafb;
+      color: #ed7354;
+    }
+    
+    .language-option.current {
+      background: #ed7354;
+      color: white;
+    }
+    
+    .language-option.current:hover {
+      background: #dc6544;
+    }
+    
+    .chevron-icon {
+      margin-left: 4px;
+      transition: transform 0.2s ease;
+      width: 12px;
+      height: 12px;
+    }
+
+    .team-card {
+      transition: all 0.3s ease;
+    }
+    
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .timeline-item {
+      transition: all 0.3s ease;
+    }
+    
+    .timeline-item:hover {
+      transform: translateX(10px);
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <div class="logo-gradient w-10 h-10 bg-gradient-to-r from-orange-400 to-pink-500 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-lg">DB</span>
+          </div>
+          <a href="../../index.html" class="text-2xl font-bold text-gray-800">DigitizedBrains</a>
+        </div>
+        
+        <!-- Navigation and Language Switcher -->
+        <div class="hidden md:flex items-center space-x-4">
+          <nav class="flex space-x-2">
+            <a href="../../index.html" class="nav-link" data-translate="nav.home">Home</a>
+            <a href="index.html" class="nav-link active" data-translate="nav.about">About</a>
+            <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Digital Transformation</a>
+            <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+            <a href="../blog/index.html" class="nav-link" data-translate="nav.blog">Blog</a>
+            <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Resources</a>
+            <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Contact</a>
+          </nav>
+          
+          <!-- Language Switcher -->
+          <div class="language-switcher">
+            <button id="language-btn" class="flex items-center space-x-1 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+              <img id="current-flag" src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+              <span id="current-lang">EN</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="language-menu" class="language-menu">
+              <a href="#" onclick="changeLanguage('en')" class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                English
+              </a>
+              <a href="#" onclick="changeLanguage('vi')" class="language-option" data-lang="vi">
+                <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                Tiếng Việt
+              </a>
+              <a href="#" onclick="changeLanguage('de')" class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                Deutsch
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <div class="flex flex-col space-y-2">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Home</a>
+          <a href="index.html" class="nav-link active" data-translate="nav.about">About</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Digital Transformation</a>
+          <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="../blog/index.html" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Resources</a>
+          <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Contact</a>
+          
+          <!-- Mobile Language Switcher -->
+          <div class="pt-2 border-t border-gray-200">
+            <div class="language-switcher-mobile">
+              <button id="mobile-language-btn" class="flex items-center justify-between w-full px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                <span data-translate="language.current">Language:</span>
+                <div class="flex items-center space-x-1">
+                  <img id="mobile-current-flag" src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                  <span id="mobile-current-lang">EN</span>
+                </div>
+              </button>
+              <div id="mobile-language-menu" class="language-menu-mobile">
+                <a href="#" onclick="changeLanguage('en')" class="language-option-mobile" data-lang="en">
+                  <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                  English
+                </a>
+                <a href="#" onclick="changeLanguage('vi')" class="language-option-mobile" data-lang="vi">
+                  <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                  Tiếng Việt
+                </a>
+                <a href="#" onclick="changeLanguage('de')" class="language-option-mobile" data-lang="de">
+                  <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                  Deutsch
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-bg py-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+    <div class="relative z-10 text-center max-w-4xl mx-auto px-4">
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 scroll-reveal" data-translate="about.hero.title">
+        About DigitizedBrains
+      </h1>
+      <p class="text-xl text-white mb-8 font-light max-w-2xl mx-auto scroll-reveal" data-translate="about.hero.subtitle">
+        We are pioneers in digital transformation for Vietnamese enterprises, combining cutting-edge technology with deep market expertise and practical implementation experience.
+      </p>
+    </div>
+  </section>
+
+  <!-- Mission & Vision Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="scroll-reveal">
+          <div class="bg-white rounded-2xl p-8 shadow-lg h-full">
+            <div style="width: 64px; height: 64px; background: linear-gradient(to right, #3b82f6, #8b5cf6); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+              <span style="color: white; font-size: 32px; font-weight: bold;">&#9889;</span>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-800 mb-4" data-translate="about.mission.title">Our Mission</h2>
+            <p class="text-gray-600 text-lg leading-relaxed" data-translate="about.mission.description">
+              To empower Vietnamese enterprises with innovative digital transformation solutions that drive growth, efficiency, and competitive advantage in the rapidly evolving digital economy.
+            </p>
+          </div>
+        </div>
+        
+        <div class="scroll-reveal">
+          <div class="bg-white rounded-2xl p-8 shadow-lg h-full">
+            <div style="width: 64px; height: 64px; background: linear-gradient(to right, #f97316, #dc2626); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+              <span style="color: white; font-size: 32px; font-weight: bold;">&#128065;</span>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-800 mb-4" data-translate="about.vision.title">Our Vision</h2>
+            <p class="text-gray-600 text-lg leading-relaxed" data-translate="about.vision.description">
+              To become the leading catalyst for digital transformation in Southeast Asian business, creating a future where technology seamlessly enhances operations, decision-making, and customer engagement across all industries.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Story Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16 scroll-reveal">
+          <h2 class="text-4xl font-bold text-gray-800 mb-4" data-translate="about.story.title">Our Story</h2>
+          <p class="text-xl text-gray-600" data-translate="about.story.subtitle">
+            From vision to reality - transforming Vietnamese business landscape
+          </p>
+        </div>
+        
+        <div class="space-y-8">
+          <div class="timeline-item bg-gray-50 rounded-2xl p-8 scroll-reveal">
+            <div class="flex items-start space-x-4">
+              <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="text-white font-bold">1</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2" data-translate="about.story.step1.title">Market Research & Analysis</h3>
+                <p class="text-gray-600" data-translate="about.story.step1.description">
+                  Extensive research into Vietnamese business market challenges, identifying key opportunities for digital transformation and technological advancement across multiple industries.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="timeline-item bg-gray-50 rounded-2xl p-8 scroll-reveal">
+            <div class="flex items-start space-x-4">
+              <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="text-white font-bold">2</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2" data-translate="about.story.step2.title">Technology Development</h3>
+                <p class="text-gray-600" data-translate="about.story.step2.description">
+                  Development of cutting-edge AI and automation solutions specifically designed for the unique needs of Vietnamese enterprises across various industries.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="timeline-item bg-gray-50 rounded-2xl p-8 scroll-reveal">
+            <div class="flex items-start space-x-4">
+              <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="text-white font-bold">3</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2" data-translate="about.story.step3.title">Strategic Partnerships</h3>
+                <p class="text-gray-600" data-translate="about.story.step3.description">
+                  Building strong partnerships with leading Vietnamese enterprises to pilot and refine our digital transformation solutions across diverse business sectors.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Overview Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4" data-translate="digitalTransformation.services.title">Our Digital Transformation Services</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-translate="digitalTransformation.services.subtitle">
+          End-to-end solutions designed to modernize your business operations
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="service-card bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
+          <div style="width: 64px; height: 64px; background: linear-gradient(to right, #3b82f6, #8b5cf6); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+            <svg style="width: 32px; height: 32px; color: white; fill: none; stroke: currentColor; stroke-width: 2;" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="digitalTransformation.services.infrastructure.title">Infrastructure Modernization</h3>
+          <p class="text-gray-600" data-translate="digitalTransformation.services.infrastructure.description">Complete overhaul of legacy systems with cloud-native solutions, ensuring scalability and reliability for modern business operations.</p>
+          <div class="mt-4">
+            <a href="../digital-transformation-solution/digital-infrastructure.html" class="text-orange-600 hover:text-orange-800 font-medium flex items-center">
+              <span data-translate="digitalTransformation.services.infrastructure.learnMore">Tìm hiểu thêm</span>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="service-card bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
+          <div style="width: 64px; height: 64px; background: linear-gradient(to right, #f97316, #ec4899); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+            <svg style="width: 32px; height: 32px; color: white; fill: none; stroke: currentColor; stroke-width: 2;" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="digitalTransformation.services.workflow.title">Tự động hóa Quy trình</h3>
+          <p class="text-gray-600" data-translate="digitalTransformation.services.workflow.description">Streamline business processes and operations with intelligent automation and AI-powered tools to increase productivity and efficiency.</p>
+          <div class="mt-4">
+            <a href="../digital-transformation-solution/digital-process-optimization.html" class="text-orange-600 hover:text-orange-800 font-medium flex items-center">
+              <span data-translate="digitalTransformation.services.workflow.learnMore">Tìm hiểu thêm</span>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="service-card bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
+          <div style="width: 64px; height: 64px; background: linear-gradient(to right, #f97316, #dc2626); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+            <span style="color: white; font-size: 32px; font-weight: bold;">&#128200;</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="digitalTransformation.services.analytics.title">Data Analytics & Insights</h3>
+          <p class="text-gray-600" data-translate="digitalTransformation.services.analytics.description">Advanced analytics platforms to understand customer behavior, business performance, and market trends for informed strategic decision-making.</p>
+          <div class="mt-4">
+            <a href="../digital-transformation-solution/ai-business-solutions.html" class="text-orange-600 hover:text-orange-800 font-medium flex items-center">
+              <span data-translate="digitalTransformation.services.analytics.learnMore">Tìm hiểu thêm</span>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="service-card bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
+          <div style="width: 64px; height: 64px; background: linear-gradient(to right, #8b5cf6, #ec4899); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+            <svg style="width: 32px; height: 32px; color: white; fill: none; stroke: currentColor; stroke-width: 2;" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="digitalTransformation.services.security.title">Cybersecurity & Compliance</h3>
+          <p class="text-gray-600" data-translate="digitalTransformation.services.security.description">Comprehensive security frameworks ensuring data protection and regulatory compliance for Vietnamese businesses across all industries.</p>
+          <div class="mt-4">
+            <a href="../cybersecurity/index.html" class="text-orange-600 hover:text-orange-800 font-medium flex items-center">
+              <span data-translate="digitalTransformation.services.security.learnMore">Tìm hiểu thêm</span>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="service-card bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
+          <div style="width: 64px; height: 64px; background: linear-gradient(to right, #6366f1, #3b82f6); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+            <svg style="width: 32px; height: 32px; color: white; fill: none; stroke: currentColor; stroke-width: 2;" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="digitalTransformation.services.training.title">Staff Training & Development</h3>
+          <p class="text-gray-600" data-translate="digitalTransformation.services.training.description">Comprehensive training programs to upskill your team on new technologies and digital transformation best practices across various business functions.</p>
+          <div class="mt-4">
+            <a href="../staff-training/index.html" class="text-orange-600 hover:text-orange-800 font-medium flex items-center">
+              <span data-translate="digitalTransformation.services.training.learnMore">Tìm hiểu thêm</span>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="service-card bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
+          <div style="width: 64px; height: 64px; background: linear-gradient(to right, #06b6d4, #3b82f6); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+            <svg style="width: 32px; height: 32px; color: white; fill: none; stroke: currentColor; stroke-width: 2;" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="digitalTransformation.services.integration.title">Tích hợp Công nghệ Thông minh</h3>
+          <p class="text-gray-600" data-translate="digitalTransformation.services.integration.description">Kết nối liền mạch các hệ thống, ứng dụng và thiết bị thông minh để tạo ra hệ sinh thái số thống nhất và hiệu quả cho doanh nghiệp.</p>
+          <div class="mt-4">
+            <a href="../digital-transformation-solution/smart-technology-integration.html" class="text-orange-600 hover:text-orange-800 font-medium flex items-center">
+              <span data-translate="digitalTransformation.services.integration.learnMore">Tìm hiểu thêm</span>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4" data-translate="about.team.title">Our Expert Team</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-translate="about.team.subtitle">
+          Meet the professionals driving innovation in Vietnamese media transformation
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="team-card bg-white rounded-2xl p-8 shadow-lg text-center scroll-reveal">
+          <div style="width: 96px; height: 96px; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 50%; background: linear-gradient(to right, #3b82f6, #8b5cf6);">
+            <img src="../../document/Nguyen Thanh Hoa-PGĐ.jpg" alt="Dr. Nguyen Thanh Hoa" style="width: 90px; height: 90px; object-fit: cover; border-radius: 50%; border: 2px solid #fff;" />
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2" data-translate="about.team.ceo.name">Dr. Nguyen Thanh Hoa</h3>
+          <p class="text-orange-500 font-medium mb-4" data-translate="about.team.ceo.position">Deputy Director, Ho Chi Minh City Digital Transformation Center</p>
+          <p class="text-gray-600" data-translate="about.team.ceo.description">
+            Dr. Nguyen Thanh Hoa is a digital transformation and media expert with over 10 years of experience in research, management, and implementation of digital transformation projects in Ho Chi Minh City. He has more than 17 years working in journalism and television, leading many innovative initiatives and applying AI and big data in content production. Dr. Hoa is the author of numerous research works and a reputable speaker at technology, media, and digital management conferences.
+          </p>
+        </div>
+        
+        <div class="team-card bg-white rounded-2xl p-8 shadow-lg text-center scroll-reveal">
+          <div style="width: 96px; height: 96px; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 50%; background: linear-gradient(to right, #10b981, #14b8a6);">
+            <img src="../../document/hinhthe_TanDuc.jpg" alt="Thạc sĩ. Nguyễn Tấn Đức" style="width: 90px; height: 90px; object-fit: cover; border-radius: 50%; border: 2px solid #fff;" />
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2" data-translate="about.team.cto.name">Tran Thi B</h3>
+          <p class="text-orange-500 font-medium mb-4" data-translate="about.team.cto.position">Chief Technology Officer</p>
+          <p class="text-gray-600" data-translate="about.team.cto.description">
+            ThS. Nguyễn Tấn Đức là kỹ sư điện tử viễn thông với nền tảng kinh tế vững chắc, có hơn 24 năm kinh nghiệm tại Đài Truyền hình TP.HCM (HTV). Anh từng đảm nhiệm nhiều vị trí quan trọng như kỹ sư điện tử, chuyên viên lập kế hoạch đầu tư kỹ thuật, quản lý hệ thống điện và kỹ thuật truyền dẫn. Anh có chuyên môn sâu về kỹ thuật truyền hình, chuyển đổi số, AI (đặc biệt là AI Agent) và hoạch định chính sách công trong lĩnh vực truyền thông và công nghệ.
+          </p>
+        </div>
+        
+        <div class="team-card bg-white rounded-2xl p-8 shadow-lg text-center scroll-reveal">
+          <div style="width: 96px; height: 96px; background: linear-gradient(to right, #f97316, #dc2626); border-radius: 50%; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center;">
+            <span style="color: white; font-size: 40px; font-weight: bold;">&#128188;</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2" data-translate="about.team.cmo.name">Le Van C</h3>
+          <p class="text-orange-500 font-medium mb-4" data-translate="about.team.cmo.position">Chief Marketing Officer</p>
+          <p class="text-gray-600" data-translate="about.team.cmo.description">
+            Strategic marketing leader with deep understanding of Vietnamese media market dynamics and trends.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4" data-translate="about.values.title">Our Core Values</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-translate="about.values.subtitle">
+          The principles that guide everything we do
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center scroll-reveal">
+          <div style="width: 80px; height: 80px; background: linear-gradient(to right, #3b82f6, #8b5cf6); border-radius: 16px; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center;">
+            <span style="color: white; font-size: 40px; font-weight: bold;">&#128161;</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3" data-translate="about.values.innovation.title">Innovation</h3>
+          <p class="text-gray-600" data-translate="about.values.innovation.description">
+            Continuously pushing boundaries with cutting-edge technology solutions
+          </p>
+        </div>
+        
+        <div class="text-center scroll-reveal">
+          <div style="width: 80px; height: 80px; background: linear-gradient(to right, #10b981, #14b8a6); border-radius: 16px; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center;">
+            <span style="color: white; font-size: 40px; font-weight: bold;">&#129309;</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3" data-translate="about.values.collaboration.title">Collaboration</h3>
+          <p class="text-gray-600" data-translate="about.values.collaboration.description">
+            Working closely with clients to achieve shared success and growth
+          </p>
+        </div>
+        
+        <div class="text-center scroll-reveal">
+          <div style="width: 80px; height: 80px; background: linear-gradient(to right, #f97316, #dc2626); border-radius: 16px; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center;">
+            <span style="color: white; font-size: 40px; font-weight: bold;">&#127942;</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3" data-translate="about.values.excellence.title">Excellence</h3>
+          <p class="text-gray-600" data-translate="about.values.excellence.description">
+            Delivering the highest quality solutions and exceptional client service
+          </p>
+        </div>
+        
+        <div class="text-center scroll-reveal">
+          <div style="width: 80px; height: 80px; background: linear-gradient(to right, #8b5cf6, #ec4899); border-radius: 16px; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center;">
+            <span style="color: white; font-size: 40px; font-weight: bold;">&#127757;</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3" data-translate="about.values.sustainability.title">Sustainability</h3>
+          <p class="text-gray-600" data-translate="about.values.sustainability.description">
+            Building solutions that create long-term value and positive impact
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <!-- Company Info -->
+        <div>
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="logo-gradient w-8 h-8 bg-gradient-to-r from-orange-400 to-pink-500 rounded-lg flex items-center justify-center">
+              <span class="text-white font-bold">DB</span>
+            </div>
+            <span class="text-xl font-bold">DigitizedBrains</span>
+          </div>
+          <p class="text-gray-300 mb-4" data-translate="footer.description">
+            Transforming Vietnamese enterprises through innovative digital solutions and AI-powered technologies.
+          </p>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4" data-translate="footer.quickLinks">Quick Links</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <ul class="space-y-2">
+              <li><a href="../../index.html" class="text-gray-300 hover:text-orange-400 transition-colors" data-translate="nav.home">Home</a></li>
+              <li><a href="index.html" class="text-gray-300 hover:text-orange-400 transition-colors" data-translate="nav.about">About</a></li>
+              <li><a href="../digital-transformation/index.html" class="text-gray-300 hover:text-orange-400 transition-colors" data-translate="nav.digitalTransformation">Digital Transformation</a></li>
+            </ul>
+            <ul class="space-y-2">
+              <li><a href="../ai-agents/index.html" class="text-gray-300 hover:text-orange-400 transition-colors" data-translate="nav.aiAgent">AI Agent</a></li>
+              <li><a href="../blog/index.html" class="text-gray-300 hover:text-orange-400 transition-colors" data-translate="nav.blog">Blog</a></li>
+              <li><a href="../resources/index.html" class="text-gray-300 hover:text-orange-400 transition-colors" data-translate="nav.resources">Resources</a></li>
+              <li><a href="../contact/index.html" class="text-gray-300 hover:text-orange-400 transition-colors" data-translate="nav.contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Services -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4" data-translate="footer.services">Services</h3>
+          <ul class="space-y-2">
+            <li><a href="../digital-transformation/digital-infrastructure-modernization.html" class="text-gray-300 hover:text-orange-400 transition-colors" data-translate="digitalTransformation.services.infrastructure.title">Infrastructure Modernization</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-orange-400 transition-colors" data-translate="digitalTransformation.services.workflow.title">Workflow Automation</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-orange-400 transition-colors" data-translate="digitalTransformation.services.analytics.title">Data Analytics</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-orange-400 transition-colors" data-translate="digitalTransformation.services.security.title">Cybersecurity</a></li>
+          </ul>
+        </div>
+        
+        <!-- Contact -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4" data-translate="footer.contact">Contact</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li data-translate="footer.email">Email: info@digitizedbrains.com</li>
+            <li data-translate="footer.phone">Phone: +84 123 456 789</li>
+            <li data-translate="footer.address">Ho Chi Minh City, Vietnam</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-gray-300" data-translate="footer.copyright">
+          &copy; 2024 DigitizedBrains. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chatbot Integration -->
+  <script src="../../js/chatbot.js"></script>
+
+  <!-- JavaScript for Language Switching and Functionality -->
+  <script>
+    // Language data
+    const languages = {
+      en: {
+        meta: {
+          title: "About Us - DigitizedBrains",
+          description: "Learn about DigitizedBrains - Leading digital transformation solutions for Vietnamese enterprises"
+        },
+        nav: {
+          home: "Home",
+          about: "About",
+          digitalTransformation: "Digital Transformation",
+          aiAgent: "AI Agent",
+          blog: "Blog",
+          resources: "Resources",
+          contact: "Contact"
+        },
+        about: {
+          hero: {
+            title: "About DigitizedBrains",
+            subtitle: "We are pioneers in digital transformation for Vietnamese enterprises, combining cutting-edge technology with deep market expertise and practical implementation experience."
+          },
+          mission: {
+            title: "Our Mission",
+            description: "To empower Vietnamese enterprises with innovative digital transformation solutions that drive growth, efficiency, and competitive advantage in the rapidly evolving digital economy."
+          },
+          vision: {
+            title: "Our Vision",
+            description: "To become the leading catalyst for digital transformation in Southeast Asian business, creating a future where technology seamlessly enhances operations, decision-making, and customer engagement across all industries."
+          },
+          story: {
+            title: "Our Story",
+            subtitle: "From vision to reality - transforming Vietnamese business landscape",
+            step1: {
+              title: "Market Research & Analysis",
+              description: "Extensive research into Vietnamese business market challenges, identifying key opportunities for digital transformation and technological advancement across multiple industries."
+            },
+            step2: {
+              title: "Technology Development",
+              description: "Development of cutting-edge AI and automation solutions specifically designed for the unique needs of Vietnamese enterprises across various industries."
+            },
+            step3: {
+              title: "Strategic Partnerships",
+              description: "Building strong partnerships with leading Vietnamese enterprises to pilot and refine our digital transformation solutions across diverse business sectors."
+            }
+          },
+          team: {
+            title: "Our Expert Team",
+            subtitle: "Meet the professionals driving innovation in Vietnamese media transformation",
+            ceo: {
+              name: "Dr. Nguyen Thanh Hoa",
+              position: "Deputy Director, Ho Chi Minh City Digital Transformation Center",
+              description: "Dr. Nguyen Thanh Hoa is a digital transformation and media expert with over 10 years of experience in research, management, and implementation of digital transformation projects in Ho Chi Minh City. He has more than 17 years working in journalism and television, leading many innovative initiatives and applying AI and big data in content production. Dr. Hoa is the author of numerous research works and a reputable speaker at technology, media, and digital management conferences."
+            },
+            cto: {
+              name: "M.A. Nguyen Tan Duc",
+              position: "Deputy Director, Broadcasting Transmission Center, HTV Ho Chi Minh City",
+              description: "M.A. Nguyen Tan Duc is an electronics and telecommunications engineer with a strong background in economics and over 24 years of experience at Ho Chi Minh City Television (HTV). He has held key positions such as electronics engineer, technical investment planning specialist, and manager of electrical and transmission systems. He has deep expertise in television engineering, digital transformation, AI (especially AI Agents), and public policy planning in media and technology."
+            },
+            cmo: {
+              name: "Le Van C",
+              position: "Chief Marketing Officer",
+              description: "Strategic marketing leader with deep understanding of Vietnamese media market dynamics and trends."
+            }
+          },
+          values: {
+            title: "Our Core Values",
+            subtitle: "The principles that guide everything we do",
+            innovation: {
+              title: "Innovation",
+              description: "Continuously pushing boundaries with cutting-edge technology solutions"
+            },
+            collaboration: {
+              title: "Collaboration",
+              description: "Working closely with clients to achieve shared success and growth"
+            },
+            excellence: {
+              title: "Excellence",
+              description: "Delivering the highest quality solutions and exceptional client service"
+            },
+            sustainability: {
+              title: "Sustainability",
+              description: "Building solutions that create long-term value and positive impact"
+            }
+          }
+        },
+        footer: {
+          description: "Leading digital transformation solutions for Vietnamese enterprises. Empowering businesses with AI and cutting-edge technology.",
+          quickLinks: "Quick Links",
+          contact: "Contact",
+          location: "Ho Chi Minh City, Vietnam",
+          copyright: "© 2025 DigitizedBrains. All rights reserved."
+        }
+      },
+      vi: {
+        meta: {
+          title: "Giới thiệu - DigitizedBrains",
+          description: "Tìm hiểu về DigitizedBrains - Giải pháp chuyển đổi số hàng đầu cho doanh nghiệp Việt Nam"
+        },
+        nav: {
+          home: "Trang chủ",
+          about: "Giới thiệu",
+          digitalTransformation: "Chuyển đổi số",
+          aiAgent: "AI Agent",
+          blog: "Blog",
+          resources: "Tài nguyên",
+          contact: "Liên hệ"
+        },
+        about: {
+          hero: {
+            title: "Giới thiệu DigitizedBrains",
+            subtitle: "Chúng tôi là những người tiên phong trong chuyển đổi số cho doanh nghiệp Việt Nam, kết hợp công nghệ tiên tiến với chuyên môn thị trường sâu sắc và kinh nghiệm triển khai thực tế."
+          },
+          mission: {
+            title: "Sứ mệnh của chúng tôi",
+            description: "Trao quyền cho các doanh nghiệp Việt Nam bằng các giải pháp chuyển đổi số sáng tạo nhằm thúc đẩy tăng trưởng, hiệu quả và lợi thế cạnh tranh trong nền kinh tế số đang phát triển nhanh chóng."
+          },
+          vision: {
+            title: "Tầm nhìn của chúng tôi",
+            description: "Trở thành chất xúc tác hàng đầu cho chuyển đổi số trong kinh doanh Đông Nam Á, tạo ra một tương lai nơi công nghệ nâng cao một cách liền mạch việc vận hành, ra quyết định và tương tác khách hàng trên tất cả các ngành."
+          },
+          story: {
+            title: "Câu chuyện của chúng tôi",
+            subtitle: "Từ tầm nhìn đến thực tế - chuyển đổi bối cảnh kinh doanh Việt Nam",
+            step1: {
+              title: "Nghiên cứu & Phân tích Thị trường",
+              description: "Nghiên cứu sâu rộng về các thách thức của thị trường doanh nghiệp Việt Nam, xác định các cơ hội chính cho chuyển đổi số và tiến bộ công nghệ trên nhiều ngành nghề."
+            },
+            step2: {
+              title: "Phát triển Công nghệ",
+              description: "Phát triển các giải pháp AI và tự động hóa tiên tiến được thiết kế đặc biệt cho nhu cầu độc đáo của các doanh nghiệp Việt Nam trên nhiều ngành khác nhau."
+            },
+            step3: {
+              title: "Đối tác Chiến lược",
+              description: "Xây dựng mối quan hệ đối tác mạnh mẽ với các doanh nghiệp Việt Nam hàng đầu để thí điểm và hoàn thiện các giải pháp chuyển đổi số của chúng tôi trên nhiều lĩnh vực kinh doanh đa dạng."
+            }
+          },
+          team: {
+            title: "Đội ngũ Chuyên gia",
+            subtitle: "Gặp gỡ các chuyên gia thúc đẩy đổi mới trong chuyển đổi số doanh nghiệp Việt Nam",
+            ceo: {
+              name: "TS. Nguyễn Thanh Hòa",
+              position: "Phó Giám đốc Trung tâm Chuyển đổi số TP.HCM",
+              description: "TS. Nguyễn Thanh Hòa là chuyên gia chuyển đổi số và truyền thông với hơn 10 năm kinh nghiệm nghiên cứu, quản lý và triển khai các dự án chuyển đổi số tại TP.HCM. Ông từng có hơn 17 năm công tác trong lĩnh vực báo chí, truyền hình, dẫn dắt nhiều sáng kiến đổi mới sáng tạo, ứng dụng AI và dữ liệu lớn vào sản xuất nội dung. TS. Hòa là tác giả nhiều công trình nghiên cứu và là diễn giả uy tín tại các hội thảo về công nghệ, truyền thông và quản trị số."
+            },
+            cto: {
+              name: "Thạc sĩ. Nguyễn Tấn Đức",
+              position: "Phó Giám đốc Trung tâm Truyền dẫn Phát sóng, Đài Truyền hình TP.HCM",
+              description: "ThS. Nguyễn Tấn Đức là kỹ sư điện tử viễn thông với nền tảng kinh tế vững chắc, có hơn 24 năm kinh nghiệm tại Đài Truyền hình TP.HCM (HTV). Anh từng đảm nhiệm nhiều vị trí quan trọng như kỹ sư điện tử, chuyên viên lập kế hoạch đầu tư kỹ thuật, quản lý hệ thống điện và kỹ thuật truyền dẫn. Anh có chuyên môn sâu về kỹ thuật truyền hình, chuyển đổi số, AI (đặc biệt là AI Agent) và hoạch định chính sách công trong lĩnh vực truyền thông và công nghệ."
+            },
+            cmo: {
+              name: "Lê Văn C",
+              position: "Giám đốc Marketing",
+              description: "Nhà lãnh đạo marketing chiến lược với hiểu biết sâu sắc về động lực và xu hướng thị trường doanh nghiệp Việt Nam."
+            }
+          },
+          values: {
+            title: "Giá trị Cốt lõi",
+            subtitle: "Những nguyên tắc định hướng mọi hoạt động của chúng tôi",
+            innovation: {
+              title: "Đổi mới",
+              description: "Liên tục vượt qua ranh giới với các giải pháp công nghệ tiên tiến"
+            },
+            collaboration: {
+              title: "Hợp tác",
+              description: "Làm việc chặt chẽ với khách hàng để đạt được thành công và tăng trưởng chung"
+            },
+            excellence: {
+              title: "Xuất sắc",
+              description: "Cung cấp các giải pháp chất lượng cao nhất và dịch vụ khách hàng đặc biệt"
+            },
+            sustainability: {
+              title: "Bền vững",
+              description: "Xây dựng các giải pháp tạo ra giá trị lâu dài và tác động tích cực"
+            }
+          }
+        },
+        footer: {
+          description: "Giải pháp chuyển đổi số hàng đầu cho doanh nghiệp Việt Nam. Trao quyền cho doanh nghiệp với AI và công nghệ tiên tiến.",
+          quickLinks: "Liên kết nhanh",
+          contact: "Liên hệ",
+          location: "Thành phố Hồ Chí Minh, Việt Nam",
+          copyright: "© 2025 DigitizedBrains. Tất cả quyền được bảo lưu."
+        }
+      },
+      de: {
+        meta: {
+          title: "Über uns - DigitizedBrains",
+          description: "Erfahren Sie mehr über DigitizedBrains - Führende digitale Transformationslösungen für die vietnamesische Medienindustrie"
+        },
+        nav: {
+          home: "Startseite",
+          about: "Über uns",
+          digitalTransformation: "Digitale Transformation",
+          aiAgent: "KI-Agent",
+          blog: "Blog",
+          resources: "Ressourcen",
+          contact: "Kontakt"
+        },
+        about: {
+          hero: {
+            title: "Über DigitizedBrains",
+            subtitle: "Wir sind Pioniere in der digitalen Transformation für vietnamesische Unternehmen und verbinden modernste Technologie mit tiefgreifender Marktexpertise und praktischer Umsetzungserfahrung."
+          },
+          mission: {
+            title: "Unsere Mission",
+            description: "Vietnamesische Unternehmen mit innovativen digitalen Transformationslösungen zu stärken, die Wachstum, Effizienz und Wettbewerbsvorteile in der sich schnell entwickelnden digitalen Wirtschaft vorantreiben."
+          },
+          vision: {
+            title: "Unsere Vision",
+            description: "Der führende Katalysator für die digitale Transformation in südostasiatischen Unternehmen zu werden und eine Zukunft zu schaffen, in der Technologie nahtlos Betriebsabläufe, Entscheidungsfindung und Kundeninteraktion in allen Branchen verbessert."
+          },
+          story: {
+            title: "Unsere Geschichte",
+            subtitle: "Von der Vision zur Realität - Transformation der vietnamesischen Geschäftslandschaft",
+            step1: {
+              title: "Marktforschung & Analyse",
+              description: "Umfassende Forschung zu den Herausforderungen des vietnamesischen Unternehmensmarktes, Identifizierung wichtiger Chancen für digitale Transformation und technologischen Fortschritt in verschiedenen Branchen."
+            },
+            step2: {
+              title: "Technologieentwicklung",
+              description: "Entwicklung modernster KI- und Automatisierungslösungen, die speziell für die einzigartigen Bedürfnisse vietnamesischer Unternehmen in verschiedenen Branchen entwickelt wurden."
+            },
+            step3: {
+              title: "Strategische Partnerschaften",
+              description: "Aufbau starker Partnerschaften mit führenden vietnamesischen Unternehmen zur Pilotierung und Verfeinerung unserer digitalen Transformationslösungen in verschiedenen Geschäftsbereichen."
+            }
+          },
+          team: {
+            title: "Unser Expertenteam",
+            subtitle: "Lernen Sie die Fachleute kennen, die Innovation in der vietnamesischen Unternehmenstransformation vorantreiben",
+            ceo: {
+              name: "Dr. Nguyen Thanh Hoa",
+              position: "Stellvertretender Direktor, Zentrum für Digitale Transformation Ho-Chi-Minh-Stadt",
+              description: "Dr. Nguyen Thanh Hoa ist ein Experte für digitale Transformation und Medien mit über 10 Jahren Erfahrung in Forschung, Management und Umsetzung von Digitalisierungsprojekten in Ho-Chi-Minh-Stadt. Er verfügt über mehr als 17 Jahre Berufserfahrung im Journalismus und Fernsehen, leitete zahlreiche innovative Initiativen und setzte KI sowie Big Data in der Content-Produktion ein. Dr. Hoa ist Autor zahlreicher Forschungsarbeiten und ein angesehener Redner auf Konferenzen zu Technologie, Medien und digitalem Management."
+            },
+            cto: {
+              name: "M.A. Nguyen Tan Duc",
+              position: "Stellvertretender Direktor, Sendezentrum, HTV Ho-Chi-Minh-Stadt",
+              description: "M.A. Nguyen Tan Duc ist Elektro- und Telekommunikationsingenieur mit solider wirtschaftlicher Grundlage und über 24 Jahren Erfahrung beim Fernsehen Ho-Chi-Minh-Stadt (HTV). Er hatte wichtige Positionen inne, darunter Elektronikingenieur, Spezialist für technische Investitionsplanung sowie Leiter der Elektro- und Übertragungssysteme. Er verfügt über umfassende Fachkenntnisse in Fernsehtechnik, digitaler Transformation, KI (insbesondere KI-Agenten) und der Entwicklung von Politik im Bereich Medien und Technologie."
+            },
+            cmo: {
+              name: "Le Van C",
+              position: "Chief Marketing Officer",
+              description: "Strategischer Marketing-Leader mit tiefem Verständnis für vietnamesische Unternehmensmarkt-Dynamiken und Trends."
+            }
+          },
+          values: {
+            title: "Unsere Grundwerte",
+            subtitle: "Die Prinzipien, die alles leiten, was wir tun",
+            innovation: {
+              title: "Innovation",
+              description: "Kontinuierliche Grenzerweiterung mit modernsten Technologielösungen"
+            },
+            collaboration: {
+              title: "Zusammenarbeit",
+              description: "Enge Zusammenarbeit mit Kunden für gemeinsamen Erfolg und Wachstum"
+            },
+            excellence: {
+              title: "Exzellenz",
+              description: "Lieferung höchster Qualitätslösungen und außergewöhnlicher Kundenbetreuung"
+            },
+            sustainability: {
+              title: "Nachhaltigkeit",
+              description: "Aufbau von Lösungen, die langfristigen Wert und positive Auswirkungen schaffen"
+            }
+          }
+        },
+        footer: {
+          description: "Führende digitale Transformationslösungen für vietnamesische Unternehmen. Stärkung von Unternehmen mit KI und modernster Technologie.",
+          quickLinks: "Schnelle Links",
+          contact: "Kontakt",
+          location: "Ho-Chi-Minh-Stadt, Vietnam",
+          copyright: "© 2025 DigitizedBrains. Alle Rechte vorbehalten."
+        }
+      }
+    };
+
+    // Language configuration
+    const languageConfig = {
+      en: { flag: "https://flagcdn.com/24x18/us.png", code: "EN", alt: "English" },
+      vi: { flag: "https://flagcdn.com/24x18/vn.png", code: "VN", alt: "Tiếng Việt" },
+      de: { flag: "https://flagcdn.com/24x18/de.png", code: "DE", alt: "Deutsch" }
+    };
+
+    // Current language
+    let currentLanguage = localStorage.getItem('preferredLanguage') || 'en';
+
+    // DOM elements
+    const htmlRoot = document.getElementById('html-root');
+    const pageTitle = document.getElementById('page-title');
+    const pageDescription = document.getElementById('page-description');
+
+    // Function to update language display
+    function updateLanguageDisplay() {
+      const config = languageConfig[currentLanguage];
+      
+      // Update desktop language switcher
+      const currentLangSpan = document.getElementById('current-lang');
+      const currentFlag = document.getElementById('current-flag');
+      const mobileLangSpan = document.getElementById('mobile-current-lang');
+      const mobileFlag = document.getElementById('mobile-current-flag');
+      
+      if (currentLangSpan) {
+        currentLangSpan.textContent = config.code;
+      }
+      if (currentFlag) {
+        currentFlag.src = config.flag;
+        currentFlag.alt = config.alt;
+      }
+      if (mobileLangSpan) {
+        mobileLangSpan.textContent = config.code;
+      }
+      if (mobileFlag) {
+        mobileFlag.src = config.flag;
+        mobileFlag.alt = config.alt;
+      }
+      
+      // Update active state for options
+      document.querySelectorAll('.language-option, .language-option-mobile').forEach(option => {
+        option.classList.remove('active');
+        if (option.dataset.lang === currentLanguage) {
+          option.classList.add('active');
+        }
+      });
+    }
+
+    // Function to translate content
+    function translateContent(targetLanguage) {
+      const data = languages[targetLanguage];
+      if (!data) return;
+
+      // Add transition effect
+      document.body.classList.add('lang-transition', 'changing');
+
+      setTimeout(() => {
+        // Update meta tags
+        htmlRoot.lang = targetLanguage === 'vi' ? 'vi' : targetLanguage === 'de' ? 'de' : 'en';
+        pageTitle.textContent = data.meta.title;
+        pageDescription.content = data.meta.description;
+
+        // Update all translatable elements
+        document.querySelectorAll('[data-translate]').forEach(element => {
+          const key = element.getAttribute('data-translate');
+          const keys = key.split('.');
+          let value = data;
+          
+          for (let k of keys) {
+            value = value[k];
+            if (!value) break;
+          }
+          
+          if (value) {
+            element.textContent = value;
+          }
+        });
+
+        // Remove transition effect
+        document.body.classList.remove('changing');
+      }, 150);
+
+      setTimeout(() => {
+        document.body.classList.remove('lang-transition');
+      }, 450);
+    }
+
+    // Function to change language
+    function changeLanguage(newLanguage) {
+      if (newLanguage === currentLanguage) return;
+      
+      currentLanguage = newLanguage;
+      localStorage.setItem('preferredLanguage', newLanguage);
+      
+      updateLanguageDisplay();
+      translateContent(newLanguage);
+    }
+
+    // Language switcher event listeners
+    document.getElementById('language-btn').addEventListener('click', function(e) {
+      e.stopPropagation();
+      const menu = document.getElementById('language-menu');
+      menu.classList.toggle('show');
+    });
+
+    document.getElementById('mobile-language-btn').addEventListener('click', function(e) {
+      e.stopPropagation();
+      const menu = document.getElementById('mobile-language-menu');
+      menu.classList.toggle('show');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function() {
+      document.querySelectorAll('.language-menu, .language-menu-mobile').forEach(menu => {
+        menu.classList.remove('show');
+      });
+    });
+
+    // Prevent dropdown from closing when clicking inside options
+    document.querySelectorAll('.language-menu, .language-menu-mobile').forEach(menu => {
+      menu.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+    });
+
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // Scroll reveal animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      updateLanguageDisplay();
+      translateContent(currentLanguage);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">Digital Infrastructure Solutions - DigitizedBrains</title>
+  <meta name="description" id="page-description" content="Comprehensive digital infrastructure solutions for Vietnamese enterprises and businesses">
+  
+  <link href="../../css/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../css/style.css">
+  <style>
+    .lang-transition {
+      transition: opacity 0.3s ease-in-out;
+    }
+    
+    .lang-transition.changing {
+      opacity: 0;
+    }
+
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+    
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .logo-gradient {
+      background: linear-gradient(135deg, #ff8a4c 0%, #ff6b6b 100%);
+    }
+
+    .language-dropdown {
+      position: relative;
+      display: inline-block;
+      z-index: 60;
+    }
+
+    .language-toggle {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      background: white;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .language-options {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 4px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .language-options.show {
+      display: block;
+    }
+
+    .language-option {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .language-option:hover {
+      background-color: #f3f4f6;
+    }
+
+    .nav-link {
+      position: relative;
+      color: #4B5563;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      transition: color 0.3s;
+      font-weight: 500;
+      font-size: 1.125rem;
+    }
+
+    .nav-link:hover {
+      color: #1F2937;
+    }
+
+    .nav-link.active {
+      color: #2563EB;
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 1rem;
+      right: 1rem;
+      height: 2px;
+      background: #2563EB;
+      border-radius: 2px;
+    }
+
+    /* Hero Section Styles */
+    .hero-section {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 120px 0;
+      color: white;
+    }
+
+    /* Scroll Reveal Animation */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+    
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Feature Cards */
+    .feature-card {
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4 relative">
+        <div class="flex items-center space-x-3">
+          <div class="w-12 h-12 logo-gradient rounded-2xl flex items-center justify-center">
+            <span class="text-white font-bold text-xl">DB</span>
+          </div>
+          <div>
+            <a href="../../index.html" class="text-2xl font-bold text-gray-800">Digitized</a>
+            <a href="../../index.html" class="text-2xl font-bold text-orange-500">Brains</a>
+          </div>
+        </div>
+        
+        <nav class="hidden md:flex space-x-2">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Home</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">About</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Digital Transformation</a>
+          <a href="ai-business-solutions-multilang.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="#blog" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="#resources" class="nav-link" data-translate="nav.resources">Resources</a>
+          <a href="#contact" class="nav-link" data-translate="nav.contact">Contact</a>
+        </nav>
+        
+        <!-- Language Switcher -->
+        <div class="hidden md:block">
+          <div class="language-dropdown">
+            <div class="language-toggle" id="language-toggle">
+              <img src="https://flagcdn.com/24x18/us.png" alt="English" class="w-4 h-3 mr-1" id="current-flag">
+              <span id="current-lang">EN</span>
+              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </div>
+            <div class="language-options" id="language-options">
+              <div class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="w-4 h-3 mr-1">
+                EN
+              </div>
+              <div class="language-option" data-lang="vi">
+                <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="w-4 h-3 mr-1">
+                VN
+              </div>
+              <div class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="w-4 h-3 mr-1">
+                DE
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <button id="mobile-menu-btn" class="md:hidden p-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <div class="flex flex-col space-y-2">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Home</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">About</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Digital Transformation</a>
+          <a href="ai-business-solutions-multilang.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="#blog" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="#resources" class="nav-link" data-translate="nav.resources">Resources</a>
+          <a href="#contact" class="nav-link" data-translate="nav.contact">Contact</a>
+          
+          <!-- Language Switcher for Mobile -->
+          <div class="pt-2 border-t border-gray-200">
+            <div class="language-dropdown">
+              <div class="language-toggle" id="mobile-language-toggle">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="w-4 h-3 mr-1" id="mobile-current-flag">
+                <span id="mobile-current-lang">EN</span>
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </div>
+              <div class="language-options" id="mobile-language-options">
+                <div class="language-option mobile-language-option" data-lang="en">
+                  <img src="https://flagcdn.com/24x18/us.png" alt="English" class="w-4 h-3 mr-1">
+                  EN
+                </div>
+                <div class="language-option mobile-language-option" data-lang="vi">
+                  <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="w-4 h-3 mr-1">
+                  VN
+                </div>
+                <div class="language-option mobile-language-option" data-lang="de">
+                  <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="w-4 h-3 mr-1">
+                  DE
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 scroll-reveal" data-translate="hero.title">
+          Digital Infrastructure Solutions
+        </h1>
+        <p class="text-xl opacity-90 mb-8 scroll-reveal" data-translate="hero.description">
+          Transform your business operations with our comprehensive digital infrastructure solutions. We help Vietnamese enterprises modernize their technical infrastructure for enhanced efficiency and growth in the digital economy.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Features -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Cloud Infrastructure -->
+        <div class="feature-card bg-white rounded-xl p-6 shadow-lg transition-all duration-300 scroll-reveal">
+          <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">☁️</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="features.cloud.title">Cloud Infrastructure</h3>
+          <p class="text-gray-600" data-translate="features.cloud.description">
+            Modern cloud-based infrastructure solutions for content storage, processing, and distribution. Leverage scalable cloud resources for improved efficiency and flexibility.
+          </p>
+        </div>
+
+        <!-- Content Management -->
+        <div class="feature-card bg-white rounded-xl p-6 shadow-lg transition-all duration-300 scroll-reveal">
+          <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">📊</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="features.content.title">Data Management</h3>
+          <p class="text-gray-600" data-translate="features.content.description">
+            Advanced digital asset management systems for organizing, storing, and distributing business data across multiple platforms efficiently.
+          </p>
+        </div>
+
+        <!-- Network Solutions -->
+        <div class="feature-card bg-white rounded-xl p-6 shadow-lg transition-all duration-300 scroll-reveal">
+          <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">🌐</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="features.network.title">Network Solutions</h3>
+          <p class="text-gray-600" data-translate="features.network.description">
+            High-performance network infrastructure for seamless data delivery and real-time business operations capabilities.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Solutions -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12" data-translate="solutions.title">Our Infrastructure Solutions</h2>
+        
+        <!-- Storage Solutions -->
+        <div class="mb-12 scroll-reveal">
+          <div class="flex items-start">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+              <span class="text-2xl">💾</span>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-3" data-translate="solutions.storage.title">Digital Storage Solutions</h3>
+              <p class="text-gray-600 mb-4" data-translate="solutions.storage.description">
+                Modern storage solutions combining on-premise and cloud systems, designed for Vietnamese enterprises:
+              </p>
+              <ul class="list-disc list-inside text-gray-600 space-y-2">
+                <li data-translate="solutions.storage.feature1">High-performance storage systems for business operations</li>
+                <li data-translate="solutions.storage.feature2">Smart cloud storage solutions for long-term data archives</li>
+                <li data-translate="solutions.storage.feature3">Automated backup and disaster recovery systems</li>
+                <li data-translate="solutions.storage.feature4">Cost optimization for system operations and maintenance</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Processing Infrastructure -->
+        <div class="mb-12 scroll-reveal">
+          <div class="flex items-start">
+            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+              <span class="text-2xl">⚡</span>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-3" data-translate="solutions.processing.title">Processing Infrastructure</h3>
+              <p class="text-gray-600 mb-4" data-translate="solutions.processing.description">
+                High-performance computing infrastructure with AI technology for data processing and analysis:
+              </p>
+              <ul class="list-disc list-inside text-gray-600 space-y-2">
+                <li data-translate="solutions.processing.feature1">GPU-accelerated data processing systems with AI technology</li>
+                <li data-translate="solutions.processing.feature2">Automated workflow processing pipelines</li>
+                <li data-translate="solutions.processing.feature3">Real-time processing for live business operations</li>
+                <li data-translate="solutions.processing.feature4">Quality and performance optimization for processing</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Distribution Network -->
+        <div class="mb-12 scroll-reveal">
+          <div class="flex items-start">
+            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+              <span class="text-2xl">📡</span>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-3" data-translate="solutions.distribution.title">Business Distribution Network</h3>
+              <p class="text-gray-600 mb-4" data-translate="solutions.distribution.description">
+                Robust digital distribution infrastructure for multi-platform business operations:
+              </p>
+              <ul class="list-disc list-inside text-gray-600 space-y-2">
+                <li data-translate="solutions.distribution.feature1">Global CDN integration for optimal data distribution</li>
+                <li data-translate="solutions.distribution.feature2">Multi-platform support (Web, Mobile, Cloud platforms)</li>
+                <li data-translate="solutions.distribution.feature3">Advanced network optimization for service quality</li>
+                <li data-translate="solutions.distribution.feature4">Real-time monitoring and performance analytics</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-6" data-translate="contact.title">Ready to Modernize Your Infrastructure?</h2>
+        <p class="text-gray-600 mb-8" data-translate="contact.description">
+          Contact us to discuss how we can help transform your digital infrastructure for enhanced business efficiency.
+        </p>
+        <a href="#contact" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors" data-translate="contact.button">
+          Get in Touch
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <!-- Logo & Description -->
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <a href="../../index.html" class="w-10 h-10 logo-gradient rounded-xl flex items-center justify-center">
+              <span class="text-white font-bold text-lg">DB</span>
+            </a>
+            <div>
+              <a href="../../index.html" class="text-xl font-bold text-white">Digitized</a>
+              <a href="../../index.html" class="text-xl font-bold text-orange-400">Brains</a>
+            </div>
+          </div>
+          <p class="text-gray-400 mb-4" data-translate="footer.description">
+            Leading digital infrastructure solutions for Vietnamese enterprises. Empowering businesses with modern technology and cutting-edge innovations.
+          </p>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.quickLinks">Quick Links</h4>
+          <div class="grid grid-cols-2 gap-4">
+            <ul class="space-y-2">
+              <li><a href="../../index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.home">Home</a></li>
+              <li><a href="../about/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.about">About</a></li>
+              <li><a href="../digital-transformation/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.digitalTransformation">Digital Transformation</a></li>
+              <li><a href="ai-business-solutions-multilang.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.aiAgent">AI Agent</a></li>
+            </ul>
+            <ul class="space-y-2">
+              <li><a href="#blog" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.blog">Blog</a></li>
+              <li><a href="#resources" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.resources">Resources</a></li>
+              <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Contact Info -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.contact">Contact</h4>
+          <ul class="space-y-2">
+            <li class="text-gray-400">email@digitizedbrains.com</li>
+            <li class="text-gray-400">+84 123 456 789</li>
+            <li class="text-gray-400" data-translate="footer.location">Ho Chi Minh City, Vietnam</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-gray-400" data-translate="footer.copyright">
+          © 2025 DigitizedBrains. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Language Switcher Script -->
+  <script>
+    // Language data
+    const languages = {
+      en: {
+        meta: {
+          title: "Digital Infrastructure Solutions - DigitizedBrains",
+          description: "Comprehensive digital infrastructure solutions for Vietnamese enterprises and businesses"
+        },
+        nav: {
+          home: "Home",
+          about: "About",
+          digitalTransformation: "Digital Transformation",
+          digitalInfrastructure: "Digital Infrastructure",
+          digitalProcess: "Digital Process",
+          aiAgent: "AI Agent",
+          blog: "Blog",
+          resources: "Resources",
+          contact: "Contact"
+        },
+        hero: {
+          title: "Digital Infrastructure Solutions",
+          description: "Transform your business operations with our comprehensive digital infrastructure solutions. We help Vietnamese enterprises modernize their technical infrastructure for enhanced efficiency and growth in the digital economy."
+        },
+        features: {
+          cloud: {
+            title: "Cloud Infrastructure",
+            description: "Modern cloud-based infrastructure solutions for data storage, processing, and distribution. Leverage scalable cloud resources for improved efficiency and flexibility."
+          },
+          content: {
+            title: "Data Management",
+            description: "Advanced digital asset management systems for organizing, storing, and distributing business data across multiple platforms efficiently."
+          },
+          network: {
+            title: "Network Solutions",
+            description: "High-performance network infrastructure for seamless data delivery and real-time business operations capabilities."
+          }
+        },
+        solutions: {
+          title: "Our Infrastructure Solutions",
+          storage: {
+            title: "Digital Storage Solutions",
+            description: "Modern storage solutions combining on-premise and cloud storage for optimal performance and reliability:",
+            feature1: "High-performance storage systems for business operations",
+            feature2: "Smart cloud storage solutions for long-term data archives",
+            feature3: "Automated backup and disaster recovery systems",
+            feature4: "Cost optimization for system operations and maintenance"
+          },
+          processing: {
+            title: "Processing Infrastructure",
+            description: "High-performance computing infrastructure for data processing and analysis:",
+            feature1: "GPU-accelerated data processing systems with AI technology",
+            feature2: "Automated workflow processing pipelines",
+            feature3: "Real-time processing for live business operations",
+            feature4: "Quality and performance optimization for processing"
+          },
+          distribution: {
+            title: "Business Distribution Network",
+            description: "Robust digital distribution infrastructure for multi-platform business operations:",
+            feature1: "Global CDN integration for optimal data distribution",
+            feature2: "Multi-platform support (Web, Mobile, Cloud platforms)",
+            feature3: "Advanced network optimization for service quality",
+            feature4: "Real-time monitoring and performance analytics"
+          }
+        },
+        contact: {
+          title: "Ready to Modernize Your Infrastructure?",
+          description: "Contact us to discuss how we can help transform your digital infrastructure for enhanced business efficiency.",
+          button: "Get in Touch"
+        },
+        footer: {
+          description: "Leading digital infrastructure solutions for Vietnamese enterprises. Empowering businesses with modern technology and cutting-edge innovations.",
+          quickLinks: "Quick Links",
+          contact: "Contact",
+          location: "Ho Chi Minh City, Vietnam",
+          copyright: "© 2025 DigitizedBrains. All rights reserved."
+        }
+      },
+      vi: {
+        meta: {
+          title: "Giải Pháp Hạ Tầng Số - DigitizedBrains",
+          description: "Giải pháp hạ tầng số toàn diện cho các doanh nghiệp Việt Nam"
+        },
+        nav: {
+          home: "Trang chủ",
+          about: "Giới thiệu",
+          digitalTransformation: "Chuyển đổi số",
+          digitalInfrastructure: "Hạ tầng số",
+          digitalProcess: "Quy trình số",
+          aiAgent: "AI Agent",
+          blog: "Blog",
+          resources: "Tài nguyên",
+          contact: "Liên hệ"
+        },
+        hero: {
+          title: "Giải Pháp Hạ Tầng Số",
+          description: "Chuyển đổi hoạt động kinh doanh với giải pháp hạ tầng số toàn diện. Chúng tôi giúp các doanh nghiệp Việt Nam hiện đại hóa cơ sở hạ tầng kỹ thuật để nâng cao hiệu quả và tăng trưởng trong nền kinh tế số."
+        },
+        features: {
+          cloud: {
+            title: "Hạ tầng Đám mây",
+            description: "Giải pháp hạ tầng đám mây hiện đại cho lưu trữ, xử lý và phân phối dữ liệu. Tận dụng tài nguyên đám mây có thể mở rộng để nâng cao hiệu quả và linh hoạt."
+          },
+          content: {
+            title: "Quản lý Dữ liệu",
+            description: "Hệ thống quản lý tài sản số tiên tiến để tổ chức, lưu trữ và phân phối dữ liệu kinh doanh hiệu quả trên nhiều nền tảng."
+          },
+          network: {
+            title: "Giải pháp Mạng",
+            description: "Hạ tầng mạng hiệu suất cao cho phân phối dữ liệu liền mạch và khả năng vận hành kinh doanh thời gian thực."
+          }
+        },
+        solutions: {
+          title: "Giải pháp Hạ tầng của Chúng tôi",
+          storage: {
+            title: "Giải pháp Lưu trữ Số",
+            description: "Giải pháp lưu trữ hiện đại kết hợp lưu trữ tại chỗ và đám mây để tối ưu hiệu suất và độ tin cậy:",
+            feature1: "Hệ thống lưu trữ hiệu suất cao cho hoạt động kinh doanh",
+            feature2: "Giải pháp lưu trữ đám mây thông minh cho kho dữ liệu dài hạn",
+            feature3: "Hệ thống sao lưu và khôi phục thảm họa tự động",
+            feature4: "Tối ưu hóa chi phí vận hành và bảo trì hệ thống"
+          },
+          processing: {
+            title: "Hạ tầng Xử lý",
+            description: "Hạ tầng điện toán hiệu suất cao cho xử lý và phân tích dữ liệu:",
+            feature1: "Hệ thống xử lý dữ liệu tăng tốc GPU với công nghệ AI",
+            feature2: "Quy trình xử lý workflow tự động",
+            feature3: "Xử lý thời gian thực cho hoạt động kinh doanh trực tiếp",
+            feature4: "Tối ưu hóa chất lượng và hiệu suất xử lý"
+          },
+          distribution: {
+            title: "Mạng Phân phối Kinh doanh",
+            description: "Hạ tầng phân phối số mạnh mẽ cho hoạt động kinh doanh đa nền tảng:",
+            feature1: "Tích hợp CDN toàn cầu để phân phối dữ liệu tối ưu",
+            feature2: "Hỗ trợ đa nền tảng (Web, Mobile, nền tảng đám mây)",
+            feature3: "Tối ưu hóa mạng nâng cao cho chất lượng dịch vụ",
+            feature4: "Giám sát và phân tích hiệu suất thời gian thực"
+          }
+        },
+        contact: {
+          title: "Sẵn sàng Hiện đại hóa Hạ tầng của Bạn?",
+          description: "Liên hệ với chúng tôi để thảo luận về cách chúng tôi có thể giúp chuyển đổi hạ tầng số của bạn để nâng cao hiệu quả kinh doanh.",
+          button: "Liên hệ Ngay"
+        },
+        footer: {
+          description: "Giải pháp hạ tầng số hàng đầu cho các doanh nghiệp Việt Nam. Trao quyền cho doanh nghiệp với công nghệ hiện đại và đổi mới tiên tiến.",
+          quickLinks: "Liên kết Nhanh",
+          contact: "Liên hệ",
+          location: "TP. Hồ Chí Minh, Việt Nam",
+          copyright: "© 2025 DigitizedBrains. Đã đăng ký bản quyền."
+        }
+      },
+      de: {
+        meta: {
+          title: "Digitale Infrastrukturlösungen - DigitizedBrains",
+          description: "Umfassende digitale Infrastrukturlösungen für vietnamesische Unternehmen"
+        },
+        nav: {
+          home: "Startseite",
+          about: "Über uns",
+          digitalTransformation: "Digitale Transformation",
+          digitalInfrastructure: "Digitale Infrastruktur",
+          digitalProcess: "Digitale Prozesse",
+          aiAgent: "KI-Agent",
+          blog: "Blog",
+          resources: "Ressourcen",
+          contact: "Kontakt"
+        },
+        hero: {
+          title: "Digitale Infrastrukturlösungen",
+          description: "Transformieren Sie Ihre Geschäftsabläufe mit unseren umfassenden digitalen Infrastrukturlösungen. Wir helfen vietnamesischen Unternehmen bei der Modernisierung ihrer technischen Infrastruktur für verbesserte Effizienz und Wachstum in der digitalen Wirtschaft."
+        },
+        features: {
+          cloud: {
+            title: "Cloud-Infrastruktur",
+            description: "Moderne Cloud-basierte Infrastrukturlösungen für Datenspeicherung, -verarbeitung und -verteilung. Nutzen Sie skalierbare Cloud-Ressourcen für verbesserte Effizienz und Flexibilität."
+          },
+          content: {
+            title: "Datenmanagement",
+            description: "Fortschrittliche Digital Asset Management-Systeme zur effizienten Organisation, Speicherung und Verteilung von Geschäftsdaten über mehrere Plattformen."
+          },
+          network: {
+            title: "Netzwerklösungen",
+            description: "Hochleistungs-Netzwerkinfrastruktur für nahtlose Datenbereitstellung und Echtzeit-Geschäftsabläufe."
+          }
+        },
+        solutions: {
+          title: "Unsere Infrastrukturlösungen",
+          storage: {
+            title: "Digitale Speicherlösungen",
+            description: "Moderne Speicherlösungen, die On-Premise- und Cloud-Speicher für optimale Leistung und Zuverlässigkeit kombinieren:",
+            feature1: "Hochleistungs-Speichersysteme für Geschäftsabläufe",
+            feature2: "Intelligente Cloud-Speicherlösungen für langfristige Datenarchive",
+            feature3: "Automatisierte Backup- und Disaster-Recovery-Systeme",
+            feature4: "Kostenoptimierung für Systembetrieb und Wartung"
+          },
+          processing: {
+            title: "Verarbeitungsinfrastruktur",
+            description: "Hochleistungs-Computerinfrastruktur für Datenverarbeitung und -analyse:",
+            feature1: "GPU-beschleunigte Datenverarbeitungssysteme mit KI-Technologie",
+            feature2: "Automatisierte Workflow-Verarbeitungs-Pipelines",
+            feature3: "Echtzeit-Verarbeitung für Live-Geschäftsabläufe",
+            feature4: "Qualitäts- und Leistungsoptimierung für die Verarbeitung"
+          },
+          distribution: {
+            title: "Geschäfts-Verteilungsnetzwerk",
+            description: "Robuste digitale Verteilungsinfrastruktur für Multi-Plattform-Geschäftsabläufe:",
+            feature1: "Globale CDN-Integration für optimale Datenverteilung",
+            feature2: "Multi-Plattform-Unterstützung (Web, Mobile, Cloud-Plattformen)",
+            feature3: "Erweiterte Netzwerkoptimierung für Servicequalität",
+            feature4: "Echtzeit-Überwachung und Leistungsanalyse"
+          }
+        },
+        contact: {
+          title: "Bereit für die Modernisierung Ihrer Infrastruktur?",
+          description: "Kontaktieren Sie uns, um zu besprechen, wie wir Ihre digitale Infrastruktur für verbesserte Geschäftseffizienz transformieren können.",
+          button: "Kontakt aufnehmen"
+        },
+        footer: {
+          description: "Führende digitale Infrastrukturlösungen für vietnamesische Unternehmen. Stärkung von Unternehmen mit moderner Technologie und innovativen Lösungen.",
+          quickLinks: "Schnellzugriff",
+          contact: "Kontakt",
+          location: "Ho-Chi-Minh-Stadt, Vietnam",
+          copyright: "© 2025 DigitizedBrains. Alle Rechte vorbehalten."
+        }
+      }
+    };
+
+    // Initialize language functionality (Same as index.html)
+    let currentLanguage = localStorage.getItem('preferredLanguage') || 'en';
+
+    function translateContent(targetLanguage) {
+      const data = languages[targetLanguage];
+      if (!data) return;
+
+      document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        const keys = key.split('.');
+        let value = data;
+        
+        for (let k of keys) {
+          value = value[k];
+          if (!value) break;
+        }
+        
+        if (value) {
+          element.textContent = value;
+        }
+      });
+
+      // Update meta tags
+      document.title = data.meta.title;
+      document.querySelector('meta[name="description"]').content = data.meta.description;
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      translateContent(currentLanguage);
+      
+      // Scroll reveal animation
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.scroll-reveal').forEach(el => {
+        observer.observe(el);
+      });
+
+      // Language switcher functionality
+      const languageToggle = document.getElementById('language-toggle');
+      const languageOptions = document.getElementById('language-options');
+      const currentFlag = document.getElementById('current-flag');
+      const currentLang = document.getElementById('current-lang');
+      
+      const mobileLanguageToggle = document.getElementById('mobile-language-toggle');
+      const mobileLanguageOptions = document.getElementById('mobile-language-options');
+      const mobileCurrentFlag = document.getElementById('mobile-current-flag');
+      const mobileCurrentLang = document.getElementById('mobile-current-lang');
+
+      // Desktop language switcher
+      if (languageToggle) {
+        languageToggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          languageToggle.classList.toggle('active');
+          languageOptions.classList.toggle('show');
+        });
+      }
+
+      // Mobile language switcher
+      if (mobileLanguageToggle) {
+        mobileLanguageToggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          mobileLanguageToggle.classList.toggle('active');
+          mobileLanguageOptions.classList.toggle('show');
+        });
+      }
+
+      document.addEventListener('click', function() {
+        if (languageToggle) {
+          languageToggle.classList.remove('active');
+          languageOptions.classList.remove('show');
+        }
+        if (mobileLanguageToggle) {
+          mobileLanguageToggle.classList.remove('active');
+          mobileLanguageOptions.classList.remove('show');
+        }
+      });
+
+      if (languageOptions) {
+        languageOptions.addEventListener('click', function(e) {
+          e.stopPropagation();
+        });
+      }
+
+      if (mobileLanguageOptions) {
+        mobileLanguageOptions.addEventListener('click', function(e) {
+          e.stopPropagation();
+        });
+      }
+
+      // Handle language change for both desktop and mobile
+      function handleLanguageChange(selectedLanguage, flagSrc, langText) {
+        localStorage.setItem('preferredLanguage', selectedLanguage);
+        translateContent(selectedLanguage);
+        
+        // Update desktop
+        if (currentFlag) currentFlag.src = flagSrc;
+        if (currentLang) currentLang.textContent = langText;
+        
+        // Update mobile
+        if (mobileCurrentFlag) mobileCurrentFlag.src = flagSrc;
+        if (mobileCurrentLang) mobileCurrentLang.textContent = langText;
+        
+        // Close dropdowns
+        if (languageToggle) {
+          languageToggle.classList.remove('active');
+          languageOptions.classList.remove('show');
+        }
+        if (mobileLanguageToggle) {
+          mobileLanguageToggle.classList.remove('active');
+          mobileLanguageOptions.classList.remove('show');
+        }
+      }
+
+      document.querySelectorAll('.language-option').forEach(option => {
+        option.addEventListener('click', function() {
+          const selectedLanguage = this.dataset.lang;
+          const flagSrc = this.querySelector('img').src;
+          const langText = this.textContent.trim();
+          
+          handleLanguageChange(selectedLanguage, flagSrc, langText);
+        });
+      });
+
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', function() {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+    });
+  </script>
+
+  <!-- Chatbot Integration -->
+  <script src="../../js/chatbot.js"></script>
+
+</body>
+</html>

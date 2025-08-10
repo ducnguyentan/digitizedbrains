@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="vi" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="page-title">Tối ưu hóa Quy trình Số - DigitizedBrains</title>
+  <meta name="description" content="Giải pháp tối ưu hóa quy trình số toàn diện cho doanh nghiệp Việt Nam" id="page-description">
+  <link href="../../css/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    .font-nunito { 
+      font-family: 'Nunito', sans-serif; 
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Navigation styles */
+    .nav-link {
+      color: #374151;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .nav-link:hover { color: #ed7354; background-color: #fef2f2; }
+    .nav-link.active { color: #ed7354; font-weight: 600; }
+
+    /* Language Switcher Styles */
+    .language-switcher {
+      position: relative;
+    }
+    
+    .language-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      min-width: 160px;
+      display: none;
+      z-index: 1000;
+    }
+    
+    .language-menu.show {
+      display: block;
+    }
+    
+    .language-option {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+    
+    .language-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    /* Mobile Language Switcher Styles */
+    .language-menu-mobile {
+      display: none;
+      margin-top: 8px;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .language-menu-mobile.show {
+      display: block;
+    }
+    
+    .language-option-mobile {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option-mobile:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option-mobile.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+
+    /* Hero Section Styles */
+    .hero-section {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 120px 0;
+      color: white;
+    }
+
+    /* Scroll Reveal Animation */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+    
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Feature Cards */
+    .feature-card {
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Button Styles */
+    .btn-primary {
+      background: linear-gradient(135deg, #ed7354, #dc2626);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+  <!-- Header -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <div class="logo-gradient w-10 h-10 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-lg">DB</span>
+          </div>
+          <a href="../../index.html" class="text-2xl font-bold text-gray-800">Digitized Brains</a>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="hidden md:flex space-x-4">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="ai-business-solutions-multilang.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="#blog" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="#resources" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="#contact" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+        </nav>
+
+        <!-- Language Switcher -->
+        <div class="hidden md:block">
+          <div class="language-switcher">
+            <button id="language-btn" class="flex items-center space-x-1 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+              <img id="current-flag" src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+              <span id="current-lang">VI</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="language-menu" class="language-menu">
+              <a href="#" onclick="changeLanguage('en')" class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                English
+              </a>
+              <a href="#" onclick="changeLanguage('vi')" class="language-option active" data-lang="vi">
+                <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                Tiếng Việt
+              </a>
+              <a href="#" onclick="changeLanguage('de')" class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                Deutsch
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <nav class="flex flex-col space-y-2">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="ai-business-solutions-multilang.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="#blog" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="#resources" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="#contact" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+          
+          <!-- Mobile Language Switcher -->
+          <div class="pt-2 border-t border-gray-200">
+            <div class="language-switcher-mobile">
+              <button id="mobile-language-btn" class="flex items-center justify-between w-full px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                <span data-translate="language.current">Language:</span>
+                <div class="flex items-center space-x-1">
+                  <img id="mobile-current-flag" src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                  <span id="mobile-current-lang">VI</span>
+                </div>
+              </button>
+              <div id="mobile-language-menu" class="language-menu-mobile">
+                <a href="#" onclick="changeLanguage('en')" class="language-option-mobile" data-lang="en">
+                  <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                  English
+                </a>
+                <a href="#" onclick="changeLanguage('vi')" class="language-option-mobile active" data-lang="vi">
+                  <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                  Tiếng Việt
+                </a>
+                <a href="#" onclick="changeLanguage('de')" class="language-option-mobile" data-lang="de">
+                  <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                  Deutsch
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 scroll-reveal" data-translate="hero.title">Tối ưu hóa Quy trình Số</h1>
+        <p class="text-xl opacity-90 mb-8 scroll-reveal" data-translate="hero.description">
+          Nâng cao hiệu quả hoạt động của doanh nghiệp Việt Nam thông qua việc tối ưu hóa quy trình số. Chúng tôi giúp doanh nghiệp tự động hóa, tích hợp và cải tiến các quy trình kinh doanh để đạt được hiệu suất cao hơn trong kỷ nguyên số.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4 scroll-reveal">
+          <a href="#process" class="btn-primary px-8 py-3 rounded-full font-semibold" data-translate="hero.cta">Khám phá Giải pháp Tối ưu hóa Quy trình</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Features -->
+  <section id="process" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Process Automation -->
+        <div class="feature-card bg-white rounded-xl p-6 shadow-lg transition-all duration-300 scroll-reveal">
+          <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">⚙️</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="features.automation.title">Tự động hóa Quy trình</h3>
+          <p class="text-gray-600" data-translate="features.automation.description">
+            Tự động hóa các quy trình kinh doanh lặp đi lặp lại để giải phóng nguồn lực quý giá và giảm thiểu lỗi con người, giúp doanh nghiệp tập trung vào các hoạt động tạo giá trị cao hơn.
+          </p>
+        </div>
+
+        <!-- Process Integration -->
+        <div class="feature-card bg-white rounded-xl p-6 shadow-lg transition-all duration-300 scroll-reveal">
+          <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">🔄</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="features.integration.title">Tích hợp Quy trình</h3>
+          <p class="text-gray-600" data-translate="features.integration.description">
+            Kết nối liền mạch các quy trình kinh doanh và hệ thống riêng biệt để loại bỏ các rào cản thông tin và tạo ra dòng chảy dữ liệu thống nhất trong toàn doanh nghiệp.
+          </p>
+        </div>
+
+        <!-- Process Analytics -->
+        <div class="feature-card bg-white rounded-xl p-6 shadow-lg transition-all duration-300 scroll-reveal">
+          <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">📊</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="features.analytics.title">Phân tích Quy trình</h3>
+          <p class="text-gray-600" data-translate="features.analytics.description">
+            Sử dụng công nghệ phân tích dữ liệu tiên tiến để theo dõi, đo lường và tối ưu hóa liên tục các quy trình kinh doanh, đảm bảo cải tiến không ngừng.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Solutions -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12" data-translate="solutions.title">Giải pháp Tối ưu hóa Quy trình của Chúng tôi</h2>
+        
+        <!-- Business Process Mapping -->
+        <div class="mb-12 scroll-reveal">
+          <div class="flex items-start">
+            <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
+              <span class="text-2xl">🗺️</span>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-3" data-translate="solutions.mapping.title">Lập bản đồ Quy trình Kinh doanh</h3>
+              <p class="text-gray-600 mb-4" data-translate="solutions.mapping.description">
+                Phân tích và lập bản đồ chi tiết các quy trình kinh doanh hiện tại để xác định các điểm không hiệu quả và cơ hội cải tiến:
+              </p>
+              <ul class="list-disc list-inside text-gray-600 space-y-2">
+                <li data-translate="solutions.mapping.feature1">Phân tích toàn diện các quy trình kinh doanh hiện tại</li>
+                <li data-translate="solutions.mapping.feature2">Xác định các điểm nghẽn và lãng phí trong quy trình</li>
+                <li data-translate="solutions.mapping.feature3">Thiết kế lại quy trình để tối đa hóa hiệu quả và giá trị</li>
+                <li data-translate="solutions.mapping.feature4">Phát triển lộ trình chuyển đổi quy trình phù hợp với doanh nghiệp</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digital Workflow Implementation -->
+        <div class="mb-12 scroll-reveal">
+          <div class="flex items-start">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+              <span class="text-2xl">⚡</span>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-3" data-translate="solutions.workflow.title">Triển khai Quy trình Làm việc Số</h3>
+              <p class="text-gray-600 mb-4" data-translate="solutions.workflow.description">
+                Chuyển đổi quy trình thủ công sang quy trình làm việc số tự động và thông minh:
+              </p>
+              <ul class="list-disc list-inside text-gray-600 space-y-2">
+                <li data-translate="solutions.workflow.feature1">Xây dựng quy trình làm việc số linh hoạt và có thể tùy chỉnh</li>
+                <li data-translate="solutions.workflow.feature2">Tự động hóa các nhiệm vụ lặp đi lặp lại và quy trình phê duyệt</li>
+                <li data-translate="solutions.workflow.feature3">Tích hợp với hệ thống quản lý nội dung và dữ liệu hiện có</li>
+                <li data-translate="solutions.workflow.feature4">Triển khai giải pháp theo dõi và quản lý quy trình thời gian thực</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Continuous Process Improvement -->
+        <div class="mb-12 scroll-reveal">
+          <div class="flex items-start">
+            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+              <span class="text-2xl">📈</span>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-3" data-translate="solutions.improvement.title">Cải tiến Quy trình Liên tục</h3>
+              <p class="text-gray-600 mb-4" data-translate="solutions.improvement.description">
+                Thiết lập hệ thống để liên tục theo dõi, đánh giá và cải thiện các quy trình kinh doanh:
+              </p>
+              <ul class="list-disc list-inside text-gray-600 space-y-2">
+                <li data-translate="solutions.improvement.feature1">Phân tích dữ liệu quy trình dựa trên KPI đã xác định</li>
+                <li data-translate="solutions.improvement.feature2">Áp dụng phương pháp cải tiến liên tục như Kaizen hoặc Six Sigma</li>
+                <li data-translate="solutions.improvement.feature3">Phát hiện và giải quyết sớm các vấn đề trong quy trình kinh doanh</li>
+                <li data-translate="solutions.improvement.feature4">Thúc đẩy văn hóa cải tiến liên tục trong toàn doanh nghiệp</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Benefits Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-8 text-center scroll-reveal" data-translate="content.benefits.title">Lợi ích của Tối ưu hóa Quy trình Số</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Efficiency -->
+        <div class="bg-white p-6 rounded-xl shadow-md scroll-reveal">
+          <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mb-4">
+            <span class="text-2xl">⏱️</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.efficiency.title">Tăng Hiệu quả Hoạt động</h3>
+            <p class="text-gray-600" data-translate="content.benefits.efficiency.description">Tối ưu hóa quy trình kinh doanh và giảm chi phí hoạt động thông qua tự động hóa thông minh và phân bổ tài nguyên tối ưu</p>
+          </div>
+        </div>
+        
+        <!-- Quality -->
+        <div class="bg-white p-6 rounded-xl shadow-md scroll-reveal">
+          <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+            <span class="text-2xl">✨</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.quality.title">Nâng cao Chất lượng</h3>
+            <p class="text-gray-600" data-translate="content.benefits.quality.description">Cải thiện tính nhất quán và chất lượng của sản phẩm và dịch vụ thông qua các quy trình được tiêu chuẩn hóa và tự động hóa</p>
+          </div>
+        </div>
+        
+        <!-- Agility -->
+        <div class="bg-white p-6 rounded-xl shadow-md scroll-reveal">
+          <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+            <span class="text-2xl">🔄</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.agility.title">Tăng Tính Linh hoạt</h3>
+            <p class="text-gray-600" data-translate="content.benefits.agility.description">Phản ứng nhanh hơn với thay đổi thị trường và nhu cầu khách hàng thông qua các quy trình kinh doanh linh hoạt và có thể điều chỉnh</p>
+          </div>
+        </div>
+        
+        <!-- Data-driven -->
+        <div class="bg-white p-6 rounded-xl shadow-md scroll-reveal">
+          <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+            <span class="text-2xl">📊</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.data.title">Ra quyết định Dựa trên Dữ liệu</h3>
+            <p class="text-gray-600" data-translate="content.benefits.data.description">Tiếp cận thông tin chi tiết về hiệu suất quy trình theo thời gian thực để đưa ra quyết định kinh doanh sáng suốt hơn</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies Section (Optional) -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-12 text-center" data-translate="caseStudies.title">Chúng tôi đã Giúp Doanh nghiệp Việt Nam Thành công</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <!-- Case Study 1 -->
+        <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md scroll-reveal">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2" data-translate="caseStudies.case1.title">Doanh nghiệp Sản xuất Tối ưu hóa Chuỗi Cung ứng</h3>
+            <p class="text-gray-600 mb-4" data-translate="caseStudies.case1.description">
+              Chúng tôi đã giúp một doanh nghiệp sản xuất hàng đầu tại Việt Nam tự động hóa và tối ưu hóa quy trình chuỗi cung ứng của họ, giúp cắt giảm 30% chi phí vận hành và giảm 45% thời gian chu kỳ đơn hàng.
+            </p>
+            <div class="flex items-center text-orange-600">
+              <span class="font-semibold mr-2" data-translate="caseStudies.readMore">Xem thêm</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Case Study 2 -->
+        <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md scroll-reveal">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2" data-translate="caseStudies.case2.title">Doanh nghiệp Dịch vụ Tài chính Chuyển đổi Quy trình</h3>
+            <p class="text-gray-600 mb-4" data-translate="caseStudies.case2.description">
+              Một ngân hàng thương mại tại Việt Nam đã đạt được mức tăng 40% về hiệu quả xử lý và cải thiện 60% về trải nghiệm khách hàng nhờ vào việc chuyển đổi số quy trình phê duyệt khoản vay của họ.
+            </p>
+            <div class="flex items-center text-orange-600">
+              <span class="font-semibold mr-2" data-translate="caseStudies.readMore">Xem thêm</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-6" data-translate="contact.title">Sẵn sàng Tối ưu hóa Quy trình Kinh doanh của Bạn?</h2>
+        <p class="text-gray-600 mb-8" data-translate="contact.description">
+          Liên hệ với chúng tôi để thảo luận về cách chúng tôi có thể giúp doanh nghiệp của bạn nâng cao hiệu quả thông qua tối ưu hóa quy trình số.
+        </p>
+        <a href="#contact" class="btn-primary inline-block text-white px-8 py-3 rounded-lg font-semibold transition-colors" data-translate="contact.button">
+          Liên hệ Ngay
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <!-- Logo & Description -->
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <a href="../../index.html" class="w-10 h-10 logo-gradient rounded-xl flex items-center justify-center">
+              <span class="text-white font-bold text-lg">DB</span>
+            </a>
+            <div>
+              <a href="../../index.html" class="text-xl font-bold text-white">Digitized</a>
+              <a href="../../index.html" class="text-xl font-bold text-orange-400">Brains</a>
+            </div>
+          </div>
+          <p class="text-gray-400 mb-4" data-translate="footer.description">
+            Giải pháp tối ưu hóa quy trình số hàng đầu cho doanh nghiệp Việt Nam. Trao quyền cho doanh nghiệp với công nghệ hiện đại và đổi mới tiên tiến.
+          </p>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.quickLinks">Quick Links</h4>
+          <div class="grid grid-cols-2 gap-4">
+            <ul class="space-y-2">
+              <li><a href="../../index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.home">Home</a></li>
+              <li><a href="../about/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.about">About</a></li>
+              <li><a href="../digital-transformation/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.digitalTransformation">Digital Transformation</a></li>
+              <li><a href="digital-infrastructure-multilang.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.digitalInfrastructure">Digital Infrastructure</a></li>
+            </ul>
+            <ul class="space-y-2">
+              <li><a href="digital-process-optimization-multilang.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.digitalProcess">Digital Process</a></li>
+              <li><a href="ai-business-solutions-multilang.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.aiAgent">AI Agent</a></li>
+              <li><a href="#blog" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.blog">Blog</a></li>
+              <li><a href="#resources" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.resources">Resources</a></li>
+              <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Contact Info -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.contact">Contact</h4>
+          <ul class="space-y-2">
+            <li class="text-gray-400">email@digitizedbrains.com</li>
+            <li class="text-gray-400">+84 123 456 789</li>
+            <li class="text-gray-400" data-translate="footer.location">Ho Chi Minh City, Vietnam</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-gray-400" data-translate="footer.copyright">
+          © 2025 DigitizedBrains. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Page-specific translations -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Page-specific translations - simplified to match actual data-translate attributes
+      const pageTranslations = {
+      en: {
+        meta: {
+          title: "Digital Process Optimization - DigitizedBrains",
+          description: "Comprehensive digital process optimization solutions for Vietnamese enterprises"
+        },
+        nav: {
+          home: "Home",
+          about: "About",
+          digitalTransformation: "Digital Transformation",
+          digitalInfrastructure: "Digital Infrastructure", 
+          digitalProcess: "Digital Process",
+          aiAgent: "AI Agent",
+          blog: "Blog",
+          resources: "Resources",
+          contact: "Contact"
+        },
+        language: {
+          current: "Language:"
+        },
+        hero: {
+          title: "Digital Process Optimization",
+          description: "Enhance operational efficiency of Vietnamese enterprises through digital process optimization. We help businesses automate, integrate, and improve business processes to achieve higher performance in the digital era.",
+          cta: "Explore Process Optimization Solutions"
+        },
+        features: {
+          automation: {
+            title: "Process Automation",
+            description: "Automate repetitive business processes to free up valuable resources and minimize human errors, allowing businesses to focus on higher-value activities."
+          },
+          integration: {
+            title: "Process Integration", 
+            description: "Seamlessly connect disparate business processes and systems to eliminate information silos and create a unified flow of data across the enterprise."
+          },
+          analytics: {
+            title: "Process Analytics",
+            description: "Use advanced data analytics technologies to monitor, measure, and continuously optimize business processes, ensuring continuous improvement."
+          }
+        },
+        solutions: {
+          title: "Our Process Optimization Solutions",
+          mapping: {
+            title: "Business Process Mapping",
+            description: "Analyze and map your existing business processes in detail to identify inefficiencies and improvement opportunities:",
+            feature1: "Comprehensive analysis of current business processes",
+            feature2: "Identification of bottlenecks and waste in processes", 
+            feature3: "Process redesign to maximize efficiency and value",
+            feature4: "Development of a process transformation roadmap tailored to your business"
+          },
+          workflow: {
+            title: "Digital Workflow Implementation",
+            description: "Transform manual processes into automated and intelligent digital workflows:",
+            feature1: "Build flexible and customizable digital workflows",
+            feature2: "Automate repetitive tasks and approval processes",
+            feature3: "Integrate with existing content and data management systems",
+            feature4: "Implement real-time process tracking and management solutions"
+          },
+          improvement: {
+            title: "Continuous Process Improvement",
+            description: "Establish systems to continuously monitor, evaluate, and improve business processes:",
+            feature1: "Process data analysis based on defined KPIs",
+            feature2: "Apply continuous improvement methodologies like Kaizen or Six Sigma",
+            feature3: "Early detection and resolution of business process issues",
+            feature4: "Foster a culture of continuous improvement across the organization"
+          }
+        },
+        content: {
+          benefits: {
+            title: "Benefits of Digital Process Optimization",
+            efficiency: {
+              title: "Increased Operational Efficiency",
+              description: "Optimize business processes and reduce operational costs through intelligent automation and optimal resource allocation"
+            },
+            quality: {
+              title: "Enhanced Quality",
+              description: "Improve consistency and quality of products and services through standardized and automated processes"
+            },
+            agility: {
+              title: "Increased Agility", 
+              description: "React faster to market changes and customer needs through flexible and adaptable business processes"
+            },
+            data: {
+              title: "Data-driven Decision Making",
+              description: "Access real-time process performance insights to make more informed business decisions"
+            }
+          }
+        },
+        caseStudies: {
+          title: "We've Helped Vietnamese Businesses Succeed",
+          readMore: "Read more",
+          case1: {
+            title: "Manufacturing Company Optimizes Supply Chain",
+            description: "We helped a leading Vietnamese manufacturing company automate and optimize their supply chain processes, resulting in 30% operational cost reduction and 45% decrease in order cycle time."
+          },
+          case2: {
+            title: "Financial Services Company Transforms Processes",
+            description: "A commercial bank in Vietnam achieved 40% increase in processing efficiency and 60% improvement in customer experience by digitally transforming their loan approval process."
+          }
+        },
+        contact: {
+          title: "Ready to Optimize Your Business Processes?",
+          description: "Contact us to discuss how we can help your business improve efficiency through digital process optimization.",
+          button: "Get in Touch"
+        },
+        footer: {
+          description: "Leading digital process optimization solutions for Vietnamese enterprises. Empowering businesses with modern technology and cutting-edge innovations.",
+          quickLinks: "Quick Links",
+          contact: "Contact",
+          location: "Ho Chi Minh City, Vietnam",
+          copyright: "© 2025 DigitizedBrains. All rights reserved."
+        }
+      },
+      vi: {
+        meta: {
+          title: "Tối ưu hóa Quy trình Số - DigitizedBrains",
+          description: "Giải pháp tối ưu hóa quy trình số toàn diện cho doanh nghiệp Việt Nam"
+        },
+        nav: {
+          home: "Trang chủ",
+          about: "Giới thiệu", 
+          digitalTransformation: "Chuyển đổi số",
+          digitalInfrastructure: "Hạ tầng số",
+          digitalProcess: "Quy trình số",
+          aiAgent: "AI Agent",
+          blog: "Blog",
+          resources: "Tài nguyên",
+          contact: "Liên hệ"
+        },
+        language: {
+          current: "Ngôn ngữ:"
+        },
+        hero: {
+          title: "Tối ưu hóa Quy trình Số",
+          description: "Nâng cao hiệu quả hoạt động của doanh nghiệp Việt Nam thông qua việc tối ưu hóa quy trình số. Chúng tôi giúp doanh nghiệp tự động hóa, tích hợp và cải tiến các quy trình kinh doanh để đạt được hiệu suất cao hơn trong kỷ nguyên số.",
+          cta: "Khám phá Giải pháp Tối ưu hóa Quy trình"
+        },
+        features: {
+          automation: {
+            title: "Tự động hóa Quy trình",
+            description: "Tự động hóa các quy trình kinh doanh lặp đi lặp lại để giải phóng nguồn lực quý giá và giảm thiểu lỗi con người, giúp doanh nghiệp tập trung vào các hoạt động tạo giá trị cao hơn."
+          },
+          integration: {
+            title: "Tích hợp Quy trình",
+            description: "Kết nối liền mạch các quy trình kinh doanh và hệ thống riêng biệt để loại bỏ các rào cản thông tin và tạo ra dòng chảy dữ liệu thống nhất trong toàn doanh nghiệp."
+          },
+          analytics: {
+            title: "Phân tích Quy trình",
+            description: "Sử dụng công nghệ phân tích dữ liệu tiên tiến để theo dõi, đo lường và tối ưu hóa liên tục các quy trình kinh doanh, đảm bảo cải tiến không ngừng."
+          }
+        },
+        solutions: {
+          title: "Giải pháp Tối ưu hóa Quy trình của Chúng tôi",
+          mapping: {
+            title: "Lập bản đồ Quy trình Kinh doanh",
+            description: "Phân tích và lập bản đồ chi tiết các quy trình kinh doanh hiện tại để xác định các điểm không hiệu quả và cơ hội cải tiến:",
+            feature1: "Phân tích toàn diện các quy trình kinh doanh hiện tại",
+            feature2: "Xác định các điểm nghẽn và lãng phí trong quy trình",
+            feature3: "Thiết kế lại quy trình để tối đa hóa hiệu quả và giá trị",
+            feature4: "Phát triển lộ trình chuyển đổi quy trình phù hợp với doanh nghiệp"
+          },
+          workflow: {
+            title: "Triển khai Quy trình Làm việc Số",
+            description: "Chuyển đổi quy trình thủ công sang quy trình làm việc số tự động và thông minh:",
+            feature1: "Xây dựng quy trình làm việc số linh hoạt và có thể tùy chỉnh",
+            feature2: "Tự động hóa các nhiệm vụ lặp đi lặp lại và quy trình phê duyệt",
+            feature3: "Tích hợp với hệ thống quản lý nội dung và dữ liệu hiện có",
+            feature4: "Triển khai giải pháp theo dõi và quản lý quy trình thời gian thực"
+          },
+          improvement: {
+            title: "Cải tiến Quy trình Liên tục",
+            description: "Thiết lập hệ thống để liên tục theo dõi, đánh giá và cải thiện các quy trình kinh doanh:",
+            feature1: "Phân tích dữ liệu quy trình dựa trên KPI đã xác định",
+            feature2: "Áp dụng phương pháp cải tiến liên tục như Kaizen hoặc Six Sigma",
+            feature3: "Phát hiện và giải quyết sớm các vấn đề trong quy trình kinh doanh",
+            feature4: "Thúc đẩy văn hóa cải tiến liên tục trong toàn doanh nghiệp"
+          }
+        },
+        content: {
+          benefits: {
+            title: "Lợi ích của Tối ưu hóa Quy trình Số",
+            efficiency: {
+              title: "Tăng Hiệu quả Hoạt động",
+              description: "Tối ưu hóa quy trình kinh doanh và giảm chi phí hoạt động thông qua tự động hóa thông minh và phân bổ tài nguyên tối ưu"
+            },
+            quality: {
+              title: "Nâng cao Chất lượng",
+              description: "Cải thiện tính nhất quán và chất lượng của sản phẩm và dịch vụ thông qua các quy trình được tiêu chuẩn hóa và tự động hóa"
+            },
+            agility: {
+              title: "Tăng Tính Linh hoạt",
+              description: "Phản ứng nhanh hơn với thay đổi thị trường và nhu cầu khách hàng thông qua các quy trình kinh doanh linh hoạt và có thể điều chỉnh"
+            },
+            data: {
+              title: "Ra quyết định Dựa trên Dữ liệu",
+              description: "Tiếp cận thông tin chi tiết về hiệu suất quy trình theo thời gian thực để đưa ra quyết định kinh doanh sáng suốt hơn"
+            }
+          }
+        },
+        caseStudies: {
+          title: "Chúng tôi đã Giúp Doanh nghiệp Việt Nam Thành công",
+          readMore: "Xem thêm",
+          case1: {
+            title: "Doanh nghiệp Sản xuất Tối ưu hóa Chuỗi Cung ứng",
+            description: "Chúng tôi đã giúp một doanh nghiệp sản xuất hàng đầu tại Việt Nam tự động hóa và tối ưu hóa quy trình chuỗi cung ứng của họ, giúp cắt giảm 30% chi phí vận hành và giảm 45% thời gian chu kỳ đơn hàng."
+          },
+          case2: {
+            title: "Doanh nghiệp Dịch vụ Tài chính Chuyển đổi Quy trình",
+            description: "Một ngân hàng thương mại tại Việt Nam đã đạt được mức tăng 40% về hiệu quả xử lý và cải thiện 60% về trải nghiệm khách hàng nhờ vào việc chuyển đổi số quy trình phê duyệt khoản vay của họ."
+          }
+        },
+        contact: {
+          title: "Sẵn sàng Tối ưu hóa Quy trình Kinh doanh của Bạn?",
+          description: "Liên hệ với chúng tôi để thảo luận về cách chúng tôi có thể giúp doanh nghiệp của bạn nâng cao hiệu quả thông qua tối ưu hóa quy trình số.",
+          button: "Liên hệ Ngay"
+        },
+        footer: {
+          description: "Giải pháp tối ưu hóa quy trình số hàng đầu cho doanh nghiệp Việt Nam. Trao quyền cho doanh nghiệp với công nghệ hiện đại và đổi mới tiên tiến.",
+          quickLinks: "Liên kết Nhanh", 
+          contact: "Liên hệ",
+          location: "TP. Hồ Chí Minh, Việt Nam",
+          copyright: "© 2025 DigitizedBrains. Đã đăng ký bản quyền."
+        }
+      },
+      de: {
+        meta: {
+          title: "Optimierung Digitaler Prozesse - DigitizedBrains",
+          description: "Umfassende Lösungen zur Optimierung digitaler Prozesse für vietnamesische Unternehmen"
+        },
+        nav: {
+          home: "Startseite",
+          about: "Über uns",
+          digitalTransformation: "Digitale Transformation",
+          digitalInfrastructure: "Digitale Infrastruktur",
+          digitalProcess: "Digitale Prozesse",
+          aiAgent: "KI-Agent",
+          blog: "Blog",
+          resources: "Ressourcen",
+          contact: "Kontakt"
+        },
+        language: {
+          current: "Sprache:"
+        },
+        hero: {
+          title: "Optimierung Digitaler Prozesse",
+          description: "Steigern Sie die Betriebseffizienz vietnamesischer Unternehmen durch Optimierung digitaler Prozesse. Wir helfen Unternehmen, Geschäftsprozesse zu automatisieren, zu integrieren und zu verbessern, um im digitalen Zeitalter eine höhere Leistung zu erzielen.",
+          cta: "Prozessoptimierungslösungen erkunden"
+        },
+        features: {
+          automation: {
+            title: "Prozessautomatisierung",
+            description: "Automatisieren Sie repetitive Geschäftsprozesse, um wertvolle Ressourcen freizusetzen und menschliche Fehler zu minimieren, sodass sich Unternehmen auf Aktivitäten mit höherem Wert konzentrieren können."
+          },
+          integration: {
+            title: "Prozessintegration",
+            description: "Verbinden Sie nahtlos unterschiedliche Geschäftsprozesse und Systeme, um Informationssilos zu beseitigen und einen einheitlichen Datenfluss im gesamten Unternehmen zu schaffen."
+          },
+          analytics: {
+            title: "Prozessanalyse",
+            description: "Nutzen Sie fortschrittliche Datenanalysetechnologien, um Geschäftsprozesse zu überwachen, zu messen und kontinuierlich zu optimieren und so eine kontinuierliche Verbesserung zu gewährleisten."
+          }
+        },
+        solutions: {
+          title: "Unsere Lösungen zur Prozessoptimierung",
+          mapping: {
+            title: "Mapping von Geschäftsprozessen",
+            description: "Analysieren und kartieren Sie Ihre bestehenden Geschäftsprozesse im Detail, um Ineffizienzen und Verbesserungsmöglichkeiten zu identifizieren:",
+            feature1: "Umfassende Analyse aktueller Geschäftsprozesse",
+            feature2: "Identifikation von Engpässen und Verschwendung in Prozessen",
+            feature3: "Prozessredesign zur Maximierung von Effizienz und Wert",
+            feature4: "Entwicklung einer auf Ihr Unternehmen zugeschnittenen Prozess-Transformations-Roadmap"
+          },
+          workflow: {
+            title: "Implementierung Digitaler Workflows",
+            description: "Transformieren Sie manuelle Prozesse in automatisierte und intelligente digitale Workflows:",
+            feature1: "Entwicklung flexibler und anpassbarer digitaler Workflows",
+            feature2: "Automatisierung repetitiver Aufgaben und Genehmigungsprozesse",
+            feature3: "Integration mit bestehenden Content- und Datenmanagementsystemen",
+            feature4: "Implementierung von Echtzeit-Prozessverfolgung und Managementlösungen"
+          },
+          improvement: {
+            title: "Kontinuierliche Prozessverbesserung",
+            description: "Etablieren Sie Systeme zur kontinuierlichen Überwachung, Bewertung und Verbesserung von Geschäftsprozessen:",
+            feature1: "Prozessdatenanalyse basierend auf definierten KPIs",
+            feature2: "Anwendung kontinuierlicher Verbesserungsmethoden wie Kaizen oder Six Sigma",
+            feature3: "Frühzeitige Erkennung und Lösung von Geschäftsprozess-Problemen",
+            feature4: "Förderung einer Kultur der kontinuierlichen Verbesserung im gesamten Unternehmen"
+          }
+        },
+        content: {
+          benefits: {
+            title: "Vorteile der Optimierung Digitaler Prozesse",
+            efficiency: {
+              title: "Gesteigerte Betriebseffizienz",
+              description: "Optimieren Sie Geschäftsprozesse und reduzieren Sie Betriebskosten durch intelligente Automatisierung und optimale Ressourcenzuteilung"
+            },
+            quality: {
+              title: "Verbesserte Qualität",
+              description: "Verbessern Sie Konsistenz und Qualität von Produkten und Dienstleistungen durch standardisierte und automatisierte Prozesse"
+            },
+            agility: {
+              title: "Erhöhte Agilität",
+              description: "Reagieren Sie schneller auf Marktveränderungen und Kundenanforderungen durch flexible und anpassungsfähige Geschäftsprozesse"
+            },
+            data: {
+              title: "Datenbasierte Entscheidungsfindung",
+              description: "Erhalten Sie Echtzeit-Einblicke in die Prozessleistung, um fundiertere Geschäftsentscheidungen zu treffen"
+            }
+          }
+        },
+        caseStudies: {
+          title: "Wir haben vietnamesischen Unternehmen zum Erfolg verholfen",
+          readMore: "Mehr lesen",
+          case1: {
+            title: "Produktionsunternehmen optimiert Lieferkette",
+            description: "Wir haben einem führenden vietnamesischen Produktionsunternehmen geholfen, seine Lieferkettenprozesse zu automatisieren und zu optimieren, was zu einer Reduzierung der Betriebskosten um 30% und einer Verkürzung der Bestellzykluszeit um 45% führte."
+          },
+          case2: {
+            title: "Finanzdienstleistungsunternehmen transformiert Prozesse",
+            description: "Eine Geschäftsbank in Vietnam erzielte eine Steigerung der Verarbeitungseffizienz um 40% und eine Verbesserung der Kundenerfahrung um 60% durch die digitale Transformation ihres Kreditgenehmigungsprozesses."
+          }
+        },
+        contact: {
+          title: "Bereit, Ihre Geschäftsprozesse zu optimieren?",
+          description: "Kontaktieren Sie uns, um zu besprechen, wie wir Ihrem Unternehmen helfen können, die Effizienz durch die Optimierung digitaler Prozesse zu verbessern.",
+          button: "Kontakt aufnehmen"
+        },
+        footer: {
+          description: "Führende Lösungen zur Optimierung digitaler Prozesse für vietnamesische Unternehmen. Wir stärken Unternehmen mit moderner Technologie und innovativen Lösungen.",
+          quickLinks: "Schnellzugriff",
+          contact: "Kontakt", 
+          location: "Ho-Chi-Minh-Stadt, Vietnam",
+          copyright: "© 2025 DigitizedBrains. Alle Rechte vorbehalten."
+        }
+      }
+    };
+
+      // Initialize multilingual with page-specific translations
+      if (typeof initializeMultilingual === 'function') {
+        initializeMultilingual(pageTranslations);
+      }
+      
+      // Scroll reveal animation
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.scroll-reveal').forEach(el => {
+        observer.observe(el);
+      });
+    });
+  </script>
+
+  <!-- Include JavaScript files -->
+  <script src="../../js/multilang.js"></script>
+  <script src="../../js/chatbot.js"></script>
+
+</body>
+</html>

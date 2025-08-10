@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="vi" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="page-title">Chuyển đổi số thông minh bằng AI - DigitizedBrains</title>
+  <meta name="description" content="Tương lai của doanh nghiệp Việt Nam: Chuyển đổi số thông minh bằng AI - Hướng dẫn toàn diện về cách ứng dụng AI để thúc đẩy chuyển đổi số trong doanh nghiệp" id="page-description">
+  <link href="../../css/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    .font-nunito { 
+      font-family: 'Nunito', sans-serif; 
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Navigation styles */
+    .nav-link {
+      color: #374151;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .nav-link:hover { color: #ed7354; background-color: #fef2f2; }
+    .nav-link.active { color: #ed7354; font-weight: 600; }
+
+    /* Language Switcher Styles */
+    .language-switcher {
+      position: relative;
+    }
+    
+    .language-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      min-width: 160px;
+      display: none;
+      z-index: 1000;
+    }
+    
+    .language-menu.show {
+      display: block;
+    }
+    
+    .language-option {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+    
+    .language-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    /* Hero Section Styles */
+    .hero-section {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 120px 0;
+      color: white;
+    }
+
+
+    /* Logo with Orange to Pink Gradient */
+    .logo-gradient {
+      background: linear-gradient(135deg, #fb923c 0%, #ec4899 100%);
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Scroll Reveal Animation */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+    
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Feature Cards */
+    .feature-card {
+      transition: all 0.3s ease;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      border-color: #ed7354;
+    }
+
+    /* Button Styles */
+    .btn-primary {
+      background: linear-gradient(135deg, #ed7354, #dc2626);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+    }
+
+    /* Stats Section */
+    .stats-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    /* AI Agent Connection Section */
+    .ai-connection-section {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      border: 2px solid #ed7354;
+      border-radius: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ai-connection-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #fb923c, #ec4899);
+    }
+
+    /* Case Study Cards */
+    .case-study-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid #e5e7eb;
+    }
+
+    .case-study-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      border-color: #ed7354;
+    }
+
+    .case-study-icon {
+      width: 4rem;
+      height: 4rem;
+      background: linear-gradient(135deg, #ed7354 0%, #f97316 100%);
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Roadmap Steps */
+    .roadmap-step {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border-left: 4px solid #ed7354;
+      position: relative;
+    }
+
+    .roadmap-step::before {
+      content: '';
+      position: absolute;
+      left: -8px;
+      top: 2rem;
+      width: 16px;
+      height: 16px;
+      background: #ed7354;
+      border-radius: 50%;
+    }
+
+    .roadmap-step:hover {
+      transform: translateX(5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    /* Timeline connector */
+    .roadmap-connector {
+      width: 2px;
+      height: 3rem;
+      background: linear-gradient(to bottom, #ed7354, #f97316);
+      margin: 0 auto;
+    }
+
+    /* Benefits Icons */
+    .benefit-icon {
+      width: 3rem;
+      height: 3rem;
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+  <!-- Header -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo with Orange to Pink Gradient -->
+        <div class="flex items-center space-x-2">
+          <div class="logo-gradient">
+            <span class="text-white font-bold text-lg">DB</span>
+          </div>
+          <a href="../../index.html" class="text-2xl font-bold text-gray-800">Digitized Brains</a>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="hidden md:flex space-x-4">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="index.html" class="nav-link active" data-translate="nav.blog">Blog</a>
+          <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+        </nav>
+
+        <!-- Language Switcher -->
+        <div class="hidden md:block">
+          <div class="language-switcher">
+            <button id="language-btn" class="flex items-center space-x-1 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+              <img id="current-flag" src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+              <span id="current-lang">VI</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="language-menu" class="language-menu">
+              <a href="#" onclick="changeLanguage('en')" class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                English
+              </a>
+              <a href="#" onclick="changeLanguage('vi')" class="language-option" data-lang="vi">
+                <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                Tiếng Việt
+              </a>
+              <a href="#" onclick="changeLanguage('de')" class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                Deutsch
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <nav class="flex flex-col space-y-2">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="index.html" class="nav-link active" data-translate="nav.blog">Blog</a>
+          <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+        </nav>
+        
+        <!-- Mobile Language Switcher -->
+        <div class="pt-4 border-t border-gray-300 mt-4">
+          <div class="language-switcher">
+            <button id="mobile-language-btn" class="flex items-center justify-between w-full px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+              <span data-translate="language.current">Ngôn ngữ:</span>
+              <div class="flex items-center space-x-1">
+                <img id="mobile-current-flag" src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                <span id="mobile-current-lang">VI</span>
+              </div>
+            </button>
+            <div id="mobile-language-menu" class="language-menu mt-2">
+              <a href="#" onclick="changeLanguage('en')" class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                English
+              </a>
+              <a href="#" onclick="changeLanguage('vi')" class="language-option" data-lang="vi">
+                <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                Tiếng Việt
+              </a>
+              <a href="#" onclick="changeLanguage('de')" class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                Deutsch
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 scroll-reveal" data-translate="hero.title">Tương lai của Doanh nghiệp Việt Nam: Chuyển đổi số thông minh bằng AI</h1>
+        <p class="text-xl opacity-90 mb-8 scroll-reveal" data-translate="hero.subtitle">Khám phá cách AI đang thay đổi cách thức hoạt động của doanh nghiệp Việt Nam, từ tự động hóa quy trình đến ra quyết định thông minh và tương tác khách hàng cá nhân hóa</p>
+        <div class="flex flex-wrap justify-center gap-4 scroll-reveal">
+          <a href="#ai-transformation" class="btn-primary px-8 py-3 rounded-full font-semibold text-white" data-translate="hero.cta">Khám phá AI Transformation</a>
+          <a href="#case-studies" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-gray-800 transition-all" data-translate="hero.cases">Xem Case Studies</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section py-16 text-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4 scroll-reveal" data-translate="stats.title">AI-Driven Digital Transformation tại Việt Nam 2024-2025</h2>
+        <p class="text-xl opacity-90 scroll-reveal" data-translate="stats.subtitle">Doanh nghiệp Việt Nam đang bước vào kỷ nguyên mới với AI dẫn dắt quá trình chuyển đổi số toàn diện</p>
+      </div>
+      
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center scroll-reveal">
+          <div class="text-4xl font-bold mb-2" data-translate="stats.aiAdoption.number">74%</div>
+          <p class="opacity-90" data-translate="stats.aiAdoption.description">doanh nghiệp Việt Nam đã bắt đầu ứng dụng AI trong hoạt động</p>
+        </div>
+        <div class="text-center scroll-reveal">
+          <div class="text-4xl font-bold mb-2" data-translate="stats.productivity.number">45%</div>
+          <p class="opacity-90" data-translate="stats.productivity.description">gia tăng năng suất nhờ tự động hóa bằng AI</p>
+        </div>
+        <div class="text-center scroll-reveal">
+          <div class="text-4xl font-bold mb-2" data-translate="stats.cost.number">35%</div>
+          <p class="opacity-90" data-translate="stats.cost.description">giảm chi phí vận hành thông qua AI optimization</p>
+        </div>
+        <div class="text-center scroll-reveal">
+          <div class="text-4xl font-bold mb-2" data-translate="stats.satisfaction.number">89%</div>
+          <p class="opacity-90" data-translate="stats.satisfaction.description">cải thiện trải nghiệm khách hàng với AI</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Transformation Overview -->
+  <section id="ai-transformation" class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto mb-16 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal" data-translate="transformation.title">AI-Driven Digital Transformation là gì?</h2>
+        <p class="text-xl text-gray-600 scroll-reveal" data-translate="transformation.description">
+          AI-Driven Digital Transformation là quá trình ứng dụng trí tuệ nhân tạo để thay đổi căn bản cách thức hoạt động, ra quyết định và tương tác với khách hàng của doanh nghiệp. Đây không chỉ là việc số hóa quy trình mà còn là việc tạo ra những mô hình kinh doanh hoàn toàn mới.
+        </p>
+      </div>
+
+      <!-- AI in Business Processes -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <!-- Process Automation -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="processes.automation.title">Tự động hóa Quy trình Thông minh</h3>
+          <p class="text-gray-600" data-translate="processes.automation.description">AI không chỉ tự động hóa các tác vụ lặp lại mà còn học hỏi và tối ưu hóa quy trình liên tục, giảm sai số và tăng hiệu quả.</p>
+        </div>
+
+        <!-- Intelligent Decision Making -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="processes.decision.title">Ra quyết định Thông minh</h3>
+          <p class="text-gray-600" data-translate="processes.decision.description">Hệ thống AI phân tích dữ liệu phức tạp và đưa ra gợi ý quyết định dựa trên xu hướng, dự đoán và tối ưu hóa ROI.</p>
+        </div>
+
+        <!-- Customer Engagement -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="processes.engagement.title">Tương tác Khách hàng Cá nhân hóa</h3>
+          <p class="text-gray-600" data-translate="processes.engagement.description">AI phân tích hành vi khách hàng để tạo ra trải nghiệm cá nhân hóa, chatbot thông minh và gợi ý sản phẩm phù hợp.</p>
+        </div>
+
+        <!-- Predictive Analytics -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="processes.analytics.title">Phân tích Dự đoán</h3>
+          <p class="text-gray-600" data-translate="processes.analytics.description">Sử dụng machine learning để dự đoán xu hướng thị trường, nhu cầu khách hàng và rủi ro tiềm ẩn.</p>
+        </div>
+
+        <!-- Supply Chain Optimization -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="processes.supply.title">Tối ưu hóa Chuỗi cung ứng</h3>
+          <p class="text-gray-600" data-translate="processes.supply.description">AI giúp tối ưu hóa logistics, quản lý kho và dự đoán nhu cầu để giảm chi phí và tăng hiệu quả.</p>
+        </div>
+
+        <!-- Quality Control -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="processes.quality.title">Kiểm soát Chất lượng Tự động</h3>
+          <p class="text-gray-600" data-translate="processes.quality.description">Computer vision và AI giúp phát hiện lỗi sản phẩm, đảm bảo chất lượng và giảm thiểu sai sót.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies Section -->
+  <section id="case-studies" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-3xl font-bold mb-4" data-translate="cases.title">Case Studies: Doanh nghiệp Việt Nam Thành công với AI</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-translate="cases.subtitle">Những câu chuyện thành công thực tế về việc ứng dụng AI trong chuyển đổi số tại các doanh nghiệp Việt Nam</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Retail Success Story -->
+        <div class="case-study-card scroll-reveal">
+          <div class="case-study-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4" data-translate="cases.retail.title">Tập đoàn Bán lẻ hàng đầu</h3>
+          <p class="text-gray-600 mb-4" data-translate="cases.retail.description">Một tập đoàn bán lẻ lớn tại Việt Nam đã triển khai AI để tối ưu hóa hàng tồn kho và cá nhân hóa trải nghiệm mua sắm</p>
+          <div class="bg-gray-100 p-4 rounded-lg mb-4">
+            <h4 class="font-semibold mb-2" data-translate="cases.retail.results">Kết quả đạt được:</h4>
+            <ul class="space-y-2 text-sm">
+              <li class="flex items-center space-x-2">
+                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span data-translate="cases.retail.result1">Tăng 28% doanh thu từ gợi ý sản phẩm AI</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span data-translate="cases.retail.result2">Giảm 35% hàng tồn kho dư thừa</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span data-translate="cases.retail.result3">Nâng cao 42% độ hài lòng khách hàng</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Manufacturing Success Story -->
+        <div class="case-study-card scroll-reveal">
+          <div class="case-study-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4" data-translate="cases.manufacturing.title">Công ty Sản xuất Điện tử</h3>
+          <p class="text-gray-600 mb-4" data-translate="cases.manufacturing.description">Công ty sản xuất linh kiện điện tử ứng dụng AI trong kiểm soát chất lượng và bảo trì dự đoán</p>
+          <div class="bg-gray-100 p-4 rounded-lg mb-4">
+            <h4 class="font-semibold mb-2" data-translate="cases.manufacturing.results">Kết quả đạt được:</h4>
+            <ul class="space-y-2 text-sm">
+              <li class="flex items-center space-x-2">
+                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span data-translate="cases.manufacturing.result1">Giảm 60% lỗi sản phẩm nhờ AI vision</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span data-translate="cases.manufacturing.result2">Tăng 25% hiệu suất sản xuất</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span data-translate="cases.manufacturing.result3">Giảm 40% thời gian chết máy</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Banking Success Story -->
+        <div class="case-study-card scroll-reveal">
+          <div class="case-study-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4" data-translate="cases.banking.title">Ngân hàng Thương mại</h3>
+          <p class="text-gray-600 mb-4" data-translate="cases.banking.description">Ngân hàng triển khai AI để phát hiện gian lận, đánh giá tín dụng và cải thiện dịch vụ khách hàng</p>
+          <div class="bg-gray-100 p-4 rounded-lg mb-4">
+            <h4 class="font-semibold mb-2" data-translate="cases.banking.results">Kết quả đạt được:</h4>
+            <ul class="space-y-2 text-sm">
+              <li class="flex items-center space-x-2">
+                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span data-translate="cases.banking.result1">Phát hiện 95% giao dịch gian lận</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span data-translate="cases.banking.result2">Giảm 70% thời gian xử lý khoản vay</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span data-translate="cases.banking.result3">Nâng cao 55% trải nghiệm khách hàng</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Logistics Success Story -->
+        <div class="case-study-card scroll-reveal">
+          <div class="case-study-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4" data-translate="cases.logistics.title">Công ty Logistics</h3>
+          <p class="text-gray-600 mb-4" data-translate="cases.logistics.description">Ứng dụng AI để tối ưu hóa tuyến đường giao hàng và dự đoán nhu cầu vận chuyển</p>
+          <div class="bg-gray-100 p-4 rounded-lg mb-4">
+            <h4 class="font-semibold mb-2" data-translate="cases.logistics.results">Kết quả đạt được:</h4>
+            <ul class="space-y-2 text-sm">
+              <li class="flex items-center space-x-2">
+                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span data-translate="cases.logistics.result1">Giảm 30% chi phí vận chuyển</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span data-translate="cases.logistics.result2">Tăng 45% độ chính xác dự đoán</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span data-translate="cases.logistics.result3">Giảm 20% thời gian giao hàng</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto mb-16 text-center">
+        <h2 class="text-3xl font-bold mb-8 scroll-reveal" data-translate="benefits.title">Lợi ích của AI-Driven Digital Transformation</h2>
+        <p class="text-xl text-gray-600 scroll-reveal" data-translate="benefits.description">
+          Khám phá những lợi ích thiết thực mà AI mang lại cho quá trình chuyển đổi số của doanh nghiệp Việt Nam
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Efficiency -->
+        <div class="text-center scroll-reveal">
+          <div class="benefit-icon mx-auto">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="benefits.efficiency.title">Tăng Hiệu quả Vận hành</h3>
+          <p class="text-gray-600" data-translate="benefits.efficiency.description">AI tự động hóa các quy trình phức tạp, giảm thời gian xử lý và loại bỏ sai sót con người</p>
+        </div>
+
+        <!-- Cost Reduction -->
+        <div class="text-center scroll-reveal">
+          <div class="benefit-icon mx-auto">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="benefits.cost.title">Giảm Chi phí Vận hành</h3>
+          <p class="text-gray-600" data-translate="benefits.cost.description">Tối ưu hóa nguồn lực, giảm lãng phí và chi phí nhân sự thông qua tự động hóa thông minh</p>
+        </div>
+
+        <!-- Decision Making -->
+        <div class="text-center scroll-reveal">
+          <div class="benefit-icon mx-auto">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="benefits.decision.title">Ra quyết định Dựa trên Dữ liệu</h3>
+          <p class="text-gray-600" data-translate="benefits.decision.description">AI phân tích big data để cung cấp insights sâu sắc, hỗ trợ quyết định chiến lược chính xác</p>
+        </div>
+
+        <!-- Customer Experience -->
+        <div class="text-center scroll-reveal">
+          <div class="benefit-icon mx-auto">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="benefits.experience.title">Cải thiện Trải nghiệm Khách hàng</h3>
+          <p class="text-gray-600" data-translate="benefits.experience.description">Cá nhân hóa dịch vụ, chatbot thông minh và dự đoán nhu cầu khách hàng</p>
+        </div>
+
+        <!-- Innovation -->
+        <div class="text-center scroll-reveal">
+          <div class="benefit-icon mx-auto">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="benefits.innovation.title">Thúc đẩy Đổi mới Sáng tạo</h3>
+          <p class="text-gray-600" data-translate="benefits.innovation.description">Khám phá cơ hội kinh doanh mới, phát triển sản phẩm/dịch vụ sáng tạo nhờ AI</p>
+        </div>
+
+        <!-- Competitive Advantage -->
+        <div class="text-center scroll-reveal">
+          <div class="benefit-icon mx-auto">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="benefits.competitive.title">Lợi thế Cạnh tranh Bền vững</h3>
+          <p class="text-gray-600" data-translate="benefits.competitive.description">Vượt trội so với đối thủ nhờ khả năng thích ứng và tối ưu hóa liên tục bằng AI</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Implementation Roadmap -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto mb-16 text-center">
+        <h2 class="text-3xl font-bold mb-8 scroll-reveal" data-translate="roadmap.title">Lộ trình Triển khai AI Transformation</h2>
+        <p class="text-xl text-gray-600 scroll-reveal" data-translate="roadmap.description">
+          Hướng dẫn từng bước để doanh nghiệp Việt Nam triển khai thành công AI-Driven Digital Transformation
+        </p>
+      </div>
+      
+      <div class="max-w-3xl mx-auto">
+        <!-- Phase 1 -->
+        <div class="roadmap-step mb-8 scroll-reveal">
+          <div class="flex items-start space-x-4">
+            <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+              <span class="text-blue-600 font-bold text-lg">1</span>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-3" data-translate="roadmap.phase1.title">Giai đoạn 1: Đánh giá và Chuẩn bị (1-2 tháng)</h3>
+              <ul class="space-y-2 text-gray-600">
+                <li class="flex items-start space-x-2">
+                  <svg class="w-4 h-4 text-green-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="roadmap.phase1.step1">Đánh giá hiện trạng công nghệ và quy trình</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <svg class="w-4 h-4 text-green-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="roadmap.phase1.step2">Xác định mục tiêu và KPI cho AI transformation</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <svg class="w-4 h-4 text-green-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="roadmap.phase1.step3">Chuẩn bị hạ tầng dữ liệu và cloud</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <svg class="w-4 h-4 text-green-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="roadmap.phase1.step4">Đào tạo nhân sự về AI và data literacy</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="roadmap-connector scroll-reveal"></div>
+
+        <!-- Phase 2 -->
+        <div class="roadmap-step mb-8 scroll-reveal">
+          <div class="flex items-start space-x-4">
+            <div class="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+              <span class="text-green-600 font-bold text-lg">2</span>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-3" data-translate="roadmap.phase2.title">Giai đoạn 2: Pilot Project (2-3 tháng)</h3>
+              <ul class="space-y-2 text-gray-600">
+                <li class="flex items-start space-x-2">
+                  <svg class="w-4 h-4 text-green-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="roadmap.phase2.step1">Chọn use case đơn giản với ROI cao</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <svg class="w-4 h-4 text-green-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="roadmap.phase2.step2">Triển khai chatbot AI hoặc automation cơ bản</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <svg class="w-4 h-4 text-green-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="roadmap.phase2.step3">Thu thập feedback và đo lường hiệu quả</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <svg class="w-4 h-4 text-green-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="roadmap.phase2.step4">Điều chỉnh chiến lược và quy trình</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="roadmap-connector scroll-reveal"></div>
+
+        <!-- Phase 3 -->
+        <div class="roadmap-step mb-8 scroll-reveal">
+          <div class="flex items-start space-x-4">
+            <div class="flex-shrink-0 w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+              <span class="text-yellow-600 font-bold text-lg">3</span>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-3" data-translate="roadmap.phase3.title">Giai đoạn 3: Scale Up (3-6 tháng)</h3>
+              <ul class="space-y-2 text-gray-600">
+                <li class="flex items-start space-x-2">
+                  <svg class="w-4 h-4 text-green-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="roadmap.phase3.step1">Mở rộng AI sang nhiều phòng ban khác</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <svg class="w-4 h-4 text-green-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="roadmap.phase3.step2">Triển khai predictive analytics và BI</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <svg class="w-4 h-4 text-green-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="roadmap.phase3.step3">Tích hợp AI với hệ thống ERP/CRM</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <svg class="w-4 h-4 text-green-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="roadmap.phase3.step4">Xây dựng data pipeline và MLOps</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="roadmap-connector scroll-reveal"></div>
+
+        <!-- Phase 4 -->
+        <div class="roadmap-step scroll-reveal">
+          <div class="flex items-start space-x-4">
+            <div class="flex-shrink-0 w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+              <span class="text-purple-600 font-bold text-lg">4</span>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-3" data-translate="roadmap.phase4.title">Giai đoạn 4: Tối ưu hóa và Phát triển (6+ tháng)</h3>
+              <ul class="space-y-2 text-gray-600">
+                <li class="flex items-start space-x-2">
+                  <svg class="w-4 h-4 text-green-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="roadmap.phase4.step1">Phát triển AI models tùy chỉnh</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <svg class="w-4 h-4 text-green-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="roadmap.phase4.step2">Triển khai advanced analytics và AI</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <svg class="w-4 h-4 text-green-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="roadmap.phase4.step3">Xây dựng văn hóa data-driven</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <svg class="w-4 h-4 text-green-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="roadmap.phase4.step4">Đổi mới mô hình kinh doanh bằng AI</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Future Outlook -->
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-8 scroll-reveal" data-translate="future.title">Tương lai của AI-Driven Digital Transformation</h2>
+        <p class="text-xl text-gray-600 mb-8 scroll-reveal" data-translate="future.description">
+          Những xu hướng và công nghệ mới sẽ định hình tương lai của chuyển đổi số bằng AI tại Việt Nam
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-8 mb-12">
+          <!-- Edge AI -->
+          <div class="bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-3" data-translate="future.edge.title">Edge AI & IoT</h3>
+            <p class="text-gray-600 text-sm" data-translate="future.edge.description">AI xử lý ngay tại thiết bị, giảm độ trễ và tăng bảo mật dữ liệu</p>
+          </div>
+
+          <!-- Explainable AI -->
+          <div class="bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-3" data-translate="future.explainable.title">Explainable AI</h3>
+            <p class="text-gray-600 text-sm" data-translate="future.explainable.description">AI có thể giải thích được quyết định, tăng độ tin cậy và tuân thủ</p>
+          </div>
+
+          <!-- Quantum AI -->
+          <div class="bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
+              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-3" data-translate="future.quantum.title">Quantum Computing</h3>
+            <p class="text-gray-600 text-sm" data-translate="future.quantum.description">Tăng tốc độ xử lý AI exponentially cho các bài toán phức tạp</p>
+          </div>
+        </div>
+
+        <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-8 rounded-2xl scroll-reveal">
+          <h3 class="text-2xl font-bold mb-4" data-translate="future.vision.title">Tầm nhìn 2030: Vietnam AI Nation</h3>
+          <p class="text-lg mb-6" data-translate="future.vision.description">
+            Việt Nam sẽ trở thành một trong những quốc gia dẫn đầu về ứng dụng AI trong doanh nghiệp, với 95% doanh nghiệp vừa và lớn đã hoàn thành chuyển đổi số bằng AI
+          </p>
+          <div class="grid md:grid-cols-3 gap-4 text-center">
+            <div>
+              <div class="text-3xl font-bold mb-2">95%</div>
+              <p class="text-sm opacity-90" data-translate="future.vision.stat1">Doanh nghiệp sử dụng AI</p>
+            </div>
+            <div>
+              <div class="text-3xl font-bold mb-2">50%</div>
+              <p class="text-sm opacity-90" data-translate="future.vision.stat2">Tăng năng suất quốc gia</p>
+            </div>
+            <div>
+              <div class="text-3xl font-bold mb-2">Top 3</div>
+              <p class="text-sm opacity-90" data-translate="future.vision.stat3">ASEAN về AI Innovation</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Agent Connection Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="ai-connection-section p-8 max-w-4xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold mb-4 scroll-reveal" data-translate="connection.title">Sẵn sàng Bắt đầu AI Transformation?</h2>
+          <p class="text-xl text-gray-600 scroll-reveal" data-translate="connection.description">Khám phá các giải pháp AI Agent của DigitizedBrains để bắt đầu hành trình chuyển đổi số thông minh</p>
+        </div>
+        
+        <div class="bg-white rounded-lg p-6 shadow-lg scroll-reveal">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+              <div class="logo-gradient w-12 h-12">
+                <span class="text-white font-bold text-xl">DB</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold" data-translate="connection.service.title">AI Agent Solutions</h3>
+                <p class="text-gray-600" data-translate="connection.service.description">Giải pháp AI Agent toàn diện cho doanh nghiệp Việt Nam</p>
+              </div>
+            </div>
+            <a href="../ai-agents/index.html" class="btn-primary px-6 py-3 rounded-lg font-semibold text-white" data-translate="connection.cta">Khám phá AI Agent</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-gray-900 text-white py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal" data-translate="cta.title">Bắt đầu Hành trình AI Transformation ngay hôm nay</h2>
+        <p class="text-xl opacity-90 mb-8 scroll-reveal" data-translate="cta.description">Liên hệ với chúng tôi để được tư vấn miễn phí về lộ trình chuyển đổi số bằng AI phù hợp với doanh nghiệp của bạn</p>
+        <div class="flex flex-wrap justify-center gap-4 scroll-reveal">
+          <a href="index.html" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-gray-800 transition-all" data-translate="cta.backToBlog">Quay lại Blog</a>
+          <a href="../contact/index.html" class="btn-primary px-8 py-3 rounded-full font-semibold text-white" data-translate="cta.button">Tư vấn miễn phí</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="logo-gradient">
+              <span class="text-white font-bold text-lg">DB</span>
+            </div>
+            <span class="text-2xl font-bold">Digitized Brains</span>
+          </div>
+          <p class="text-gray-400" data-translate="footer.description">Dẫn dắt doanh nghiệp Việt Nam vào kỷ nguyên AI-Driven Digital Transformation với những giải pháp tiên tiến và phù hợp</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.quickLinks">Liên kết nhanh</h4>
+          <div class="grid grid-cols-2 gap-4">
+            <ul class="space-y-2">
+              <li><a href="../../index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.home">Trang chủ</a></li>
+              <li><a href="../about/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.about">Giới thiệu</a></li>
+              <li><a href="../digital-transformation/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.digitalTransformation">Chuyển đổi số</a></li>
+              <li><a href="../ai-agents/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.aiAgent">AI Agent</a></li>
+            </ul>
+            <ul class="space-y-2">
+              <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.blog">Blog</a></li>
+              <li><a href="../resources/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.resources">Tài nguyên</a></li>
+              <li><a href="../contact/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.contact">Liên hệ</a></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.contact">Liên hệ</h4>
+          <ul class="space-y-2">
+            <li class="text-gray-400">contact@digitizedbrains.com</li>
+            <li class="text-gray-400" data-translate="footer.location">Thành phố Hồ Chí Minh, Việt Nam</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-gray-400" data-translate="footer.copyright">© 2025 DigitizedBrains. Bản quyền thuộc về DigitizedBrains.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Language Switcher Script -->
+  <script src="../../js/multilang.js"></script>
+
+  <!-- Chatbot Integration -->
+  <script src="../../js/chatbot.js"></script>
+
+  <script>
+    const pageTranslations = {
+      en: {
+        meta: { 
+          title: "AI-Driven Digital Transformation for Vietnamese Businesses - DigitizedBrains", 
+          description: "The future of Vietnamese businesses: Smart AI-driven digital transformation - Complete guide on applying AI to drive digital transformation in enterprises" 
+        },
+        nav: { 
+          home: "Home", 
+          about: "About", 
+          digitalTransformation: "Digital Transformation", 
+          aiAgent: "AI Agent", 
+          blog: "Blog", 
+          resources: "Resources", 
+          contact: "Contact" 
+        },
+        language: { current: "Language:" },
+        blog: { backToBlog: "Back to Blog" },
+        hero: { 
+          title: "The Future of Vietnamese Businesses: Smart AI-Driven Digital Transformation", 
+          subtitle: "Discover how AI is changing the way Vietnamese businesses operate, from process automation to intelligent decision-making and personalized customer interactions", 
+          cta: "Explore AI Transformation", 
+          cases: "View Case Studies" 
+        },
+        stats: {
+          title: "AI-Driven Digital Transformation in Vietnam 2024-2025",
+          subtitle: "Vietnamese businesses are entering a new era with AI leading comprehensive digital transformation",
+          aiAdoption: {
+            number: "74%",
+            description: "of Vietnamese businesses have started applying AI in operations"
+          },
+          productivity: {
+            number: "45%",
+            description: "increase in productivity through AI automation"
+          },
+          cost: {
+            number: "35%",
+            description: "reduction in operating costs through AI optimization"
+          },
+          satisfaction: {
+            number: "89%",
+            description: "improvement in customer experience with AI"
+          }
+        },
+        transformation: {
+          title: "What is AI-Driven Digital Transformation?",
+          description: "AI-Driven Digital Transformation is the process of applying artificial intelligence to fundamentally change how businesses operate, make decisions, and interact with customers. This is not just digitizing processes but creating entirely new business models."
+        },
+        processes: {
+          automation: {
+            title: "Intelligent Process Automation",
+            description: "AI not only automates repetitive tasks but also learns and continuously optimizes processes, reducing errors and increasing efficiency."
+          },
+          decision: {
+            title: "Intelligent Decision Making",
+            description: "AI systems analyze complex data and provide decision recommendations based on trends, predictions, and ROI optimization."
+          },
+          engagement: {
+            title: "Personalized Customer Engagement",
+            description: "AI analyzes customer behavior to create personalized experiences, intelligent chatbots, and suitable product recommendations."
+          },
+          analytics: {
+            title: "Predictive Analytics",
+            description: "Using machine learning to predict market trends, customer needs, and potential risks."
+          },
+          supply: {
+            title: "Supply Chain Optimization",
+            description: "AI helps optimize logistics, inventory management, and demand forecasting to reduce costs and increase efficiency."
+          },
+          quality: {
+            title: "Automated Quality Control",
+            description: "Computer vision and AI help detect product defects, ensure quality, and minimize errors."
+          }
+        },
+        cases: {
+          title: "Case Studies: Vietnamese Businesses Successful with AI",
+          subtitle: "Real success stories of Vietnamese businesses applying AI in digital transformation",
+          retail: {
+            title: "Leading Retail Group",
+            description: "A major retail group in Vietnam deployed AI to optimize inventory and personalize shopping experiences",
+            results: "Results achieved:",
+            result1: "28% increase in revenue from AI product recommendations",
+            result2: "35% reduction in excess inventory",
+            result3: "42% improvement in customer satisfaction"
+          },
+          manufacturing: {
+            title: "Electronics Manufacturing Company",
+            description: "Electronics component manufacturing company applies AI in quality control and predictive maintenance",
+            results: "Results achieved:",
+            result1: "60% reduction in product defects through AI vision",
+            result2: "25% increase in production efficiency",
+            result3: "40% reduction in machine downtime"
+          },
+          banking: {
+            title: "Commercial Bank",
+            description: "Bank deploys AI for fraud detection, credit assessment, and customer service improvement",
+            results: "Results achieved:",
+            result1: "95% detection of fraudulent transactions",
+            result2: "70% reduction in loan processing time",
+            result3: "55% improvement in customer experience"
+          },
+          logistics: {
+            title: "Logistics Company",
+            description: "Apply AI to optimize delivery routes and predict transportation demand",
+            results: "Results achieved:",
+            result1: "30% reduction in transportation costs",
+            result2: "45% increase in forecast accuracy",
+            result3: "20% reduction in delivery time"
+          }
+        },
+        benefits: {
+          title: "Benefits of AI-Driven Digital Transformation",
+          description: "Discover the practical benefits that AI brings to the digital transformation process of Vietnamese businesses",
+          efficiency: {
+            title: "Increase Operational Efficiency",
+            description: "AI automates complex processes, reduces processing time and eliminates human errors"
+          },
+          cost: {
+            title: "Reduce Operating Costs",
+            description: "Optimize resources, reduce waste and personnel costs through intelligent automation"
+          },
+          decision: {
+            title: "Data-Based Decision Making",
+            description: "AI analyzes big data to provide deep insights, supporting accurate strategic decisions"
+          },
+          experience: {
+            title: "Improve Customer Experience",
+            description: "Service personalization, intelligent chatbots, and customer needs prediction"
+          },
+          innovation: {
+            title: "Drive Innovation",
+            description: "Discover new business opportunities, develop innovative products/services through AI"
+          },
+          competitive: {
+            title: "Sustainable Competitive Advantage",
+            description: "Excel over competitors through AI's ability to continuously adapt and optimize"
+          }
+        },
+        roadmap: {
+          title: "AI Transformation Implementation Roadmap",
+          description: "Step-by-step guide for Vietnamese businesses to successfully implement AI-Driven Digital Transformation",
+          phase1: {
+            title: "Phase 1: Assessment and Preparation (1-2 months)",
+            step1: "Assess current technology and processes",
+            step2: "Define goals and KPIs for AI transformation",
+            step3: "Prepare data infrastructure and cloud",
+            step4: "Train personnel on AI and data literacy"
+          },
+          phase2: {
+            title: "Phase 2: Pilot Project (2-3 months)",
+            step1: "Choose simple use case with high ROI",
+            step2: "Deploy AI chatbot or basic automation",
+            step3: "Collect feedback and measure effectiveness",
+            step4: "Adjust strategy and processes"
+          },
+          phase3: {
+            title: "Phase 3: Scale Up (3-6 months)",
+            step1: "Expand AI to other departments",
+            step2: "Deploy predictive analytics and BI",
+            step3: "Integrate AI with ERP/CRM systems",
+            step4: "Build data pipeline and MLOps"
+          },
+          phase4: {
+            title: "Phase 4: Optimization and Development (6+ months)",
+            step1: "Develop custom AI models",
+            step2: "Deploy advanced analytics and AI",
+            step3: "Build data-driven culture",
+            step4: "Innovate business models with AI"
+          }
+        },
+        future: {
+          title: "The Future of AI-Driven Digital Transformation",
+          description: "New trends and technologies that will shape the future of AI-driven digital transformation in Vietnam",
+          edge: {
+            title: "Edge AI & IoT",
+            description: "AI processing right at the device, reducing latency and increasing data security"
+          },
+          explainable: {
+            title: "Explainable AI",
+            description: "AI that can explain decisions, increasing trust and compliance"
+          },
+          quantum: {
+            title: "Quantum Computing",
+            description: "Exponentially accelerate AI processing for complex problems"
+          },
+          vision: {
+            title: "Vision 2030: Vietnam AI Nation",
+            description: "Vietnam will become one of the leading countries in business AI application, with 95% of medium and large enterprises completing AI-driven digital transformation",
+            stat1: "Enterprises using AI",
+            stat2: "National productivity increase",
+            stat3: "ASEAN AI Innovation"
+          }
+        },
+        connection: {
+          title: "Ready to Start AI Transformation?",
+          description: "Discover DigitizedBrains' AI Agent solutions to begin your intelligent digital transformation journey",
+          service: {
+            title: "AI Agent Solutions",
+            description: "Comprehensive AI Agent solutions for Vietnamese businesses"
+          },
+          cta: "Explore AI Agent"
+        },
+        cta: {
+          title: "Start Your AI Transformation Journey Today",
+          description: "Contact us for free consultation on AI-driven digital transformation roadmap suitable for your business",
+          backToBlog: "Back to Blog",
+          button: "Free Consultation",
+          solutions: "View AI Solutions"
+        },
+        footer: {
+          description: "Leading Vietnamese businesses into the AI-Driven Digital Transformation era with advanced and suitable solutions",
+          quickLinks: "Quick Links",
+          contact: "Contact",
+          location: "Ho Chi Minh City, Vietnam",
+          copyright: "© 2025 DigitizedBrains. All rights reserved."
+        }
+      },
+      vi: {
+        meta: { 
+          title: "Chuyển đổi số thông minh bằng AI - DigitizedBrains", 
+          description: "Tương lai của doanh nghiệp Việt Nam: Chuyển đổi số thông minh bằng AI - Hướng dẫn toàn diện về cách ứng dụng AI để thúc đẩy chuyển đổi số trong doanh nghiệp" 
+        },
+        nav: { 
+          home: "Trang chủ", 
+          about: "Giới thiệu", 
+          digitalTransformation: "Chuyển đổi số", 
+          aiAgent: "AI Agent", 
+          blog: "Blog", 
+          resources: "Tài nguyên", 
+          contact: "Liên hệ" 
+        },
+        language: { current: "Ngôn ngữ:" },
+        blog: { backToBlog: "Quay lại Blog" },
+        hero: { 
+          title: "Tương lai của Doanh nghiệp Việt Nam: Chuyển đổi số thông minh bằng AI", 
+          subtitle: "Khám phá cách AI đang thay đổi cách thức hoạt động của doanh nghiệp Việt Nam, từ tự động hóa quy trình đến ra quyết định thông minh và tương tác khách hàng cá nhân hóa", 
+          cta: "Khám phá AI Transformation", 
+          cases: "Xem Case Studies" 
+        },
+        stats: {
+          title: "AI-Driven Digital Transformation tại Việt Nam 2024-2025",
+          subtitle: "Doanh nghiệp Việt Nam đang bước vào kỷ nguyên mới với AI dẫn dắt quá trình chuyển đổi số toàn diện",
+          aiAdoption: {
+            number: "74%",
+            description: "doanh nghiệp Việt Nam đã bắt đầu ứng dụng AI trong hoạt động"
+          },
+          productivity: {
+            number: "45%",
+            description: "gia tăng năng suất nhờ tự động hóa bằng AI"
+          },
+          cost: {
+            number: "35%",
+            description: "giảm chi phí vận hành thông qua AI optimization"
+          },
+          satisfaction: {
+            number: "89%",
+            description: "cải thiện trải nghiệm khách hàng với AI"
+          }
+        },
+        transformation: {
+          title: "AI-Driven Digital Transformation là gì?",
+          description: "AI-Driven Digital Transformation là quá trình ứng dụng trí tuệ nhân tạo để thay đổi căn bản cách thức hoạt động, ra quyết định và tương tác với khách hàng của doanh nghiệp. Đây không chỉ là việc số hóa quy trình mà còn là việc tạo ra những mô hình kinh doanh hoàn toàn mới."
+        },
+        processes: {
+          automation: {
+            title: "Tự động hóa Quy trình Thông minh",
+            description: "AI không chỉ tự động hóa các tác vụ lặp lại mà còn học hỏi và tối ưu hóa quy trình liên tục, giảm sai số và tăng hiệu quả."
+          },
+          decision: {
+            title: "Ra quyết định Thông minh",
+            description: "Hệ thống AI phân tích dữ liệu phức tạp và đưa ra gợi ý quyết định dựa trên xu hướng, dự đoán và tối ưu hóa ROI."
+          },
+          engagement: {
+            title: "Tương tác Khách hàng Cá nhân hóa",
+            description: "AI phân tích hành vi khách hàng để tạo ra trải nghiệm cá nhân hóa, chatbot thông minh và gợi ý sản phẩm phù hợp."
+          },
+          analytics: {
+            title: "Phân tích Dự đoán",
+            description: "Sử dụng machine learning để dự đoán xu hướng thị trường, nhu cầu khách hàng và rủi ro tiềm ẩn."
+          },
+          supply: {
+            title: "Tối ưu hóa Chuỗi cung ứng",
+            description: "AI giúp tối ưu hóa logistics, quản lý kho và dự đoán nhu cầu để giảm chi phí và tăng hiệu quả."
+          },
+          quality: {
+            title: "Kiểm soát Chất lượng Tự động",
+            description: "Computer vision và AI giúp phát hiện lỗi sản phẩm, đảm bảo chất lượng và giảm thiểu sai sót."
+          }
+        },
+        cases: {
+          title: "Case Studies: Doanh nghiệp Việt Nam Thành công với AI",
+          subtitle: "Những câu chuyện thành công thực tế về việc ứng dụng AI trong chuyển đổi số tại các doanh nghiệp Việt Nam",
+          retail: {
+            title: "Tập đoàn Bán lẻ hàng đầu",
+            description: "Một tập đoàn bán lẻ lớn tại Việt Nam đã triển khai AI để tối ưu hóa hàng tồn kho và cá nhân hóa trải nghiệm mua sắm",
+            results: "Kết quả đạt được:",
+            result1: "Tăng 28% doanh thu từ gợi ý sản phẩm AI",
+            result2: "Giảm 35% hàng tồn kho dư thừa",
+            result3: "Nâng cao 42% độ hài lòng khách hàng"
+          },
+          manufacturing: {
+            title: "Công ty Sản xuất Điện tử",
+            description: "Công ty sản xuất linh kiện điện tử ứng dụng AI trong kiểm soát chất lượng và bảo trì dự đoán",
+            results: "Kết quả đạt được:",
+            result1: "Giảm 60% lỗi sản phẩm nhờ AI vision",
+            result2: "Tăng 25% hiệu suất sản xuất",
+            result3: "Giảm 40% thời gian chết máy"
+          },
+          banking: {
+            title: "Ngân hàng Thương mại",
+            description: "Ngân hàng triển khai AI để phát hiện gian lận, đánh giá tín dụng và cải thiện dịch vụ khách hàng",
+            results: "Kết quả đạt được:",
+            result1: "Phát hiện 95% giao dịch gian lận",
+            result2: "Giảm 70% thời gian xử lý khoản vay",
+            result3: "Nâng cao 55% trải nghiệm khách hàng"
+          },
+          logistics: {
+            title: "Công ty Logistics",
+            description: "Ứng dụng AI để tối ưu hóa tuyến đường giao hàng và dự đoán nhu cầu vận chuyển",
+            results: "Kết quả đạt được:",
+            result1: "Giảm 30% chi phí vận chuyển",
+            result2: "Tăng 45% độ chính xác dự đoán",
+            result3: "Giảm 20% thời gian giao hàng"
+          }
+        },
+        benefits: {
+          title: "Lợi ích của AI-Driven Digital Transformation",
+          description: "Khám phá những lợi ích thiết thực mà AI mang lại cho quá trình chuyển đổi số của doanh nghiệp Việt Nam",
+          efficiency: {
+            title: "Tăng Hiệu quả Vận hành",
+            description: "AI tự động hóa các quy trình phức tạp, giảm thời gian xử lý và loại bỏ sai sót con người"
+          },
+          cost: {
+            title: "Giảm Chi phí Vận hành",
+            description: "Tối ưu hóa nguồn lực, giảm lãng phí và chi phí nhân sự thông qua tự động hóa thông minh"
+          },
+          decision: {
+            title: "Ra quyết định Dựa trên Dữ liệu",
+            description: "AI phân tích big data để cung cấp insights sâu sắc, hỗ trợ quyết định chiến lược chính xác"
+          },
+          experience: {
+            title: "Cải thiện Trải nghiệm Khách hàng",
+            description: "Cá nhân hóa dịch vụ, chatbot thông minh và dự đoán nhu cầu khách hàng"
+          },
+          innovation: {
+            title: "Thúc đẩy Đổi mới Sáng tạo",
+            description: "Khám phá cơ hội kinh doanh mới, phát triển sản phẩm/dịch vụ sáng tạo nhờ AI"
+          },
+          competitive: {
+            title: "Lợi thế Cạnh tranh Bền vững",
+            description: "Vượt trội so với đối thủ nhờ khả năng thích ứng và tối ưu hóa liên tục bằng AI"
+          }
+        },
+        roadmap: {
+          title: "Lộ trình Triển khai AI Transformation",
+          description: "Hướng dẫn từng bước để doanh nghiệp Việt Nam triển khai thành công AI-Driven Digital Transformation",
+          phase1: {
+            title: "Giai đoạn 1: Đánh giá và Chuẩn bị (1-2 tháng)",
+            step1: "Đánh giá hiện trạng công nghệ và quy trình",
+            step2: "Xác định mục tiêu và KPI cho AI transformation",
+            step3: "Chuẩn bị hạ tầng dữ liệu và cloud",
+            step4: "Đào tạo nhân sự về AI và data literacy"
+          },
+          phase2: {
+            title: "Giai đoạn 2: Pilot Project (2-3 tháng)",
+            step1: "Chọn use case đơn giản với ROI cao",
+            step2: "Triển khai chatbot AI hoặc automation cơ bản",
+            step3: "Thu thập feedback và đo lường hiệu quả",
+            step4: "Điều chỉnh chiến lược và quy trình"
+          },
+          phase3: {
+            title: "Giai đoạn 3: Scale Up (3-6 tháng)",
+            step1: "Mở rộng AI sang nhiều phòng ban khác",
+            step2: "Triển khai predictive analytics và BI",
+            step3: "Tích hợp AI với hệ thống ERP/CRM",
+            step4: "Xây dựng data pipeline và MLOps"
+          },
+          phase4: {
+            title: "Giai đoạn 4: Tối ưu hóa và Phát triển (6+ tháng)",
+            step1: "Phát triển AI models tùy chỉnh",
+            step2: "Triển khai advanced analytics và AI",
+            step3: "Xây dựng văn hóa data-driven",
+            step4: "Đổi mới mô hình kinh doanh bằng AI"
+          }
+        },
+        future: {
+          title: "Tương lai của AI-Driven Digital Transformation",
+          description: "Những xu hướng và công nghệ mới sẽ định hình tương lai của chuyển đổi số bằng AI tại Việt Nam",
+          edge: {
+            title: "Edge AI & IoT",
+            description: "AI xử lý ngay tại thiết bị, giảm độ trễ và tăng bảo mật dữ liệu"
+          },
+          explainable: {
+            title: "Explainable AI",
+            description: "AI có thể giải thích được quyết định, tăng độ tin cậy và tuân thủ"
+          },
+          quantum: {
+            title: "Quantum Computing",
+            description: "Tăng tốc độ xử lý AI exponentially cho các bài toán phức tạp"
+          },
+          vision: {
+            title: "Tầm nhìn 2030: Vietnam AI Nation",
+            description: "Việt Nam sẽ trở thành một trong những quốc gia dẫn đầu về ứng dụng AI trong doanh nghiệp, với 95% doanh nghiệp vừa và lớn đã hoàn thành chuyển đổi số bằng AI",
+            stat1: "Doanh nghiệp sử dụng AI",
+            stat2: "Tăng năng suất quốc gia",
+            stat3: "ASEAN về AI Innovation"
+          }
+        },
+        connection: {
+          title: "Sẵn sàng Bắt đầu AI Transformation?",
+          description: "Khám phá các giải pháp AI Agent của DigitizedBrains để bắt đầu hành trình chuyển đổi số thông minh",
+          service: {
+            title: "AI Agent Solutions",
+            description: "Giải pháp AI Agent toàn diện cho doanh nghiệp Việt Nam"
+          },
+          cta: "Khám phá AI Agent"
+        },
+        cta: {
+          title: "Bắt đầu Hành trình AI Transformation ngay hôm nay",
+          description: "Liên hệ với chúng tôi để được tư vấn miễn phí về lộ trình chuyển đổi số bằng AI phù hợp với doanh nghiệp của bạn",
+          backToBlog: "Quay lại Blog",
+          button: "Tư vấn miễn phí",
+          solutions: "Xem AI Solutions"
+        },
+        footer: {
+          description: "Dẫn dắt doanh nghiệp Việt Nam vào kỷ nguyên AI-Driven Digital Transformation với những giải pháp tiên tiến và phù hợp",
+          quickLinks: "Liên kết nhanh",
+          contact: "Liên hệ",
+          location: "Thành phố Hồ Chí Minh, Việt Nam",
+          copyright: "© 2025 DigitizedBrains. Bản quyền thuộc về DigitizedBrains."
+        }
+      },
+      de: {
+        meta: { 
+          title: "KI-gesteuerte digitale Transformation für vietnamesische Unternehmen - DigitizedBrains", 
+          description: "Die Zukunft vietnamesischer Unternehmen: Intelligente KI-gesteuerte digitale Transformation - Umfassender Leitfaden zur Anwendung von KI für digitale Transformation in Unternehmen" 
+        },
+        nav: { 
+          home: "Startseite", 
+          about: "Über uns", 
+          digitalTransformation: "Digitale Transformation", 
+          aiAgent: "KI-Agent", 
+          blog: "Blog", 
+          resources: "Ressourcen", 
+          contact: "Kontakt" 
+        },
+        language: { current: "Sprache:" },
+        blog: { backToBlog: "Zurück zum Blog" },
+        hero: { 
+          title: "Die Zukunft vietnamesischer Unternehmen: Intelligente KI-gesteuerte digitale Transformation", 
+          subtitle: "Entdecken Sie, wie KI die Arbeitsweise vietnamesischer Unternehmen verändert - von Prozessautomatisierung bis hin zu intelligenter Entscheidungsfindung und personalisierten Kundeninteraktionen", 
+          cta: "KI-Transformation erkunden", 
+          cases: "Fallstudien ansehen" 
+        },
+        stats: {
+          title: "KI-gesteuerte digitale Transformation in Vietnam 2024-2025",
+          subtitle: "Vietnamesische Unternehmen treten in eine neue Ära ein, in der KI eine umfassende digitale Transformation anführt",
+          aiAdoption: {
+            number: "74%",
+            description: "der vietnamesischen Unternehmen haben begonnen, KI in ihren Betrieben einzusetzen"
+          },
+          productivity: {
+            number: "45%",
+            description: "Produktivitätssteigerung durch KI-Automatisierung"
+          },
+          cost: {
+            number: "35%",
+            description: "Reduzierung der Betriebskosten durch KI-Optimierung"
+          },
+          satisfaction: {
+            number: "89%",
+            description: "Verbesserung der Kundenerfahrung mit KI"
+          }
+        },
+        transformation: {
+          title: "Was ist KI-gesteuerte digitale Transformation?",
+          description: "KI-gesteuerte digitale Transformation ist der Prozess der Anwendung künstlicher Intelligenz, um die Art und Weise, wie Unternehmen arbeiten, Entscheidungen treffen und mit Kunden interagieren, grundlegend zu verändern. Dies ist nicht nur die Digitalisierung von Prozessen, sondern die Schaffung völlig neuer Geschäftsmodelle."
+        },
+        processes: {
+          automation: {
+            title: "Intelligente Prozessautomatisierung",
+            description: "KI automatisiert nicht nur wiederkehrende Aufgaben, sondern lernt auch und optimiert kontinuierlich Prozesse, reduziert Fehler und steigert die Effizienz."
+          },
+          decision: {
+            title: "Intelligente Entscheidungsfindung",
+            description: "KI-Systeme analysieren komplexe Daten und geben Entscheidungsempfehlungen basierend auf Trends, Vorhersagen und ROI-Optimierung."
+          },
+          engagement: {
+            title: "Personalisierte Kundeninteraktion",
+            description: "KI analysiert Kundenverhalten, um personalisierte Erfahrungen, intelligente Chatbots und geeignete Produktempfehlungen zu schaffen."
+          },
+          analytics: {
+            title: "Predictive Analytics",
+            description: "Verwendung von maschinellem Lernen zur Vorhersage von Markttrends, Kundenbedürfnissen und potenziellen Risiken."
+          },
+          supply: {
+            title: "Lieferkettenoptimierung",
+            description: "KI hilft bei der Optimierung von Logistik, Lagerverwaltung und Bedarfsprognose zur Kostenreduzierung und Effizienzsteigerung."
+          },
+          quality: {
+            title: "Automatisierte Qualitätskontrolle",
+            description: "Computer Vision und KI helfen bei der Erkennung von Produktfehlern, gewährleisten Qualität und minimieren Fehler."
+          }
+        },
+        cases: {
+          title: "Fallstudien: Vietnamesische Unternehmen erfolgreich mit KI",
+          subtitle: "Echte Erfolgsgeschichten vietnamesischer Unternehmen bei der Anwendung von KI in der digitalen Transformation",
+          retail: {
+            title: "Führende Einzelhandelsgruppe",
+            description: "Eine große Einzelhandelsgruppe in Vietnam setzte KI ein, um Inventar zu optimieren und Einkaufserlebnisse zu personalisieren",
+            results: "Erzielte Ergebnisse:",
+            result1: "28% Umsatzsteigerung durch KI-Produktempfehlungen",
+            result2: "35% Reduzierung von Überbeständen",
+            result3: "42% Verbesserung der Kundenzufriedenheit"
+          },
+          manufacturing: {
+            title: "Elektronikfertigungsunternehmen",
+            description: "Elektronikkomponentenhersteller wendet KI in Qualitätskontrolle und vorausschauender Wartung an",
+            results: "Erzielte Ergebnisse:",
+            result1: "60% Reduzierung von Produktfehlern durch KI-Vision",
+            result2: "25% Steigerung der Produktionseffizienz",
+            result3: "40% Reduzierung der Maschinenstillstandszeit"
+          },
+          banking: {
+            title: "Geschäftsbank",
+            description: "Bank setzt KI für Betrugserkennung, Kreditbewertung und Verbesserung des Kundenservice ein",
+            results: "Erzielte Ergebnisse:",
+            result1: "95% Erkennung betrügerischer Transaktionen",
+            result2: "70% Reduzierung der Kreditbearbeitungszeit",
+            result3: "55% Verbesserung der Kundenerfahrung"
+          },
+          logistics: {
+            title: "Logistikunternehmen",
+            description: "Anwendung von KI zur Optimierung von Lieferrouten und Vorhersage des Transportbedarfs",
+            results: "Erzielte Ergebnisse:",
+            result1: "30% Reduzierung der Transportkosten",
+            result2: "45% Steigerung der Prognosegenauigkeit",
+            result3: "20% Reduzierung der Lieferzeit"
+          }
+        },
+        benefits: {
+          title: "Vorteile der KI-gesteuerten digitalen Transformation",
+          description: "Entdecken Sie die praktischen Vorteile, die KI für den digitalen Transformationsprozess vietnamesischer Unternehmen bringt",
+          efficiency: {
+            title: "Steigerung der Betriebseffizienz",
+            description: "KI automatisiert komplexe Prozesse, reduziert Bearbeitungszeit und eliminiert menschliche Fehler"
+          },
+          cost: {
+            title: "Reduzierung der Betriebskosten",
+            description: "Optimierung von Ressourcen, Reduzierung von Verschwendung und Personalkosten durch intelligente Automatisierung"
+          },
+          decision: {
+            title: "Datenbasierte Entscheidungsfindung",
+            description: "KI analysiert Big Data, um tiefe Einblicke zu liefern und präzise strategische Entscheidungen zu unterstützen"
+          },
+          experience: {
+            title: "Verbesserung der Kundenerfahrung",
+            description: "Service-Personalisierung, intelligente Chatbots und Vorhersage von Kundenbedürfnissen"
+          },
+          innovation: {
+            title: "Förderung von Innovation",
+            description: "Entdeckung neuer Geschäftsmöglichkeiten, Entwicklung innovativer Produkte/Dienstleistungen durch KI"
+          },
+          competitive: {
+            title: "Nachhaltiger Wettbewerbsvorteil",
+            description: "Überlegenheit gegenüber Konkurrenten durch KIs Fähigkeit zur kontinuierlichen Anpassung und Optimierung"
+          }
+        },
+        roadmap: {
+          title: "KI-Transformations-Implementierungs-Roadmap",
+          description: "Schritt-für-Schritt-Anleitung für vietnamesische Unternehmen zur erfolgreichen Implementierung der KI-gesteuerten digitalen Transformation",
+          phase1: {
+            title: "Phase 1: Bewertung und Vorbereitung (1-2 Monate)",
+            step1: "Bewertung der aktuellen Technologie und Prozesse",
+            step2: "Definition von Zielen und KPIs für KI-Transformation",
+            step3: "Vorbereitung der Dateninfrastruktur und Cloud",
+            step4: "Schulung des Personals in KI und Data Literacy"
+          },
+          phase2: {
+            title: "Phase 2: Pilotprojekt (2-3 Monate)",
+            step1: "Auswahl einfacher Use Cases mit hohem ROI",
+            step2: "Implementierung von KI-Chatbot oder grundlegender Automatisierung",
+            step3: "Sammlung von Feedback und Messung der Effektivität",
+            step4: "Anpassung von Strategie und Prozessen"
+          },
+          phase3: {
+            title: "Phase 3: Skalierung (3-6 Monate)",
+            step1: "Erweiterung von KI auf andere Abteilungen",
+            step2: "Implementierung von Predictive Analytics und BI",
+            step3: "Integration von KI mit ERP/CRM-Systemen",
+            step4: "Aufbau von Data Pipeline und MLOps"
+          },
+          phase4: {
+            title: "Phase 4: Optimierung und Entwicklung (6+ Monate)",
+            step1: "Entwicklung maßgeschneiderter KI-Modelle",
+            step2: "Implementierung fortgeschrittener Analytics und KI",
+            step3: "Aufbau einer datengetriebenen Kultur",
+            step4: "Innovation von Geschäftsmodellen mit KI"
+          }
+        },
+        future: {
+          title: "Die Zukunft der KI-gesteuerten digitalen Transformation",
+          description: "Neue Trends und Technologien, die die Zukunft der KI-gesteuerten digitalen Transformation in Vietnam prägen werden",
+          edge: {
+            title: "Edge AI & IoT",
+            description: "KI-Verarbeitung direkt am Gerät, Reduzierung der Latenz und Erhöhung der Datensicherheit"
+          },
+          explainable: {
+            title: "Erklärbare KI",
+            description: "KI, die Entscheidungen erklären kann, erhöht Vertrauen und Compliance"
+          },
+          quantum: {
+            title: "Quantum Computing",
+            description: "Exponenzielle Beschleunigung der KI-Verarbeitung für komplexe Probleme"
+          },
+          vision: {
+            title: "Vision 2030: Vietnam KI-Nation",
+            description: "Vietnam wird eines der führenden Länder in der Anwendung von KI in Unternehmen werden, mit 95% der mittleren und großen Unternehmen, die die KI-gesteuerte digitale Transformation abgeschlossen haben",
+            stat1: "Unternehmen mit KI",
+            stat2: "Nationale Produktivitätssteigerung",
+            stat3: "ASEAN KI-Innovation"
+          }
+        },
+        connection: {
+          title: "Bereit für den KI-Transformationsstart?",
+          description: "Entdecken Sie DigitizedBrains' KI-Agent-Lösungen, um Ihre intelligente digitale Transformationsreise zu beginnen",
+          service: {
+            title: "KI-Agent-Lösungen",
+            description: "Umfassende KI-Agent-Lösungen für vietnamesische Unternehmen"
+          },
+          cta: "KI-Agent erkunden"
+        },
+        cta: {
+          title: "Starten Sie Ihre KI-Transformation heute",
+          description: "Kontaktieren Sie uns für eine kostenlose Beratung über eine KI-gesteuerte digitale Transformations-Roadmap, die für Ihr Unternehmen geeignet ist",
+          backToBlog: "Zurück zum Blog",
+          button: "Kostenlose Beratung",
+          solutions: "KI-Lösungen ansehen"
+        },
+        footer: {
+          description: "Führung vietnamesischer Unternehmen in die Ära der KI-gesteuerten digitalen Transformation mit fortgeschrittenen und geeigneten Lösungen",
+          quickLinks: "Schnelllinks",
+          contact: "Kontakt",
+          location: "Ho-Chi-Minh-Stadt, Vietnam",
+          copyright: "© 2025 DigitizedBrains. Alle Rechte vorbehalten."
+        }
+      }
+    };
+
+    // Initialize multilingual system
+    initializeMultilingual(pageTranslations);
+
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // Scroll reveal animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all scroll-reveal elements
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>

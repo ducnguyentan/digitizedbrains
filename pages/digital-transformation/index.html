@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="vi" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="page-title">Digital Transformation - DigitizedBrains</title>
+  <meta name="description" content="Comprehensive digital transformation solutions for Vietnamese enterprises" id="page-description">
+  <link href="../../css/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+    body { font-family: 'Poppins', sans-serif; }
+    .font-nunito { font-family: 'Nunito', sans-serif; }
+    .nav-link { 
+      color: #374151; 
+      padding: 0.5rem 1rem; 
+      transition: all 0.3s ease; 
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .nav-link:hover { color: #ed7354; background-color: #fef2f2; }
+    .nav-link.active { color: #ed7354; font-weight: 600; }
+    .btn-primary { 
+      background: linear-gradient(135deg, #ed7354 0%, #f97316 100%); 
+      transition: all 0.3s ease; 
+      box-shadow: 0 4px 15px rgba(237, 115, 84, 0.3);
+    }
+    .logo-gradient {
+      background: linear-gradient(135deg, #fb923c 0%, #ec4899 100%);
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(237, 115, 84, 0.4); }
+    .hero-bg { 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .service-card { 
+      transition: all 0.3s ease; 
+      border: 1px solid #e5e7eb;
+    }
+    .service-card:hover { 
+      transform: translateY(-8px); 
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+      border-color: #ed7354;
+    }
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Language Switcher Styles */
+    .language-switcher {
+      position: relative;
+    }
+    
+    .language-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      min-width: 160px;
+      display: none;
+      z-index: 1000;
+    }
+    
+    .language-menu.show {
+      display: block;
+    }
+    
+    .language-option {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+    
+    .language-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    /* Mobile Language Switcher */
+    .language-switcher-mobile {
+      position: relative;
+    }
+    
+    .language-menu-mobile {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      display: none;
+      z-index: 1000;
+      margin-top: 4px;
+    }
+    
+    .language-menu-mobile.show {
+      display: block;
+    }
+    
+    .language-option-mobile {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option-mobile:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option-mobile.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+    
+    
+
+    /* Language transition effects */
+    .lang-transition {
+      transition: opacity 0.3s ease-in-out;
+    }
+    
+    .lang-transition.changing {
+      opacity: 0.7;
+    }
+
+    .process-step {
+      transition: all 0.3s ease;
+    }
+    
+    .process-step:hover {
+      transform: scale(1.05);
+    }
+
+    /* Scroll reveal animations */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
+    }
+
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Service cards and feature cards hover effects */
+    .service-card, .feature-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card:hover, .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    /* Fallback styles for service card icons */
+    .service-icon {
+      width: 64px !important;
+      height: 64px !important;
+      border-radius: 16px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      margin-bottom: 24px !important;
+    }
+
+    .service-icon svg {
+      width: 32px !important;
+      height: 32px !important;
+      color: white !important;
+      fill: none !important;
+      stroke: currentColor !important;
+      stroke-width: 2 !important;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <div class="logo-gradient w-10 h-10 bg-gradient-to-r from-orange-400 to-pink-500 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-lg">DB</span>
+          </div>
+          <a href="../../index.html" class="text-2xl font-bold text-gray-800">DigitizedBrains</a>
+        </div>
+        
+        <!-- Navigation and Language Switcher -->
+        <div class="hidden md:flex items-center space-x-4">
+          <nav class="flex space-x-2">
+            <a href="../../index.html" class="nav-link" data-translate="nav.home">Home</a>
+            <a href="../about/index.html" class="nav-link" data-translate="nav.about">About</a>
+            <a href="index.html" class="nav-link active" data-translate="nav.digitalTransformation">Digital Transformation</a>
+            <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+            <a href="../blog/index.html" class="nav-link" data-translate="nav.blog">Blog</a>
+            <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Resources</a>
+            <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Contact</a>
+          </nav>
+          
+          <!-- Language Switcher -->
+          <div class="language-switcher">
+            <button id="language-btn" class="flex items-center space-x-1 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+              <img id="current-flag" src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+              <span id="current-lang">VI</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="language-menu" class="language-menu">
+              <a href="#" onclick="changeLanguage('en')" class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                English
+              </a>
+              <a href="#" onclick="changeLanguage('vi')" class="language-option active" data-lang="vi">
+                <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                Tiếng Việt
+              </a>
+              <a href="#" onclick="changeLanguage('de')" class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                Deutsch
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <div class="flex flex-col space-y-2">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Home</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">About</a>
+          <a href="index.html" class="nav-link active" data-translate="nav.digitalTransformation">Digital Transformation</a>
+          <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="../blog/index.html" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Resources</a>
+          <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Contact</a>
+          
+          <!-- Mobile Language Switcher -->
+          <div class="pt-2 border-t border-gray-200">
+            <div class="language-switcher-mobile">
+              <button id="mobile-language-btn" class="flex items-center justify-between w-full px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                <span data-translate="language.current">Language:</span>
+                <div class="flex items-center space-x-1">
+                  <img id="mobile-current-flag" src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                  <span id="mobile-current-lang">VI</span>
+                </div>
+              </button>
+              <div id="mobile-language-menu" class="language-menu-mobile">
+                <a href="#" onclick="changeLanguage('en')" class="language-option-mobile" data-lang="en">
+                  <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                  English
+                </a>
+                <a href="#" onclick="changeLanguage('vi')" class="language-option-mobile active" data-lang="vi">
+                  <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                  Tiếng Việt
+                </a>
+                <a href="#" onclick="changeLanguage('de')" class="language-option-mobile" data-lang="de">
+                  <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                  Deutsch
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-bg py-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+    <div class="relative z-10 container mx-auto px-4 text-center">
+      <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 scroll-reveal" data-translate="digitalTransformation.hero.title">
+        Digital Transformation Solutions
+      </h1>
+      <p class="text-xl md:text-2xl text-white font-light max-w-3xl mx-auto scroll-reveal" data-translate="digitalTransformation.hero.subtitle">
+        Comprehensive digital transformation strategies tailored for Vietnamese enterprises and business environment.
+      </p>
+    </div>
+  </section>
+
+  <!-- Services Overview Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4" data-translate="digitalTransformation.services.title">Our Digital Transformation Services</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-translate="digitalTransformation.services.subtitle">
+          End-to-end solutions designed to modernize your business operations
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="service-card bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
+          <div style="width: 64px; height: 64px; background: linear-gradient(to right, #3b82f6, #8b5cf6); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+            <svg style="width: 32px; height: 32px; color: white; fill: none; stroke: currentColor; stroke-width: 2;" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="digitalTransformation.services.infrastructure.title">Infrastructure Modernization</h3>
+          <p class="text-gray-600" data-translate="digitalTransformation.services.infrastructure.description">Complete overhaul of legacy systems with cloud-native solutions, ensuring scalability and reliability for modern business operations.</p>
+          <div class="mt-4">
+            <a href="digital-infrastructure-modernization.html" class="text-orange-600 hover:text-orange-800 font-medium flex items-center">
+              <span data-translate="digitalTransformation.services.infrastructure.learnMore">Tìm hiểu thêm</span>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="service-card bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
+          <div style="width: 64px; height: 64px; background: linear-gradient(to right, #f97316, #ec4899); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+            <svg style="width: 32px; height: 32px; color: white; fill: none; stroke: currentColor; stroke-width: 2;" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="digitalTransformation.services.workflow.title">Tự động hóa Quy trình</h3>
+          <p class="text-gray-600" data-translate="digitalTransformation.services.workflow.description">Streamline business processes and operations with intelligent automation and AI-powered tools to increase productivity and efficiency.</p>
+          <div class="mt-4">
+            <a href="../digital-transformation-solution/digital-process-optimization.html" class="text-orange-600 hover:text-orange-800 font-medium flex items-center">
+              <span data-translate="digitalTransformation.services.workflow.learnMore">Tìm hiểu thêm</span>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="service-card bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
+          <div style="width: 64px; height: 64px; background: linear-gradient(to right, #f97316, #dc2626); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+            <span style="color: white; font-size: 32px; font-weight: bold;">&#128200;</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="digitalTransformation.services.analytics.title">Data Analytics & Insights</h3>
+          <p class="text-gray-600" data-translate="digitalTransformation.services.analytics.description">Advanced analytics platforms to understand customer behavior, business performance, and market trends for informed strategic decision-making.</p>
+          <div class="mt-4">
+            <a href="../digital-transformation-solution/ai-business-solutions.html" class="text-orange-600 hover:text-orange-800 font-medium flex items-center">
+              <span data-translate="digitalTransformation.services.analytics.learnMore">Tìm hiểu thêm</span>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="service-card bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
+          <div style="width: 64px; height: 64px; background: linear-gradient(to right, #8b5cf6, #ec4899); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+            <svg style="width: 32px; height: 32px; color: white; fill: none; stroke: currentColor; stroke-width: 2;" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="digitalTransformation.services.security.title">Cybersecurity & Compliance</h3>
+          <p class="text-gray-600" data-translate="digitalTransformation.services.security.description">Comprehensive security frameworks ensuring data protection and regulatory compliance for Vietnamese businesses across all industries.</p>
+          <div class="mt-4">
+            <a href="../cybersecurity/index.html" class="text-orange-600 hover:text-orange-800 font-medium flex items-center">
+              <span data-translate="digitalTransformation.services.security.learnMore">Tìm hiểu thêm</span>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="service-card bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
+          <div style="width: 64px; height: 64px; background: linear-gradient(to right, #6366f1, #3b82f6); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+            <svg style="width: 32px; height: 32px; color: white; fill: none; stroke: currentColor; stroke-width: 2;" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="digitalTransformation.services.training.title"></h3>
+          <p class="text-gray-600" data-translate="digitalTransformation.services.training.description">Comprehensive training programs to upskill your team on new technologies and digital transformation best practices across various business functions.</p>
+          <div class="mt-4">
+            <a href="../staff-training/index.html" class="text-orange-600 hover:text-orange-800 font-medium flex items-center">
+              <span data-translate="digitalTransformation.services.training.learnMore">Tìm hiểu thêm</span>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="service-card bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
+          <div style="width: 64px; height: 64px; background: linear-gradient(to right, #06b6d4, #3b82f6); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+            <svg style="width: 32px; height: 32px; color: white; fill: none; stroke: currentColor; stroke-width: 2;" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="digitalTransformation.services.integration.title">Tích hợp Công nghệ Thông minh</h3>
+          <p class="text-gray-600" data-translate="digitalTransformation.services.integration.description">Kết nối liền mạch các hệ thống, ứng dụng và thiết bị thông minh để tạo ra hệ sinh thái số thống nhất và hiệu quả cho doanh nghiệp.</p>
+          <div class="mt-4">
+            <a href="../digital-transformation-solution/smart-technology-integration.html" class="text-orange-600 hover:text-orange-800 font-medium flex items-center">
+              <span data-translate="digitalTransformation.services.integration.learnMore">Tìm hiểu thêm</span>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="service-card bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
+          <div style="width: 64px; height: 64px; background: linear-gradient(to right, #eab308, #f97316); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+            <svg style="width: 32px; height: 32px; color: white; fill: none; stroke: currentColor; stroke-width: 2;" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m0 0V1a1 1 0 011-1h2a1 1 0 011 1v3M7 4H5a1 1 0 00-1 1v16a1 1 0 001 1h14a1 1 0 001-1V5a1 1 0 00-1-1h-2M7 4h10M9 9h6m-6 4h6m-6 4h4"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="digitalTransformation.services.strategy.title">Digital Strategy Consulting</h3>
+          <p class="text-gray-600" data-translate="digitalTransformation.services.strategy.description">Strategic planning and roadmap development for sustainable digital transformation aligned with business objectives.</p>
+          <div class="mt-4">
+            <a href="../digital-transformation-solution/digital-strategy.html" class="text-orange-600 hover:text-orange-800 font-medium flex items-center">
+              <span data-translate="digitalTransformation.services.strategy.learnMore">Tìm hiểu thêm</span>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4" data-translate="digitalTransformation.process.title">Our Transformation Process</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-translate="digitalTransformation.process.subtitle">
+          A proven methodology for successful digital transformation
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="process-step text-center scroll-reveal">
+          <div style="width: 80px; height: 80px; background: linear-gradient(to right, #3b82f6, #8b5cf6); border-radius: 50%; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center;">
+            <span style="color: white; font-size: 36px; font-weight: bold;">&#128269;</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="digitalTransformation.process.step1.title">Assessment</h3>
+          <p class="text-gray-600" data-translate="digitalTransformation.process.step1.description">
+            Comprehensive evaluation of current systems, processes, and digital maturity level.
+          </p>
+        </div>
+        
+        <div class="process-step text-center scroll-reveal">
+          <div style="width: 80px; height: 80px; background: linear-gradient(to right, #10b981, #14b8a6); border-radius: 50%; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center;">
+            <span style="color: white; font-size: 36px; font-weight: bold;">&#128681;</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="digitalTransformation.process.step2.title">Strategy</h3>
+          <p class="text-gray-600" data-translate="digitalTransformation.process.step2.description">
+            Development of customized digital transformation roadmap and implementation plan.
+          </p>
+        </div>
+        
+        <div class="process-step text-center scroll-reveal">
+          <div style="width: 80px; height: 80px; background: linear-gradient(to right, #f97316, #dc2626); border-radius: 50%; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center;">
+            <span style="color: white; font-size: 36px; font-weight: bold;">&#9881;</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="digitalTransformation.process.step3.title">Implementation</h3>
+          <p class="text-gray-600" data-translate="digitalTransformation.process.step3.description">
+            Phased rollout of new technologies and processes with minimal business disruption.
+          </p>
+        </div>
+        
+        <div class="process-step text-center scroll-reveal">
+          <div style="width: 80px; height: 80px; background: linear-gradient(to right, #8b5cf6, #ec4899); border-radius: 50%; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center;">
+            <span style="color: white; font-size: 36px; font-weight: bold;">&#128640;</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="digitalTransformation.process.step4.title">Optimization</h3>
+          <p class="text-gray-600" data-translate="digitalTransformation.process.step4.description">
+            Continuous monitoring, optimization, and support for sustained digital excellence.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4" data-translate="digitalTransformation.benefits.title">Why Choose Digital Transformation?</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-translate="digitalTransformation.benefits.subtitle">
+          Transform your business and unlock new opportunities in the digital era
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="scroll-reveal">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Digital Transformation Benefits" class="rounded-2xl shadow-2xl">
+        </div>
+        
+        <div class="scroll-reveal">
+          <div class="space-y-6">
+            <div class="flex items-start space-x-4">
+              <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2" data-translate="digitalTransformation.benefits.benefit1.title">Increased Efficiency</h3>
+                <p class="text-gray-600" data-translate="digitalTransformation.benefits.benefit1.description">Automate routine tasks and streamline workflows to reduce operational costs by up to 40%.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2" data-translate="digitalTransformation.benefits.benefit2.title">Enhanced Customer Engagement</h3>
+                <p class="text-gray-600" data-translate="digitalTransformation.benefits.benefit2.description">Leverage data analytics and AI to deliver personalized customer experiences that drive loyalty and growth.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2" data-translate="digitalTransformation.benefits.benefit3.title">Scalable Infrastructure</h3>
+                <p class="text-gray-600" data-translate="digitalTransformation.benefits.benefit3.description">Build flexible, cloud-native systems that can adapt and scale with your growing business needs.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2" data-translate="digitalTransformation.benefits.benefit4.title">Competitive Advantage</h3>
+                <p class="text-gray-600" data-translate="digitalTransformation.benefits.benefit4.description">Stay ahead of the competition with innovative technologies and data-driven decision making.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5-Layer Framework Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4" data-translate="digitalTransformation.framework.title">5-Layer Digital Transformation Framework</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-translate="digitalTransformation.framework.subtitle">
+          Our proven methodology addresses every aspect of digital transformation, ensuring comprehensive and sustainable change across your organization
+        </p>
+      </div>
+      
+      <div class="grid lg:grid-cols-5 md:grid-cols-3 gap-8">
+        <!-- Strategy Layer -->
+        <div class="feature-card bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 text-center scroll-reveal">
+          <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-white font-bold text-xl">1</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3" data-translate="digitalTransformation.framework.layer1.title">Strategy</h3>
+          <p class="text-gray-600 text-sm" data-translate="digitalTransformation.framework.layer1.description">Digital vision alignment with business objectives and market positioning</p>
+        </div>
+        
+        <!-- Process Layer -->
+        <div class="feature-card bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-6 text-center scroll-reveal">
+          <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-white font-bold text-xl">2</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3" data-translate="digitalTransformation.framework.layer2.title">Process</h3>
+          <p class="text-gray-600 text-sm" data-translate="digitalTransformation.framework.layer2.description">Workflow optimization and operational efficiency improvements</p>
+        </div>
+        
+        <!-- Technology Layer -->
+        <div class="feature-card bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-6 text-center scroll-reveal">
+          <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-white font-bold text-xl">3</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3" data-translate="digitalTransformation.framework.layer3.title">Technology</h3>
+          <p class="text-gray-600 text-sm" data-translate="digitalTransformation.framework.layer3.description">Infrastructure modernization and platform integration</p>
+        </div>
+        
+        <!-- Data Layer -->
+        <div class="feature-card bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-6 text-center scroll-reveal" style="background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);">
+          <div style="width: 64px; height: 64px; background-color: #f97316; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; position: relative; z-index: 10;">
+            <span style="color: white; font-weight: bold; font-size: 24px; line-height: 1;">4</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3" data-translate="digitalTransformation.framework.layer4.title">Data</h3>
+          <p class="text-gray-600 text-sm" data-translate="digitalTransformation.framework.layer4.description">Analytics, insights, and data-driven decision making</p>
+        </div>
+        
+        <!-- Culture Layer -->
+        <div class="feature-card bg-gradient-to-br from-pink-50 to-pink-100 rounded-2xl p-6 text-center scroll-reveal">
+          <div class="w-16 h-16 bg-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-white font-bold text-xl">5</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3" data-translate="digitalTransformation.framework.layer5.title">Culture</h3>
+          <p class="text-gray-600 text-sm" data-translate="digitalTransformation.framework.layer5.description">Change management and organizational transformation</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4" data-translate="digitalTransformation.caseStudy.title">Vietnamese Enterprise Digital Transformation Model</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-translate="digitalTransformation.caseStudy.subtitle">
+          A comprehensive approach to digital transformation for Vietnamese businesses across all industries.
+        </p>
+      </div>
+      
+      <!-- Unified Case Study Block -->
+      <div class="max-w-5xl mx-auto bg-white p-8 sm:p-12 rounded-2xl shadow-xl scroll-reveal">
+        
+        <!-- Header: Image and Description -->
+        <div class="flex flex-col md:flex-row items-center mb-10">
+          <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&w=600&q=80" alt="My Changsha App" class="w-full md:w-2/5 rounded-lg shadow-md mb-6 md:mb-0 md:mr-8">
+          <div class="flex-1">
+            <h3 class="text-3xl font-bold text-gray-800" data-translate="digitalTransformation.caseStudy.hunanModel.title">Vietnamese Enterprise: Comprehensive Digital Transformation Model</h3>
+            <p class="text-sm text-gray-500 mt-1">Vietnamese Business Digital Transformation Framework</p>
+            <p class="text-lg text-gray-600 mt-4 leading-relaxed" data-translate="digitalTransformation.caseStudy.hunanModel.description">
+              Vietnamese enterprises are leading the digital transformation wave in Southeast Asia. By implementing comprehensive digital strategies, modern businesses are building integrated digital ecosystems that connect customers, operations, and smart services across multiple industries and sectors.
+            </p>
+          </div>
+        </div>
+
+        <!-- Features -->
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+          <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+            <h4 class="text-xl font-semibold text-gray-800 mb-3" data-translate="digitalTransformation.caseStudy.infrastructure.title">Digital Ecosystem Innovation</h4>
+            <ul class="space-y-2 text-gray-600 list-disc list-inside">
+              <li data-translate="digitalTransformation.caseStudy.infrastructure.feature1">Comprehensive ecosystem transformation on 5G and cloud computing platforms</li>
+              <li data-translate="digitalTransformation.caseStudy.infrastructure.feature2">Multi-platform integration with smart business services</li>
+              <li data-translate="digitalTransformation.caseStudy.infrastructure.feature3">Diverse content development (operations, online services, applications, e-commerce)</li>
+              <li data-translate="digitalTransformation.caseStudy.infrastructure.feature4">AI and data analytics applications in production and service distribution</li>
+            </ul>
+          </div>
+          <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+            <h4 class="text-xl font-semibold text-gray-800 mb-3" data-translate="digitalTransformation.caseStudy.operations.title">Smart Enterprise Solutions</h4>
+            <ul class="space-y-2 text-gray-600 list-disc list-inside">
+              <li data-translate="digitalTransformation.caseStudy.operations.feature1">Super app integrating over 5000 smart business services</li>
+              <li data-translate="digitalTransformation.caseStudy.operations.feature2">Strong connection between management and stakeholders</li>
+              <li data-translate="digitalTransformation.caseStudy.operations.feature3">Successful model for local business digital transformation</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Testimonial -->
+        <blockquote class="text-gray-700 italic text-center border-t pt-8" data-translate="digitalTransformation.caseStudy.testimonial">
+          "Vietnamese enterprises are successfully implementing comprehensive digital transformation models. From cloud platforms to integrated business applications, they are not only digitalizing their operations but also building robust digital ecosystems that connect closely with customers and stakeholders."
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <!-- Company Info -->
+        <div>
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="logo-gradient w-8 h-8 bg-gradient-to-r from-orange-400 to-pink-500 rounded-lg flex items-center justify-center">
+              <span class="text-white font-bold">DB</span>
+            </div>
+            <span class="text-xl font-bold">DigitizedBrains</span>
+          </div>
+          <p class="text-gray-300 mb-4" data-translate="footer.description">
+            Transforming Vietnamese enterprises through innovative digital solutions and AI-powered technologies.
+          </p>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4" data-translate="footer.quickLinks">Quick Links</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <ul class="space-y-2">
+              <li><a href="../../index.html" class="text-gray-300 hover:text-orange-400 transition-colors" data-translate="nav.home">Home</a></li>
+              <li><a href="../about/index.html" class="text-gray-300 hover:text-orange-400 transition-colors" data-translate="nav.about">About</a></li>
+              <li><a href="index.html" class="text-gray-300 hover:text-orange-400 transition-colors" data-translate="nav.digitalTransformation">Digital Transformation</a></li>
+            </ul>
+            <ul class="space-y-2">
+              <li><a href="../ai-agents/index.html" class="text-gray-300 hover:text-orange-400 transition-colors" data-translate="nav.aiAgent">AI Agent</a></li>
+              <li><a href="../blog/index.html" class="text-gray-300 hover:text-orange-400 transition-colors" data-translate="nav.blog">Blog</a></li>
+              <li><a href="../resources/index.html" class="text-gray-300 hover:text-orange-400 transition-colors" data-translate="nav.resources">Resources</a></li>
+              <li><a href="../contact/index.html" class="text-gray-300 hover:text-orange-400 transition-colors" data-translate="nav.contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Services -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4" data-translate="footer.services">Services</h3>
+          <ul class="space-y-2">
+            <li><a href="digital-infrastructure-modernization.html" class="text-gray-300 hover:text-orange-400 transition-colors" data-translate="digitalTransformation.services.infrastructure.title">Infrastructure Modernization</a></li>
+            <li><a href="../digital-transformation-solution/digital-process-optimization.html" class="text-gray-300 hover:text-orange-400 transition-colors" data-translate="digitalTransformation.services.workflow.title">Workflow Automation</a></li>
+            <li><a href="../digital-transformation-solution/ai-business-solutions.html" class="text-gray-300 hover:text-orange-400 transition-colors" data-translate="digitalTransformation.services.analytics.title">Data Analytics</a></li>
+            <li><a href="../cybersecurity/index.html" class="text-gray-300 hover:text-orange-400 transition-colors" data-translate="digitalTransformation.services.security.title">Cybersecurity</a></li>
+          </ul>
+        </div>
+        
+        <!-- Contact -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4" data-translate="footer.contact">Contact</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li data-translate="footer.email">Email: info@digitizedbrains.com</li>
+            <li data-translate="footer.phone">Phone: +84 123 456 789</li>
+            <li data-translate="footer.address">Ho Chi Minh City, Vietnam</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-gray-300" data-translate="footer.copyright">
+          &copy; 2024 DigitizedBrains. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="../../js/multilang.js"></script>
+  <script src="../../js/chatbot.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Page-specific translations
+      const pageTranslations = {
+        en: {
+          meta: {
+            title: "Digital Transformation - DigitizedBrains",
+            description: "Comprehensive digital transformation solutions for Vietnamese enterprises"
+          },
+          nav: {
+            home: "Home",
+            about: "About",
+            digitalTransformation: "Digital Transformation",
+            aiAgent: "AI Agent",
+            blog: "Blog",
+            resources: "Resources",
+            contact: "Contact"
+          },
+          language: {
+            current: "Language:"
+          },
+          digitalTransformation: {
+            hero: {
+              title: "Digital Transformation Solutions",
+              subtitle: "Transform your business with comprehensive digital solutions designed for Vietnamese enterprises",
+              cta: "Discover Our Solutions"
+            },
+            services: {
+              title: "Our Digital Transformation Services",
+              subtitle: "End-to-end solutions designed to modernize your business operations",
+              infrastructure: {
+                title: "Infrastructure Modernization",
+                description: "Complete overhaul of legacy systems with cloud-native solutions, ensuring scalability and reliability for modern business operations.",
+                learnMore: "Learn More"
+              },
+              workflow: {
+                title: "Process Automation",
+                description: "Streamline business processes and operations with intelligent automation and AI-powered tools to increase productivity and efficiency.",
+                learnMore: "Learn More"
+              },
+              analytics: {
+                title: "Data Analytics & Insights",
+                description: "Advanced analytics platforms to understand customer behavior, business performance, and market trends for informed strategic decision-making.",
+                learnMore: "Learn More"
+              },
+              security: {
+                title: "Cybersecurity & Compliance",
+                description: "Comprehensive security frameworks and compliance solutions to protect your digital assets and ensure regulatory adherence.",
+                learnMore: "Learn More"
+              },
+              training: {
+                title: "Staff Training & Development",
+                description: "Employee upskilling programs to ensure your team can effectively leverage new digital tools and technologies.",
+                learnMore: "Learn More"
+              },
+              strategy: {
+                title: "Digital Strategy Consulting",
+                description: "Strategic planning and roadmap development for sustainable digital transformation aligned with business objectives.",
+                learnMore: "Learn More"
+              },
+              integration: {
+                title: "Smart Technology Integration",
+                description: "Seamlessly connect systems, applications and smart devices to create a unified and efficient digital ecosystem for enterprises.",
+                learnMore: "Learn More"
+              }
+            },
+            process: {
+              title: "Our Transformation Process",
+              subtitle: "A proven methodology for successful digital transformation",
+              step1: {
+                title: "Assessment",
+                description: "Comprehensive evaluation of current systems, processes, and digital maturity level."
+              },
+              step2: {
+                title: "Strategy",
+                description: "Development of customized digital transformation roadmap and implementation plan."
+              },
+              step3: {
+                title: "Implementation",
+                description: "Phased rollout of new technologies and processes with minimal business disruption."
+              },
+              step4: {
+                title: "Optimization",
+                description: "Continuous monitoring, optimization, and support for sustained digital excellence."
+              }
+            },
+            benefits: {
+              title: "Why Choose Digital Transformation?",
+              subtitle: "Transform your business and unlock new opportunities in the digital era",
+              benefit1: {
+                title: "Increased Efficiency",
+                description: "Automate routine tasks and streamline workflows to reduce operational costs by up to 40%."
+              },
+              benefit2: {
+                title: "Enhanced Customer Engagement",
+                description: "Leverage data analytics and AI to deliver personalized customer experiences that drive loyalty and growth."
+              },
+              benefit3: {
+                title: "Scalable Infrastructure",
+                description: "Build flexible, cloud-native systems that can adapt and scale with your growing business needs."
+              },
+              benefit4: {
+                title: "Competitive Advantage",
+                description: "Stay ahead of the competition with innovative technologies and data-driven decision making."
+              }
+            },
+            framework: {
+              title: "5-Layer Digital Transformation Framework",
+              subtitle: "Our proven methodology addresses every aspect of digital transformation, ensuring comprehensive and sustainable change across your organization",
+              layer1: {
+                title: "Strategy",
+                description: "Digital vision alignment with business objectives and market positioning"
+              },
+              layer2: {
+                title: "Process",
+                description: "Workflow optimization and operational efficiency improvements"
+              },
+              layer3: {
+                title: "Technology",
+                description: "Infrastructure modernization and platform integration"
+              },
+              layer4: {
+                title: "Data",
+                description: "Analytics, insights, and data-driven decision making"
+              },
+              layer5: {
+                title: "Culture",
+                description: "Change management and organizational transformation"
+              }
+            },
+            caseStudy: {
+              title: "Vietnamese Enterprise Digital Transformation Model",
+              subtitle: "A comprehensive approach to digital transformation for Vietnamese businesses across all industries.",
+              hunanModel: {
+                title: "Vietnamese Enterprise: Comprehensive Digital Transformation Model",
+                description: "Vietnamese enterprises are leading the digital transformation wave in Southeast Asia. By implementing comprehensive digital strategies, modern businesses are building integrated digital ecosystems that connect customers, operations, and smart services across multiple industries and sectors."
+              },
+              infrastructure: {
+                title: "Digital Ecosystem Innovation",
+                feature1: "Comprehensive ecosystem transformation on 5G and cloud computing platforms",
+                feature2: "Multi-platform integration with smart business services",
+                feature3: "Diverse content development (operations, online services, applications, e-commerce)",
+                feature4: "AI and data analytics applications in production and service distribution"
+              },
+              operations: {
+                title: "Smart Enterprise Solutions",
+                feature1: "Super app integrating over 5000 smart business services",
+                feature2: "Strong connection between management and stakeholders",
+                feature3: "Successful model for local business digital transformation"
+              },
+              testimonial: "Vietnamese enterprises are successfully implementing comprehensive digital transformation models. From cloud platforms to integrated business applications, they are not only digitalizing their operations but also building robust digital ecosystems that connect closely with customers and stakeholders."
+            }
+          },
+          footer: {
+            description: "Leading digital transformation solutions for Vietnamese enterprises. Empowering businesses with cutting-edge technology and AI.",
+            quickLinks: "Quick Links",
+            services: "Services",
+            contact: "Contact",
+            email: "Email: info@digitizedbrains.com",
+            phone: "Phone: +84 123 456 789",
+            address: "Ho Chi Minh City, Vietnam",
+            location: "Ho Chi Minh City, Vietnam",
+            copyright: "© 2024 DigitizedBrains. All rights reserved."
+          }
+        },
+        vi: {
+          meta: {
+            title: "Chuyển đổi Số - DigitizedBrains",
+            description: "Giải pháp chuyển đổi số toàn diện cho doanh nghiệp Việt Nam"
+          },
+          nav: {
+            home: "Trang chủ",
+            about: "Giới thiệu",
+            digitalTransformation: "Chuyển đổi số",
+            aiAgent: "AI Agent",
+            blog: "Blog",
+            resources: "Tài nguyên",
+            contact: "Liên hệ"
+          },
+          language: {
+            current: "Ngôn ngữ:"
+          },
+          digitalTransformation: {
+            hero: {
+              title: "Giải pháp Chuyển đổi Số",
+              subtitle: "Chuyển đổi doanh nghiệp của bạn với các giải pháp số toàn diện được thiết kế cho doanh nghiệp Việt Nam",
+              cta: "Khám phá Giải pháp"
+            },
+            services: {
+              title: "Dịch vụ Chuyển đổi Số của Chúng tôi",
+              subtitle: "Giải pháp từ đầu đến cuối được thiết kế để hiện đại hóa hoạt động kinh doanh của bạn",
+              infrastructure: {
+                title: "Hiện đại hóa Hạ tầng",
+                description: "Cải tạo toàn diện các hệ thống cũ với giải pháp cloud-native, đảm bảo khả năng mở rộng và độ tin cậy cho hoạt động kinh doanh hiện đại.",
+                learnMore: "Tìm hiểu thêm"
+              },
+              workflow: {
+                title: "Tự động hóa Quy trình",
+                description: "Tối ưu hóa quy trình và hoạt động kinh doanh với tự động hóa thông minh và công cụ hỗ trợ AI để tăng năng suất và hiệu quả.",
+                learnMore: "Tìm hiểu thêm"
+              },
+              analytics: {
+                title: "Phân tích Dữ liệu & Thông tin",
+                description: "Nền tảng phân tích tiên tiến để hiểu hành vi khách hàng, hiệu suất kinh doanh và xu hướng thị trường cho việc ra quyết định chiến lược sáng suốt.",
+                learnMore: "Tìm hiểu thêm"
+              },
+              security: {
+                title: "An ninh mạng & Tuân thủ",
+                description: "Khung bảo mật toàn diện và giải pháp tuân thủ để bảo vệ tài sản số của bạn và đảm bảo tuân thủ quy định.",
+                learnMore: "Tìm hiểu thêm"
+              },
+              training: {
+                title: "Đào tạo & Phát triển Nhân viên",
+                description: "Chương trình nâng cao kỹ năng nhân viên để đảm bảo đội ngũ của bạn có thể tận dụng hiệu quả các công cụ và công nghệ số mới.",
+                learnMore: "Tìm hiểu thêm"
+              },
+              strategy: {
+                title: "Tư vấn Chiến lược Số",
+                description: "Lập kế hoạch chiến lược và phát triển lộ trình cho chuyển đổi số bền vững phù hợp với mục tiêu kinh doanh.",
+                learnMore: "Tìm hiểu thêm"
+              },
+              integration: {
+                title: "Tích hợp Công nghệ Thông minh",
+                description: "Kết nối liền mạch các hệ thống, ứng dụng và thiết bị thông minh để tạo ra hệ sinh thái số thống nhất và hiệu quả cho doanh nghiệp.",
+                learnMore: "Tìm hiểu thêm"
+              }
+            },
+            process: {
+              title: "Quy Trình Chuyển Đổi của Chúng Tôi",
+              subtitle: "Phương pháp luận đã được chứng minh cho chuyển đổi số thành công",
+              step1: {
+                title: "Đánh Giá",
+                description: "Đánh giá toàn diện hệ thống hiện tại, quy trình và mức độ trưởng thành số hóa."
+              },
+              step2: {
+                title: "Chiến Lược",
+                description: "Phát triển lộ trình chuyển đổi số tùy chỉnh và kế hoạch triển khai."
+              },
+              step3: {
+                title: "Triển Khai",
+                description: "Triển khai từng giai đoạn công nghệ và quy trình mới với tối thiểu gián đoạn kinh doanh."
+              },
+              step4: {
+                title: "Tối Ưu Hóa",
+                description: "Giám sát liên tục, tối ưu hóa và hỗ trợ cho sự xuất sắc số hóa bền vững."
+              }
+            },
+            benefits: {
+              title: "Tại Sao Chọn Chuyển Đổi Số?",
+              subtitle: "Chuyển đổi doanh nghiệp của bạn và mở khóa những cơ hội mới trong kỷ nguyên số",
+              benefit1: {
+                title: "Tăng Hiệu Quả",
+                description: "Tự động hóa các tác vụ thường ngày và tối ưu hóa quy trình làm việc để giảm chi phí hoạt động lên đến 40%."
+              },
+              benefit2: {
+                title: "Nâng Cao Sự Tương Tác Khách Hàng",
+                description: "Tận dụng phân tích dữ liệu và AI để cung cấp trải nghiệm khách hàng được cá nhân hóa thúc đẩy lòng trung thành và tăng trưởng."
+              },
+              benefit3: {
+                title: "Hạ Tầng Có Thể Mở Rộng",
+                description: "Xây dựng hệ thống linh hoạt, cloud-native có thể thích ứng và mở rộng theo nhu cầu kinh doanh ngày càng tăng của bạn."
+              },
+              benefit4: {
+                title: "Lợi Thế Cạnh Tranh",
+                description: "Dẫn đầu cuộc cạnh tranh với công nghệ đổi mới và ra quyết định dựa trên dữ liệu."
+              }
+            },
+            framework: {
+              title: "Khung Chuyển Đổi Số 5 Tầng",
+              subtitle: "Phương pháp luận đã được chứng minh của chúng tôi giải quyết mọi khía cạnh của chuyển đổi số, đảm bảo thay đổi toàn diện và bền vững trên toàn tổ chức của bạn",
+              layer1: {
+                title: "Chiến Lược",
+                description: "Điều chỉnh tầm nhìn số với mục tiêu kinh doanh và định vị thị trường"
+              },
+              layer2: {
+                title: "Quy Trình",
+                description: "Tối ưu hóa quy trình làm việc và cải thiện hiệu quả hoạt động"
+              },
+              layer3: {
+                title: "Công Nghệ",
+                description: "Hiện đại hóa hạ tầng và tích hợp nền tảng"
+              },
+              layer4: {
+                title: "Dữ Liệu",
+                description: "Phân tích, thông tin chi tiết và ra quyết định dựa trên dữ liệu"
+              },
+              layer5: {
+                title: "Văn Hóa",
+                description: "Quản lý thay đổi và chuyển đổi tổ chức"
+              }
+            },
+            caseStudy: {
+              title: "Mô hình Chuyển đổi Số Doanh nghiệp Việt Nam",
+              subtitle: "Cách tiếp cận toàn diện cho chuyển đổi số dành cho doanh nghiệp Việt Nam trên tất cả các ngành.",
+              hunanModel: {
+                title: "Doanh nghiệp Việt Nam: Mô hình Chuyển đổi Số Toàn diện",
+                description: "Các doanh nghiệp Việt Nam đang dẫn đầu làn sóng chuyển đổi số tại Đông Nam Á. Bằng cách triển khai các chiến lược số toàn diện, các doanh nghiệp hiện đại đang xây dựng hệ sinh thái số tích hợp kết nối khách hàng, hoạt động và dịch vụ thông minh trên nhiều ngành và lĩnh vực."
+              },
+              infrastructure: {
+                title: "Đổi mới Hệ sinh thái Số",
+                feature1: "Chuyển đổi hệ sinh thái toàn diện trên nền tảng 5G và điện toán đám mây",
+                feature2: "Tích hợp đa nền tảng với các dịch vụ kinh doanh thông minh",
+                feature3: "Phát triển nội dung đa dạng (vận hành, dịch vụ trực tuyến, ứng dụng, thương mại điện tử)",
+                feature4: "Ứng dụng AI và phân tích dữ liệu trong sản xuất và phân phối dịch vụ"
+              },
+              operations: {
+                title: "Giải pháp Doanh nghiệp Thông minh",
+                feature1: "Ứng dụng siêu việt tích hợp hơn 5000 dịch vụ kinh doanh thông minh",
+                feature2: "Kết nối mạnh mẽ giữa ban quản lý và các bên liên quan",
+                feature3: "Mô hình thành công cho chuyển đổi số doanh nghiệp địa phương"
+              },
+              testimonial: "Các doanh nghiệp Việt Nam đang thành công trong việc triển khai các mô hình chuyển đổi số toàn diện. Từ các nền tảng đám mây đến ứng dụng kinh doanh tích hợp, họ không chỉ số hóa hoạt động mà còn xây dựng hệ sinh thái số mạnh mẽ kết nối chặt chẽ với khách hàng và các bên liên quan."
+            }
+          },
+          footer: {
+            description: "Giải pháp chuyển đổi số hàng đầu cho doanh nghiệp Việt Nam. Trao quyền cho doanh nghiệp với công nghệ tiên tiến và AI.",
+            quickLinks: "Liên kết nhanh",
+            services: "Dịch vụ",
+            contact: "Liên hệ",
+            email: "Email: info@digitizedbrains.com",
+            phone: "Điện thoại: +84 123 456 789",
+            address: "Thành phố Hồ Chí Minh, Việt Nam",
+            location: "Thành phố Hồ Chí Minh, Việt Nam",
+            copyright: "© 2024 DigitizedBrains. Tất cả quyền được bảo lưu."
+          }
+        },
+        de: {
+          meta: {
+            title: "Digitale Transformation - DigitizedBrains",
+            description: "Umfassende digitale Transformationslösungen für vietnamesische Unternehmen"
+          },
+          nav: {
+            home: "Startseite",
+            about: "Über uns",
+            digitalTransformation: "Digitale Transformation",
+            aiAgent: "KI-Agent",
+            blog: "Blog",
+            resources: "Ressourcen",
+            contact: "Kontakt"
+          },
+          language: {
+            current: "Sprache:"
+          },
+          digitalTransformation: {
+            hero: {
+              title: "Digitale Transformationslösungen",
+              subtitle: "Transformieren Sie Ihr Unternehmen mit umfassenden digitalen Lösungen für vietnamesische Unternehmen",
+              cta: "Entdecken Sie unsere Lösungen"
+            },
+            services: {
+              title: "Unsere digitalen Transformationsdienste",
+              subtitle: "End-to-End-Lösungen zur Modernisierung Ihrer Geschäftsabläufe",
+              infrastructure: {
+                title: "Infrastruktur-Modernisierung",
+                description: "Komplette Überholung von Legacy-Systemen mit cloud-nativen Lösungen, die Skalierbarkeit und Zuverlässigkeit für moderne Geschäftsabläufe gewährleisten.",
+                learnMore: "Mehr erfahren"
+              },
+              workflow: {
+                title: "Prozessautomatisierung",
+                description: "Rationalisierung von Geschäftsprozessen mit intelligenter Automatisierung und KI-gestützten Tools zur Steigerung von Produktivität und Effizienz.",
+                learnMore: "Mehr erfahren"
+              },
+              analytics: {
+                title: "Datenanalyse & Einblicke",
+                description: "Erweiterte Analyseplattformen zum Verständnis von Kundenverhalten, Geschäftsleistung und Markttrends für fundierte strategische Entscheidungen.",
+                learnMore: "Mehr erfahren"
+              },
+              security: {
+                title: "Cybersicherheit & Compliance",
+                description: "Umfassende Sicherheitsframeworks und Compliance-Lösungen zum Schutz Ihrer digitalen Assets und zur Einhaltung von Vorschriften.",
+                learnMore: "Mehr erfahren"
+              },
+              training: {
+                title: "Mitarbeiterschulung & -entwicklung",
+                description: "Programme zur Mitarbeiter-Weiterbildung, um sicherzustellen, dass Ihr Team neue digitale Tools und Technologien effektiv nutzen kann.",
+                learnMore: "Mehr erfahren"
+              },
+              strategy: {
+                title: "Digitale Strategieberatung",
+                description: "Strategische Planung und Roadmap-Entwicklung für nachhaltige digitale Transformation im Einklang mit Geschäftszielen.",
+                learnMore: "Mehr erfahren"
+              },
+              integration: {
+                title: "Smart Technology Integration",
+                description: "Nahtlose Verbindung von Systemen, Anwendungen und intelligenten Geräten zur Schaffung eines einheitlichen und effizienten digitalen Ökosystems für Unternehmen.",
+                learnMore: "Mehr erfahren"
+              }
+            },
+            process: {
+              title: "Unser Transformationsprozess",
+              subtitle: "Eine bewährte Methodik für eine erfolgreiche digitale Transformation",
+              step1: {
+                title: "Bewertung",
+                description: "Umfassende Evaluierung aktueller Systeme, Prozesse und des digitalen Reifegrads."
+              },
+              step2: {
+                title: "Strategie",
+                description: "Entwicklung einer maßgeschneiderten digitalen Transformations-Roadmap und Implementierungsplan."
+              },
+              step3: {
+                title: "Implementierung",
+                description: "Schrittweise Einführung neuer Technologien und Prozesse mit minimaler Geschäftsunterbrechung."
+              },
+              step4: {
+                title: "Optimierung",
+                description: "Kontinuierliche Überwachung, Optimierung und Unterstützung für nachhaltige digitale Exzellenz."
+              }
+            },
+            benefits: {
+              title: "Warum digitale Transformation wählen?",
+              subtitle: "Transformieren Sie Ihr Unternehmen und erschließen Sie neue Möglichkeiten im digitalen Zeitalter",
+              benefit1: {
+                title: "Erhöhte Effizienz",
+                description: "Automatisieren Sie Routineaufgaben und optimieren Sie Arbeitsabläufe, um Betriebskosten um bis zu 40% zu reduzieren."
+              },
+              benefit2: {
+                title: "Verbesserte Kundenbindung",
+                description: "Nutzen Sie Datenanalyse und KI, um personalisierte Kundenerfahrungen zu liefern, die Loyalität und Wachstum fördern."
+              },
+              benefit3: {
+                title: "Skalierbare Infrastruktur",
+                description: "Bauen Sie flexible, cloud-native Systeme auf, die sich an Ihre wachsenden Geschäftsanforderungen anpassen und skalieren können."
+              },
+              benefit4: {
+                title: "Wettbewerbsvorteil",
+                description: "Bleiben Sie der Konkurrenz voraus mit innovativen Technologien und datengesteuerten Entscheidungen."
+              }
+            },
+            framework: {
+              title: "5-Ebenen Digitale Transformations-Framework",
+              subtitle: "Unsere bewährte Methodik behandelt jeden Aspekt der digitalen Transformation und gewährleistet umfassende und nachhaltige Veränderungen in Ihrer gesamten Organisation",
+              layer1: {
+                title: "Strategie",
+                description: "Ausrichtung der digitalen Vision mit Geschäftszielen und Marktpositionierung"
+              },
+              layer2: {
+                title: "Prozess",
+                description: "Workflow-Optimierung und Verbesserung der operativen Effizienz"
+              },
+              layer3: {
+                title: "Technologie",
+                description: "Infrastruktur-Modernisierung und Plattform-Integration"
+              },
+              layer4: {
+                title: "Daten",
+                description: "Analytik, Erkenntnisse und datengesteuerte Entscheidungsfindung"
+              },
+              layer5: {
+                title: "Kultur",
+                description: "Change Management und organisatorische Transformation"
+              }
+            },
+            caseStudy: {
+              title: "Vietnamesisches Unternehmen: Digitales Transformationsmodell",
+              subtitle: "Ein umfassender Ansatz zur digitalen Transformation für vietnamesische Unternehmen aller Branchen.",
+              hunanModel: {
+                title: "Vietnamesisches Unternehmen: Umfassendes digitales Transformationsmodell",
+                description: "Vietnamesische Unternehmen führen die digitale Transformationswelle in Südostasien an. Durch die Implementierung umfassender digitaler Strategien bauen moderne Unternehmen integrierte digitale Ökosysteme auf, die Kunden, Betrieb und intelligente Dienstleistungen über verschiedene Branchen und Sektoren hinweg verbinden."
+              },
+              infrastructure: {
+                title: "Innovation des digitalen Ökosystems",
+                feature1: "Umfassende Ökosystem-Transformation auf 5G- und Cloud-Computing-Plattformen",
+                feature2: "Multi-Plattform-Integration mit intelligenten Geschäftsdiensten",
+                feature3: "Vielfältige Inhaltsentwicklung (Betrieb, Online-Dienste, Anwendungen, E-Commerce)",
+                feature4: "KI- und Datenanalytik-Anwendungen in Produktion und Dienstleistungsvertrieb"
+              },
+              operations: {
+                title: "Intelligente Unternehmenslösungen",
+                feature1: "Super-App, die über 5000 intelligente Geschäftsdienste integriert",
+                feature2: "Starke Verbindung zwischen Management und Stakeholdern",
+                feature3: "Erfolgreiches Modell für die digitale Transformation lokaler Unternehmen"
+              },
+              testimonial: "Vietnamesische Unternehmen implementieren erfolgreich umfassende digitale Transformationsmodelle. Von Cloud-Plattformen bis hin zu integrierten Geschäftsanwendungen digitalisieren sie nicht nur ihre Betriebsabläufe, sondern bauen auch robuste digitale Ökosysteme auf, die eng mit Kunden und Stakeholdern verbunden sind."
+            }
+          },
+          footer: {
+            description: "Führende digitale Transformationslösungen für vietnamesische Unternehmen. Stärkung von Unternehmen mit modernster Technologie und KI.",
+            quickLinks: "Schnelle Links",
+            services: "Dienstleistungen",
+            contact: "Kontakt",
+            email: "E-Mail: info@digitizedbrains.com",
+            phone: "Telefon: +84 123 456 789",
+            address: "Ho-Chi-Minh-Stadt, Vietnam",
+            location: "Ho-Chi-Minh-Stadt, Vietnam",
+            copyright: "© 2024 DigitizedBrains. Alle Rechte vorbehalten."
+          }
+        }
+      };
+
+      // Initialize multilingual with page-specific translations
+      if (typeof initializeMultilingual === 'function') {
+        initializeMultilingual(pageTranslations);
+      }
+
+      // Scroll reveal animation
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, observerOptions);
+
+      // Observe all scroll-reveal elements
+      document.querySelectorAll('.scroll-reveal').forEach(el => {
+        observer.observe(el);
+      });
+    });
+
+
+    // Initialize Chatbot
+    window.addEventListener('load', function() {
+      const chatbot = new DigitizedBrainsChatbot({
+        iframeSrc: 'https://ducnguyen1978-digitizedbrains-gemini.hf.space',
+        widgetTitle: 'Digitized Brains AI Agent',
+        position: { bottom: '30px', right: '30px' },
+        size: { width: '420px', height: '600px' }
+      });
+    });
+  </script>
+
+</body>
+</html>

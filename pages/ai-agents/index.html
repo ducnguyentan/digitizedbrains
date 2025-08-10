@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="page-title">AI Agent Solutions - DigitizedBrains</title>
+  <meta name="description" content="Advanced AI Agent solutions for business automation, process optimization, and decision-making for Vietnamese enterprises" id="page-description">
+  <link href="../../css/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+    body { font-family: 'Poppins', sans-serif; }
+    .font-nunito { font-family: 'Nunito', sans-serif; }
+    .nav-link { 
+      color: #374151; 
+      padding: 0.5rem 1rem; 
+      transition: all 0.3s ease; 
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .nav-link:hover { color: #ed7354; background-color: #fef2f2; }
+    .nav-link.active { color: #ed7354; font-weight: 600; }
+    .btn-primary { 
+      background: linear-gradient(135deg, #ed7354 0%, #f97316 100%); 
+      transition: all 0.3s ease; 
+      box-shadow: 0 4px 15px rgba(237, 115, 84, 0.3);
+    }
+    .logo-gradient {
+      background: linear-gradient(135deg, #fb923c 0%, #ec4899 100%);
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(237, 115, 84, 0.4); }
+    .hero-bg { 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .feature-card {
+      transition: all 0.3s ease;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      border-color: #ed7354;
+    }
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Language Switcher Styles */
+    .language-switcher {
+      position: relative;
+    }
+    
+    .language-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      min-width: 160px;
+      display: none;
+      z-index: 1000;
+    }
+    
+    .language-menu.show {
+      display: block;
+    }
+    
+    .language-option {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+    
+    .language-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    /* AI Agent specific styles */
+    .ai-gradient {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .tech-icon {
+      width: 4rem;
+      height: 4rem;
+      background: linear-gradient(135deg, #ed7354 0%, #f97316 100%);
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .demo-card {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      transition: all 0.3s ease;
+      border: 1px solid #e5e7eb;
+    }
+
+    .demo-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      border-color: #ed7354;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <div class="logo-gradient w-10 h-10 bg-gradient-to-r from-orange-400 to-pink-500 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-lg">DB</span>
+          </div>
+          <a href="../../index.html" class="text-2xl font-bold text-gray-800">Digitized Brains</a>
+        </div>
+        
+        <!-- Navigation and Language Switcher -->
+        <div class="hidden md:flex items-center space-x-4">
+          <nav class="flex space-x-2">
+            <a href="../../index.html" class="nav-link" data-translate="nav.home">Home</a>
+            <a href="../about/index.html" class="nav-link" data-translate="nav.about">About</a>
+            <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Digital Transformation</a>
+            <a href="index.html" class="nav-link active" data-translate="nav.aiAgent">AI Agent</a>
+            <a href="../blog/index.html" class="nav-link" data-translate="nav.blog">Blog</a>
+            <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Resources</a>
+            <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Contact</a>
+          </nav>
+          
+          <!-- Language Switcher -->
+          <div class="language-switcher">
+            <button id="language-btn" class="flex items-center space-x-1 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+              <img id="current-flag" src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+              <span id="current-lang">EN</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="language-menu" class="language-menu">
+              <a href="#" onclick="changeLanguage('en')" class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                English
+              </a>
+              <a href="#" onclick="changeLanguage('vi')" class="language-option" data-lang="vi">
+                <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                Tiếng Việt
+              </a>
+              <a href="#" onclick="changeLanguage('de')" class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                Deutsch
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <div class="flex flex-col space-y-2">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Home</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">About</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Digital Transformation</a>
+          <a href="index.html" class="nav-link active" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="../blog/index.html" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Resources</a>
+          <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Contact</a>
+          
+          <!-- Mobile Language Switcher -->
+          <div class="pt-2 border-t border-gray-200">
+            <div class="language-switcher-mobile">
+              <button id="mobile-language-btn" class="flex items-center justify-between w-full px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                <span data-translate="language.current">Language:</span>
+                <div class="flex items-center space-x-1">
+                  <img id="mobile-current-flag" src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                  <span id="mobile-current-lang">EN</span>
+                </div>
+              </button>
+              <div id="mobile-language-menu" class="language-menu-mobile">
+                <a href="#" onclick="changeLanguage('en')" class="language-option-mobile" data-lang="en">
+                  <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                  English
+                </a>
+                <a href="#" onclick="changeLanguage('vi')" class="language-option-mobile" data-lang="vi">
+                  <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                  Tiếng Việt
+                </a>
+                <a href="#" onclick="changeLanguage('de')" class="language-option-mobile" data-lang="de">
+                  <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                  Deutsch
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-bg py-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+    <div class="relative z-10 text-center max-w-4xl mx-auto px-4">
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 scroll-reveal" data-translate="aiAgent.hero.title">
+        Intelligent AI Agents
+      </h1>
+      <p class="text-xl text-white mb-8 font-light max-w-2xl mx-auto scroll-reveal" data-translate="aiAgent.hero.subtitle">
+        Revolutionary AI-powered automation solutions for business process optimization, data analysis, and intelligent decision making
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 scroll-reveal">
+        <a href="#features" class="btn-primary text-white px-8 py-4 rounded-full font-semibold text-lg inline-block" data-translate="aiAgent.hero.exploreBtn">
+          Explore Solutions
+        </a>
+        <a href="#demo" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg inline-block hover:bg-white hover:text-gray-800 transition-all" data-translate="aiAgent.hero.demoBtn">
+          See Demo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4" data-translate="aiAgent.features.title">AI Agent Capabilities</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-translate="aiAgent.features.subtitle">
+          Comprehensive AI solutions designed specifically for Vietnamese enterprises
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Feature 1 -->
+        <div class="feature-card bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
+          <div class="tech-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-4" data-translate="aiAgent.features.feature1.title">Business Process Automation</h3>
+          <p class="text-gray-600" data-translate="aiAgent.features.feature1.description">Automated business process optimization, document generation, and workflow management using advanced AI algorithms tailored for Vietnamese business needs.</p>
+          <div class="mt-4">
+            <a href="process-automation.html" class="text-orange-600 hover:text-orange-800 font-medium flex items-center">
+              <span data-translate="aiAgent.features.feature1.learnMore">Tìm hiểu thêm</span>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
+          <div class="tech-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-4" data-translate="aiAgent.features.feature2.title">Data Analytics</h3>
+          <p class="text-gray-600" data-translate="aiAgent.features.feature2.description">Real-time data analysis and personalized insights for Vietnamese enterprises to optimize business operations and customer experiences.</p>
+          <div class="mt-4">
+            <a href="data-analytics.html" class="text-orange-600 hover:text-orange-800 font-medium flex items-center">
+              <span data-translate="aiAgent.features.feature2.learnMore">Tìm hiểu thêm</span>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
+          <div class="tech-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-4" data-translate="aiAgent.features.feature3.title">Business Intelligence</h3>
+          <p class="text-gray-600" data-translate="aiAgent.features.feature3.description">Smart scheduling, performance monitoring, and automated business workflows optimized for Vietnamese enterprise operations.</p>
+          <div class="mt-4">
+            <a href="business-intelligence.html" class="text-orange-600 hover:text-orange-800 font-medium flex items-center">
+              <span data-translate="aiAgent.features.feature3.learnMore">Tìm hiểu thêm</span>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
+          <div class="tech-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m0 0V3a1 1 0 011 1v1M7 4V3a1 1 0 011-1m-1 1v16l4-3 4 3V4H7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-4" data-translate="aiAgent.features.feature4.title">Language Processing</h3>
+          <p class="text-gray-600" data-translate="aiAgent.features.feature4.description">Advanced Vietnamese language processing, translation, and localization capabilities for business documents, customer communication, and digital content.</p>
+          <div class="mt-4">
+            <a href="language-processing.html" class="text-orange-600 hover:text-orange-800 font-medium flex items-center">
+              <span data-translate="aiAgent.features.feature4.learnMore">Tìm hiểu thêm</span>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="feature-card bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
+          <div class="tech-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-4" data-translate="aiAgent.features.feature5.title">Workflow Optimization</h3>
+          <p class="text-gray-600" data-translate="aiAgent.features.feature5.description">Intelligent workflow automation reducing manual tasks and improving efficiency across all business processes.</p>
+          <div class="mt-4">
+            <a href="work-optimization.html" class="text-orange-600 hover:text-orange-800 font-medium flex items-center">
+              <span data-translate="aiAgent.features.learnMore">Learn More</span>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="feature-card bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
+          <div class="tech-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-4" data-translate="aiAgent.features.feature6.title">Security & Compliance</h3>
+          <p class="text-gray-600" data-translate="aiAgent.features.feature6.description">Enterprise-grade security with full compliance to Vietnamese business regulations and international standards.</p>
+          <div class="mt-4">
+            <a href="cybersecurity-compliance.html" class="text-orange-600 hover:text-orange-800 font-medium flex items-center">
+              <span data-translate="aiAgent.features.learnMore">Learn More</span>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- AI Game Center Feature -->
+        <div class="feature-card bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl p-8 shadow-lg scroll-reveal md:col-span-2 lg:col-span-3">
+          <div class="text-center">
+            <div class="mx-auto mb-6" style="width: 4rem; height: 4rem; background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center;">
+              <span style="color: white; font-size: 2rem;">🎮</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-4" data-translate="aiAgent.features.aiGameCenter.title">AI Game Center</h3>
+            <p class="text-gray-600 mb-6 max-w-2xl mx-auto" data-translate="aiAgent.features.aiGameCenter.description">
+              Experience interactive AI conversations with our AI Friends Talk feature. Watch Alex, Blake, and Charlie engage in fun discussions and debates on various topics. 
+              A perfect demonstration of advanced AI communication and personality modeling.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+              <button id="launch-ai-game" class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:from-purple-700 hover:to-pink-700 transition-all transform hover:scale-105 shadow-lg">
+                <span data-translate="aiAgent.features.aiGameCenter.launchBtn">🚀 Launch AI Friends Talk</span>
+              </button>
+              <a href="#ai-game-section" class="bg-transparent border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-full font-semibold text-lg hover:bg-purple-600 hover:text-white transition-all">
+                <span data-translate="aiAgent.features.aiGameCenter.learnMoreBtn">Learn More</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Section -->
+  <section id="demo" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4" data-translate="aiAgent.demo.title">AI Agent in Action</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-translate="aiAgent.demo.subtitle">
+          See how our AI agents transform business operations in real-world scenarios
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Demo 1 -->
+        <div class="demo-card rounded-2xl p-8 scroll-reveal">
+          <div class="mb-6">
+            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80" alt="Content Creation AI" class="w-full h-48 object-cover rounded-lg">
+          </div>
+          <h3 class="text-2xl font-bold text-gray-800 mb-4" data-translate="aiAgent.demo.demo1.title">Automated Business Process Management</h3>
+          <p class="text-gray-600 mb-6" data-translate="aiAgent.demo.demo1.description">
+            Watch our AI agent automatically generate business reports, create marketing content, and optimize communication materials for Vietnamese businesses.
+          </p>
+          <button class="btn-primary text-white px-6 py-3 rounded-lg font-semibold" data-translate="aiAgent.demo.demo1.button">
+            View Demo
+          </button>
+        </div>
+
+        <!-- Demo 2 -->
+        <div class="demo-card rounded-2xl p-8 scroll-reveal">
+          <div class="mb-6">
+            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=600&q=80" alt="Broadcasting AI" class="w-full h-48 object-cover rounded-lg">
+          </div>
+          <h3 class="text-2xl font-bold text-gray-800 mb-4" data-translate="aiAgent.demo.demo2.title">Smart Business Intelligence</h3>
+          <p class="text-gray-600 mb-6" data-translate="aiAgent.demo.demo2.description">
+            Experience how our AI analyzes business data, monitors performance metrics, and automatically provides insights for optimal business decisions.
+          </p>
+          <div class="flex gap-4">
+            <button class="btn-primary text-white px-6 py-3 rounded-lg font-semibold" data-translate="aiAgent.demo.demo2.button">
+              Watch Demo
+            </button>
+            <a href="business-intelligence.html" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-semibold transition-colors" data-translate="aiAgent.demo.demo2.biLink">
+              Khám phá BI
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Game Center Section -->
+  <section id="ai-game-section" class="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4" data-translate="aiAgent.aiGameCenter.title">AI Game Center</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-translate="aiAgent.aiGameCenter.subtitle">
+          Explore the future of AI interaction with our AI Friends Talk demonstration. 
+          Three distinct AI personalities engage in real-time conversations on fun and interesting topics.
+        </p>
+      </div>
+      
+      <div class="max-w-6xl mx-auto">
+        <!-- AI Friends Introduction -->
+        <div class="grid md:grid-cols-3 gap-8 mb-12">
+          <div class="bg-white rounded-2xl p-6 shadow-lg text-center scroll-reveal">
+            <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-3xl">🎭</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2" data-translate="aiAgent.aiGameCenter.alex.name">Alex</h3>
+            <p class="text-gray-600 mb-2" data-translate="aiAgent.aiGameCenter.alex.model">Powered by Groq Llama3-70B</p>
+            <p class="text-sm text-gray-500" data-translate="aiAgent.aiGameCenter.alex.personality">Witty & Sarcastic - Quick with puns and wordplay</p>
+          </div>
+          
+          <div class="bg-white rounded-2xl p-6 shadow-lg text-center scroll-reveal">
+            <div class="w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-3xl">🌟</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2" data-translate="aiAgent.aiGameCenter.blake.name">Blake</h3>
+            <p class="text-gray-600 mb-2" data-translate="aiAgent.aiGameCenter.blake.model">Powered by Gemini 2.0 Flash</p>
+            <p class="text-sm text-gray-500" data-translate="aiAgent.aiGameCenter.blake.personality">Optimistic & Enthusiastic - Loves sharing facts and trivia</p>
+          </div>
+          
+          <div class="bg-white rounded-2xl p-6 shadow-lg text-center scroll-reveal">
+            <div class="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-3xl">🧠</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2" data-translate="aiAgent.aiGameCenter.charlie.name">Charlie</h3>
+            <p class="text-gray-600 mb-2" data-translate="aiAgent.aiGameCenter.charlie.model">Powered by Gemini 1.5 Flash</p>
+            <p class="text-sm text-gray-500" data-translate="aiAgent.aiGameCenter.charlie.personality">Philosophical & Thoughtful - Provides deeper insights</p>
+          </div>
+        </div>
+        
+        <!-- Game Interface Container -->
+        <div class="bg-white rounded-3xl shadow-2xl overflow-hidden scroll-reveal">
+          <div class="bg-gradient-to-r from-purple-600 to-pink-600 p-6 text-white text-center">
+            <h3 class="text-2xl font-bold mb-2" data-translate="aiAgent.aiGameCenter.interface.title">AI Friends Talk Interface</h3>
+            <p class="opacity-90" data-translate="aiAgent.aiGameCenter.interface.subtitle">Click Launch to start the interactive conversation experience</p>
+          </div>
+          
+          <!-- Embedded Game Container -->
+          <div id="ai-game-container" class="p-8 min-h-[600px] bg-gray-50">
+            <div class="text-center py-20">
+              <div class="w-24 h-24 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span class="text-4xl">🎮</span>
+              </div>
+              <h4 class="text-2xl font-bold text-gray-800 mb-4" data-translate="aiAgent.aiGameCenter.interface.readyTitle">Ready to Experience AI Conversations?</h4>
+              <p class="text-gray-600 mb-8 max-w-md mx-auto" data-translate="aiAgent.aiGameCenter.interface.readyDescription">
+                Launch the AI Friends Talk to see three AI personalities engage in real-time conversations.
+              </p>
+              <button id="launch-ai-friends-talk" class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-purple-700 hover:to-pink-700 transition-all transform hover:scale-105 shadow-lg">
+                <span data-translate="aiAgent.aiGameCenter.interface.launchBtn">🚀 Launch AI Friends Talk</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Features of AI Game -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+          <div class="bg-white rounded-xl p-6 shadow-md text-center scroll-reveal">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl">🌍</span>
+            </div>
+            <h4 class="font-semibold text-gray-800 mb-2" data-translate="aiAgent.aiGameCenter.features.multilingual.title">Multilingual Support</h4>
+            <p class="text-sm text-gray-600" data-translate="aiAgent.aiGameCenter.features.multilingual.description">English, Vietnamese, and German conversations</p>
+          </div>
+          
+          <div class="bg-white rounded-xl p-6 shadow-md text-center scroll-reveal">
+            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl">💭</span>
+            </div>
+            <h4 class="font-semibold text-gray-800 mb-2" data-translate="aiAgent.aiGameCenter.features.topics.title">Fun Topics</h4>
+            <p class="text-sm text-gray-600" data-translate="aiAgent.aiGameCenter.features.topics.description">Engaging debate topics and custom conversations</p>
+          </div>
+          
+          <div class="bg-white rounded-xl p-6 shadow-md text-center scroll-reveal">
+            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl">🤖</span>
+            </div>
+            <h4 class="font-semibold text-gray-800 mb-2" data-translate="aiAgent.aiGameCenter.features.personalities.title">Unique Personalities</h4>
+            <p class="text-sm text-gray-600" data-translate="aiAgent.aiGameCenter.features.personalities.description">Each AI has distinct personality traits</p>
+          </div>
+          
+          <div class="bg-white rounded-xl p-6 shadow-md text-center scroll-reveal">
+            <div class="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl">⚡</span>
+            </div>
+            <h4 class="font-semibold text-gray-800 mb-2" data-translate="aiAgent.aiGameCenter.features.realtime.title">Real-time Chat</h4>
+            <p class="text-sm text-gray-600" data-translate="aiAgent.aiGameCenter.features.realtime.description">Live conversations and interactions</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4" data-translate="aiAgent.benefits.title">Why Choose Our AI Agents?</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-translate="aiAgent.benefits.subtitle">
+          Proven results for Vietnamese enterprises
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center scroll-reveal">
+          <div class="text-4xl font-bold text-orange-500 mb-2" data-translate="aiAgent.benefits.stat1.number">75%</div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2" data-translate="aiAgent.benefits.stat1.title">Time Reduction</h3>
+          <p class="text-gray-600" data-translate="aiAgent.benefits.stat1.description">Average time saved in business processes and workflows</p>
+        </div>
+        <div class="text-center scroll-reveal">
+          <div class="text-4xl font-bold text-orange-500 mb-2" data-translate="aiAgent.benefits.stat2.number">90%</div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2" data-translate="aiAgent.benefits.stat2.title">Accuracy Rate</h3>
+          <p class="text-gray-600" data-translate="aiAgent.benefits.stat2.description">Data analysis and business intelligence accuracy rate</p>
+        </div>
+        <div class="text-center scroll-reveal">
+          <div class="text-4xl font-bold text-orange-500 mb-2" data-translate="aiAgent.benefits.stat3.number">60%</div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2" data-translate="aiAgent.benefits.stat3.title">Cost Savings</h3>
+          <p class="text-gray-600" data-translate="aiAgent.benefits.stat3.description">Reduction in operational costs through automation</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 ai-gradient">
+    <div class="container mx-auto px-4 text-center">
+      <div class="max-w-2xl mx-auto scroll-reveal">
+        <h2 class="text-3xl font-bold text-white mb-4" data-translate="aiAgent.cta.title">Ready to Transform Your Business Operations?</h2>
+        <p class="text-xl text-white mb-8" data-translate="aiAgent.cta.subtitle">
+          Join leading Vietnamese enterprises already using our AI agent solutions
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+          <a href="../contact/index.html" class="bg-white text-gray-800 px-8 py-4 rounded-full font-semibold text-lg inline-block hover:bg-gray-100 transition-all" data-translate="aiAgent.cta.contactBtn">
+            Contact Us
+          </a>
+          <a href="#" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg inline-block hover:bg-white hover:text-gray-800 transition-all" data-translate="aiAgent.cta.scheduleBtn">
+            Schedule Demo
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <!-- Logo & Description -->
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="logo-gradient w-10 h-10 bg-gradient-to-r from-orange-400 to-pink-500 rounded-lg flex items-center justify-center">
+              <span class="text-white font-bold text-lg">DB</span>
+            </div>
+            <span class="text-2xl font-bold">DigitizedBrains</span>
+          </div>
+          <p class="text-gray-400 mb-4" data-translate="footer.description">
+            Leading digital transformation solutions for Vietnamese enterprises. Empowering businesses with AI and cutting-edge technology.
+          </p>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.quickLinks">Quick Links</h4>
+          <div class="grid grid-cols-2 gap-4">
+            <ul class="space-y-2">
+              <li><a href="../../index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.home">Home</a></li>
+              <li><a href="../about/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.about">About</a></li>
+              <li><a href="../digital-transformation/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.digitalTransformation">Digital Transformation</a></li>
+              <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.aiAgent">AI Agent</a></li>
+            </ul>
+            <ul class="space-y-2">
+              <li><a href="../blog/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.blog">Blog</a></li>
+              <li><a href="../resources/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.resources">Resources</a></li>
+              <li><a href="../contact/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Contact Info -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.contact">Contact</h4>
+          <ul class="space-y-2">
+            <li class="text-gray-400">email@digitizedbrains.com</li>
+            <li class="text-gray-400">+84 123 456 789</li>
+            <li class="text-gray-400" data-translate="footer.location">Ho Chi Minh City, Vietnam</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-gray-400" data-translate="footer.copyright">
+          © 2025 DigitizedBrains. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chatbot Integration -->
+  <!-- Page-specific translations -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Page-specific translations
+      const pageTranslations = {
+        en: {
+          meta: {
+            title: "AI Agent Solutions - DigitizedBrains",
+            description: "Comprehensive AI Agent solutions for Vietnamese enterprises"
+          },
+          nav: {
+            home: "Home",
+            about: "About",
+            digitalTransformation: "Digital Transformation",
+            aiAgent: "AI Agent",
+            blog: "Blog",
+            resources: "Resources",
+            contact: "Contact"
+          },
+          language: {
+            current: "Language:"
+          },
+          aiAgent: {
+            hero: {
+              title: "Intelligent AI Agents",
+              subtitle: "Revolutionary AI-powered automation solutions for business process optimization, data analysis, and intelligent decision making",
+              exploreBtn: "Explore Solutions",
+              demoBtn: "See Demo"
+            },
+            features: {
+              title: "AI Agent Capabilities",
+              subtitle: "Comprehensive AI solutions designed specifically for Vietnamese enterprises",
+              learnMore: "Learn More",
+              feature1: {
+                title: "Business Process Automation",
+                description: "Automated business process optimization, document generation, and workflow management using advanced AI algorithms tailored for Vietnamese business needs.",
+                learnMore: "Learn More"
+              },
+              feature2: {
+                title: "Data Analytics",
+                description: "Real-time data analysis and personalized insights for Vietnamese enterprises to optimize business operations and customer experiences.",
+                learnMore: "Learn More"
+              },
+              feature3: {
+                title: "Business Intelligence",
+                description: "Smart scheduling, performance monitoring, and automated business workflows optimized for Vietnamese enterprise operations.",
+                learnMore: "Learn More"
+              },
+              feature4: {
+                title: "Language Processing",
+                description: "Advanced Vietnamese language processing, translation, and localization capabilities for business documents, customer communication, and digital content.",
+                learnMore: "Learn More"
+              },
+              feature5: {
+                title: "Workflow Optimization",
+                description: "Intelligent workflow automation reducing manual tasks and improving efficiency across all business processes."
+              },
+              feature6: {
+                title: "Security & Compliance",
+                description: "Enterprise-grade security with full compliance to Vietnamese business regulations and international standards."
+              },
+              aiGameCenter: {
+                title: "AI Game Center",
+                description: "Experience interactive AI conversations with our AI Friends Talk feature. Watch Alex, Blake, and Charlie engage in fun discussions and debates on various topics. A perfect demonstration of advanced AI communication and personality modeling.",
+                launchBtn: "🚀 Launch AI Friends Talk",
+                learnMoreBtn: "Learn More"
+              }
+            },
+            aiGameCenter: {
+              title: "AI Game Center",
+              subtitle: "Explore the future of AI interaction with our AI Friends Talk demonstration. Three distinct AI personalities engage in real-time conversations on fun and interesting topics.",
+              alex: {
+                name: "Alex",
+                model: "Powered by Groq Llama3-70B",
+                personality: "Witty & Sarcastic - Quick with puns and wordplay"
+              },
+              blake: {
+                name: "Blake",
+                model: "Powered by Gemini 2.0 Flash",
+                personality: "Optimistic & Enthusiastic - Loves sharing facts and trivia"
+              },
+              charlie: {
+                name: "Charlie",
+                model: "Powered by Gemini 1.5 Flash",
+                personality: "Philosophical & Thoughtful - Provides deeper insights"
+              },
+              interface: {
+                title: "AI Friends Talk Interface",
+                subtitle: "Click Launch to start the interactive conversation experience",
+                readyTitle: "Ready to Experience AI Conversations?",
+                readyDescription: "Launch the AI Friends Talk to see three AI personalities engage in real-time conversations.",
+                launchBtn: "🚀 Launch AI Friends Talk"
+              },
+              features: {
+                multilingual: {
+                  title: "Multilingual Support",
+                  description: "English, Vietnamese, and German conversations"
+                },
+                topics: {
+                  title: "Fun Topics",
+                  description: "Engaging debate topics and custom conversations"
+                },
+                personalities: {
+                  title: "Unique Personalities",
+                  description: "Each AI has distinct personality traits"
+                },
+                realtime: {
+                  title: "Real-time Chat",
+                  description: "Live conversations and interactions"
+                }
+              }
+            },
+            demo: {
+              title: "AI Agent in Action",
+              subtitle: "See how our AI agents transform business operations in real-world scenarios",
+              demo1: {
+                title: "Automated Business Process Management",
+                description: "Watch our AI agent automatically generate business reports, create marketing content, and optimize communication materials for Vietnamese businesses.",
+                button: "View Demo"
+              },
+              demo2: {
+                title: "Smart Business Intelligence",
+                description: "Experience how our AI analyzes business data, monitors performance metrics, and automatically provides insights for optimal business decisions.",
+                button: "Watch Demo",
+                biLink: "Explore BI"
+              }
+            },
+            benefits: {
+              title: "Why Choose Our AI Agents?",
+              subtitle: "Proven results for Vietnamese enterprises",
+              stat1: {
+                number: "75%",
+                title: "Time Reduction",
+                description: "Average time saved in business processes and workflows"
+              },
+              stat2: {
+                number: "90%",
+                title: "Accuracy Rate",
+                description: "Data analysis and business intelligence accuracy rate"
+              },
+              stat3: {
+                number: "60%",
+                title: "Cost Savings",
+                description: "Reduction in operational costs through automation"
+              }
+            },
+            cta: {
+              title: "Ready to Transform Your Business Operations?",
+              subtitle: "Join leading Vietnamese enterprises already using our AI agent solutions",
+              contactBtn: "Contact Us",
+              scheduleBtn: "Schedule Demo"
+            }
+          },
+          footer: {
+            description: "Leading AI Agent solution provider for Vietnamese enterprises",
+            quickLinks: "Quick Links",
+            contact: "Contact",
+            location: "Ho Chi Minh City, Vietnam",
+            copyright: "© 2025 DigitizedBrains. All rights reserved."
+          }
+        },
+        vi: {
+          meta: {
+            title: "Giải pháp AI Agent - DigitizedBrains",
+            description: "Giải pháp AI Agent toàn diện cho doanh nghiệp Việt Nam"
+          },
+          nav: {
+            home: "Trang chủ",
+            about: "Giới thiệu",
+            digitalTransformation: "Chuyển đổi số",
+            aiAgent: "AI Agent",
+            blog: "Blog",
+            resources: "Tài nguyên",
+            contact: "Liên hệ"
+          },
+          language: {
+            current: "Ngôn ngữ:"
+          },
+          aiAgent: {
+            hero: {
+              title: "AI Agent Thông Minh",
+              subtitle: "Giải pháp tự động hóa bằng AI tiên tiến cho tối ưu hóa quy trình kinh doanh, phân tích dữ liệu và ra quyết định thông minh",
+              exploreBtn: "Khám Phá Giải Pháp",
+              demoBtn: "Xem Demo"
+            },
+            features: {
+              title: "Khả Năng AI Agent",
+              subtitle: "Giải pháp AI toàn diện được thiết kế đặc biệt cho doanh nghiệp Việt Nam",
+              learnMore: "Tìm hiểu thêm",
+              feature1: {
+                title: "Tự Động Hóa Quy Trình Kinh Doanh",
+                description: "Tối ưu hóa quy trình kinh doanh tự động, tạo tài liệu và quản lý luồng công việc bằng thuật toán AI tiên tiến được tùy chỉnh cho nhu cầu kinh doanh Việt Nam.",
+                learnMore: "Tìm hiểu thêm"
+              },
+              feature2: {
+                title: "Phân Tích Dữ Liệu",
+                description: "Phân tích dữ liệu thời gian thực và thông tin cá nhân hóa cho doanh nghiệp Việt Nam để tối ưu hóa hoạt động kinh doanh và trải nghiệm khách hàng.",
+                learnMore: "Tìm hiểu thêm"
+              },
+              feature3: {
+                title: "Trí Tuệ Kinh Doanh",
+                description: "Lập lịch thông minh, giám sát hiệu suất và quy trình kinh doanh tự động được tối ưu hóa cho hoạt động doanh nghiệp Việt Nam.",
+                learnMore: "Tìm hiểu thêm"
+              },
+              feature4: {
+                title: "Xử Lý Ngôn Ngữ",
+                description: "Khả năng xử lý ngôn ngữ Việt Nam tiên tiến, dịch thuật và bản địa hóa cho tài liệu kinh doanh, giao tiếp khách hàng và nội dung số.",
+                learnMore: "Tìm hiểu thêm"
+              },
+              feature5: {
+                title: "Tối Ưu Hóa Luồng Công Việc",
+                description: "Tự động hóa luồng công việc thông minh giảm thiểu tác vụ thủ công và cải thiện hiệu quả trong tất cả quy trình kinh doanh."
+              },
+              feature6: {
+                title: "Bảo Mật & Tuân Thủ",
+                description: "Bảo mật cấp doanh nghiệp với tuân thủ đầy đủ các quy định kinh doanh Việt Nam và tiêu chuẩn quốc tế."
+              },
+              aiGameCenter: {
+                title: "Trung Tâm Game AI",
+                description: "Trải nghiệm cuộc trò chuyện AI tương tác với tính năng AI Friends Talk. Xem Alex, Blake và Charlie tham gia thảo luận vui vẻ và tranh luận về các chủ đề khác nhau. Một minh chứng hoàn hảo cho giao tiếp AI tiên tiến và mô hình hóa tính cách.",
+                launchBtn: "🚀 Khởi Chạy AI Friends Talk",
+                learnMoreBtn: "Tìm hiểu thêm"
+              }
+            },
+            aiGameCenter: {
+              title: "Trung Tâm Game AI",
+              subtitle: "Khám phá tương lai của tương tác AI với bản demo AI Friends Talk của chúng tôi. Ba tính cách AI riêng biệt tham gia cuộc trò chuyện thời gian thực về các chủ đề thú vị và vui nhộn.",
+              alex: {
+                name: "Alex",
+                model: "Được hỗ trợ bởi Groq Llama3-70B",
+                personality: "Dí Dỏm & Châm Biếm - Nhanh nhẹn với chơi chữ và wordplay"
+              },
+              blake: {
+                name: "Blake",
+                model: "Được hỗ trợ bởi Gemini 2.0 Flash",
+                personality: "Lạc Quan & Nhiệt Tình - Thích chia sẻ sự thật và kiến thức"
+              },
+              charlie: {
+                name: "Charlie",
+                model: "Được hỗ trợ bởi Gemini 1.5 Flash",
+                personality: "Triết Lý & Suy Tư - Cung cấp những hiểu biết sâu sắc"
+              },
+              interface: {
+                title: "Giao Diện AI Friends Talk",
+                subtitle: "Nhấp Khởi Chạy để bắt đầu trải nghiệm cuộc trò chuyện tương tác",
+                readyTitle: "Sẵn Sàng Trải Nghiệm Cuộc Trò Chuyện AI?",
+                readyDescription: "Khởi chạy AI Friends Talk để xem ba tính cách AI tham gia cuộc trò chuyện thời gian thực.",
+                launchBtn: "🚀 Khởi Chạy AI Friends Talk"
+              },
+              features: {
+                multilingual: {
+                  title: "Hỗ Trợ Đa Ngôn Ngữ",
+                  description: "Cuộc trò chuyện bằng tiếng Anh, Việt Nam và Đức"
+                },
+                topics: {
+                  title: "Chủ Đề Vui Nhộn",
+                  description: "Các chủ đề tranh luận hấp dẫn và cuộc trò chuyện tùy chỉnh"
+                },
+                personalities: {
+                  title: "Tính Cách Độc Đáo",
+                  description: "Mỗi AI có những đặc điểm tính cách riêng biệt"
+                },
+                realtime: {
+                  title: "Trò Chuyện Thời Gian Thực",
+                  description: "Cuộc trò chuyện và tương tác trực tiếp"
+                }
+              }
+            },
+            demo: {
+              title: "AI Agent Hoạt Động",
+              subtitle: "Xem cách AI agent của chúng tôi biến đổi hoạt động kinh doanh trong các tình huống thực tế",
+              demo1: {
+                title: "Quản Lý Quy Trình Kinh Doanh Tự Động",
+                description: "Xem AI agent của chúng tôi tự động tạo báo cáo kinh doanh, tạo nội dung marketing và tối ưu hóa tài liệu giao tiếp cho doanh nghiệp Việt Nam.",
+                button: "Xem Demo"
+              },
+              demo2: {
+                title: "Trí Tuệ Kinh Doanh Thông Minh",
+                description: "Trải nghiệm cách AI của chúng tôi phân tích dữ liệu kinh doanh, giám sát các chỉ số hiệu suất và tự động cung cấp thông tin chi tiết để ra quyết định kinh doanh tối ưu.",
+                button: "Xem Demo",
+                biLink: "Khám Phá BI"
+              }
+            },
+            benefits: {
+              title: "Tại Sao Chọn AI Agent Của Chúng Tôi?",
+              subtitle: "Kết quả đã được chứng minh cho doanh nghiệp Việt Nam",
+              stat1: {
+                number: "75%",
+                title: "Giảm Thời Gian",
+                description: "Thời gian tiết kiệm trung bình trong quy trình và luồng công việc kinh doanh"
+              },
+              stat2: {
+                number: "90%",
+                title: "Tỷ Lệ Chính Xác",
+                description: "Tỷ lệ chính xác phân tích dữ liệu và trí tuệ kinh doanh"
+              },
+              stat3: {
+                number: "60%",
+                title: "Tiết Kiệm Chi Phí",
+                description: "Giảm chi phí vận hành thông qua tự động hóa"
+              }
+            },
+            cta: {
+              title: "Sẵn Sàng Biến Đổi Hoạt Động Kinh Doanh Của Bạn?",
+              subtitle: "Tham gia cùng các doanh nghiệp Việt Nam hàng đầu đã sử dụng giải pháp AI agent của chúng tôi",
+              contactBtn: "Liên Hệ",
+              scheduleBtn: "Đặt Lịch Demo"
+            }
+          },
+          footer: {
+            description: "Nhà cung cấp giải pháp AI Agent hàng đầu cho doanh nghiệp Việt Nam",
+            quickLinks: "Liên kết nhanh",
+            contact: "Liên hệ",
+            location: "Thành phố Hồ Chí Minh, Việt Nam",
+            copyright: "© 2025 DigitizedBrains. Bản quyền thuộc về DigitizedBrains."
+          }
+        },
+        de: {
+          meta: {
+            title: "KI-Agent-Lösungen - DigitizedBrains",
+            description: "Umfassende KI-Agent-Lösungen für vietnamesische Unternehmen"
+          },
+          nav: {
+            home: "Startseite",
+            about: "Über uns",
+            digitalTransformation: "Digitale Transformation",
+            aiAgent: "KI-Agent",
+            blog: "Blog",
+            resources: "Ressourcen",
+            contact: "Kontakt"
+          },
+          language: {
+            current: "Sprache:"
+          },
+          aiAgent: {
+            hero: {
+              title: "Intelligente KI-Agenten",
+              subtitle: "Revolutionäre KI-gestützte Automatisierungslösungen für Geschäftsprozessoptimierung, Datenanalyse und intelligente Entscheidungsfindung",
+              exploreBtn: "Lösungen Erkunden",
+              demoBtn: "Demo Ansehen"
+            },
+            features: {
+              title: "KI-Agent-Fähigkeiten",
+              subtitle: "Umfassende KI-Lösungen speziell für vietnamesische Unternehmen entwickelt",
+              learnMore: "Mehr erfahren",
+              feature1: {
+                title: "Geschäftsprozessautomatisierung",
+                description: "Automatisierte Geschäftsprozessoptimierung, Dokumentenerstellung und Workflow-Management mit fortschrittlichen KI-Algorithmen, die auf vietnamesische Geschäftsanforderungen zugeschnitten sind.",
+                learnMore: "Mehr erfahren"
+              },
+              feature2: {
+                title: "Datenanalyse",
+                description: "Echtzeitdatenanalyse und personalisierte Erkenntnisse für vietnamesische Unternehmen zur Optimierung von Geschäftsabläufen und Kundenerfahrungen.",
+                learnMore: "Mehr erfahren"
+              },
+              feature3: {
+                title: "Business Intelligence",
+                description: "Intelligente Terminplanung, Leistungsüberwachung und automatisierte Geschäftsworkflows, optimiert für vietnamesische Unternehmensoperationen.",
+                learnMore: "Mehr erfahren"
+              },
+              feature4: {
+                title: "Sprachverarbeitung",
+                description: "Fortschrittliche vietnamesische Sprachverarbeitung, Übersetzung und Lokalisierungsfähigkeiten für Geschäftsdokumente, Kundenkommunikation und digitale Inhalte.",
+                learnMore: "Mehr erfahren"
+              },
+              feature5: {
+                title: "Workflow-Optimierung",
+                description: "Intelligente Workflow-Automatisierung reduziert manuelle Aufgaben und verbessert die Effizienz in allen Geschäftsprozessen."
+              },
+              feature6: {
+                title: "Sicherheit & Compliance",
+                description: "Unternehmensklasse-Sicherheit mit vollständiger Einhaltung vietnamesischer Geschäftsvorschriften und internationaler Standards."
+              }
+            },
+            demo: {
+              title: "KI-Agent in Aktion",
+              subtitle: "Sehen Sie, wie unsere KI-Agenten Geschäftsabläufe in realen Szenarien transformieren",
+              demo1: {
+                title: "Automatisiertes Geschäftsprozessmanagement",
+                description: "Beobachten Sie, wie unser KI-Agent automatisch Geschäftsberichte erstellt, Marketinginhalte entwickelt und Kommunikationsmaterialien für vietnamesische Unternehmen optimiert.",
+                button: "Demo Ansehen"
+              },
+              demo2: {
+                title: "Intelligente Business Intelligence",
+                description: "Erleben Sie, wie unsere KI Geschäftsdaten analysiert, Leistungskennzahlen überwacht und automatisch Erkenntnisse für optimale Geschäftsentscheidungen liefert.",
+                button: "Demo Ansehen",
+                biLink: "BI Erkunden"
+              }
+            },
+            benefits: {
+              title: "Warum Unsere KI-Agenten Wählen?",
+              subtitle: "Bewiesene Ergebnisse für vietnamesische Unternehmen",
+              stat1: {
+                number: "75%",
+                title: "Zeitersparnis",
+                description: "Durchschnittlich eingesparte Zeit in Geschäftsprozessen und Workflows"
+              },
+              stat2: {
+                number: "90%",
+                title: "Genauigkeitsrate",
+                description: "Genauigkeitsrate der Datenanalyse und Business Intelligence"
+              },
+              stat3: {
+                number: "60%",
+                title: "Kosteneinsparungen",
+                description: "Reduzierung der Betriebskosten durch Automatisierung"
+              }
+            },
+            cta: {
+              title: "Bereit, Ihre Geschäftsabläufe Zu Transformieren?",
+              subtitle: "Schließen Sie sich führenden vietnamesischen Unternehmen an, die bereits unsere KI-Agent-Lösungen nutzen",
+              contactBtn: "Kontakt Aufnehmen",
+              scheduleBtn: "Demo Planen"
+            }
+          },
+          footer: {
+            description: "Führender Anbieter von KI-Agent-Lösungen für vietnamesische Unternehmen",
+            quickLinks: "Schnelle Links",
+            contact: "Kontakt",
+            location: "Ho-Chi-Minh-Stadt, Vietnam",
+            copyright: "© 2025 DigitizedBrains. Alle Rechte vorbehalten."
+          }
+        }
+      };
+
+      // Initialize multilingual with page-specific translations
+      if (typeof initializeMultilingual === 'function') {
+        initializeMultilingual(pageTranslations);
+      }
+
+      // Scroll reveal animation
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, observerOptions);
+
+      // Observe all scroll-reveal elements
+      document.querySelectorAll('.scroll-reveal').forEach(el => {
+        observer.observe(el);
+      });
+    });
+  </script>
+
+  <!-- Include JavaScript files -->
+  <script src="../../js/multilang.js"></script>
+  <script src="../../js/chatbot.js"></script>
+  
+  <!-- AI Game Integration Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get both launch buttons
+      const launchButton1 = document.getElementById('launch-ai-game');
+      const launchButton2 = document.getElementById('launch-ai-friends-talk');
+      
+      function launchAIGame() {
+        const gameContainer = document.getElementById('ai-game-container');
+        
+        // Show loading state
+        gameContainer.innerHTML = `
+          <div class="text-center py-20">
+            <div class="w-24 h-24 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
+              <span class="text-4xl">🤖</span>
+            </div>
+            <h4 class="text-2xl font-bold text-gray-800 mb-4">Launching AI Friends Talk...</h4>
+            <p class="text-gray-600 mb-8">Please wait while we load the AI conversation interface</p>
+            <div class="w-12 h-12 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
+          </div>
+        `;
+        
+        // Simulate loading and then show iframe
+        setTimeout(() => {
+          gameContainer.innerHTML = `
+            <div class="h-full">
+              <div class="bg-gradient-to-r from-purple-600 to-pink-600 p-4 text-white text-center rounded-t-lg">
+                <h4 class="text-xl font-bold">🎭 AI Friends Talk - Live Demo</h4>
+                <p class="text-sm opacity-90">Experience real-time AI conversations</p>
+              </div>
+              <div class="bg-white p-4 text-center">
+                <p class="text-gray-600 mb-4">
+                  <strong>Note:</strong> This is a demonstration interface. In a full implementation, this would connect to your AI_Talk.py server.
+                </p>
+                <div class="bg-gray-100 rounded-lg p-6 mb-4">
+                  <h5 class="font-bold text-gray-800 mb-2">🎭 Alex (Groq Llama3-70B)</h5>
+                  <p class="text-gray-600 text-sm mb-4">"Hey everyone! Ready for another round of philosophical debates about whether hot dogs are sandwiches? 🌭"</p>
+                  
+                  <h5 class="font-bold text-gray-800 mb-2">🌟 Blake (Gemini 2.0 Flash)</h5>
+                  <p class="text-gray-600 text-sm mb-4">"Absolutely! Did you know that the hot dog was invented in Frankfurt, Germany? Fun fact: it's actually named after the dachshund dog! 🐕"</p>
+                  
+                  <h5 class="font-bold text-gray-800 mb-2">🧠 Charlie (Gemini 1.5 Flash)</h5>
+                  <p class="text-gray-600 text-sm mb-4">"Interesting perspective, Blake. But I think the real question is: what defines the essence of a sandwich? Is it the bread structure or the intent behind the creation? 🤔"</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                  <button onclick="window.open('http://localhost:7860', '_blank')" class="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                    🚀 Launch Full Application
+                  </button>
+                  <button onclick="resetAIGame()" class="bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-700 transition-colors">
+                    🔄 Reset Demo
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+        }, 2000);
+      }
+      
+      
+      function resetAIGame() {
+        const gameContainer = document.getElementById('ai-game-container');
+        gameContainer.innerHTML = `
+          <div class="text-center py-20">
+            <div class="w-24 h-24 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="text-4xl">🎮</span>
+            </div>
+            <h4 class="text-2xl font-bold text-gray-800 mb-4">Ready to Experience AI Conversations?</h4>
+            <p class="text-gray-600 mb-8 max-w-md mx-auto">
+              Launch the AI Friends Talk to see three AI personalities engage in real-time conversations.
+            </p>
+            <button onclick="launchAIGame()" class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-purple-700 hover:to-pink-700 transition-all transform hover:scale-105 shadow-lg">
+              🚀 Launch AI Friends Talk
+            </button>
+          </div>
+        `;
+      }
+      
+      // Make functions global so they can be called from onclick
+      window.launchAIGame = launchAIGame;
+      window.resetAIGame = resetAIGame;
+      
+      // Add event listeners to launch buttons
+      if (launchButton1) {
+        launchButton1.addEventListener('click', launchAIGame);
+      }
+      if (launchButton2) {
+        launchButton2.addEventListener('click', launchAIGame);
+      }
+    });
+  </script>
+</body>
+</html>

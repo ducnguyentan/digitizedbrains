@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="vi" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="page-title">Hạ tầng Đám mây cho Khả năng Mở rộng Doanh nghiệp - DigitizedBrains</title>
+  <meta name="description" content="Hướng dẫn toàn diện về xây dựng hạ tầng đám mây có thể mở rộng cho doanh nghiệp Việt Nam trong kỷ nguyên chuyển đổi số" id="page-description">
+  <link href="../../css/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    .font-nunito { 
+      font-family: 'Nunito', sans-serif; 
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Navigation styles */
+    .nav-link {
+      color: #374151;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .nav-link:hover { color: #ed7354; background-color: #fef2f2; }
+    .nav-link.active { color: #ed7354; font-weight: 600; }
+
+    /* Language Switcher Styles */
+    .language-switcher {
+      position: relative;
+    }
+    
+    .language-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      min-width: 160px;
+      display: none;
+      z-index: 1000;
+    }
+    
+    .language-menu.show {
+      display: block;
+    }
+    
+    .language-option {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+    
+    .language-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    /* Mobile Language Switcher */
+    .language-switcher-mobile {
+      position: relative;
+    }
+    
+    .language-menu-mobile {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      display: none;
+      z-index: 1000;
+    }
+    
+    .language-menu-mobile.show {
+      display: block;
+    }
+    
+    .language-option-mobile {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option-mobile:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option-mobile.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+
+    /* Hero Section Styles */
+    .hero-section {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 120px 0;
+      color: white;
+    }
+
+
+    /* Logo with Orange to Pink Gradient */
+    .logo-gradient {
+      background: linear-gradient(135deg, #fb923c 0%, #ec4899 100%);
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Scroll Reveal Animation */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+    
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Feature Cards */
+    .feature-card {
+      transition: all 0.3s ease;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      border-color: #ed7354;
+    }
+
+    /* Button Styles */
+    .btn-primary {
+      background: linear-gradient(135deg, #ed7354, #dc2626);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+    }
+
+    /* Cloud Infrastructure specific styles */
+    .cloud-icon {
+      background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+    }
+
+    .security-icon {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    }
+
+    .scalability-icon {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    }
+
+    .cost-icon {
+      background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    }
+
+    .performance-icon {
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    }
+
+    .monitoring-icon {
+      background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+    }
+
+    /* Case Study Card */
+    .case-study-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      border: 2px solid #e5e7eb;
+      transition: all 0.3s ease;
+    }
+
+    .case-study-card:hover {
+      border-color: #ed7354;
+      transform: translateY(-5px);
+    }
+
+    .implementation-step {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      border-left: 4px solid #ed7354;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+  <!-- Header -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <div class="logo-gradient w-10 h-10 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-lg">DB</span>
+          </div>
+          <a href="../../index.html" class="text-2xl font-bold text-gray-800">DigitizedBrains</a>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="hidden md:flex space-x-4">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="index.html" class="nav-link active" data-translate="nav.blog">Blog</a>
+          <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+        </nav>
+
+        <!-- Language Switcher -->
+        <div class="hidden md:block">
+          <div class="language-switcher">
+            <button id="language-btn" class="flex items-center space-x-1 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+              <img id="current-flag" src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+              <span id="current-lang">VI</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="language-menu" class="language-menu">
+              <a href="#" onclick="changeLanguage('en')" class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                English
+              </a>
+              <a href="#" onclick="changeLanguage('vi')" class="language-option" data-lang="vi">
+                <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                Tiếng Việt
+              </a>
+              <a href="#" onclick="changeLanguage('de')" class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                Deutsch
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <nav class="flex flex-col space-y-2">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="index.html" class="nav-link active" data-translate="nav.blog">Blog</a>
+          <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+          
+          <!-- Mobile Language Switcher -->
+          <div class="pt-2 border-t border-gray-200">
+            <div class="language-switcher-mobile">
+              <button id="mobile-language-btn" class="flex items-center justify-between w-full px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                <span data-translate="language.current">Ngôn ngữ:</span>
+                <div class="flex items-center space-x-1">
+                  <img id="mobile-current-flag" src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                  <span id="mobile-current-lang">VI</span>
+                </div>
+              </button>
+              <div id="mobile-language-menu" class="language-menu-mobile">
+                <a href="#" onclick="changeLanguage('en')" class="language-option-mobile" data-lang="en">
+                  <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                  English
+                </a>
+                <a href="#" onclick="changeLanguage('vi')" class="language-option-mobile" data-lang="vi">
+                  <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                  Tiếng Việt
+                </a>
+                <a href="#" onclick="changeLanguage('de')" class="language-option-mobile" data-lang="de">
+                  <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                  Deutsch
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 scroll-reveal" data-translate="blog.cloud.hero.title">
+          Hạ tầng Đám mây cho Khả năng Mở rộng Doanh nghiệp
+        </h1>
+        <p class="text-xl opacity-90 mb-8 scroll-reveal" data-translate="blog.cloud.hero.subtitle">
+          Xây dựng nền tảng đám mây có thể mở rộng để hỗ trợ tăng trưởng doanh nghiệp bền vững trong kỷ nguyên số
+        </p>
+        <div class="flex items-center justify-center space-x-4 text-sm opacity-80 scroll-reveal">
+          <span data-translate="blog.publishedOn">Xuất bản ngày</span>
+          <span>25 Tháng 12, 2024</span>
+          <span>•</span>
+          <span data-translate="blog.readTime">10 phút đọc</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Article Content -->
+  <article class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Introduction -->
+        <section class="mb-12 scroll-reveal">
+          <h2 class="text-3xl font-bold mb-6" data-translate="blog.cloud.introduction.title">Tại sao Hạ tầng Đám mây quan trọng?</h2>
+          <p class="text-lg text-gray-600 leading-relaxed mb-6" data-translate="blog.cloud.introduction.content">
+            Trong bối cảnh kinh doanh hiện đại, khả năng mở rộng (scalability) không chỉ là một lợi thế cạnh tranh mà đã trở thành yếu tố sống còn. Doanh nghiệp Việt Nam đang đối mặt với những thách thức về tăng trưởng nhanh chóng, biến động thị trường, và nhu cầu đáp ứng khách hàng 24/7. Hạ tầng đám mây cung cấp giải pháp toàn diện để vượt qua những thách thức này.
+          </p>
+          <div class="bg-orange-50 border-l-4 border-orange-400 p-6 rounded-r-lg">
+            <p class="text-orange-800" data-translate="blog.cloud.introduction.highlight">
+              💡 <strong>Thống kê quan trọng:</strong> 94% doanh nghiệp đã trải nghiệm lợi ích bảo mật từ đám mây, và 91% cho biết đám mây giúp đáp ứng yêu cầu tuân thủ chính phủ dễ dàng hơn.
+            </p>
+          </div>
+        </section>
+
+        <!-- Key Benefits -->
+        <section class="mb-12 scroll-reveal">
+          <h2 class="text-3xl font-bold mb-8" data-translate="blog.cloud.benefits.title">6 Lợi ích Cốt lõi của Hạ tầng Đám mây</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <!-- Scalability -->
+            <div class="feature-card bg-white rounded-xl p-6">
+              <div class="w-12 h-12 scalability-icon rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold mb-3" data-translate="blog.cloud.benefits.scalability.title">Khả năng Mở rộng Linh hoạt</h3>
+              <p class="text-gray-600" data-translate="blog.cloud.benefits.scalability.content">
+                Tự động điều chỉnh tài nguyên theo nhu cầu thực tế, từ 10 người dùng đến 10 triệu người dùng mà không cần đầu tư hạ tầng trước.
+              </p>
+            </div>
+
+            <!-- Cost Efficiency -->
+            <div class="feature-card bg-white rounded-xl p-6">
+              <div class="w-12 h-12 cost-icon rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold mb-3" data-translate="blog.cloud.benefits.cost.title">Tối ưu Chi phí</h3>
+              <p class="text-gray-600" data-translate="blog.cloud.benefits.cost.content">
+                Mô hình trả phí theo sử dụng (pay-as-you-use) giúp tiết kiệm đến 30-50% chi phí IT so với hạ tầng truyền thống.
+              </p>
+            </div>
+
+            <!-- Security -->
+            <div class="feature-card bg-white rounded-xl p-6">
+              <div class="w-12 h-12 security-icon rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold mb-3" data-translate="blog.cloud.benefits.security.title">Bảo mật Nâng cao</h3>
+              <p class="text-gray-600" data-translate="blog.cloud.benefits.security.content">
+                Các nhà cung cấp đám mây đầu tư hàng tỷ USD vào bảo mật, cung cấp mức độ an toàn cao hơn hầu hết doanh nghiệp có thể tự xây dựng.
+              </p>
+            </div>
+
+            <!-- Performance -->
+            <div class="feature-card bg-white rounded-xl p-6">
+              <div class="w-12 h-12 performance-icon rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold mb-3" data-translate="blog.cloud.benefits.performance.title">Hiệu suất Cao</h3>
+              <p class="text-gray-600" data-translate="blog.cloud.benefits.performance.content">
+                Mạng lưới phân phối nội dung (CDN) toàn cầu đảm bảo tốc độ truy cập nhanh từ mọi nơi trên thế giới.
+              </p>
+            </div>
+
+            <!-- Reliability -->
+            <div class="feature-card bg-white rounded-xl p-6">
+              <div class="w-12 h-12 cloud-icon rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold mb-3" data-translate="blog.cloud.benefits.reliability.title">Độ tin cậy 99.9%</h3>
+              <p class="text-gray-600" data-translate="blog.cloud.benefits.reliability.content">
+                Hệ thống dự phòng tự động và backup đa vùng đảm bảo uptime cao và khắc phục thảm họa nhanh chóng.
+              </p>
+            </div>
+
+            <!-- Monitoring -->
+            <div class="feature-card bg-white rounded-xl p-6">
+              <div class="w-12 h-12 monitoring-icon rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold mb-3" data-translate="blog.cloud.benefits.monitoring.title">Giám sát Thời gian thực</h3>
+              <p class="text-gray-600" data-translate="blog.cloud.benefits.monitoring.content">
+                Dashboard trực quan cung cấp thông tin chi tiết về hiệu suất, sử dụng tài nguyên và cảnh báo sớm.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Implementation Guide -->
+        <section class="mb-12 scroll-reveal">
+          <h2 class="text-3xl font-bold mb-8" data-translate="blog.cloud.implementation.title">Lộ trình Triển khai Hạ tầng Đám mây</h2>
+          <div class="space-y-6">
+            <!-- Step 1 -->
+            <div class="implementation-step rounded-lg p-6">
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                <div class="flex-1">
+                  <h3 class="text-xl font-semibold mb-2" data-translate="blog.cloud.implementation.step1.title">Đánh giá Hiện trạng & Lập Kế hoạch</h3>
+                  <p class="text-gray-600 mb-3" data-translate="blog.cloud.implementation.step1.content">
+                    Phân tích hệ thống hiện tại, xác định ứng dụng phù hợp để di chuyển lên đám mây, và thiết lập mục tiêu rõ ràng.
+                  </p>
+                  <ul class="list-disc list-inside text-sm text-gray-500 space-y-1">
+                    <li data-translate="blog.cloud.implementation.step1.item1">Kiểm tra hạ tầng IT hiện tại</li>
+                    <li data-translate="blog.cloud.implementation.step1.item2">Đánh giá tính sẵn sàng của ứng dụng</li>
+                    <li data-translate="blog.cloud.implementation.step1.item3">Lập kế hoạch di chuyển từng giai đoạn</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="implementation-step rounded-lg p-6">
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                <div class="flex-1">
+                  <h3 class="text-xl font-semibold mb-2" data-translate="blog.cloud.implementation.step2.title">Chọn Nhà cung cấp & Kiến trúc</h3>
+                  <p class="text-gray-600 mb-3" data-translate="blog.cloud.implementation.step2.content">
+                    Lựa chọn nhà cung cấp đám mây phù hợp (AWS, Azure, Google Cloud) và thiết kế kiến trúc có thể mở rộng.
+                  </p>
+                  <ul class="list-disc list-inside text-sm text-gray-500 space-y-1">
+                    <li data-translate="blog.cloud.implementation.step2.item1">So sánh các nhà cung cấp đám mây</li>
+                    <li data-translate="blog.cloud.implementation.step2.item2">Thiết kế kiến trúc multi-tier</li>
+                    <li data-translate="blog.cloud.implementation.step2.item3">Lập kế hoạch bảo mật và tuân thủ</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="implementation-step rounded-lg p-6">
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                <div class="flex-1">
+                  <h3 class="text-xl font-semibold mb-2" data-translate="blog.cloud.implementation.step3.title">Triển khai Pilot & Testing</h3>
+                  <p class="text-gray-600 mb-3" data-translate="blog.cloud.implementation.step3.content">
+                    Triển khai thử nghiệm với một ứng dụng không quan trọng để kiểm tra hiệu suất và tối ưu hóa quy trình.
+                  </p>
+                  <ul class="list-disc list-inside text-sm text-gray-500 space-y-1">
+                    <li data-translate="blog.cloud.implementation.step3.item1">Chọn ứng dụng pilot phù hợp</li>
+                    <li data-translate="blog.cloud.implementation.step3.item2">Thực hiện testing toàn diện</li>
+                    <li data-translate="blog.cloud.implementation.step3.item3">Thu thập feedback và tối ưu hóa</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="implementation-step rounded-lg p-6">
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold text-sm">4</div>
+                <div class="flex-1">
+                  <h3 class="text-xl font-semibold mb-2" data-translate="blog.cloud.implementation.step4.title">Triển khai Toàn diện & Giám sát</h3>
+                  <p class="text-gray-600 mb-3" data-translate="blog.cloud.implementation.step4.content">
+                    Di chuyển các ứng dụng quan trọng và thiết lập hệ thống giám sát, cảnh báo tự động.
+                  </p>
+                  <ul class="list-disc list-inside text-sm text-gray-500 space-y-1">
+                    <li data-translate="blog.cloud.implementation.step4.item1">Di chuyển theo batch có kế hoạch</li>
+                    <li data-translate="blog.cloud.implementation.step4.item2">Thiết lập monitoring và alerting</li>
+                    <li data-translate="blog.cloud.implementation.step4.item3">Đào tạo team vận hành</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Case Study -->
+        <section class="mb-12 scroll-reveal">
+          <h2 class="text-3xl font-bold mb-8" data-translate="blog.cloud.casestudy.title">Case Study: Doanh nghiệp Việt Nam Thành công</h2>
+          <div class="case-study-card">
+            <div class="flex items-start space-x-4 mb-6">
+              <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                <span class="text-white font-bold text-xl">VN</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold" data-translate="blog.cloud.casestudy.company">Công ty Công nghệ ABC</h3>
+                <p class="text-gray-600" data-translate="blog.cloud.casestudy.industry">Fintech • 500+ nhân viên</p>
+              </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+              <div>
+                <h4 class="font-semibold mb-3" data-translate="blog.cloud.casestudy.challenge.title">Thách thức:</h4>
+                <ul class="space-y-2 text-gray-600">
+                  <li data-translate="blog.cloud.casestudy.challenge.item1">• Hệ thống on-premise không đáp ứng nhu cầu tăng trưởng</li>
+                  <li data-translate="blog.cloud.casestudy.challenge.item2">• Chi phí vận hành cao, khó mở rộng</li>
+                  <li data-translate="blog.cloud.casestudy.challenge.item3">• Downtime thường xuyên trong giờ cao điểm</li>
+                </ul>
+              </div>
+              
+              <div>
+                <h4 class="font-semibold mb-3" data-translate="blog.cloud.casestudy.solution.title">Giải pháp:</h4>
+                <ul class="space-y-2 text-gray-600">
+                  <li data-translate="blog.cloud.casestudy.solution.item1">• Di chuyển lên AWS với kiến trúc microservices</li>
+                  <li data-translate="blog.cloud.casestudy.solution.item2">• Sử dụng Auto Scaling và Load Balancer</li>
+                  <li data-translate="blog.cloud.casestudy.solution.item3">• Triển khai CI/CD pipeline tự động</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="mt-8 p-6 bg-green-50 rounded-lg">
+              <h4 class="font-semibold mb-4" data-translate="blog.cloud.casestudy.results.title">Kết quả sau 6 tháng:</h4>
+              <div class="grid md:grid-cols-3 gap-4 text-center">
+                <div>
+                  <div class="text-2xl font-bold text-green-600">300%</div>
+                  <div class="text-sm text-gray-600" data-translate="blog.cloud.casestudy.results.performance">Cải thiện hiệu suất</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold text-green-600">40%</div>
+                  <div class="text-sm text-gray-600" data-translate="blog.cloud.casestudy.results.cost">Giảm chi phí IT</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold text-green-600">99.9%</div>
+                  <div class="text-sm text-gray-600" data-translate="blog.cloud.casestudy.results.uptime">Uptime đạt được</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Best Practices -->
+        <section class="mb-12 scroll-reveal">
+          <h2 class="text-3xl font-bold mb-8" data-translate="blog.cloud.bestpractices.title">Best Practices cho Doanh nghiệp Việt Nam</h2>
+          <div class="bg-gradient-to-r from-orange-50 to-pink-50 rounded-xl p-8">
+            <div class="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 class="text-xl font-semibold mb-4" data-translate="blog.cloud.bestpractices.technical.title">Kỹ thuật:</h3>
+                <ul class="space-y-3">
+                  <li class="flex items-start space-x-3">
+                    <svg class="w-5 h-5 text-green-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span data-translate="blog.cloud.bestpractices.technical.item1">Áp dụng Infrastructure as Code (IaC)</span>
+                  </li>
+                  <li class="flex items-start space-x-3">
+                    <svg class="w-5 h-5 text-green-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span data-translate="blog.cloud.bestpractices.technical.item2">Sử dụng Container và Kubernetes</span>
+                  </li>
+                  <li class="flex items-start space-x-3">
+                    <svg class="w-5 h-5 text-green-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span data-translate="blog.cloud.bestpractices.technical.item3">Thiết lập monitoring toàn diện</span>
+                  </li>
+                  <li class="flex items-start space-x-3">
+                    <svg class="w-5 h-5 text-green-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span data-translate="blog.cloud.bestpractices.technical.item4">Backup tự động và disaster recovery</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div>
+                <h3 class="text-xl font-semibold mb-4" data-translate="blog.cloud.bestpractices.business.title">Kinh doanh:</h3>
+                <ul class="space-y-3">
+                  <li class="flex items-start space-x-3">
+                    <svg class="w-5 h-5 text-blue-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span data-translate="blog.cloud.bestpractices.business.item1">Đào tạo đội ngũ về cloud computing</span>
+                  </li>
+                  <li class="flex items-start space-x-3">
+                    <svg class="w-5 h-5 text-blue-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span data-translate="blog.cloud.bestpractices.business.item2">Xây dựng văn hóa DevOps</span>
+                  </li>
+                  <li class="flex items-start space-x-3">
+                    <svg class="w-5 h-5 text-blue-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span data-translate="blog.cloud.bestpractices.business.item3">Quản lý chi phí và tối ưu hóa liên tục</span>
+                  </li>
+                  <li class="flex items-start space-x-3">
+                    <svg class="w-5 h-5 text-blue-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span data-translate="blog.cloud.bestpractices.business.item4">Tuân thủ quy định pháp luật Việt Nam</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section class="mb-12 scroll-reveal">
+          <h2 class="text-3xl font-bold mb-6" data-translate="blog.cloud.conclusion.title">Kết luận: Tương lai Thuộc về Đám mây</h2>
+          <p class="text-lg text-gray-600 leading-relaxed mb-6" data-translate="blog.cloud.conclusion.content">
+            Hạ tầng đám mây không chỉ là xu hướng công nghệ mà là nền tảng không thể thiếu cho sự phát triển bền vững của doanh nghiệp Việt Nam. Với khả năng mở rộng linh hoạt, tối ưu chi phí và bảo mật cao, các doanh nghiệp áp dụng đám mây sẽ có lợi thế cạnh tranh vượt trội trong kỷ nguyên số.
+          </p>
+          <div class="bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-xl p-8">
+            <h3 class="text-2xl font-bold mb-4" data-translate="blog.cloud.conclusion.cta.title">Sẵn sàng chuyển đổi lên Đám mây?</h3>
+            <p class="mb-6" data-translate="blog.cloud.conclusion.cta.subtitle">
+              Liên hệ với DigitizedBrains để được tư vấn miễn phí về giải pháp hạ tầng đám mây phù hợp với doanh nghiệp của bạn.
+            </p>
+            <a href="../contact/index.html" class="bg-white text-orange-500 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all" data-translate="blog.cloud.conclusion.cta.button">
+              Liên hệ ngay
+            </a>
+          </div>
+        </section>
+
+        <!-- Related Articles -->
+        <section class="scroll-reveal">
+          <h2 class="text-3xl font-bold mb-8" data-translate="blog.relatedArticles">Bài viết liên quan</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <a href="AI-Driven Digital Transformation.html" class="feature-card bg-white rounded-xl p-6 block">
+              <h3 class="text-xl font-semibold mb-3" data-translate="blog.related.ai.title">Chuyển đổi số thông minh bằng AI</h3>
+              <p class="text-gray-600 mb-4" data-translate="blog.related.ai.excerpt">Khám phá cách AI đang thay đổi cách thức hoạt động của doanh nghiệp Việt Nam...</p>
+              <span class="text-orange-500 font-semibold" data-translate="blog.readMore">Đọc thêm →</span>
+            </a>
+            
+            <a href="Data-Driven Business Strategy.html" class="feature-card bg-white rounded-xl p-6 block">
+              <h3 class="text-xl font-semibold mb-3" data-translate="blog.related.data.title">Chiến lược Kinh doanh Dựa trên Dữ liệu</h3>
+              <p class="text-gray-600 mb-4" data-translate="blog.related.data.excerpt">Hướng dẫn xây dựng chiến lược kinh doanh hiệu quả từ phân tích dữ liệu...</p>
+              <span class="text-orange-500 font-semibold" data-translate="blog.readMore">Đọc thêm →</span>
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </article>
+
+  <!-- CTA Section -->
+  <section class="bg-gray-900 text-white py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal" data-translate="cta.title">Sẵn sàng Xây dựng Hạ tầng Đám mây Có thể Mở rộng?</h2>
+        <p class="text-xl opacity-90 mb-8 scroll-reveal" data-translate="cta.description">Liên hệ với chúng tôi để bắt đầu xây dựng hạ tầng đám mây hiện đại, có thể mở rộng và tối ưu chi phí cho doanh nghiệp của bạn</p>
+        <div class="flex flex-wrap justify-center gap-4 scroll-reveal">
+          <a href="index.html" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-gray-800 transition-all" data-translate="cta.backToBlog">Quay lại Blog</a>
+          <a href="../contact/index.html" class="btn-primary px-8 py-3 rounded-full font-semibold text-white" data-translate="cta.button">Bắt đầu Cloud Infrastructure</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="logo-gradient w-10 h-10 rounded-lg flex items-center justify-center">
+              <span class="text-white font-bold text-lg">DB</span>
+            </div>
+            <span class="text-2xl font-bold">DigitizedBrains</span>
+          </div>
+          <p class="text-gray-400" data-translate="footer.description">Giải pháp chuyển đổi số hàng đầu cho doanh nghiệp Việt Nam. Trao quyền cho doanh nghiệp với AI và công nghệ tiên tiến.</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.quickLinks">Liên kết nhanh</h4>
+          <div class="grid grid-cols-2 gap-2">
+            <ul class="space-y-2">
+              <li><a href="../../index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.home">Trang chủ</a></li>
+              <li><a href="../about/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.about">Giới thiệu</a></li>
+              <li><a href="../digital-transformation/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.digitalTransformation">Chuyển đổi số</a></li>
+              <li><a href="../ai-agents/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.aiAgent">AI Agent</a></li>
+            </ul>
+            <ul class="space-y-2">
+              <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.blog">Blog</a></li>
+              <li><a href="../resources/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.resources">Tài nguyên</a></li>
+              <li><a href="../contact/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.contact">Liên hệ</a></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.contact">Liên hệ</h4>
+          <ul class="space-y-2">
+            <li class="text-gray-400">info@digitizedbrains.com</li>
+            <li class="text-gray-400" data-translate="footer.location">Thành phố Hồ Chí Minh, Việt Nam</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-gray-400" data-translate="footer.copyright">© 2025 DigitizedBrains. Tất cả quyền được bảo lưu.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Page Functionality Script -->
+  <script>
+    // Scroll reveal animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all scroll-reveal elements
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+  <!-- Language Switcher Script -->
+  <script src="../../js/multilang.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Page-specific translations
+      const pageTranslations = {
+        en: {
+          meta: {
+            title: "Cloud Infrastructure for Business Scalability - DigitizedBrains",
+            description: "Comprehensive guide to building scalable cloud infrastructure for Vietnamese enterprises in the digital transformation era"
+          },
+          blog: {
+            backToBlog: "Back to Blog",
+            publishedOn: "Published on",
+            readTime: "min read",
+            readMore: "Read more →",
+            relatedArticles: "Related Articles",
+            cloud: {
+              hero: {
+                title: "Cloud Infrastructure for Business Scalability",
+                subtitle: "Building scalable cloud foundation to support sustainable business growth in the digital age"
+              },
+              introduction: {
+                title: "Why is Cloud Infrastructure Important?",
+                content: "In today's business landscape, scalability is not just a competitive advantage but a survival factor. Vietnamese enterprises face challenges of rapid growth, market volatility, and 24/7 customer demands. Cloud infrastructure provides comprehensive solutions to overcome these challenges.",
+                highlight: "💡 Important Statistics: 94% of businesses have experienced security benefits from the cloud, and 91% say the cloud makes it easier to meet government compliance requirements."
+              },
+              benefits: {
+                title: "6 Core Benefits of Cloud Infrastructure",
+                scalability: {
+                  title: "Flexible Scalability",
+                  content: "Automatically adjust resources based on actual demand, from 10 users to 10 million users without upfront infrastructure investment."
+                },
+                cost: {
+                  title: "Cost Optimization",
+                  content: "Pay-as-you-use model saves 30-50% of IT costs compared to traditional infrastructure."
+                },
+                security: {
+                  title: "Enhanced Security",
+                  content: "Cloud providers invest billions in security, providing higher security levels than most businesses can build themselves."
+                },
+                performance: {
+                  title: "High Performance",
+                  content: "Global Content Delivery Network (CDN) ensures fast access speed from anywhere in the world."
+                },
+                reliability: {
+                  title: "99.9% Reliability",
+                  content: "Automatic redundancy systems and multi-region backup ensure high uptime and rapid disaster recovery."
+                },
+                monitoring: {
+                  title: "Real-time Monitoring",
+                  content: "Visual dashboard provides detailed information on performance, resource usage, and early warnings."
+                }
+              },
+              implementation: {
+                title: "Cloud Infrastructure Implementation Roadmap",
+                step1: {
+                  title: "Current State Assessment & Planning",
+                  content: "Analyze current systems, identify suitable applications for cloud migration, and establish clear objectives.",
+                  item1: "Audit current IT infrastructure",
+                  item2: "Assess application cloud readiness",
+                  item3: "Create phased migration plan"
+                },
+                step2: {
+                  title: "Provider & Architecture Selection",
+                  content: "Choose suitable cloud provider (AWS, Azure, Google Cloud) and design scalable architecture.",
+                  item1: "Compare cloud providers",
+                  item2: "Design multi-tier architecture",
+                  item3: "Plan security and compliance"
+                },
+                step3: {
+                  title: "Pilot Implementation & Testing",
+                  content: "Deploy pilot with non-critical application to test performance and optimize processes.",
+                  item1: "Select appropriate pilot application",
+                  item2: "Conduct comprehensive testing",
+                  item3: "Collect feedback and optimize"
+                },
+                step4: {
+                  title: "Full Deployment & Monitoring",
+                  content: "Migrate critical applications and establish monitoring systems with automated alerts.",
+                  item1: "Migrate in planned batches",
+                  item2: "Set up monitoring and alerting",
+                  item3: "Train operations team"
+                }
+              },
+              casestudy: {
+                title: "Case Study: Successful Vietnamese Enterprise",
+                company: "ABC Technology Company",
+                industry: "Fintech • 500+ employees",
+                challenge: {
+                  title: "Challenges:",
+                  item1: "• On-premise system couldn't meet growth demands",
+                  item2: "• High operational costs, difficult to scale",
+                  item3: "• Frequent downtime during peak hours"
+                },
+                solution: {
+                  title: "Solutions:",
+                  item1: "• Migrated to AWS with microservices architecture",
+                  item2: "• Used Auto Scaling and Load Balancer",
+                  item3: "• Deployed automated CI/CD pipeline"
+                },
+                results: {
+                  title: "Results after 6 months:",
+                  performance: "Performance improvement",
+                  cost: "IT cost reduction",
+                  uptime: "Uptime achieved"
+                }
+              },
+              bestpractices: {
+                title: "Best Practices for Vietnamese Enterprises",
+                technical: {
+                  title: "Technical:",
+                  item1: "Apply Infrastructure as Code (IaC)",
+                  item2: "Use Containers and Kubernetes",
+                  item3: "Set up comprehensive monitoring",
+                  item4: "Automated backup and disaster recovery"
+                },
+                business: {
+                  title: "Business:",
+                  item1: "Train team on cloud computing",
+                  item2: "Build DevOps culture",
+                  item3: "Manage costs and continuous optimization",
+                  item4: "Comply with Vietnamese regulations"
+                }
+              },
+              conclusion: {
+                title: "Conclusion: The Future Belongs to the Cloud",
+                content: "Cloud infrastructure is not just a technology trend but an indispensable foundation for sustainable development of Vietnamese enterprises. With flexible scalability, cost optimization, and high security, businesses adopting cloud will have superior competitive advantages in the digital age.",
+                cta: {
+                  title: "Ready to migrate to the Cloud?",
+                  subtitle: "Contact DigitizedBrains for free consultation on cloud infrastructure solutions suitable for your business.",
+                  button: "Contact now"
+                }
+              }
+            },
+            related: {
+              ai: {
+                title: "AI-Driven Digital Transformation",
+                excerpt: "Discover how AI is changing the way Vietnamese businesses operate..."
+              },
+              data: {
+                title: "Data-Driven Business Strategy",
+                excerpt: "Guide to building effective business strategies from data analysis..."
+              }
+            }
+          },
+          cta: {
+            title: "Ready to Build Scalable Cloud Infrastructure?",
+            description: "Contact us to start building modern, scalable, and cost-optimized cloud infrastructure for your business",
+            backToBlog: "Back to Blog",
+            button: "Start Cloud Infrastructure"
+          }
+        },
+        vi: {
+          meta: {
+            title: "Hạ tầng Đám mây cho Khả năng Mở rộng Doanh nghiệp - DigitizedBrains",
+            description: "Hướng dẫn toàn diện về xây dựng hạ tầng đám mây có thể mở rộng cho doanh nghiệp Việt Nam trong kỷ nguyên chuyển đổi số"
+          },
+          blog: {
+            backToBlog: "Quay lại Blog",
+            publishedOn: "Xuất bản ngày",
+            readTime: "phút đọc",
+            readMore: "Đọc thêm →",
+            relatedArticles: "Bài viết liên quan",
+            cloud: {
+              hero: {
+                title: "Hạ tầng Đám mây cho Khả năng Mở rộng Doanh nghiệp",
+                subtitle: "Xây dựng nền tảng đám mây có thể mở rộng để hỗ trợ tăng trưởng doanh nghiệp bền vững trong kỷ nguyên số"
+              },
+              introduction: {
+                title: "Tại sao Hạ tầng Đám mây quan trọng?",
+                content: "Trong bối cảnh kinh doanh hiện đại, khả năng mở rộng (scalability) không chỉ là một lợi thế cạnh tranh mà đã trở thành yếu tố sống còn. Doanh nghiệp Việt Nam đang đối mặt với những thách thức về tăng trưởng nhanh chóng, biến động thị trường, và nhu cầu đáp ứng khách hàng 24/7. Hạ tầng đám mây cung cấp giải pháp toàn diện để vượt qua những thách thức này.",
+                highlight: "💡 Thống kê quan trọng: 94% doanh nghiệp đã trải nghiệm lợi ích bảo mật từ đám mây, và 91% cho biết đám mây giúp đáp ứng yêu cầu tuân thủ chính phủ dễ dàng hơn."
+              },
+              benefits: {
+                title: "6 Lợi ích Cốt lõi của Hạ tầng Đám mây",
+                scalability: {
+                  title: "Khả năng Mở rộng Linh hoạt",
+                  content: "Tự động điều chỉnh tài nguyên theo nhu cầu thực tế, từ 10 người dùng đến 10 triệu người dùng mà không cần đầu tư hạ tầng trước."
+                },
+                cost: {
+                  title: "Tối ưu Chi phí",
+                  content: "Mô hình trả phí theo sử dụng (pay-as-you-use) giúp tiết kiệm đến 30-50% chi phí IT so với hạ tầng truyền thống."
+                },
+                security: {
+                  title: "Bảo mật Nâng cao",
+                  content: "Các nhà cung cấp đám mây đầu tư hàng tỷ USD vào bảo mật, cung cấp mức độ an toàn cao hơn hầu hết doanh nghiệp có thể tự xây dựng."
+                },
+                performance: {
+                  title: "Hiệu suất Cao",
+                  content: "Mạng lưới phân phối nội dung (CDN) toàn cầu đảm bảo tốc độ truy cập nhanh từ mọi nơi trên thế giới."
+                },
+                reliability: {
+                  title: "Độ tin cậy 99.9%",
+                  content: "Hệ thống dự phòng tự động và backup đa vùng đảm bảo uptime cao và khắc phục thảm họa nhanh chóng."
+                },
+                monitoring: {
+                  title: "Giám sát Thời gian thực",
+                  content: "Dashboard trực quan cung cấp thông tin chi tiết về hiệu suất, sử dụng tài nguyên và cảnh báo sớm."
+                }
+              },
+              implementation: {
+                title: "Lộ trình Triển khai Hạ tầng Đám mây",
+                step1: {
+                  title: "Đánh giá Hiện trạng & Lập Kế hoạch",
+                  content: "Phân tích hệ thống hiện tại, xác định ứng dụng phù hợp để di chuyển lên đám mây, và thiết lập mục tiêu rõ ràng.",
+                  item1: "Kiểm tra hạ tầng IT hiện tại",
+                  item2: "Đánh giá tính sẵn sàng của ứng dụng",
+                  item3: "Lập kế hoạch di chuyển từng giai đoạn"
+                },
+                step2: {
+                  title: "Chọn Nhà cung cấp & Kiến trúc",
+                  content: "Lựa chọn nhà cung cấp đám mây phù hợp (AWS, Azure, Google Cloud) và thiết kế kiến trúc có thể mở rộng.",
+                  item1: "So sánh các nhà cung cấp đám mây",
+                  item2: "Thiết kế kiến trúc multi-tier",
+                  item3: "Lập kế hoạch bảo mật và tuân thủ"
+                },
+                step3: {
+                  title: "Triển khai Pilot & Testing",
+                  content: "Triển khai thử nghiệm với một ứng dụng không quan trọng để kiểm tra hiệu suất và tối ưu hóa quy trình.",
+                  item1: "Chọn ứng dụng pilot phù hợp",
+                  item2: "Thực hiện testing toàn diện",
+                  item3: "Thu thập feedback và tối ưu hóa"
+                },
+                step4: {
+                  title: "Triển khai Toàn diện & Giám sát",
+                  content: "Di chuyển các ứng dụng quan trọng và thiết lập hệ thống giám sát, cảnh báo tự động.",
+                  item1: "Di chuyển theo batch có kế hoạch",
+                  item2: "Thiết lập monitoring và alerting",
+                  item3: "Đào tạo team vận hành"
+                }
+              },
+              casestudy: {
+                title: "Case Study: Doanh nghiệp Việt Nam Thành công",
+                company: "Công ty Công nghệ ABC",
+                industry: "Fintech • 500+ nhân viên",
+                challenge: {
+                  title: "Thách thức:",
+                  item1: "• Hệ thống on-premise không đáp ứng nhu cầu tăng trưởng",
+                  item2: "• Chi phí vận hành cao, khó mở rộng",
+                  item3: "• Downtime thường xuyên trong giờ cao điểm"
+                },
+                solution: {
+                  title: "Giải pháp:",
+                  item1: "• Di chuyển lên AWS với kiến trúc microservices",
+                  item2: "• Sử dụng Auto Scaling và Load Balancer",
+                  item3: "• Triển khai CI/CD pipeline tự động"
+                },
+                results: {
+                  title: "Kết quả sau 6 tháng:",
+                  performance: "Cải thiện hiệu suất",
+                  cost: "Giảm chi phí IT",
+                  uptime: "Uptime đạt được"
+                }
+              },
+              bestpractices: {
+                title: "Best Practices cho Doanh nghiệp Việt Nam",
+                technical: {
+                  title: "Kỹ thuật:",
+                  item1: "Áp dụng Infrastructure as Code (IaC)",
+                  item2: "Sử dụng Container và Kubernetes",
+                  item3: "Thiết lập monitoring toàn diện",
+                  item4: "Backup tự động và disaster recovery"
+                },
+                business: {
+                  title: "Kinh doanh:",
+                  item1: "Đào tạo đội ngũ về cloud computing",
+                  item2: "Xây dựng văn hóa DevOps",
+                  item3: "Quản lý chi phí và tối ưu hóa liên tục",
+                  item4: "Tuân thủ quy định pháp luật Việt Nam"
+                }
+              },
+              conclusion: {
+                title: "Kết luận: Tương lai Thuộc về Đám mây",
+                content: "Hạ tầng đám mây không chỉ là xu hướng công nghệ mà là nền tảng không thể thiếu cho sự phát triển bền vững của doanh nghiệp Việt Nam. Với khả năng mở rộng linh hoạt, tối ưu chi phí và bảo mật cao, các doanh nghiệp áp dụng đám mây sẽ có lợi thế cạnh tranh vượt trội trong kỷ nguyên số.",
+                cta: {
+                  title: "Sẵn sàng chuyển đổi lên Đám mây?",
+                  subtitle: "Liên hệ với DigitizedBrains để được tư vấn miễn phí về giải pháp hạ tầng đám mây phù hợp với doanh nghiệp của bạn.",
+                  button: "Liên hệ ngay"
+                }
+              }
+            },
+            related: {
+              ai: {
+                title: "Chuyển đổi số thông minh bằng AI",
+                excerpt: "Khám phá cách AI đang thay đổi cách thức hoạt động của doanh nghiệp Việt Nam..."
+              },
+              data: {
+                title: "Chiến lược Kinh doanh Dựa trên Dữ liệu",
+                excerpt: "Hướng dẫn xây dựng chiến lược kinh doanh hiệu quả từ phân tích dữ liệu..."
+              }
+            }
+          },
+          cta: {
+            title: "Sẵn sàng Xây dựng Hạ tầng Đám mây Có thể Mở rộng?",
+            description: "Liên hệ với chúng tôi để bắt đầu xây dựng hạ tầng đám mây hiện đại, có thể mở rộng và tối ưu chi phí cho doanh nghiệp của bạn",
+            backToBlog: "Quay lại Blog",
+            button: "Bắt đầu Cloud Infrastructure"
+          }
+        },
+        de: {
+          meta: {
+            title: "Cloud-Infrastruktur für Unternehmensskalierbarkeit - DigitizedBrains",
+            description: "Umfassender Leitfaden zum Aufbau skalierbarer Cloud-Infrastruktur für vietnamesische Unternehmen im Zeitalter der digitalen Transformation"
+          },
+          blog: {
+            backToBlog: "Zurück zum Blog",
+            publishedOn: "Veröffentlicht am",
+            readTime: "Min. Lesezeit",
+            readMore: "Mehr lesen →",
+            relatedArticles: "Verwandte Artikel",
+            cloud: {
+              hero: {
+                title: "Cloud-Infrastruktur für Unternehmensskalierbarkeit",
+                subtitle: "Aufbau einer skalierbaren Cloud-Grundlage zur Unterstützung nachhaltigen Unternehmenswachstums im digitalen Zeitalter"
+              },
+              introduction: {
+                title: "Warum ist Cloud-Infrastruktur wichtig?",
+                content: "In der heutigen Geschäftslandschaft ist Skalierbarkeit nicht nur ein Wettbewerbsvorteil, sondern ein Überlebensfaktor. Vietnamesische Unternehmen stehen vor Herausforderungen des schnellen Wachstums, der Marktvolatilität und der 24/7-Kundenanforderungen. Cloud-Infrastruktur bietet umfassende Lösungen zur Überwindung dieser Herausforderungen.",
+                highlight: "💡 Wichtige Statistiken: 94% der Unternehmen haben Sicherheitsvorteile aus der Cloud erfahren, und 91% sagen, dass die Cloud die Erfüllung staatlicher Compliance-Anforderungen erleichtert."
+              },
+              benefits: {
+                title: "6 Kernvorteile der Cloud-Infrastruktur",
+                scalability: {
+                  title: "Flexible Skalierbarkeit",
+                  content: "Automatische Anpassung der Ressourcen basierend auf tatsächlichem Bedarf, von 10 Benutzern bis zu 10 Millionen Benutzern ohne Vorabinvestition in die Infrastruktur."
+                },
+                cost: {
+                  title: "Kostenoptimierung",
+                  content: "Pay-as-you-use-Modell spart 30-50% der IT-Kosten im Vergleich zu traditioneller Infrastruktur."
+                },
+                security: {
+                  title: "Erweiterte Sicherheit",
+                  content: "Cloud-Anbieter investieren Milliarden in Sicherheit und bieten höhere Sicherheitsniveaus als die meisten Unternehmen selbst aufbauen können."
+                },
+                performance: {
+                  title: "Hohe Leistung",
+                  content: "Globales Content Delivery Network (CDN) gewährleistet schnelle Zugriffsgeschwindigkeit von überall auf der Welt."
+                },
+                reliability: {
+                  title: "99,9% Zuverlässigkeit",
+                  content: "Automatische Redundanzsysteme und Multi-Region-Backup gewährleisten hohe Verfügbarkeit und schnelle Katastrophenwiederherstellung."
+                },
+                monitoring: {
+                  title: "Echtzeit-Überwachung",
+                  content: "Visuelles Dashboard bietet detaillierte Informationen über Leistung, Ressourcennutzung und Frühwarnungen."
+                }
+              },
+              implementation: {
+                title: "Cloud-Infrastruktur-Implementierungs-Roadmap",
+                step1: {
+                  title: "Ist-Zustand-Bewertung & Planung",
+                  content: "Analyse aktueller Systeme, Identifizierung geeigneter Anwendungen für Cloud-Migration und Festlegung klarer Ziele.",
+                  item1: "Aktuelle IT-Infrastruktur prüfen",
+                  item2: "Anwendungs-Cloud-Bereitschaft bewerten",
+                  item3: "Phasenweisen Migrationsplan erstellen"
+                },
+                step2: {
+                  title: "Anbieter- & Architektur-Auswahl",
+                  content: "Geeigneten Cloud-Anbieter wählen (AWS, Azure, Google Cloud) und skalierbare Architektur entwerfen.",
+                  item1: "Cloud-Anbieter vergleichen",
+                  item2: "Multi-Tier-Architektur entwerfen",
+                  item3: "Sicherheit und Compliance planen"
+                },
+                step3: {
+                  title: "Pilot-Implementierung & Testing",
+                  content: "Pilot mit nicht-kritischer Anwendung bereitstellen, um Leistung zu testen und Prozesse zu optimieren.",
+                  item1: "Geeignete Pilot-Anwendung auswählen",
+                  item2: "Umfassendes Testing durchführen",
+                  item3: "Feedback sammeln und optimieren"
+                },
+                step4: {
+                  title: "Vollständige Bereitstellung & Überwachung",
+                  content: "Kritische Anwendungen migrieren und Überwachungssysteme mit automatisierten Warnungen einrichten.",
+                  item1: "In geplanten Batches migrieren",
+                  item2: "Monitoring und Alerting einrichten",
+                  item3: "Betriebsteam schulen"
+                }
+              },
+              casestudy: {
+                title: "Fallstudie: Erfolgreiches vietnamesisches Unternehmen",
+                company: "ABC Technology Company",
+                industry: "Fintech • 500+ Mitarbeiter",
+                challenge: {
+                  title: "Herausforderungen:",
+                  item1: "• On-Premise-System konnte Wachstumsanforderungen nicht erfüllen",
+                  item2: "• Hohe Betriebskosten, schwer skalierbar",
+                  item3: "• Häufige Ausfälle zu Spitzenzeiten"
+                },
+                solution: {
+                  title: "Lösungen:",
+                  item1: "• Migration zu AWS mit Microservices-Architektur",
+                  item2: "• Verwendung von Auto Scaling und Load Balancer",
+                  item3: "• Bereitstellung automatisierter CI/CD-Pipeline"
+                },
+                results: {
+                  title: "Ergebnisse nach 6 Monaten:",
+                  performance: "Leistungsverbesserung",
+                  cost: "IT-Kostensenkung",
+                  uptime: "Erreichte Verfügbarkeit"
+                }
+              },
+              bestpractices: {
+                title: "Best Practices für vietnamesische Unternehmen",
+                technical: {
+                  title: "Technisch:",
+                  item1: "Infrastructure as Code (IaC) anwenden",
+                  item2: "Container und Kubernetes verwenden",
+                  item3: "Umfassendes Monitoring einrichten",
+                  item4: "Automatisiertes Backup und Disaster Recovery"
+                },
+                business: {
+                  title: "Geschäftlich:",
+                  item1: "Team in Cloud Computing schulen",
+                  item2: "DevOps-Kultur aufbauen",
+                  item3: "Kosten verwalten und kontinuierlich optimieren",
+                  item4: "Vietnamesische Vorschriften einhalten"
+                }
+              },
+              conclusion: {
+                title: "Fazit: Die Zukunft gehört der Cloud",
+                content: "Cloud-Infrastruktur ist nicht nur ein Technologietrend, sondern eine unverzichtbare Grundlage für die nachhaltige Entwicklung vietnamesischer Unternehmen. Mit flexibler Skalierbarkeit, Kostenoptimierung und hoher Sicherheit haben Unternehmen, die Cloud einsetzen, überlegene Wettbewerbsvorteile im digitalen Zeitalter.",
+                cta: {
+                  title: "Bereit für die Migration in die Cloud?",
+                  subtitle: "Kontaktieren Sie DigitizedBrains für eine kostenlose Beratung zu Cloud-Infrastrukturlösungen für Ihr Unternehmen.",
+                  button: "Jetzt kontaktieren"
+                }
+              }
+            },
+            related: {
+              ai: {
+                title: "KI-gesteuerte digitale Transformation",
+                excerpt: "Entdecken Sie, wie KI die Arbeitsweise vietnamesischer Unternehmen verändert..."
+              },
+              data: {
+                title: "Datengesteuerte Geschäftsstrategie",
+                excerpt: "Anleitung zum Aufbau effektiver Geschäftsstrategien aus Datenanalyse..."
+              }
+            }
+          },
+          cta: {
+            title: "Bereit für den Aufbau skalierbarer Cloud-Infrastruktur?",
+            description: "Kontaktieren Sie uns, um mit dem Aufbau moderner, skalierbarer und kostenoptimierter Cloud-Infrastruktur für Ihr Unternehmen zu beginnen",
+            backToBlog: "Zurück zum Blog",
+            button: "Cloud-Infrastruktur starten"
+          }
+        }
+      };
+
+      // Initialize multilingual with page-specific translations
+      if (typeof initializeMultilingual === 'function') {
+        initializeMultilingual(pageTranslations);
+      }
+    });
+  </script>
+
+  <!-- Chatbot Integration -->
+  <script src="../../js/chatbot.js"></script>
+</body>
+</html>

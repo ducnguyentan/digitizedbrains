@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="vi" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="page-title">Công nghệ Tương tác Doanh nghiệp - DigitizedBrains</title>
+  <meta name="description" content="Khám phá AR, VR và công nghệ tương tác đang biến đổi doanh nghiệp Việt Nam. Học chiến lược triển khai cho lợi thế cạnh tranh" id="page-description">
+  <link href="../../css/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    .font-nunito { 
+      font-family: 'Nunito', sans-serif; 
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Navigation styles */
+    .nav-link {
+      color: #374151;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .nav-link:hover { color: #ed7354; background-color: #fef2f2; }
+    .nav-link.active { color: #ed7354; font-weight: 600; }
+
+    /* Language Switcher Styles */
+    .language-switcher {
+      position: relative;
+    }
+    
+    .language-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      min-width: 160px;
+      display: none;
+      z-index: 1000;
+    }
+    
+    .language-menu.show {
+      display: block;
+    }
+    
+    .language-option {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+    
+    .language-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    /* Hero Section Styles */
+    .hero-section {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1665686376173-ada7a0031a85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 120px 0;
+      color: white;
+    }
+
+    /* Logo with Orange to Pink Gradient */
+    .logo-gradient {
+      background: linear-gradient(135deg, #fb923c 0%, #ec4899 100%);
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Scroll Reveal Animation */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+    
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Feature Cards */
+    .feature-card {
+      transition: all 0.3s ease;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      border-color: #ed7354;
+    }
+
+    /* Button Styles */
+    .btn-primary {
+      background: linear-gradient(135deg, #ed7354, #dc2626);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+    }
+
+    /* Stats Section */
+    .stats-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    /* AI Agent Connection Section */
+    .ai-connection-section {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      border: 2px solid #ed7354;
+      border-radius: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ai-connection-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #fb923c, #ec4899);
+    }
+
+    /* Technology Cards */
+    .technology-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid #e5e7eb;
+    }
+
+    .technology-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      border-color: #ed7354;
+    }
+
+    .technology-icon {
+      width: 4rem;
+      height: 4rem;
+      background: linear-gradient(135deg, #ed7354 0%, #f97316 100%);
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Back to Blog Link */
+    .back-to-blog {
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .back-to-blog:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Case Study Cards */
+    .case-study-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid #e5e7eb;
+    }
+
+    .case-study-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      border-color: #ed7354;
+    }
+
+    .case-study-icon {
+      width: 4rem;
+      height: 4rem;
+      background: linear-gradient(135deg, #ed7354 0%, #f97316 100%);
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Implementation Steps */
+    .implementation-step {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-left: 4px solid #ed7354;
+      transition: all 0.3s ease;
+    }
+
+    .implementation-step:hover {
+      transform: translateX(5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .step-number {
+      background: linear-gradient(135deg, #ed7354 0%, #f97316 100%);
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+  <!-- Header -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo with Orange to Pink Gradient -->
+        <div class="flex items-center space-x-2">
+          <div class="logo-gradient">
+            <span class="text-white font-bold text-lg">DB</span>
+          </div>
+          <a href="../../index.html" class="text-2xl font-bold text-gray-800">Digitized Brains</a>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="hidden md:flex space-x-4">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="index.html" class="nav-link active" data-translate="nav.blog">Blog</a>
+          <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+        </nav>
+
+        <!-- Language Switcher -->
+        <div class="hidden md:block">
+          <div class="language-switcher">
+            <button id="language-btn" class="flex items-center space-x-1 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+              <img id="current-flag" src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+              <span id="current-lang">VI</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="language-menu" class="language-menu">
+              <a href="#" onclick="changeLanguage('en')" class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                English
+              </a>
+              <a href="#" onclick="changeLanguage('vi')" class="language-option" data-lang="vi">
+                <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                Tiếng Việt
+              </a>
+              <a href="#" onclick="changeLanguage('de')" class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                Deutsch
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <nav class="flex flex-col space-y-2">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="index.html" class="nav-link active" data-translate="nav.blog">Blog</a>
+          <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+        </nav>
+        
+        <!-- Mobile Language Switcher -->
+        <div class="pt-4 border-t border-gray-300 mt-4">
+          <div class="language-switcher">
+            <button id="mobile-language-btn" class="flex items-center justify-between w-full px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+              <span data-translate="language.current">Ngôn ngữ:</span>
+              <div class="flex items-center space-x-1">
+                <img id="mobile-current-flag" src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                <span id="mobile-current-lang">VI</span>
+              </div>
+            </button>
+            <div id="mobile-language-menu" class="language-menu mt-2">
+              <a href="#" onclick="changeLanguage('en')" class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                English
+              </a>
+              <a href="#" onclick="changeLanguage('vi')" class="language-option" data-lang="vi">
+                <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                Tiếng Việt
+              </a>
+              <a href="#" onclick="changeLanguage('de')" class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                Deutsch
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 scroll-reveal" data-translate="hero.title">Công nghệ Tương tác Doanh nghiệp</h1>
+        <p class="text-xl opacity-90 mb-8 scroll-reveal" data-translate="hero.subtitle">Khám phá AR, VR và công nghệ tương tác đang biến đổi doanh nghiệp Việt Nam, tạo ra trải nghiệm khách hàng chưa từng có và hiệu quả vận hành vượt trội</p>
+        <div class="flex flex-wrap justify-center gap-4 scroll-reveal">
+          <a href="#technologies" class="btn-primary px-8 py-3 rounded-full font-semibold text-white" data-translate="hero.cta">Khám phá Công nghệ</a>
+          <a href="#case-studies" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-gray-800 transition-all" data-translate="hero.cases">Xem Case Studies</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section py-16 text-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4 scroll-reveal" data-translate="situation.title">Thực trạng Công nghệ Tương tác Việt Nam 2024-2025</h2>
+        <p class="text-xl opacity-90 scroll-reveal" data-translate="situation.subtitle">Doanh nghiệp Việt Nam đang gia tăng đầu tư vào AR/VR để tạo lợi thế cạnh tranh trong thời đại số</p>
+      </div>
+      
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center scroll-reveal">
+          <div class="text-4xl font-bold mb-2" data-translate="stats.market.number">₫2.8T</div>
+          <p class="opacity-90" data-translate="stats.market.description">giá trị thị trường AR/VR Việt Nam dự kiến đến 2025</p>
+        </div>
+        <div class="text-center scroll-reveal">
+          <div class="text-4xl font-bold mb-2" data-translate="stats.adoption.number">67%</div>
+          <p class="opacity-90" data-translate="stats.adoption.description">người tiêu dùng Việt Nam quan tâm đến mua sắm AR</p>
+        </div>
+        <div class="text-center scroll-reveal">
+          <div class="text-4xl font-bold mb-2" data-translate="stats.training.number">180%</div>
+          <p class="opacity-90" data-translate="stats.training.description">tăng trưởng áp dụng đào tạo VR (2023-2024)</p>
+        </div>
+        <div class="text-center scroll-reveal">
+          <div class="text-4xl font-bold mb-2" data-translate="stats.investment.number">450%</div>
+          <p class="opacity-90" data-translate="stats.investment.description">tăng đầu tư công nghệ tương tác của doanh nghiệp</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section id="technologies" class="py-20">
+    <div class="container mx-auto px-4">
+      <!-- Overview Section -->
+      <div class="max-w-4xl mx-auto mb-16 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal" data-translate="content.overview.title">5 Công nghệ Tương tác Cốt lõi</h2>
+        <p class="text-xl text-gray-600 scroll-reveal" data-translate="content.overview.description">
+          Các công nghệ tương tác hàng đầu đang thay đổi cách doanh nghiệp Việt Nam hoạt động và tương tác với khách hàng
+        </p>
+      </div>
+
+      <!-- Core Technologies Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <!-- AR Technology -->
+        <div class="technology-card scroll-reveal">
+          <div class="technology-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.technologies.ar.title">Thực tế Tăng cường (AR)</h3>
+          <p class="text-gray-600 mb-4" data-translate="content.technologies.ar.description">Tăng cường môi trường thực tế với lớp phủ kỹ thuật số cho trực quan hóa sản phẩm, bảo trì và tương tác khách hàng</p>
+          <ul class="text-sm text-gray-500 space-y-1">
+            <li data-translate="content.technologies.ar.use1">• Trực quan hóa sản phẩm trong bán lẻ</li>
+            <li data-translate="content.technologies.ar.use2">• Hỗ trợ bảo trì công nghiệp</li>
+            <li data-translate="content.technologies.ar.use3">• Chiến dịch marketing tương tác</li>
+          </ul>
+        </div>
+
+        <!-- VR Technology -->
+        <div class="technology-card scroll-reveal">
+          <div class="technology-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.technologies.vr.title">Thực tế Ảo (VR)</h3>
+          <p class="text-gray-600 mb-4" data-translate="content.technologies.vr.description">Tạo môi trường ảo hoàn toàn cho đào tạo, mô phỏng và trải nghiệm khách hàng sâu sắc</p>
+          <ul class="text-sm text-gray-500 space-y-1">
+            <li data-translate="content.technologies.vr.use1">• Đào tạo nhân viên an toàn</li>
+            <li data-translate="content.technologies.vr.use2">• Mô phỏng quy trình sản xuất</li>
+            <li data-translate="content.technologies.vr.use3">• Showroom và demo sản phẩm</li>
+          </ul>
+        </div>
+
+        <!-- Mixed Reality -->
+        <div class="technology-card scroll-reveal">
+          <div class="technology-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.technologies.mr.title">Thực tế Hỗn hợp (MR)</h3>
+          <p class="text-gray-600 mb-4" data-translate="content.technologies.mr.description">Kết hợp thế giới thực và ảo để tạo ra trải nghiệm tương tác phức hợp</p>
+          <ul class="text-sm text-gray-500 space-y-1">
+            <li data-translate="content.technologies.mr.use1">• Thiết kế sản phẩm collaborative</li>
+            <li data-translate="content.technologies.mr.use2">• Hội nghị từ xa tương tác</li>
+            <li data-translate="content.technologies.mr.use3">• Bảo trì thiết bị phức tạp</li>
+          </ul>
+        </div>
+
+        <!-- 360 Content -->
+        <div class="technology-card scroll-reveal">
+          <div class="technology-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 01018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.technologies.360.title">Nội dung 360°</h3>
+          <p class="text-gray-600 mb-4" data-translate="content.technologies.360.description">Video và hình ảnh 360° cho marketing, đào tạo và giới thiệu doanh nghiệp</p>
+          <ul class="text-sm text-gray-500 space-y-1">
+            <li data-translate="content.technologies.360.use1">• Tour ảo cơ sở vật chất</li>
+            <li data-translate="content.technologies.360.use2">• Marketing bất động sản</li>
+            <li data-translate="content.technologies.360.use3">• Trải nghiệm du lịch ảo</li>
+          </ul>
+        </div>
+
+        <!-- Holographic Tech -->
+        <div class="technology-card scroll-reveal">
+          <div class="technology-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.technologies.hologram.title">Công nghệ Hologram</h3>
+          <p class="text-gray-600 mb-4" data-translate="content.technologies.hologram.description">Hiển thị hologram 3D cho presentation, giải trí và tương tác khách hàng</p>
+          <ul class="text-sm text-gray-500 space-y-1">
+            <li data-translate="content.technologies.hologram.use1">• Presentation sản phẩm ấn tượng</li>
+            <li data-translate="content.technologies.hologram.use2">• Sự kiện và triển lãm</li>
+            <li data-translate="content.technologies.hologram.use3">• Tương tác khách hàng VIP</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Implementation Steps */
+      <div class="max-w-4xl mx-auto mb-16">
+        <h2 class="text-3xl font-bold mb-8 text-center scroll-reveal" data-translate="content.implementation.title">5 Bước Triển khai Công nghệ Tương tác</h2>
+        <div class="space-y-8">
+          <!-- Step 1 -->
+          <div class="implementation-step scroll-reveal">
+            <div class="step-number">1</div>
+            <h3 class="text-xl font-semibold mb-3" data-translate="content.implementation.step1.title">Đánh giá Nhu cầu và Mục tiêu</h3>
+            <p class="text-gray-600" data-translate="content.implementation.step1.description">Xác định mục tiêu kinh doanh cụ thể và đánh giá khả năng ứng dụng công nghệ tương tác trong tổ chức</p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="implementation-step scroll-reveal">
+            <div class="step-number">2</div>
+            <h3 class="text-xl font-semibold mb-3" data-translate="content.implementation.step2.title">Lựa chọn Công nghệ Phù hợp</h3>
+            <p class="text-gray-600" data-translate="content.implementation.step2.description">Chọn lựa công nghệ AR, VR, MR phù hợp với ngành nghề và ngân sách của doanh nghiệp</p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="implementation-step scroll-reveal">
+            <div class="step-number">3</div>
+            <h3 class="text-xl font-semibold mb-3" data-translate="content.implementation.step3.title">Phát triển Nội dung và Ứng dụng</h3>
+            <p class="text-gray-600" data-translate="content.implementation.step3.description">Tạo nội dung tương tác chất lượng cao và phát triển ứng dụng đáp ứng nhu cầu cụ thể</p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="implementation-step scroll-reveal">
+            <div class="step-number">4</div>
+            <h3 class="text-xl font-semibold mb-3" data-translate="content.implementation.step4.title">Đào tạo và Triển khai</h3>
+            <p class="text-gray-600" data-translate="content.implementation.step4.description">Đào tạo nhân viên sử dụng công nghệ và triển khai theo từng giai đoạn</p>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="implementation-step scroll-reveal">
+            <div class="step-number">5</div>
+            <h3 class="text-xl font-semibold mb-3" data-translate="content.implementation.step5.title">Đo lường và Tối ưu hóa</h3>
+            <p class="text-gray-600" data-translate="content.implementation.step5.description">Theo dõi hiệu quả, thu thập phản hồi và liên tục cải tiến trải nghiệm</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Benefits Section -->
+      <div class="max-w-4xl mx-auto mb-16">
+        <h2 class="text-3xl font-bold mb-8 text-center scroll-reveal" data-translate="content.benefits.title">Lợi ích của Công nghệ Tương tác</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Enhanced Customer Experience -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.experience.title">Tăng cường Trải nghiệm Khách hàng</h3>
+              <p class="text-gray-600" data-translate="content.benefits.experience.description">Tạo trải nghiệm tương tác độc đáo, ấn tượng và gắn kết khách hàng mạnh mẽ</p>
+            </div>
+          </div>
+
+          <!-- Improved Training -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.training.title">Cải thiện Đào tạo Nhân viên</h3>
+              <p class="text-gray-600" data-translate="content.benefits.training.description">Đào tạo thực hành an toàn, hiệu quả và tiết kiệm chi phí với mô phỏng VR</p>
+            </div>
+          </div>
+
+          <!-- Enhanced Visualization -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.visualization.title">Trực quan hóa Sản phẩm Vượt trội</h3>
+              <p class="text-gray-600" data-translate="content.benefits.visualization.description">Cho phép khách hàng "trải nghiệm" sản phẩm trước khi mua</p>
+            </div>
+          </div>
+
+          <!-- Competitive Advantage -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.competitive.title">Lợi thế Cạnh tranh Độc đáo</h3>
+              <p class="text-gray-600" data-translate="content.benefits.competitive.description">Tạo điểm khác biệt rõ rệt so với đối thủ trong thị trường Việt Nam</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Agent Connection Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="ai-connection-section p-8 max-w-4xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold mb-4 scroll-reveal" data-translate="connection.title">Hỗ trợ từ AI Agent</h2>
+          <p class="text-xl text-gray-600 scroll-reveal" data-translate="connection.description">Tích hợp AI Agent để tối ưu hóa và tự động hóa việc triển khai công nghệ tương tác</p>
+        </div>
+        
+        <div class="bg-white rounded-lg p-6 shadow-lg scroll-reveal">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+              <div class="logo-gradient w-12 h-12">
+                <span class="text-white font-bold text-xl">DB</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold" data-translate="connection.service.title">Giải pháp AI Immersive</h3>
+                <p class="text-gray-600" data-translate="connection.service.description">Kết hợp AI với AR/VR để tạo ra trải nghiệm tương tác thông minh và cá nhân hóa</p>
+              </div>
+            </div>
+            <a href="../ai-agents/index.html" class="btn-primary px-6 py-3 rounded-lg font-semibold text-white" data-translate="connection.cta">Tìm hiểu AI Agent</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies -->
+  <section id="case-studies" class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-3xl font-bold mb-4" data-translate="content.cases.title">Case Studies Thành công</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-translate="content.cases.subtitle">Những doanh nghiệp Việt Nam đã thành công ứng dụng công nghệ tương tác</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Retail Chain -->
+        <div class="case-study-card scroll-reveal">
+          <div class="case-study-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4" data-translate="content.cases.retail.title">Chuỗi Bán lẻ TP.HCM</h3>
+          <p class="text-gray-600 mb-4" data-translate="content.cases.retail.description">Triển khai AR try-on và VR showroom, tăng 320% tương tác khách hàng và 180% doanh số</p>
+          <ul class="space-y-2">
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.cases.retail.result1">Tăng 320% thời gian tương tác</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.cases.retail.result2">Giảm 60% tỷ lệ trả hàng</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.cases.retail.result3">Tăng 180% doanh số bán hàng</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Manufacturing Company -->
+        <div class="case-study-card scroll-reveal">
+          <div class="case-study-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4" data-translate="content.cases.manufacturing.title">Nhà máy Sản xuất Bình Dương</h3>
+          <p class="text-gray-600 mb-4" data-translate="content.cases.manufacturing.description">Ứng dụng VR training và AR maintenance, giảm 75% tai nạn lao động và tăng 40% hiệu suất</p>
+          <ul class="space-y-2">
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.cases.manufacturing.result1">Giảm 75% tai nạn lao động</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.cases.manufacturing.result2">Tăng 40% hiệu suất sản xuất</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.cases.manufacturing.result3">Giảm 50% thời gian đào tạo</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Real Estate Company -->
+        <div class="case-study-card scroll-reveal">
+          <div class="case-study-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4" data-translate="content.cases.realestate.title">Công ty Bất động sản Hà Nội</h3>
+          <p class="text-gray-600 mb-4" data-translate="content.cases.realestate.description">Sử dụng VR tour và AR visualization, tăng 250% lead chất lượng và giảm 30% thời gian bán</p>
+          <ul class="space-y-2">
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.cases.realestate.result1">Tăng 250% lead chất lượng</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.cases.realestate.result2">Giảm 30% thời gian bán hàng</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.cases.realestate.result3">Tăng 90% customer satisfaction</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Tourism Company -->
+        <div class="case-study-card scroll-reveal">
+          <div class="case-study-icon">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4" data-translate="content.cases.tourism.title">Công ty Du lịch Đà Nẵng</h3>
+          <p class="text-gray-600 mb-4" data-translate="content.cases.tourism.description">Tạo virtual tour và AR guide, tăng 200% booking online và mở rộng thị trường quốc tế</p>
+          <ul class="space-y-2">
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.cases.tourism.result1">Tăng 200% booking online</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.cases.tourism.result2">Mở rộng 15 thị trường mới</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span data-translate="content.cases.tourism.result3">Tăng 150% customer engagement</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-gray-900 text-white py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal" data-translate="cta.title">Sẵn sàng Triển khai Công nghệ Tương tác?</h2>
+        <p class="text-xl opacity-90 mb-8 scroll-reveal" data-translate="cta.description">Liên hệ với chúng tôi để bắt đầu hành trình chuyển đổi với AR, VR và công nghệ tương tác tiên tiến</p>
+        <div class="flex flex-wrap justify-center gap-4 scroll-reveal">
+          <a href="index.html" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-gray-800 transition-all" data-translate="cta.backToBlog">Quay lại Blog</a>
+          <a href="../contact/index.html" class="btn-primary px-8 py-3 rounded-full font-semibold text-white" data-translate="cta.button">Bắt đầu Dự án</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="logo-gradient">
+              <span class="text-white font-bold text-lg">DB</span>
+            </div>
+            <span class="text-2xl font-bold">Digitized Brains</span>
+          </div>
+          <p class="text-gray-400" data-translate="footer.description">Đối tác tin cậy hỗ trợ doanh nghiệp Việt Nam ứng dụng công nghệ tương tác tiên tiến</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.quickLinks">Liên kết nhanh</h4>
+          <div class="grid grid-cols-2 gap-4">
+            <ul class="space-y-2">
+              <li><a href="../../index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.home">Trang chủ</a></li>
+              <li><a href="../about/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.about">Giới thiệu</a></li>
+              <li><a href="../digital-transformation/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.digitalTransformation">Chuyển đổi số</a></li>
+              <li><a href="../ai-agents/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.aiAgent">AI Agent</a></li>
+            </ul>
+            <ul class="space-y-2">
+              <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.blog">Blog</a></li>
+              <li><a href="../resources/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.resources">Tài nguyên</a></li>
+              <li><a href="../contact/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.contact">Liên hệ</a></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.contact">Liên hệ</h4>
+          <ul class="space-y-2">
+            <li class="text-gray-400">contact@digitizedbrains.com</li>
+            <li class="text-gray-400" data-translate="footer.location">Thành phố Hồ Chí Minh, Việt Nam</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-gray-400" data-translate="footer.copyright">© 2025 DigitizedBrains. Bản quyền thuộc về DigitizedBrains.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Language Switcher Script -->
+  <script src="../../js/multilang.js"></script>
+
+  <!-- Chatbot Integration -->
+  <script src="../../js/chatbot.js"></script>
+
+  <script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    const pageTranslations = {
+      en: {
+        meta: { 
+          title: "Immersive Business Technologies - DigitizedBrains", 
+          description: "Explore AR, VR, and immersive technologies transforming Vietnamese enterprises. Learn implementation strategies for competitive advantage" 
+        },
+        nav: { 
+          home: "Home", 
+          about: "About", 
+          digitalTransformation: "Digital Transformation", 
+          aiAgent: "AI Agent", 
+          blog: "Blog", 
+          resources: "Resources", 
+          contact: "Contact" 
+        },
+        language: { current: "Language:" },
+        hero: { 
+          title: "The Next Frontier: Immersive Business Technologies", 
+          subtitle: "Explore AR, VR, and immersive technologies transforming Vietnamese enterprises, creating unprecedented customer experiences and superior operational efficiency", 
+          cta: "Explore Technologies", 
+          cases: "View Case Studies" 
+        },
+        situation: {
+          title: "Vietnam Immersive Technology Reality 2024-2025",
+          subtitle: "Vietnamese businesses are increasing investment in AR/VR to create competitive advantages in the digital age"
+        },
+        stats: {
+          market: {
+            number: "₫2.8T",
+            description: "Vietnam AR/VR market value projected by 2025"
+          },
+          adoption: {
+            number: "67%",
+            description: "Vietnamese consumers interested in AR shopping"
+          },
+          training: {
+            number: "180%",
+            description: "growth in VR training adoption (2023-2024)"
+          },
+          investment: {
+            number: "450%",
+            description: "increase in immersive technology investment by businesses"
+          }
+        },
+        content: {
+          overview: {
+            title: "5 Core Immersive Technologies",
+            description: "Leading immersive technologies changing how Vietnamese businesses operate and interact with customers"
+          },
+          technologies: {
+            ar: {
+              title: "Augmented Reality (AR)",
+              description: "Enhance real-world environments with digital overlays for product visualization, maintenance, and customer engagement",
+              use1: "• Product visualization in retail",
+              use2: "• Industrial maintenance support",
+              use3: "• Interactive marketing campaigns"
+            },
+            vr: {
+              title: "Virtual Reality (VR)",
+              description: "Create fully virtual environments for training, simulation, and deep customer experiences",
+              use1: "• Safe employee training",
+              use2: "• Production process simulation",
+              use3: "• Product showrooms and demos"
+            },
+            mr: {
+              title: "Mixed Reality (MR)",
+              description: "Combine real and virtual worlds to create complex interactive experiences",
+              use1: "• Collaborative product design",
+              use2: "• Interactive remote meetings",
+              use3: "• Complex equipment maintenance"
+            },
+            "360": {
+              title: "360° Content",
+              description: "360° videos and images for marketing, training, and business introduction",
+              use1: "• Virtual facility tours",
+              use2: "• Real estate marketing",
+              use3: "• Virtual travel experiences"
+            },
+            hologram: {
+              title: "Hologram Technology",
+              description: "3D hologram displays for presentations, entertainment, and customer interaction",
+              use1: "• Impressive product presentations",
+              use2: "• Events and exhibitions",
+              use3: "• VIP customer interactions"
+            }
+          },
+          implementation: {
+            title: "5 Steps to Implement Immersive Technology",
+            step1: {
+              title: "Assess Needs and Objectives",
+              description: "Identify specific business goals and evaluate immersive technology application capabilities within the organization"
+            },
+            step2: {
+              title: "Select Appropriate Technology",
+              description: "Choose AR, VR, MR technologies suitable for industry and business budget"
+            },
+            step3: {
+              title: "Develop Content and Applications",
+              description: "Create high-quality interactive content and develop applications meeting specific needs"
+            },
+            step4: {
+              title: "Training and Deployment",
+              description: "Train employees to use technology and deploy in phases"
+            },
+            step5: {
+              title: "Measure and Optimize",
+              description: "Monitor effectiveness, collect feedback, and continuously improve experiences"
+            }
+          },
+          benefits: {
+            title: "Benefits of Immersive Technologies",
+            experience: {
+              title: "Enhanced Customer Experience",
+              description: "Create unique, impressive interactive experiences that strongly engage customers"
+            },
+            training: {
+              title: "Improved Employee Training",
+              description: "Safe, effective, and cost-efficient hands-on training with VR simulation"
+            },
+            visualization: {
+              title: "Superior Product Visualization",
+              description: "Allow customers to 'experience' products before purchasing"
+            },
+            competitive: {
+              title: "Unique Competitive Advantage",
+              description: "Create clear differentiation from competitors in the Vietnamese market"
+            }
+          },
+          cases: {
+            title: "Success Case Studies",
+            subtitle: "Vietnamese businesses that have successfully applied immersive technologies",
+            retail: {
+              title: "Ho Chi Minh City Retail Chain",
+              description: "Deployed AR try-on and VR showroom, increased customer interaction by 320% and sales by 180%",
+              result1: "320% increase in interaction time",
+              result2: "60% reduction in return rate",
+              result3: "180% increase in sales"
+            },
+            manufacturing: {
+              title: "Binh Duong Manufacturing Plant",
+              description: "Applied VR training and AR maintenance, reduced workplace accidents by 75% and increased efficiency by 40%",
+              result1: "75% reduction in workplace accidents",
+              result2: "40% increase in production efficiency",
+              result3: "50% reduction in training time"
+            },
+            realestate: {
+              title: "Hanoi Real Estate Company",
+              description: "Used VR tours and AR visualization, increased quality leads by 250% and reduced sales time by 30%",
+              result1: "250% increase in quality leads",
+              result2: "30% reduction in sales time",
+              result3: "90% increase in customer satisfaction"
+            },
+            tourism: {
+              title: "Da Nang Tourism Company",
+              description: "Created virtual tours and AR guides, increased online bookings by 200% and expanded to international markets",
+              result1: "200% increase in online bookings",
+              result2: "Expanded to 15 new markets",
+              result3: "150% increase in customer engagement"
+            }
+          }
+        },
+        connection: {
+          title: "AI Agent Support",
+          description: "Integrate AI Agent to optimize and automate immersive technology deployment",
+          service: {
+            title: "AI Immersive Solutions",
+            description: "Combine AI with AR/VR to create intelligent and personalized interactive experiences"
+          },
+          cta: "Learn about AI Agent"
+        },
+        cta: {
+          title: "Ready to Deploy Immersive Technologies?",
+          description: "Contact us to start your transformation journey with advanced AR, VR, and immersive technologies",
+          backToBlog: "Back to Blog",
+          button: "Start Project"
+        },
+        footer: {
+          description: "Trusted partner supporting Vietnamese businesses in applying advanced immersive technologies",
+          quickLinks: "Quick Links",
+          contact: "Contact",
+          location: "Ho Chi Minh City, Vietnam",
+          copyright: "© 2025 DigitizedBrains. All rights reserved."
+        }
+      },
+      vi: {
+        meta: { 
+          title: "Công nghệ Tương tác Doanh nghiệp - DigitizedBrains", 
+          description: "Khám phá AR, VR và công nghệ tương tác đang biến đổi doanh nghiệp Việt Nam. Học chiến lược triển khai cho lợi thế cạnh tranh" 
+        },
+        nav: { 
+          home: "Trang chủ", 
+          about: "Giới thiệu", 
+          digitalTransformation: "Chuyển đổi số", 
+          aiAgent: "AI Agent", 
+          blog: "Blog", 
+          resources: "Tài nguyên", 
+          contact: "Liên hệ" 
+        },
+        language: { current: "Ngôn ngữ:" },
+        hero: { 
+          title: "Biên Giới Tiếp Theo: Công nghệ Tương tác Doanh nghiệp", 
+          subtitle: "Khám phá AR, VR và công nghệ tương tác đang biến đổi doanh nghiệp Việt Nam, tạo ra trải nghiệm khách hàng chưa từng có và hiệu quả vận hành vượt trội", 
+          cta: "Khám phá Công nghệ", 
+          cases: "Xem Case Studies" 
+        },
+        situation: {
+          title: "Thực trạng Công nghệ Tương tác Việt Nam 2024-2025",
+          subtitle: "Doanh nghiệp Việt Nam đang gia tăng đầu tư vào AR/VR để tạo lợi thế cạnh tranh trong thời đại số"
+        },
+        stats: {
+          market: {
+            number: "₫2.8T",
+            description: "giá trị thị trường AR/VR Việt Nam dự kiến đến 2025"
+          },
+          adoption: {
+            number: "67%",
+            description: "người tiêu dùng Việt Nam quan tâm đến mua sắm AR"
+          },
+          training: {
+            number: "180%",
+            description: "tăng trưởng áp dụng đào tạo VR (2023-2024)"
+          },
+          investment: {
+            number: "450%",
+            description: "tăng đầu tư công nghệ tương tác của doanh nghiệp"
+          }
+        },
+        content: {
+          overview: {
+            title: "5 Công nghệ Tương tác Cốt lõi",
+            description: "Các công nghệ tương tác hàng đầu đang thay đổi cách doanh nghiệp Việt Nam hoạt động và tương tác với khách hàng"
+          },
+          technologies: {
+            ar: {
+              title: "Thực tế Tăng cường (AR)",
+              description: "Tăng cường môi trường thực tế với lớp phủ kỹ thuật số cho trực quan hóa sản phẩm, bảo trì và tương tác khách hàng",
+              use1: "• Trực quan hóa sản phẩm trong bán lẻ",
+              use2: "• Hỗ trợ bảo trì công nghiệp",
+              use3: "• Chiến dịch marketing tương tác"
+            },
+            vr: {
+              title: "Thực tế Ảo (VR)",
+              description: "Tạo môi trường ảo hoàn toàn cho đào tạo, mô phỏng và trải nghiệm khách hàng sâu sắc",
+              use1: "• Đào tạo nhân viên an toàn",
+              use2: "• Mô phỏng quy trình sản xuất",
+              use3: "• Showroom và demo sản phẩm"
+            },
+            mr: {
+              title: "Thực tế Hỗn hợp (MR)",
+              description: "Kết hợp thế giới thực và ảo để tạo ra trải nghiệm tương tác phức hợp",
+              use1: "• Thiết kế sản phẩm collaborative",
+              use2: "• Hội nghị từ xa tương tác",
+              use3: "• Bảo trì thiết bị phức tạp"
+            },
+            "360": {
+              title: "Nội dung 360°",
+              description: "Video và hình ảnh 360° cho marketing, đào tạo và giới thiệu doanh nghiệp",
+              use1: "• Tour ảo cơ sở vật chất",
+              use2: "• Marketing bất động sản",
+              use3: "• Trải nghiệm du lịch ảo"
+            },
+            hologram: {
+              title: "Công nghệ Hologram",
+              description: "Hiển thị hologram 3D cho presentation, giải trí và tương tác khách hàng",
+              use1: "• Presentation sản phẩm ấn tượng",
+              use2: "• Sự kiện và triển lãm",
+              use3: "• Tương tác khách hàng VIP"
+            }
+          },
+          implementation: {
+            title: "5 Bước Triển khai Công nghệ Tương tác",
+            step1: {
+              title: "Đánh giá Nhu cầu và Mục tiêu",
+              description: "Xác định mục tiêu kinh doanh cụ thể và đánh giá khả năng ứng dụng công nghệ tương tác trong tổ chức"
+            },
+            step2: {
+              title: "Lựa chọn Công nghệ Phù hợp",
+              description: "Chọn lựa công nghệ AR, VR, MR phù hợp với ngành nghề và ngân sách của doanh nghiệp"
+            },
+            step3: {
+              title: "Phát triển Nội dung và Ứng dụng",
+              description: "Tạo nội dung tương tác chất lượng cao và phát triển ứng dụng đáp ứng nhu cầu cụ thể"
+            },
+            step4: {
+              title: "Đào tạo và Triển khai",
+              description: "Đào tạo nhân viên sử dụng công nghệ và triển khai theo từng giai đoạn"
+            },
+            step5: {
+              title: "Đo lường và Tối ưu hóa",
+              description: "Theo dõi hiệu quả, thu thập phản hồi và liên tục cải tiến trải nghiệm"
+            }
+          },
+          benefits: {
+            title: "Lợi ích của Công nghệ Tương tác",
+            experience: {
+              title: "Tăng cường Trải nghiệm Khách hàng",
+              description: "Tạo trải nghiệm tương tác độc đáo, ấn tượng và gắn kết khách hàng mạnh mẽ"
+            },
+            training: {
+              title: "Cải thiện Đào tạo Nhân viên",
+              description: "Đào tạo thực hành an toàn, hiệu quả và tiết kiệm chi phí với mô phỏng VR"
+            },
+            visualization: {
+              title: "Trực quan hóa Sản phẩm Vượt trội",
+              description: "Cho phép khách hàng \"trải nghiệm\" sản phẩm trước khi mua"
+            },
+            competitive: {
+              title: "Lợi thế Cạnh tranh Độc đáo",
+              description: "Tạo điểm khác biệt rõ rệt so với đối thủ trong thị trường Việt Nam"
+            }
+          },
+          cases: {
+            title: "Case Studies Thành công",
+            subtitle: "Những doanh nghiệp Việt Nam đã thành công ứng dụng công nghệ tương tác",
+            retail: {
+              title: "Chuỗi Bán lẻ TP.HCM",
+              description: "Triển khai AR try-on và VR showroom, tăng 320% tương tác khách hàng và 180% doanh số",
+              result1: "Tăng 320% thời gian tương tác",
+              result2: "Giảm 60% tỷ lệ trả hàng",
+              result3: "Tăng 180% doanh số bán hàng"
+            },
+            manufacturing: {
+              title: "Nhà máy Sản xuất Bình Dương",
+              description: "Ứng dụng VR training và AR maintenance, giảm 75% tai nạn lao động và tăng 40% hiệu suất",
+              result1: "Giảm 75% tai nạn lao động",
+              result2: "Tăng 40% hiệu suất sản xuất",
+              result3: "Giảm 50% thời gian đào tạo"
+            },
+            realestate: {
+              title: "Công ty Bất động sản Hà Nội",
+              description: "Sử dụng VR tour và AR visualization, tăng 250% lead chất lượng và giảm 30% thời gian bán",
+              result1: "Tăng 250% lead chất lượng",
+              result2: "Giảm 30% thời gian bán hàng",
+              result3: "Tăng 90% customer satisfaction"
+            },
+            tourism: {
+              title: "Công ty Du lịch Đà Nẵng",
+              description: "Tạo virtual tour và AR guide, tăng 200% booking online và mở rộng thị trường quốc tế",
+              result1: "Tăng 200% booking online",
+              result2: "Mở rộng 15 thị trường mới",
+              result3: "Tăng 150% customer engagement"
+            }
+          }
+        },
+        connection: {
+          title: "Hỗ trợ từ AI Agent",
+          description: "Tích hợp AI Agent để tối ưu hóa và tự động hóa việc triển khai công nghệ tương tác",
+          service: {
+            title: "Giải pháp AI Immersive",
+            description: "Kết hợp AI với AR/VR để tạo ra trải nghiệm tương tác thông minh và cá nhân hóa"
+          },
+          cta: "Tìm hiểu AI Agent"
+        },
+        cta: {
+          title: "Sẵn sàng Triển khai Công nghệ Tương tác?",
+          description: "Liên hệ với chúng tôi để bắt đầu hành trình chuyển đổi với AR, VR và công nghệ tương tác tiên tiến",
+          backToBlog: "Quay lại Blog",
+          button: "Bắt đầu Dự án"
+        },
+        footer: {
+          description: "Đối tác tin cậy hỗ trợ doanh nghiệp Việt Nam ứng dụng công nghệ tương tác tiên tiến",
+          quickLinks: "Liên kết nhanh",
+          contact: "Liên hệ",
+          location: "Thành phố Hồ Chí Minh, Việt Nam",
+          copyright: "© 2025 DigitizedBrains. Bản quyền thuộc về DigitizedBrains."
+        }
+      },
+      de: {
+        meta: { 
+          title: "Immersive Unternehmenstechnologien - DigitizedBrains", 
+          description: "Entdecken Sie AR, VR und immersive Technologien, die vietnamesische Unternehmen transformieren. Erlernen Sie Implementierungsstrategien für Wettbewerbsvorteile" 
+        },
+        nav: { 
+          home: "Startseite", 
+          about: "Über uns", 
+          digitalTransformation: "Digitale Transformation", 
+          aiAgent: "KI-Agent", 
+          blog: "Blog", 
+          resources: "Ressourcen", 
+          contact: "Kontakt" 
+        },
+        language: { current: "Sprache:" },
+        hero: { 
+          title: "Die nächste Grenze: Immersive Unternehmenstechnologien", 
+          subtitle: "Entdecken Sie AR, VR und immersive Technologien, die vietnamesische Unternehmen transformieren und beispiellose Kundenerfahrungen sowie überlegene operative Effizienz schaffen", 
+          cta: "Technologien erkunden", 
+          cases: "Fallstudien ansehen" 
+        },
+        situation: {
+          title: "Realität immersiver Technologien in Vietnam 2024-2025",
+          subtitle: "Vietnamesische Unternehmen erhöhen Investitionen in AR/VR zur Schaffung von Wettbewerbsvorteilen im digitalen Zeitalter"
+        },
+        stats: {
+          market: {
+            number: "₫2.8T",
+            description: "prognostizierter Vietnam AR/VR-Marktwert bis 2025"
+          },
+          adoption: {
+            number: "67%",
+            description: "vietnamesische Verbraucher interessiert an AR-Shopping"
+          },
+          training: {
+            number: "180%",
+            description: "Wachstum der VR-Schulungsadoption (2023-2024)"
+          },
+          investment: {
+            number: "450%",
+            description: "Steigerung der Investitionen in immersive Technologien von Unternehmen"
+          }
+        },
+        content: {
+          overview: {
+            title: "5 Kern-Immersive-Technologien",
+            description: "Führende immersive Technologien, die verändern, wie vietnamesische Unternehmen operieren und mit Kunden interagieren"
+          },
+          technologies: {
+            ar: {
+              title: "Erweiterte Realität (AR)",
+              description: "Erweitern Sie reale Umgebungen mit digitalen Overlays für Produktvisualisierung, Wartung und Kundenengagement",
+              use1: "• Produktvisualisierung im Einzelhandel",
+              use2: "• Industrielle Wartungsunterstützung",
+              use3: "• Interaktive Marketingkampagnen"
+            },
+            vr: {
+              title: "Virtuelle Realität (VR)",
+              description: "Erstellen Sie vollständig virtuelle Umgebungen für Schulung, Simulation und tiefe Kundenerfahrungen",
+              use1: "• Sichere Mitarbeiterschulung",
+              use2: "• Produktionsprozess-Simulation",
+              use3: "• Produktshowrooms und Demos"
+            },
+            mr: {
+              title: "Gemischte Realität (MR)",
+              description: "Kombinieren Sie reale und virtuelle Welten zur Schaffung komplexer interaktiver Erfahrungen",
+              use1: "• Kollaboratives Produktdesign",
+              use2: "• Interaktive Remote-Meetings",
+              use3: "• Wartung komplexer Ausrüstung"
+            },
+            "360": {
+              title: "360°-Inhalte",
+              description: "360°-Videos und Bilder für Marketing, Schulung und Unternehmenspräsentation",
+              use1: "• Virtuelle Anlagentouren",
+              use2: "• Immobilien-Marketing",
+              use3: "• Virtuelle Reiseerfahrungen"
+            },
+            hologram: {
+              title: "Hologramm-Technologie",
+              description: "3D-Hologramm-Displays für Präsentationen, Unterhaltung und Kundeninteraktion",
+              use1: "• Beeindruckende Produktpräsentationen",
+              use2: "• Veranstaltungen und Ausstellungen",
+              use3: "• VIP-Kundeninteraktionen"
+            }
+          },
+          implementation: {
+            title: "5 Schritte zur Implementierung immersiver Technologie",
+            step1: {
+              title: "Bedürfnisse und Ziele bewerten",
+              description: "Spezifische Geschäftsziele identifizieren und Anwendungsfähigkeiten immersiver Technologie in der Organisation bewerten"
+            },
+            step2: {
+              title: "Geeignete Technologie auswählen",
+              description: "AR-, VR-, MR-Technologien wählen, die für Branche und Unternehmensbudget geeignet sind"
+            },
+            step3: {
+              title: "Inhalte und Anwendungen entwickeln",
+              description: "Hochwertige interaktive Inhalte erstellen und Anwendungen entwickeln, die spezifische Bedürfnisse erfüllen"
+            },
+            step4: {
+              title: "Schulung und Bereitstellung",
+              description: "Mitarbeiter im Umgang mit Technologie schulen und phasenweise bereitstellen"
+            },
+            step5: {
+              title: "Messen und Optimieren",
+              description: "Wirksamkeit überwachen, Feedback sammeln und Erfahrungen kontinuierlich verbessern"
+            }
+          },
+          benefits: {
+            title: "Vorteile immersiver Technologien",
+            experience: {
+              title: "Verbesserte Kundenerfahrung",
+              description: "Einzigartige, beeindruckende interaktive Erfahrungen schaffen, die Kunden stark einbinden"
+            },
+            training: {
+              title: "Verbesserte Mitarbeiterschulung",
+              description: "Sichere, effektive und kostengünstige praktische Schulung mit VR-Simulation"
+            },
+            visualization: {
+              title: "Überlegene Produktvisualisierung",
+              description: "Kunden ermöglichen, Produkte vor dem Kauf zu 'erleben'"
+            },
+            competitive: {
+              title: "Einzigartiger Wettbewerbsvorteil",
+              description: "Klare Differenzierung von Konkurrenten auf dem vietnamesischen Markt schaffen"
+            }
+          },
+          cases: {
+            title: "Erfolgreiche Fallstudien",
+            subtitle: "Vietnamesische Unternehmen, die erfolgreich immersive Technologien angewendet haben",
+            retail: {
+              title: "Ho-Chi-Minh-Stadt Einzelhandelskette",
+              description: "AR-Try-on und VR-Showroom implementiert, Kundeninteraktion um 320% und Verkäufe um 180% gesteigert",
+              result1: "320% Steigerung der Interaktionszeit",
+              result2: "60% Reduzierung der Rücksendequote",
+              result3: "180% Steigerung der Verkäufe"
+            },
+            manufacturing: {
+              title: "Binh Duong Fertigungswerk",
+              description: "VR-Schulung und AR-Wartung angewendet, Arbeitsunfälle um 75% reduziert und Effizienz um 40% gesteigert",
+              result1: "75% Reduzierung von Arbeitsunfällen",
+              result2: "40% Steigerung der Produktionseffizienz",
+              result3: "50% Reduzierung der Schulungszeit"
+            },
+            realestate: {
+              title: "Hanoi Immobilienunternehmen",
+              description: "VR-Touren und AR-Visualisierung verwendet, qualifizierte Leads um 250% gesteigert und Verkaufszeit um 30% reduziert",
+              result1: "250% Steigerung qualifizierter Leads",
+              result2: "30% Reduzierung der Verkaufszeit",
+              result3: "90% Steigerung der Kundenzufriedenheit"
+            },
+            tourism: {
+              title: "Da Nang Tourismusunternehmen",
+              description: "Virtuelle Touren und AR-Guides erstellt, Online-Buchungen um 200% gesteigert und auf internationale Märkte erweitert",
+              result1: "200% Steigerung der Online-Buchungen",
+              result2: "Erweiterung auf 15 neue Märkte",
+              result3: "150% Steigerung des Kundenengagements"
+            }
+          }
+        },
+        connection: {
+          title: "KI-Agent-Unterstützung",
+          description: "KI-Agent integrieren zur Optimierung und Automatisierung der Bereitstellung immersiver Technologie",
+          service: {
+            title: "KI-Immersive-Lösungen",
+            description: "KI mit AR/VR kombinieren zur Schaffung intelligenter und personalisierter interaktiver Erfahrungen"
+          },
+          cta: "Über KI-Agent erfahren"
+        },
+        cta: {
+          title: "Bereit für die Bereitstellung immersiver Technologien?",
+          description: "Kontaktieren Sie uns, um Ihre Transformationsreise mit fortschrittlichen AR-, VR- und immersiven Technologien zu beginnen",
+          backToBlog: "Zurück zum Blog",
+          button: "Projekt starten"
+        },
+        footer: {
+          description: "Vertrauenspartner zur Unterstützung vietnamesischer Unternehmen bei der Anwendung fortschrittlicher immersiver Technologien",
+          quickLinks: "Schnelllinks",
+          contact: "Kontakt",
+          location: "Ho-Chi-Minh-Stadt, Vietnam",
+          copyright: "© 2025 DigitizedBrains. Alle Rechte vorbehalten."
+        }
+      }
+    };
+
+    // Initialize multilingual system
+    if (typeof initializeMultilingual === 'function') {
+      initializeMultilingual(pageTranslations);
+    }
+
+    // Scroll reveal animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all scroll-reveal elements
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>

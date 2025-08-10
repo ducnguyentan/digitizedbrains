@@ -1,244 +1,869 @@
 <!DOCTYPE html>
-<html lang="vi">
+<!--
+  DigitizedBrains - Multilingual Landing Page
+  ==========================================
+  This is a standalone multilingual website that operates independently.
+  It includes built-in language support for English, Vietnamese, and German.
+  No external dependencies on index.html, indexvn.html, or indexger.html.
+  
+  Features:
+  - Complete trilingual support (EN/VI/DE)
+  - Self-contained language switching system
+  - Independent navigation structure
+  - Responsive design with modern animations
+  - All resources embedded inline
+-->
+<html lang="en" id="html-root">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Digitized Brains – Khơi nguồn đổi mới truyền thông với Trí tuệ nhân tạo</title>
-  <meta name="description" content="DigitizedBrains - Nền tảng chuyển đổi số ngành truyền thông, ứng dụng AI Agent, chia sẻ tri thức và giải pháp đổi mới sáng tạo.">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <style>
-    .nav-link { color: #374151; padding: 0.25rem 0.5rem; transition: color 0.2s; }
-    .nav-link:hover { color: #2563eb; }
-    .nav-link.active { color: #2563eb; font-weight: bold; text-decoration: underline; }
-  </style>
+  <title id="page-title">DigitizedBrains - Digital Transformation in Media</title>
+  <meta name="description" content="Redefining how content is created, distributed and monetized in the age of AI" id="page-description">
+  <link href="css/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="bg-white text-gray-800">
-  <!-- Navbar -->
-  <nav class="bg-white shadow-md">
-    <div class="container mx-auto flex flex-wrap items-center justify-between py-3 px-4">
-      <a href="index.html" class="text-xl font-bold text-blue-700">DigitizedBrains</a>
-      <button class="md:hidden block text-gray-700" onclick="document.getElementById('nav-menu').classList.toggle('hidden')">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-      </button>
-      <div id="nav-menu" class="w-full md:flex md:items-center md:w-auto hidden">
-        <ul class="md:flex md:space-x-6 mt-3 md:mt-0">
-          <li><a href="index.html" class="nav-link active">Trang chủ</a></li>
-          <li><a href="about.html" class="nav-link">Giới thiệu</a></li>
-          <li><a href="digital-media.html" class="nav-link">Chuyển đổi số</a></li>
-          <li><a href="ai-agent.html" class="nav-link">AI Agent</a></li>
-          <li><a href="resources.html" class="nav-link">Tài liệu</a></li>
-          <li><a href="blog.html" class="nav-link">Blog</a></li>
-          <li><a href="contact.html" class="nav-link">Liên hệ</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <!-- Hero Section -->
-  <section class="relative bg-gradient-to-r from-blue-100 to-blue-300 min-h-[60vh] flex items-center justify-center">
-    <div class="absolute inset-0 bg-cover bg-center opacity-20" style="background-image: url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80');"></div>
-    <div class="relative z-10 text-center max-w-2xl mx-auto">
-      <h1 class="text-3xl md:text-5xl font-bold text-blue-800 mb-4">Digitized Brains – Khơi nguồn đổi mới truyền thông với Trí tuệ nhân tạo</h1>
-      <p class="text-lg md:text-xl mb-6">Sứ mệnh: Đổi mới ngành truyền thông Việt Nam qua chuyển đổi số và ứng dụng AI Agent.</p>
-      <a href="about.html" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold shadow hover:bg-blue-700 transition">Khám phá thêm</a>
-    </div>
-  </section>
-  <!-- Giới thiệu ngắn -->
-  <section class="py-10 px-4 max-w-3xl mx-auto text-center">
-    <h2 class="text-2xl font-bold mb-2">Sứ mệnh của DigitizedBrains</h2>
-    <p class="mb-4">Lấy cảm hứng từ mô hình đổi mới của HTV (Việt Nam) và Hunan TV (Trung Quốc), chúng tôi hướng tới xây dựng hệ sinh thái truyền thông số hiện đại, sáng tạo và hiệu quả.</p>
-  </section>
-  <!-- 3 Box nội dung nổi bật -->
-  <section class="py-8 px-4 max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
-    <div class="bg-white rounded-lg shadow p-6 text-center">
-      <h3 class="text-xl font-semibold mb-2">Chuyển đổi số trong truyền hình</h3>
-      <p class="text-gray-600">Tối ưu hóa quy trình, cá nhân hóa nội dung, nâng cao trải nghiệm khán giả.</p>
-    </div>
-    <div class="bg-white rounded-lg shadow p-6 text-center">
-      <h3 class="text-xl font-semibold mb-2">Ứng dụng AI Agent</h3>
-      <p class="text-gray-600">Tự động hóa sản xuất, phân tích dữ liệu, tối ưu quảng cáo và truyền thông.</p>
-    </div>
-    <div class="bg-white rounded-lg shadow p-6 text-center">
-      <h3 class="text-xl font-semibold mb-2">Bài học quốc tế</h3>
-      <p class="text-gray-600">Tiếp thu kinh nghiệm từ các mô hình thành công như HTV, Hunan TV, Mango TV.</p>
-    </div>
-<!-- Chat Widget: Digitized Brains Agent -->
-<div id="chat-widget-toggle" class="fixed bottom-6 right-6 z-50 group">
-  <button onclick="toggleChatWidget()" class="bg-gradient-to-tr from-yellow-300 via-pink-400 to-blue-400 rounded-full shadow-2xl p-1 hover:scale-110 transition-transform focus:outline-none flex items-center justify-center ring-4 ring-pink-300 animate-pulse group-hover:ring-blue-400 group-hover:animate-none">
-    <!-- Animated Dancing Cat as Button (CSS Animation + Glow) -->
-    <div class="w-20 h-20 flex items-center justify-center">
-      <div class="relative w-16 h-16">
-        <!-- Cat Body (glow effect) -->
-        <div class="absolute left-4 top-6 w-8 h-8 bg-orange-300 rounded-full shadow-lg animate-body-glow"></div>
-        <!-- Cat Head (glow effect) -->
-        <div class="absolute left-6 top-2 w-6 h-6 bg-orange-400 rounded-full shadow-md animate-head-glow"></div>
-        <!-- Cat Ears (colorful) -->
-        <div class="absolute left-6 top-0 w-2 h-2 bg-pink-400 rounded-tl-full rounded-tr-full rotate-[-20deg]"></div>
-        <div class="absolute left-10 top-0 w-2 h-2 bg-blue-400 rounded-tl-full rounded-tr-full rotate-[20deg]"></div>
-        <!-- Cat Tail (Animated, color change) -->
-        <div class="absolute left-2 top-10 w-8 h-2">
-          <div class="w-8 h-2 bg-gradient-to-r from-yellow-300 via-pink-400 to-blue-400 rounded-full origin-left animate-tail-glow"></div>
+
+  <!-- Header -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <div class="logo-gradient w-10 h-10 bg-gradient-to-r from-orange-400 to-pink-500 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-lg">DB</span>
+          </div>
+          <a href="index.html" class="text-2xl font-bold text-gray-800">Digitized Brains</a>
         </div>
-        <!-- Cat Face (Eyes, blinking) -->
-        <div class="absolute left-8 top-5 w-1 h-1 bg-black rounded-full animate-eye-blink"></div>
-        <div class="absolute left-11 top-5 w-1 h-1 bg-black rounded-full animate-eye-blink"></div>
-        <!-- Cat Smile (highlighted) -->
-        <div class="absolute left-9 top-7 w-2 h-1 border-b-2 border-pink-500 rounded-b-full"></div>
+        
+        <!-- Navigation and Language Switcher -->
+        <div class="hidden md:flex items-center space-x-4">
+          <nav class="flex space-x-2">
+            <a href="index.html" class="nav-link active" data-translate="nav.home">Home</a>
+            <a href="pages/about/index.html" class="nav-link" data-translate="nav.about">About</a>
+            <a href="pages/digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Digital Transformation</a>
+            <a href="pages/ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+            <a href="#blog" class="nav-link" data-translate="nav.blog">Blog</a>
+            <a href="#resources" class="nav-link" data-translate="nav.resources">Resources</a>
+            <a href="pages/contact/index.html" class="nav-link" data-translate="nav.contact">Contact</a>
+          </nav>
+          
+          <!-- Language Switcher -->
+          <div class="language-switcher">
+            <button id="language-btn" class="flex items-center space-x-1 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+              <img id="current-flag" src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+              <span id="current-lang">EN</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="language-menu" class="language-menu">
+              <a href="#" onclick="changeLanguage('en')" class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                English
+              </a>
+              <a href="#" onclick="changeLanguage('vi')" class="language-option" data-lang="vi">
+                <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                Tiếng Việt
+              </a>
+              <a href="#" onclick="changeLanguage('de')" class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                Deutsch
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <div class="flex flex-col space-y-2">
+          <a href="index.html" class="nav-link active" data-translate="nav.home">Home</a>
+          <a href="pages/about/index.html" class="nav-link" data-translate="nav.about">About</a>
+          <a href="pages/digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Digital Transformation</a>
+          <a href="pages/ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="#blog" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="#resources" class="nav-link" data-translate="nav.resources">Resources</a>
+          <a href="pages/contact/index.html" class="nav-link" data-translate="nav.contact">Contact</a>
+          
+          <!-- Mobile Language Switcher -->
+          <div class="pt-2 border-t border-gray-200">
+            <div class="language-switcher-mobile">
+              <button id="mobile-language-btn" class="flex items-center justify-between w-full px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                <span data-translate="language.current">Language:</span>
+                <div class="flex items-center space-x-1">
+                  <img id="mobile-current-flag" src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                  <span id="mobile-current-lang">EN</span>
+                </div>
+              </button>
+              <div id="mobile-language-menu" class="language-menu-mobile">
+                <a href="#" onclick="changeLanguage('en')" class="language-option-mobile" data-lang="en">
+                  <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                  English
+                </a>
+                <a href="#" onclick="changeLanguage('vi')" class="language-option-mobile" data-lang="vi">
+                  <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                  Tiếng Việt
+                </a>
+                <a href="#" onclick="changeLanguage('de')" class="language-option-mobile" data-lang="de">
+                  <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                  Deutsch
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <!-- Attention ping -->
-    <span class="absolute -top-2 -right-2 flex h-4 w-4">
-      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
-      <span class="relative inline-flex rounded-full h-4 w-4 bg-pink-500"></span>
-    </span>
-  </button>
-  <span class="absolute right-24 bottom-1 bg-gradient-to-r from-pink-400 to-blue-400 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg opacity-90 animate-bounce pointer-events-none select-none">Chat với AI!</span>
-</div>
-<div id="chat-widget" class="fixed bottom-20 right-6 z-50 w-[350px] max-w-full bg-black rounded-lg shadow-lg border border-gray-200 hidden transition-all duration-300" style="height: 480px;">
-  <div class="flex justify-between items-center bg-blue-600 text-white px-4 py-2 rounded-t-lg">
-    <span class="font-semibold">Digitized Brains Agent</span>
-    <div class="flex items-center space-x-2">
-      <button id="chat-minimize-btn" onclick="resizeChatWidget('minimize')" title="Thu nhỏ" class="text-white hover:text-gray-200 focus:outline-none text-lg leading-none px-1">
-        <svg xmlns="http://www.w3.org/2000/svg" class="inline w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" /></svg>
-      </button>
-      <button id="chat-maximize-btn" onclick="resizeChatWidget('maximize')" title="Phóng to" class="text-white hover:text-gray-200 focus:outline-none text-lg leading-none px-1">
-        <svg xmlns="http://www.w3.org/2000/svg" class="inline w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="4" y="4" width="16" height="16" rx="2" stroke-width="2" stroke="currentColor" fill="none"/></svg>
-      </button>
-      <button onclick="toggleChatWidget()" class="text-white hover:text-gray-200 focus:outline-none text-2xl leading-none px-1" title="Đóng">&times;</button>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-bg py-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+    <div class="relative z-10 text-center max-w-4xl mx-auto px-4">
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 scroll-reveal" data-translate="hero.title">
+        Digital Transformation for Vietnamese Enterprises
+      </h1>
+      <p class="text-xl text-white mb-8 font-light max-w-2xl mx-auto scroll-reveal" data-translate="hero.subtitle">
+        Giải pháp chuyển đổi số toàn diện cho doanh nghiệp Việt Nam - Từ hiện đại hóa quy trình đến tích hợp công nghệ số thông minh
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 scroll-reveal">
+        <a href="#about" class="btn-primary text-white px-8 py-4 rounded-full font-semibold text-lg inline-block" data-translate="hero.exploreBtn">
+          Explore Now
+        </a>
+        <a href="pages/contact/index.html" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg inline-block hover:bg-white hover:text-gray-800 transition-all" data-translate="hero.getStartedBtn">
+          Get Started
+        </a>
+      </div>
     </div>
-  </div>
-  <div id="chat-content" style="height: 400px;">
-    <iframe
-      src="https://ducnguyen1978-digitizedbrains-agent.hf.space"
-      frameborder="0"
-      width="100%"
-      height="400"
-      class="rounded-b-lg"
-      style="display:block;background:transparent;"
-      allow="clipboard-write"
-      id="chat-iframe"
-    ></iframe>
-  </div>
-  <!-- Minimized bar -->
-  <div id="chat-minimized-bar" class="hidden bg-blue-600 text-white px-4 py-2 rounded-b-lg flex items-center justify-between cursor-pointer" onclick="restoreChatWidget()">
-    <span class="font-semibold">Digitized Brains Agent (Đã thu nhỏ)</span>
-    <svg xmlns="http://www.w3.org/2000/svg" class="inline w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
-  </div>
-</div>
-<style>
-@keyframes tail-wag-glow {
-  0%, 100% { transform: rotate(20deg) scale(1); filter: drop-shadow(0 0 6px #fbbf24); }
-  50% { transform: rotate(-30deg) scale(1.1); filter: drop-shadow(0 0 12px #f472b6); }
-}
-@keyframes body-glow {
-  0%, 100% { box-shadow: 0 0 8px 2px #fbbf24; }
-  50% { box-shadow: 0 0 16px 4px #f472b6; }
-}
-@keyframes head-glow {
-  0%, 100% { box-shadow: 0 0 6px 1px #f472b6; }
-  50% { box-shadow: 0 0 12px 3px #60a5fa; }
-}
-@keyframes eye-blink {
-  0%, 92%, 100% { height: 0.25rem; }
-  95% { height: 0.05rem; }
-  97% { height: 0.25rem; }
-}
-.animate-tail-glow {
-  animation: tail-wag-glow 0.7s infinite;
-}
-.animate-body-glow {
-  animation: body-glow 1.2s infinite;
-}
-.animate-head-glow {
-  animation: head-glow 1.2s infinite;
-}
-.animate-eye-blink {
-  animation: eye-blink 2.5s infinite;
-}
-</style>
-<script>
-  let isChatMaximized = false;
-
-  function toggleChatWidget() {
-    const widget = document.getElementById('chat-widget');
-    const minimizedBar = document.getElementById('chat-minimized-bar');
-    const chatContent = document.getElementById('chat-content');
-    if (widget.classList.contains('hidden')) {
-      widget.classList.remove('hidden');
-      minimizedBar.classList.add('hidden');
-      chatContent.classList.remove('hidden');
-      widget.style.width = '350px';
-      widget.style.maxWidth = '100%';
-      widget.style.height = '480px';
-      document.getElementById('chat-iframe').style.height = '400px';
-      isChatMaximized = false;
-    } else {
-      widget.classList.add('hidden');
-      minimizedBar.classList.add('hidden');
-      chatContent.classList.remove('hidden');
-      isChatMaximized = false;
-    }
-    if (!widget.classList.contains('hidden')) {
-      widget.classList.add('ring', 'ring-pink-400');
-      setTimeout(() => widget.classList.remove('ring', 'ring-pink-400'), 500);
-    }
-  }
-
-  function resizeChatWidget(action) {
-    const widget = document.getElementById('chat-widget');
-    const iframe = document.getElementById('chat-iframe');
-    const chatContent = document.getElementById('chat-content');
-    const minimizedBar = document.getElementById('chat-minimized-bar');
-    if (action === 'maximize') {
-      if (!isChatMaximized) {
-        widget.style.width = '95vw';
-        widget.style.maxWidth = '900px';
-        widget.style.height = '80vh';
-        iframe.style.height = 'calc(80vh - 48px)';
-        chatContent.classList.remove('hidden');
-        minimizedBar.classList.add('hidden');
-        isChatMaximized = true;
-      } else {
-        // Restore to default size
-        widget.style.width = '350px';
-        widget.style.maxWidth = '100%';
-        widget.style.height = '480px';
-        iframe.style.height = '400px';
-        chatContent.classList.remove('hidden');
-        minimizedBar.classList.add('hidden');
-        isChatMaximized = false;
-      }
-    } else if (action === 'minimize') {
-      // Hide chat content, show minimized bar
-      chatContent.classList.add('hidden');
-      minimizedBar.classList.remove('hidden');
-      widget.style.width = '350px';
-      widget.style.maxWidth = '100%';
-      widget.style.height = 'auto';
-      isChatMaximized = false;
-    }
-  }
-
-  function restoreChatWidget() {
-    const chatContent = document.getElementById('chat-content');
-    const minimizedBar = document.getElementById('chat-minimized-bar');
-    const widget = document.getElementById('chat-widget');
-    chatContent.classList.remove('hidden');
-    minimizedBar.classList.add('hidden');
-    widget.style.width = '350px';
-    widget.style.maxWidth = '100%';
-    widget.style.height = '480px';
-    document.getElementById('chat-iframe').style.height = '400px';
-    isChatMaximized = false;
-  }
-</script>
-
-</section>
   </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="scroll-reveal">
+          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80" alt="Digital Media Transformation" class="rounded-2xl shadow-2xl">
+        </div>
+        <div class="scroll-reveal">
+          <h2 class="text-4xl font-bold text-gray-800 mb-6">
+            <span data-translate="about.title1">Digital Transformation</span> <span class="text-orange-500" data-translate="about.title2">for Vietnamese Enterprises</span>
+          </h2>
+          <p class="text-gray-600 text-lg mb-6 leading-relaxed" data-translate="about.description">
+            Các doanh nghiệp Việt Nam đang trải qua giai đoạn chuyển đổi số chưa từng có. Chúng tôi hiểu rõ những thách thức độc đáo của doanh nghiệp vừa và nhỏ trong bối cảnh kinh tế số đang phát triển nhanh chóng. Với kinh nghiệm thực tiễn triển khai chuyển đổi số tại nhiều doanh nghiệp đa ngành, chúng tôi cung cấp giải pháp toàn diện từ số hóa quy trình đến tối ưu hóa vận hành bằng AI.
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-center space-x-3">
+              <div class="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
+                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <span class="text-gray-700" data-translate="about.feature1">Comprehensive digital transformation framework</span>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
+                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <span class="text-gray-700" data-translate="about.feature2">Industry-wide experience across Vietnamese enterprises</span>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
+                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <span class="text-gray-700" data-translate="about.feature3">AI and AI Agent solutions tailored for business optimization</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="digital-transformation" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4" data-translate="services.title">Digital Transformation Solutions</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-translate="services.subtitle">
+          Comprehensive solutions for digital transformation of Vietnamese enterprises
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div class="service-card bg-white rounded-2xl p-6 shadow-lg scroll-reveal">
+          <a href="pages/digital-transformation-solution/digital-process-optimization.html" class="block">
+            <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-800 mb-3" data-translate="services.service1.title">Digital Process Optimization</h3>
+            <p class="text-sm text-gray-600" data-translate="services.service1.description">Comprehensive digital transformation and process optimization for Vietnamese enterprises</p>
+          </a>
+        </div>
+        
+        <div class="service-card bg-white rounded-2xl p-6 shadow-lg scroll-reveal">
+          <a href="pages/digital-transformation-solution/smart-technology-integration.html" class="block">
+            <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-600 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-800 mb-3" data-translate="services.service2.title">Smart Technology Integration</h3>
+            <p class="text-sm text-gray-600" data-translate="services.service2.description">Implementation of cutting-edge technologies to enhance business operations and efficiency</p>
+          </a>
+        </div>
+        
+        <div class="service-card bg-white rounded-2xl p-6 shadow-lg scroll-reveal">
+          <a href="pages/digital-transformation-solution/digital-infrastructure.html" class="block">
+            <div style="width: 48px; height: 48px; background: linear-gradient(to right, #67e8f9, #93c5fd); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+              <span style="color: white; font-size: 24px; font-weight: bold;">🏗️</span>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-800 mb-3" data-translate="services.service5.title">Digital Infrastructure</h3>
+            <p class="text-sm text-gray-600" data-translate="services.service5.description">Modern digital infrastructure solutions for business operations, data management, and network optimization</p>
+          </a>
+        </div>
+        
+        <div class="service-card bg-white rounded-2xl p-6 shadow-lg scroll-reveal" id="ai-solutions-card">
+          <a href="pages/digital-transformation-solution/ai-business-solutions.html" class="block">
+            <div style="width: 48px; height: 48px; background: linear-gradient(to right, #3b82f6, #8b5cf6); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+              <span style="color: white; font-size: 24px; font-weight: bold;">&#129504;</span>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-800 mb-3" data-translate="services.service3.title">AI-Powered Business Solutions</h3>
+            <p class="text-sm text-gray-600" data-translate="services.service3.description">Advanced AI applications for business analytics, process automation, and intelligent decision making</p>
+          </a>
+        </div>
+        
+        <div class="service-card bg-white rounded-2xl p-6 shadow-lg scroll-reveal">
+          <a href="pages/digital-transformation-solution/digital-strategy.html" class="block">
+            <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-800 mb-3" data-translate="services.service4.title">Digital Transformation Strategy</h3>
+            <p class="text-sm text-gray-600" data-translate="services.service4.description">Comprehensive digital transformation roadmap development and implementation support</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4" data-translate="contact.title">Get Started Today</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-translate="contact.subtitle">
+          Ready to transform your business? Contact us to discuss your digital transformation journey.
+        </p>
+      </div>
+      
+      <div class="max-w-2xl mx-auto">
+        <div class="bg-white rounded-2xl shadow-lg p-8 scroll-reveal">
+          <form class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block text-sm font-medium text-gray-700 mb-2" data-translate="contact.form.name">Name</label>
+                <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-2" data-translate="contact.form.email">Email</label>
+                <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+              </div>
+            </div>
+            <div>
+              <label for="company" class="block text-sm font-medium text-gray-700 mb-2" data-translate="contact.form.company">Company</label>
+              <input type="text" id="company" name="company" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium text-gray-700 mb-2" data-translate="contact.form.message">Message</label>
+              <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"></textarea>
+            </div>
+            <button type="submit" class="w-full btn-primary text-white px-8 py-4 rounded-lg font-semibold text-lg" data-translate="contact.form.submit">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
-  <footer class="bg-gray-100 text-center py-4 mt-10">
-    <div class="text-gray-600 text-sm">
-      © 2025 Digitized Brains. Liên hệ: <a href="mailto:info@digitizedbrains.com" class="text-blue-600 underline">info@digitizedbrains.com</a>
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <!-- Logo & Description -->
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="logo-gradient w-10 h-10 bg-gradient-to-r from-orange-400 to-pink-500 rounded-lg flex items-center justify-center">
+              <span class="text-white font-bold text-lg">DB</span>
+            </div>
+            <span class="text-2xl font-bold">Digitized Brains</span>
+          </div>
+          <p class="text-gray-400 mb-4" data-translate="footer.description">
+            Leading digital transformation solutions for Vietnamese enterprises. Empowering businesses with AI and cutting-edge technology.
+          </p>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.quickLinks">Quick Links</h4>
+          <div class="grid grid-cols-2 gap-4">
+            <ul class="space-y-2">
+              <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.home">Home</a></li>
+              <li><a href="pages/about/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.about">About</a></li>
+              <li><a href="pages/digital-transformation/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.digitalTransformation">Digital Transformation</a></li>
+              <li><a href="pages/ai-agents/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.aiAgent">AI Agent</a></li>
+            </ul>
+            <ul class="space-y-2">
+              <li><a href="#blog" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.blog">Blog</a></li>
+              <li><a href="#resources" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.resources">Resources</a></li>
+              <li><a href="pages/contact/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Contact Info -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.contact">Contact</h4>
+          <ul class="space-y-2">
+            <li class="text-gray-400">email@digitizedbrains.com</li>
+            <li class="text-gray-400">+84 123 456 789</li>
+            <li class="text-gray-400" data-translate="footer.location">Ho Chi Minh City, Vietnam</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-gray-400" data-translate="footer.copyright">
+          © 2025 DigitizedBrains. All rights reserved.
+        </p>
+      </div>
     </div>
   </footer>
+
+  <!-- JavaScript for Language Switching and Functionality -->
+  <script>
+    // Language data
+    const languages = {
+      en: {
+        meta: {
+          title: "DigitizedBrains - Digital Transformation Solutions",
+          description: "Comprehensive digital transformation solutions for Vietnamese enterprises in the AI era"
+        },
+        nav: {
+          home: "Home",
+          about: "About",
+          digitalTransformation: "Digital Transformation",
+          aiAgent: "AI Agent",
+          blog: "Blog",
+          resources: "Resources",
+          contact: "Contact"
+        },
+        language: {
+          current: "Language:"
+        },
+        hero: {
+          title: "Digital Transformation for Vietnamese Enterprises",
+          title1: "Digital Transformation",
+          title2: "for Vietnamese Enterprises",
+          subtitle: "Comprehensive digital transformation solutions empowering Vietnamese businesses with AI and smart technology integration",
+          exploreBtn: "Explore Now",
+          getStartedBtn: "Get Started"
+        },
+        about: {
+          title1: "Digital Transformation",
+          title2: "for Vietnamese Enterprises",
+          description: "Vietnamese businesses are undergoing unprecedented digital transformation. Our comprehensive approach addresses the unique challenges faced by companies of all sizes in the rapidly evolving digital economy landscape.",
+          feature1: "Comprehensive digital transformation framework",
+          feature2: "Industry-wide experience across Vietnamese enterprises",
+          feature3: "AI and AI Agent solutions tailored for business optimization"
+        },
+        services: {
+          title: "Digital Transformation Solutions",
+          subtitle: "Comprehensive solutions for digital transformation of Vietnamese enterprises",
+          service1: {
+            title: "Digital Process Optimization",
+            description: "Comprehensive digital transformation and process optimization for Vietnamese enterprises"
+          },
+          service2: {
+            title: "Smart Technology Integration",
+            description: "Implementation of cutting-edge technologies to enhance business operations and efficiency"
+          },
+          service3: {
+            title: "AI-Powered Business Solutions",
+            description: "Advanced AI applications for business analytics, process automation, and intelligent decision making"
+          },
+          service4: {
+            title: "Digital Transformation Strategy",
+            description: "Comprehensive digital transformation roadmap development and implementation support"
+          },
+          service5: {
+            title: "Digital Infrastructure",
+            description: "Modern digital infrastructure solutions for business operations, data management, and network optimization"
+          }
+        },
+        contact: {
+          title: "Get Started Today",
+          subtitle: "Ready to transform your business? Contact us to discuss your digital transformation journey.",
+          form: {
+            name: "Name",
+            email: "Email",
+            company: "Company",
+            message: "Message",
+            submit: "Send Message"
+          }
+        },
+        footer: {
+          description: "Leading digital transformation solutions for Vietnamese enterprises. Empowering businesses with AI and cutting-edge technology.",
+          quickLinks: "Quick Links",
+          contact: "Contact",
+          location: "Ho Chi Minh City, Vietnam",
+          copyright: "© 2025 DigitizedBrains. All rights reserved."
+        },
+        chatbot: {
+          title: "AI Assistant",
+          placeholder: "Type your message...",
+          send: "Send"
+        }
+      },
+      vi: {
+        meta: {
+          title: "DigitizedBrains - Giải pháp Chuyển đổi số Toàn diện",
+          description: "Giải pháp chuyển đổi số toàn diện cho doanh nghiệp Việt Nam - Ứng dụng AI và công nghệ số thông minh"
+        },
+        nav: {
+          home: "Trang chủ",
+          about: "Giới thiệu",
+          digitalTransformation: "Chuyển đổi số",
+          aiAgent: "AI Agent",
+          blog: "Blog",
+          resources: "Tài nguyên",
+          contact: "Liên hệ"
+        },
+        language: {
+          current: "Ngôn ngữ:"
+        },
+        hero: {
+          title: "Chuyển đổi số Doanh nghiệp Việt Nam",
+          title1: "Chuyển đổi số",
+          title2: "Doanh nghiệp Việt Nam",
+          subtitle: "Giải pháp chuyển đổi số toàn diện cho doanh nghiệp Việt Nam - Tối ưu hóa quy trình, nâng cao hiệu quả và thúc đẩy tăng trưởng trong kỷ nguyên số.",
+          exploreBtn: "Khám phá ngay",
+          getStartedBtn: "Bắt đầu"
+        },
+        about: {
+          title1: "Chuyển đổi số",
+          title2: "Doanh nghiệp Việt Nam",
+          description: "Các doanh nghiệp Việt Nam đang đứng trước cơ hội và thách thức lớn trong kỷ nguyên số. Chúng tôi cung cấp giải pháp toàn diện giúp doanh nghiệp số hóa quy trình, tối ưu chi phí vận hành và nâng cao năng lực cạnh tranh. Từ việc hiện đại hóa quy trình đến tích hợp công nghệ thông minh, chúng tôi đồng hành cùng doanh nghiệp trong hành trình chuyển đổi số.",
+          feature1: "Giải pháp tổng thể từ quy trình đến công nghệ số", 
+          feature2: "Kinh nghiệm với nhiều ngành nghề doanh nghiệp Việt Nam",
+          feature3: "Tối ưu chi phí và nâng cao hiệu quả vận hành"
+        },
+        services: {
+          title: "Giải pháp Chuyển đổi số",
+          subtitle: "Giải pháp tổng thể cho chuyển đổi số doanh nghiệp Việt Nam",
+          service1: {
+            title: "Tối ưu hóa Quy trình Số",
+            description: "Số hóa và tối ưu hóa quy trình vận hành doanh nghiệp. Tích hợp công nghệ số để nâng cao hiệu quả và giảm chi phí."
+          },
+          service2: {
+            title: "Tích hợp Công nghệ Thông minh",
+            description: "Triển khai các giải pháp công nghệ tiên tiến để nâng cao hiệu suất và năng lực cạnh tranh của doanh nghiệp."
+          },
+          service3: {
+            title: "Giải pháp AI cho Doanh nghiệp",
+            description: "Ứng dụng AI vào phân tích dữ liệu, tự động hóa quy trình và hỗ trợ ra quyết định thông minh."
+          },
+          service4: {
+            title: "Chiến lược Chuyển đổi số",
+            description: "Xây dựng lộ trình và hỗ trợ triển khai chuyển đổi số toàn diện cho doanh nghiệp."
+          },
+          service5: {
+            title: "Hạ tầng số",
+            description: "Giải pháp hạ tầng số hiện đại cho vận hành doanh nghiệp, quản lý dữ liệu và tối ưu hóa mạng lưới."
+          }
+        },
+        contact: {
+          title: "Khám phá Giải pháp Chuyển đổi số",
+          subtitle: "Bạn muốn tìm hiểu thêm về giải pháp chuyển đổi số cho doanh nghiệp? Liên hệ với chúng tôi để được tư vấn chi tiết về các giải pháp phù hợp.",
+          form: {
+            name: "Họ và tên",
+            email: "Email",
+            company: "Tên doanh nghiệp",
+            message: "Nhu cầu tìm hiểu",
+            submit: "Gửi yêu cầu"
+          }
+        },
+        footer: {
+          description: "Chúng tôi cung cấp giải pháp chuyển đổi số toàn diện cho doanh nghiệp Việt Nam. Giúp doanh nghiệp tối ưu hóa vận hành, áp dụng công nghệ hiện đại và nâng cao năng lực cạnh tranh trong kỷ nguyên số.",
+          quickLinks: "Liên kết nhanh",
+          contact: "Liên hệ",
+          location: "Văn phòng: Thành phố Hồ Chí Minh, Việt Nam",
+          copyright: "© 2025 DigitizedBrains. Bản quyền thuộc về DigitizedBrains."
+        },
+        chatbot: {
+          title: "Trợ lý AI",
+          placeholder: "Nhập tin nhắn của bạn...",
+          send: "Gửi"
+        }
+      },
+      de: {
+        meta: {
+          title: "DigitizedBrains - Digitale Transformation für Unternehmen",
+          description: "Umfassende digitale Transformationslösungen für vietnamesische Unternehmen im KI-Zeitalter"
+        },
+        nav: {
+          home: "Startseite",
+          about: "Über uns",
+          digitalTransformation: "Digitale Transformation",
+          aiAgent: "KI-Agent",
+          blog: "Blog",
+          resources: "Ressourcen",
+          contact: "Kontakt"
+        },
+        language: {
+          current: "Sprache:"
+        },
+        hero: {
+          title: "Digitale Transformation für vietnamesische Unternehmen",
+          title1: "Digitale Transformation",
+          title2: "für vietnamesische Unternehmen",
+          subtitle: "Umfassende digitale Transformationslösungen für vietnamesische Unternehmen - Optimierung von Prozessen und Integration intelligenter Technologien",
+          exploreBtn: "Jetzt entdecken",
+          getStartedBtn: "Loslegen"
+        },
+        about: {
+          title1: "Digitale Transformation",
+          title2: "für vietnamesische Unternehmen",
+          description: "Vietnamesische Unternehmen durchlaufen eine beispiellose digitale Transformation. Unser umfassender Ansatz adressiert die einzigartigen Herausforderungen von Unternehmen aller Größen in der sich schnell entwickelnden digitalen Wirtschaftslandschaft Vietnams.",
+          feature1: "Umfassendes digitales Transformations-Framework",
+          feature2: "Branchenübergreifende Erfahrung mit vietnamesischen Unternehmen",
+          feature3: "KI- und KI-Agent-Lösungen für Geschäftsoptimierung"
+        },
+        services: {
+          title: "Digitale Transformationslösungen",
+          subtitle: "Umfassende Lösungen für die digitale Transformation vietnamesischer Unternehmen",
+          service1: {
+            title: "Digitale Prozessoptimierung",
+            description: "Digitalisierung und Optimierung von Geschäftsprozessen für erhöhte Effizienz und Kosteneinsparungen"
+          },
+          service2: {
+            title: "Integration intelligenter Technologien",
+            description: "Implementierung fortschrittlicher Technologielösungen zur Steigerung der Unternehmensleistung und Wettbewerbsfähigkeit"
+          },
+          service3: {
+            title: "KI-gestützte Geschäftslösungen",
+            description: "Einsatz von KI für Datenanalyse, Prozessautomatisierung und intelligente Entscheidungsunterstützung"
+          },
+          service4: {
+            title: "Digitale Transformationsstrategie",
+            description: "Entwicklung und Implementierungsunterstützung umfassender digitaler Transformationsstrategien"
+          },
+          service5: {
+            title: "Digitale Infrastruktur",
+            description: "Moderne digitale Infrastrukturlösungen für Geschäftsbetrieb, Datenmanagement und Netzwerkoptimierung"
+          }
+        },
+        contact: {
+          title: "Starten Sie noch heute",
+          subtitle: "Bereit, Ihr Unternehmen zu transformieren? Kontaktieren Sie uns, um Ihre digitale Transformationsreise zu besprechen.",
+          form: {
+            name: "Name",
+            email: "E-Mail",
+            company: "Unternehmen",
+            message: "Nachricht",
+            submit: "Nachricht senden"
+          }
+        },
+        footer: {
+          description: "Führende digitale Transformationslösungen für vietnamesische Unternehmen. Stärkung von Unternehmen mit KI und modernster Technologie.",
+          quickLinks: "Schnelle Links",
+          contact: "Kontakt",
+          location: "Ho-Chi-Minh-Stadt, Vietnam",
+          copyright: "© 2025 DigitizedBrains. Alle Rechte vorbehalten."
+        },
+        chatbot: {
+          title: "KI-Assistent",
+          placeholder: "Geben Sie Ihre Nachricht ein...",
+          send: "Senden"
+        }
+      }
+    };
+
+    // Language configuration
+    const languageConfig = {
+      en: { flag: "https://flagcdn.com/24x18/us.png", code: "EN", alt: "English" },
+      vi: { flag: "https://flagcdn.com/24x18/vn.png", code: "VN", alt: "Tiếng Việt" },
+      de: { flag: "https://flagcdn.com/24x18/de.png", code: "DE", alt: "Deutsch" }
+    };
+
+    // Current language
+    let currentLanguage = localStorage.getItem('preferredLanguage') || 'en';
+
+    // DOM elements
+    const htmlRoot = document.getElementById('html-root');
+    const pageTitle = document.getElementById('page-title');
+    const pageDescription = document.getElementById('page-description');
+
+    // Function to update language display
+    function updateLanguageDisplay() {
+      const config = languageConfig[currentLanguage];
+      
+      // Update desktop language switcher
+      const currentLangSpan = document.getElementById('current-lang');
+      const currentFlag = document.getElementById('current-flag');
+      const mobileLangSpan = document.getElementById('mobile-current-lang');
+      const mobileFlag = document.getElementById('mobile-current-flag');
+      
+      if (currentLangSpan) {
+        currentLangSpan.textContent = config.code;
+      }
+      if (currentFlag) {
+        currentFlag.src = config.flag;
+        currentFlag.alt = config.alt;
+      }
+      if (mobileLangSpan) {
+        mobileLangSpan.textContent = config.code;
+      }
+      if (mobileFlag) {
+        mobileFlag.src = config.flag;
+        mobileFlag.alt = config.alt;
+      }
+      
+      // Update active state for options
+      document.querySelectorAll('.language-option, .language-option-mobile').forEach(option => {
+        option.classList.remove('active');
+        if (option.dataset.lang === currentLanguage) {
+          option.classList.add('active');
+        }
+      });
+    }
+
+    // Function to translate content
+    function translateContent(targetLanguage) {
+      const data = languages[targetLanguage];
+      if (!data) {
+        console.error(`Language data not found for '${targetLanguage}', falling back to English`);
+        translateContent('en');
+        return;
+      }
+
+      // Add transition effect
+      document.body.classList.add('lang-transition', 'changing');
+
+      setTimeout(() => {
+        try {
+          // Update meta tags
+          htmlRoot.lang = targetLanguage === 'vi' ? 'vi' : targetLanguage === 'de' ? 'de' : 'en';
+          pageTitle.textContent = data.meta.title;
+          pageDescription.content = data.meta.description;
+
+          // Update all translatable elements
+          document.querySelectorAll('[data-translate]').forEach(element => {
+            const key = element.getAttribute('data-translate');
+            const keys = key.split('.');
+            let value = data;
+            
+            for (let k of keys) {
+              value = value[k];
+              if (!value) break;
+            }
+            
+            if (value) {
+              element.textContent = value;
+            } else {
+              console.warn(`Translation key '${key}' not found for language '${targetLanguage}'`);
+            }
+          });
+
+          // Remove transition effect
+          document.body.classList.remove('changing');
+        } catch (error) {
+          console.error('Error during content translation:', error);
+          document.body.classList.remove('changing');
+        }
+      }, 150);
+
+      setTimeout(() => {
+        document.body.classList.remove('lang-transition');
+      }, 450);
+    }
+
+    // Function to change language
+    function changeLanguage(newLanguage) {
+      if (newLanguage === currentLanguage) return;
+      
+      currentLanguage = newLanguage;
+      localStorage.setItem('preferredLanguage', newLanguage);
+      
+      updateLanguageDisplay();
+      translateContent(newLanguage);
+    }
+
+    // Language switcher event listeners
+    document.getElementById('language-btn').addEventListener('click', function(e) {
+      e.stopPropagation();
+      const menu = document.getElementById('language-menu');
+      menu.classList.toggle('show');
+    });
+
+    document.getElementById('mobile-language-btn').addEventListener('click', function(e) {
+      e.stopPropagation();
+      const menu = document.getElementById('mobile-language-menu');
+      menu.classList.toggle('show');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function() {
+      document.querySelectorAll('.language-menu, .language-menu-mobile').forEach(menu => {
+        menu.classList.remove('show');
+      });
+    });
+
+    // Prevent dropdown from closing when clicking inside options
+    document.querySelectorAll('.language-menu, .language-menu-mobile').forEach(menu => {
+      menu.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+    });
+
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        // Skip empty hashes and language switcher links
+        if (href === '#' || this.hasAttribute('onclick')) {
+          return;
+        }
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Scroll reveal animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Active navigation link
+    window.addEventListener('scroll', function() {
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('nav a[href^="#"]');
+      
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      // Validate language data integrity
+      const supportedLanguages = ['en', 'vi', 'de'];
+      const availableLanguages = Object.keys(languages);
+      
+      // Ensure current language is supported
+      if (!supportedLanguages.includes(currentLanguage)) {
+        console.warn(`Unsupported language '${currentLanguage}', defaulting to English`);
+        currentLanguage = 'en';
+        localStorage.setItem('preferredLanguage', 'en');
+      }
+      
+      // Initialize UI
+      updateLanguageDisplay();
+      translateContent(currentLanguage);
+      
+      // Log initialization status
+      console.log(`DigitizedBrains Multilingual Site initialized successfully`);
+      console.log(`Current language: ${currentLanguage}`);
+      console.log(`Available languages: ${availableLanguages.join(', ')}`);
+      console.log(`Operating in standalone mode - no external dependencies`);
+    });
+  </script>
+
+  <!-- Chatbot Container -->
+  <div id="chatbot-container">
+    <div id="chatbot-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z" fill="white"/>
+        <path d="M8.5 11C9.33 11 10 10.33 10 9.5C10 8.67 9.33 8 8.5 8C7.67 8 7 8.67 7 9.5C7 10.33 7.67 11 8.5 11Z" fill="white"/>
+        <path d="M15.5 11C16.33 11 17 10.33 17 9.5C17 8.67 16.33 8 15.5 8C14.67 8 14 8.67 14 9.5C14 10.33 14.67 11 15.5 11Z" fill="white"/>
+        <path d="M12 17.5C14.33 17.5 16.31 16.04 17 14H7C7.69 16.04 9.67 17.5 12 17.5Z" fill="white"/>
+      </svg>
+    </div>
+    <div id="chatbot-widget">
+      <div id="chatbot-header">
+        <h3 data-translate="chatbot.title">AI Assistant</h3>
+        <button id="chatbot-close">&times;</button>
+      </div>
+      <div id="chatbot-messages"></div>
+      <div id="chatbot-input-container">
+        <input type="text" id="chatbot-input" data-translate-placeholder="chatbot.placeholder" placeholder="Type your message...">
+        <button id="chatbot-send" data-translate="chatbot.send">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Multilingual System -->
+  <script src="js/multilang.js"></script>
+  
+  <!-- Chatbot Integration -->
+  <script src="js/chatbot.js"></script>
+  
+  <!-- Initialize Multilingual -->
+  <script>
+    // Page-specific translations (empty for main page as it already has complete translations)
+    document.addEventListener('DOMContentLoaded', function() {
+      // Main page already has built-in multilingual system
+      console.log('Main page multilingual system is operational');
+    });
+  </script>
 </body>
 </html>

@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="vi" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="page-title">Đào tạo & Phát triển Nhân viên - DigitizedBrains</title>
+  <meta name="description" content="Chương trình đào tạo và phát triển nhân viên toàn diện cho doanh nghiệp Việt Nam trong chuyển đổi số" id="page-description">
+  <link href="../../css/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    .font-nunito { 
+      font-family: 'Nunito', sans-serif; 
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Navigation styles */
+    .nav-link {
+      color: #374151;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .nav-link:hover { color: #ed7354; background-color: #fef2f2; }
+    .nav-link.active { color: #ed7354; font-weight: 600; }
+
+    /* Logo gradient - cam sang hồng */
+    .logo-gradient {
+      background: linear-gradient(135deg, #fb923c 0%, #ec4899 100%);
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Language Switcher Styles */
+    .language-switcher {
+      position: relative;
+    }
+    
+    .language-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      min-width: 160px;
+      display: none;
+      z-index: 1000;
+    }
+    
+    .language-menu.show {
+      display: block;
+    }
+    
+    .language-option {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+    
+    .language-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    /* Mobile Language Switcher */
+    .language-switcher-mobile {
+      position: relative;
+    }
+    
+    .language-menu-mobile {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      display: none;
+      z-index: 1000;
+    }
+    
+    .language-menu-mobile.show {
+      display: block;
+    }
+    
+    .language-option-mobile {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option-mobile:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option-mobile.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+
+    /* Hero Section Styles */
+    .hero-section {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 120px 0;
+      color: white;
+    }
+
+    /* Scroll Reveal Animation */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+    
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Feature Cards */
+    .feature-card {
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Button Styles */
+    .btn-primary {
+      background: linear-gradient(135deg, #ed7354, #dc2626);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+    }
+
+    /* Statistics Cards */
+    .stat-card {
+      background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+      border: 1px solid #d1d5db;
+    }
+
+    .stat-card:hover {
+      background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+      border-color: #fca5a5;
+    }
+
+    /* Training Icon Styles */
+    .training-icon {
+      background: linear-gradient(135deg, #ed7354 0%, #dc2626 100%);
+    }
+
+    .leadership-icon {
+      background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    }
+
+    .technical-icon {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    }
+
+    .soft-skills-icon {
+      background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+    }
+
+    .industry-icon {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    }
+
+    .continuous-icon {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    }
+
+    /* Program Cards */
+    .program-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      transition: all 0.3s ease;
+    }
+
+    .program-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      border-color: #ed7354;
+    }
+
+    .program-duration {
+      background: linear-gradient(135deg, #fb923c 0%, #ec4899 100%);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+  <!-- Header -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <div class="logo-gradient w-10 h-10 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-lg">DB</span>
+          </div>
+          <a href="../../index.html" class="text-2xl font-bold text-gray-800">DigitizedBrains</a>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="hidden md:flex space-x-4">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="#blog" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="#resources" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="#contact" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+        </nav>
+
+        <!-- Language Switcher -->
+        <div class="hidden md:block">
+          <div class="language-switcher">
+            <button id="language-btn" class="flex items-center space-x-1 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+              <img id="current-flag" src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+              <span id="current-lang">VI</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="language-menu" class="language-menu">
+              <a href="#" onclick="changeLanguage('en')" class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                English
+              </a>
+              <a href="#" onclick="changeLanguage('vi')" class="language-option" data-lang="vi">
+                <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                Tiếng Việt
+              </a>
+              <a href="#" onclick="changeLanguage('de')" class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                Deutsch
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <nav class="flex flex-col space-y-2">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="#blog" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="#resources" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="#contact" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+          
+          <!-- Mobile Language Switcher -->
+          <div class="pt-2 border-t border-gray-200">
+            <div class="language-switcher-mobile">
+              <button id="mobile-language-btn" class="flex items-center justify-between w-full px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                <span data-translate="language.current">Ngôn ngữ:</span>
+                <div class="flex items-center space-x-1">
+                  <img id="mobile-current-flag" src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                  <span id="mobile-current-lang">VI</span>
+                </div>
+              </button>
+              <div id="mobile-language-menu" class="language-menu-mobile">
+                <a href="#" onclick="changeLanguage('en')" class="language-option-mobile" data-lang="en">
+                  <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                  English
+                </a>
+                <a href="#" onclick="changeLanguage('vi')" class="language-option-mobile" data-lang="vi">
+                  <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                  Tiếng Việt
+                </a>
+                <a href="#" onclick="changeLanguage('de')" class="language-option-mobile" data-lang="de">
+                  <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                  Deutsch
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 scroll-reveal" data-translate="hero.title">Đào tạo & Phát triển Nhân viên cho Doanh nghiệp Việt Nam</h1>
+        <p class="text-xl opacity-90 mb-8 scroll-reveal" data-translate="hero.subtitle">Trao quyền cho lực lượng lao động với chương trình đào tạo kỹ năng số toàn diện và phát triển chuyên môn phù hợp với Công nghiệp 4.0</p>
+        <div class="flex flex-wrap justify-center gap-4 scroll-reveal">
+          <a href="#solutions" class="btn-primary px-8 py-3 rounded-full font-semibold text-white" data-translate="hero.cta">Khám phá Giải pháp Đào tạo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Workforce Development Situation -->
+  <section class="py-20 bg-orange-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto mb-16 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal text-orange-600" data-translate="situation.title">Tình hình Phát triển Nhân lực Việt Nam 2024-2025</h2>
+        <p class="text-xl text-gray-600 scroll-reveal" data-translate="situation.subtitle">
+          Doanh nghiệp Việt Nam đang đối mặt với khoảng cách kỹ năng số nghiêm trọng trong kỷ nguyên chuyển đổi số
+        </p>
+      </div>
+
+      <!-- Statistics Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div class="stat-card rounded-xl p-6 text-center scroll-reveal">
+          <div class="text-4xl font-bold text-orange-600 mb-2" data-translate="stats.skillGap.number">800,000</div>
+          <p class="text-gray-600" data-translate="stats.skillGap.description">thiếu hụt lực lượng lao động IT dự báo đến 2024</p>
+        </div>
+        
+        <div class="stat-card rounded-xl p-6 text-center scroll-reveal">
+          <div class="text-4xl font-bold text-orange-600 mb-2" data-translate="stats.willing.number">84%</div>
+          <p class="text-gray-600" data-translate="stats.willing.description">lao động Việt Nam sẵn sàng học kỹ năng mới</p>
+        </div>
+        
+        <div class="stat-card rounded-xl p-6 text-center scroll-reveal">
+          <div class="text-4xl font-bold text-orange-600 mb-2" data-translate="stats.graduates.number">35%</div>
+          <p class="text-gray-600" data-translate="stats.graduates.description">sinh viên IT tốt nghiệp đáp ứng yêu cầu doanh nghiệp</p>
+        </div>
+        
+        <div class="stat-card rounded-xl p-6 text-center scroll-reveal">
+          <div class="text-4xl font-bold text-orange-600 mb-2" data-translate="stats.training.number">1 triệu</div>
+          <p class="text-gray-600" data-translate="stats.training.description">người được đào tạo kỹ năng số đến 2025</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section id="solutions" class="py-20">
+    <div class="container mx-auto px-4">
+      <!-- Overview Section -->
+      <div class="max-w-4xl mx-auto mb-16 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal" data-translate="content.overview.title">Giải pháp Đào tạo & Phát triển Nhân viên Toàn diện</h2>
+        <p class="text-xl text-gray-600 scroll-reveal" data-translate="content.overview.description">
+          Xây dựng lực lượng lao động sẵn sàng cho tương lai với chương trình đào tạo toàn diện được thiết kế đặc biệt cho doanh nghiệp Việt Nam trong kỷ nguyên số
+        </p>
+      </div>
+
+      <!-- Solutions Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <!-- Digital Skills -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 training-icon rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.digital.title">Đào tạo Kỹ năng Số</h3>
+          <p class="text-gray-600" data-translate="content.solutions.digital.description">Chương trình toàn diện bao gồm AI, điện toán đám mây, IoT, an ninh mạng, blockchain và phân tích dữ liệu lớn cho nhu cầu kinh doanh hiện đại</p>
+        </div>
+
+        <!-- Leadership Development -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 leadership-icon rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.leadership.title">Phát triển Lãnh đạo</h3>
+          <p class="text-gray-600" data-translate="content.solutions.leadership.description">Chương trình đào tạo lãnh đạo và quản lý để dẫn dắt các sáng kiến chuyển đổi số và quản lý thay đổi hiệu quả</p>
+        </div>
+
+        <!-- Technical Skills -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 technical-icon rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.technical.title">Nâng cao Kỹ năng Kỹ thuật</h3>
+          <p class="text-gray-600" data-translate="content.solutions.technical.description">Đào tạo chuyên sâu về lập trình, quản trị hệ thống, phân tích dữ liệu và công nghệ mới nổi cho đội ngũ kỹ thuật</p>
+        </div>
+
+        <!-- Soft Skills -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 soft-skills-icon rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.soft.title">Phát triển Kỹ năng Mềm</h3>
+          <p class="text-gray-600" data-translate="content.solutions.soft.description">Kỹ năng giao tiếp, giải quyết vấn đề, làm việc nhóm và tư duy phản biện cần thiết cho thành công tại nơi làm việc hiện đại</p>
+        </div>
+
+        <!-- Industry 4.0 -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 industry-icon rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.industry.title">Sẵn sàng Công nghiệp 4.0</h3>
+          <p class="text-gray-600" data-translate="content.solutions.industry.description">Chương trình đào tạo chuyên biệt để chuẩn bị lực lượng lao động cho tự động hóa, sản xuất thông minh và mô hình kinh doanh số</p>
+        </div>
+
+        <!-- Continuous Learning -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 continuous-icon rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.solutions.continuous.title">Chương trình Học tập Liên tục</h3>
+          <p class="text-gray-600" data-translate="content.solutions.continuous.description">Phát triển chuyên môn liên tục với lộ trình học tập cá nhân hóa và hệ thống theo dõi tiến độ</p>
+        </div>
+      </div>
+
+      <!-- Training Approach Section -->
+      <div class="max-w-4xl mx-auto mb-16">
+        <h2 class="text-3xl font-bold mb-8 text-center scroll-reveal" data-translate="content.approach.title">Phương pháp Đào tạo của chúng tôi</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Blended Learning -->
+          <div class="bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold" data-translate="content.approach.blended.title">Phương pháp Học tập Kết hợp</h3>
+            </div>
+            <p class="text-gray-600" data-translate="content.approach.blended.description">Kết hợp nền tảng số trực tuyến với các buổi thực hành để đạt kết quả học tập tối ưu</p>
+          </div>
+
+          <!-- Customized Content -->
+          <div class="bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold" data-translate="content.approach.customized.title">Nội dung Tùy chỉnh</h3>
+            </div>
+            <p class="text-gray-600" data-translate="content.approach.customized.description">Chương trình đào tạo được thiết kế riêng theo nhu cầu ngành và yêu cầu tổ chức cụ thể</p>
+          </div>
+
+          <!-- Practical Application -->
+          <div class="bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold" data-translate="content.approach.practical.title">Ứng dụng Thực tiễn</h3>
+            </div>
+            <p class="text-gray-600" data-translate="content.approach.practical.description">Dự án thực tế và nghiên cứu tình huống phù hợp với môi trường kinh doanh Việt Nam</p>
+          </div>
+
+          <!-- Continuous Assessment -->
+          <div class="bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
+                <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold" data-translate="content.approach.assessment.title">Đánh giá Liên tục</h3>
+            </div>
+            <p class="text-gray-600" data-translate="content.approach.assessment.description">Đánh giá và phản hồi thường xuyên để đảm bảo đạt được mục tiêu học tập và duy trì kỹ năng</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Training Programs Section -->
+      <div class="max-w-6xl mx-auto mb-16">
+        <h2 class="text-3xl font-bold mb-8 text-center scroll-reveal" data-translate="content.programs.title">Chương trình Đào tạo của chúng tôi</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Foundation Program -->
+          <div class="program-card rounded-xl p-6 scroll-reveal">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-semibold" data-translate="content.programs.foundation.title">Chương trình Nền tảng Số</h3>
+              <span class="program-duration" data-translate="content.programs.foundation.duration">4-6 tuần</span>
+            </div>
+            <p class="text-gray-600 mb-4" data-translate="content.programs.foundation.description">Kiến thức cơ bản về số hóa, kỹ năng máy tính và nền tảng nơi làm việc số cho tất cả nhân viên</p>
+            <div class="space-y-2">
+              <div class="flex items-center text-sm text-gray-600">
+                <span class="w-2 h-2 bg-orange-400 rounded-full mr-2"></span>
+                <span data-translate="content.programs.foundation.topics.0">Kiến thức cơ bản về số hóa</span>
+              </div>
+              <div class="flex items-center text-sm text-gray-600">
+                <span class="w-2 h-2 bg-orange-400 rounded-full mr-2"></span>
+                <span data-translate="content.programs.foundation.topics.1">Công cụ năng suất văn phòng</span>
+              </div>
+              <div class="flex items-center text-sm text-gray-600">
+                <span class="w-2 h-2 bg-orange-400 rounded-full mr-2"></span>
+                <span data-translate="content.programs.foundation.topics.2">Giao tiếp số</span>
+              </div>
+              <div class="flex items-center text-sm text-gray-600">
+                <span class="w-2 h-2 bg-orange-400 rounded-full mr-2"></span>
+                <span data-translate="content.programs.foundation.topics.3">Nhận thức an ninh mạng</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Advanced Technical Program -->
+          <div class="program-card rounded-xl p-6 scroll-reveal">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-semibold" data-translate="content.programs.advanced.title">Chương trình Kỹ thuật Nâng cao</h3>
+              <span class="program-duration" data-translate="content.programs.advanced.duration">8-12 tuần</span>
+            </div>
+            <p class="text-gray-600 mb-4" data-translate="content.programs.advanced.description">Kỹ năng kỹ thuật chuyên sâu cho chuyên gia IT và đội ngũ kỹ thuật</p>
+            <div class="space-y-2">
+              <div class="flex items-center text-sm text-gray-600">
+                <span class="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
+                <span data-translate="content.programs.advanced.topics.0">Ngôn ngữ lập trình</span>
+              </div>
+              <div class="flex items-center text-sm text-gray-600">
+                <span class="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
+                <span data-translate="content.programs.advanced.topics.1">Quản lý cơ sở dữ liệu</span>
+              </div>
+              <div class="flex items-center text-sm text-gray-600">
+                <span class="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
+                <span data-translate="content.programs.advanced.topics.2">Nền tảng đám mây</span>
+              </div>
+              <div class="flex items-center text-sm text-gray-600">
+                <span class="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
+                <span data-translate="content.programs.advanced.topics.3">Quản trị hệ thống</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Digital Leadership Program -->
+          <div class="program-card rounded-xl p-6 scroll-reveal">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-semibold" data-translate="content.programs.management.title">Chương trình Lãnh đạo Số</h3>
+              <span class="program-duration" data-translate="content.programs.management.duration">6-8 tuần</span>
+            </div>
+            <p class="text-gray-600 mb-4" data-translate="content.programs.management.description">Kỹ năng lãnh đạo để quản lý chuyển đổi số và dẫn dắt đội ngũ từ xa</p>
+            <div class="space-y-2">
+              <div class="flex items-center text-sm text-gray-600">
+                <span class="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
+                <span data-translate="content.programs.management.topics.0">Chiến lược số</span>
+              </div>
+              <div class="flex items-center text-sm text-gray-600">
+                <span class="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
+                <span data-translate="content.programs.management.topics.1">Quản lý thay đổi</span>
+              </div>
+              <div class="flex items-center text-sm text-gray-600">
+                <span class="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
+                <span data-translate="content.programs.management.topics.2">Lãnh đạo đội nhóm</span>
+              </div>
+              <div class="flex items-center text-sm text-gray-600">
+                <span class="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
+                <span data-translate="content.programs.management.topics.3">Quản lý dự án</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Industry 4.0 Specialization -->
+          <div class="program-card rounded-xl p-6 scroll-reveal">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-semibold" data-translate="content.programs.industry.title">Chuyên ngành Công nghiệp 4.0</h3>
+              <span class="program-duration" data-translate="content.programs.industry.duration">10-16 tuần</span>
+            </div>
+            <p class="text-gray-600 mb-4" data-translate="content.programs.industry.description">Chuẩn bị toàn diện cho công nghệ Công nghiệp 4.0 và sản xuất thông minh</p>
+            <div class="space-y-2">
+              <div class="flex items-center text-sm text-gray-600">
+                <span class="w-2 h-2 bg-purple-400 rounded-full mr-2"></span>
+                <span data-translate="content.programs.industry.topics.0">IoT và cảm biến</span>
+              </div>
+              <div class="flex items-center text-sm text-gray-600">
+                <span class="w-2 h-2 bg-purple-400 rounded-full mr-2"></span>
+                <span data-translate="content.programs.industry.topics.1">Hệ thống tự động</span>
+              </div>
+              <div class="flex items-center text-sm text-gray-600">
+                <span class="w-2 h-2 bg-purple-400 rounded-full mr-2"></span>
+                <span data-translate="content.programs.industry.topics.2">Phân tích dữ liệu</span>
+              </div>
+              <div class="flex items-center text-sm text-gray-600">
+                <span class="w-2 h-2 bg-purple-400 rounded-full mr-2"></span>
+                <span data-translate="content.programs.industry.topics.3">Sản xuất thông minh</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Benefits Section -->
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8 text-center scroll-reveal" data-translate="content.benefits.title">Lợi ích của Đào tạo Nhân viên Toàn diện</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Increased Productivity -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.productivity.title">Tăng Năng suất</h3>
+              <p class="text-gray-600" data-translate="content.benefits.productivity.description">Các công ty có đào tạo toàn diện thấy tăng 17% năng suất và thu nhập cao hơn 218% trên mỗi nhân viên</p>
+            </div>
+          </div>
+
+          <!-- Improved Retention -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.retention.title">Cải thiện Giữ chân Nhân viên</h3>
+              <p class="text-gray-600" data-translate="content.benefits.retention.description">90% người lao động ở lại lâu hơn với tổ chức hỗ trợ phát triển nghề nghiệp</p>
+            </div>
+          </div>
+
+          <!-- Enhanced Innovation -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.375 3.375 0 0014.25 21H9.75a3.375 3.375 0 01-3.182-2.262l-.548-.547z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.innovation.title">Tăng cường Đổi mới</h3>
+              <p class="text-gray-600" data-translate="content.benefits.innovation.description">Tổ chức có văn hóa học tập mạnh có khả năng phát triển giải pháp sáng tạo cao hơn 92%</p>
+            </div>
+          </div>
+
+          <!-- Market Competitiveness -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.benefits.competitiveness.title">Cạnh tranh Thị trường</h3>
+              <p class="text-gray-600" data-translate="content.benefits.competitiveness.description">Lực lượng lao động được đào tạo tốt cung cấp lợi thế cạnh tranh bền vững trong nền kinh tế số</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Digital Transformation Connection -->
+  <section class="py-20 bg-gradient-to-r from-orange-50 to-pink-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal text-gray-800" data-translate="connection.title">Dịch vụ Chuyển đổi Số của chúng tôi</h2>
+        <p class="text-xl text-gray-600 mb-8 scroll-reveal" data-translate="connection.description">
+          Đào tạo & Phát triển Nhân viên là nền tảng cho việc triển khai chuyển đổi số thành công
+        </p>
+        <div class="bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
+          <div class="flex items-center justify-center mb-6">
+            <div class="logo-gradient w-16 h-16 rounded-xl flex items-center justify-center">
+              <span class="text-white font-bold text-2xl">DB</span>
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 text-gray-800" data-translate="connection.service.title">Đào tạo & Phát triển Nhân viên</h3>
+          <p class="text-gray-600 mb-6" data-translate="connection.service.description">
+            Tích hợp với giải pháp chuyển đổi số toàn diện để xây dựng lực lượng lao động có năng lực cho tương lai số
+          </p>
+          <a href="../digital-transformation/index.html" class="btn-primary px-8 py-3 rounded-full font-semibold text-white inline-block" data-translate="connection.cta">
+            Tìm hiểu về Chuyển đổi Số
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-gray-900 text-white py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal" data-translate="cta.title">Xây dựng Lực lượng Lao động Sẵn sàng Tương lai Ngay hôm nay</h2>
+        <p class="text-xl opacity-90 mb-8 scroll-reveal" data-translate="cta.description">Liên hệ với chúng tôi để đánh giá nhu cầu đào tạo và phát triển chương trình phát triển nhân viên tùy chỉnh cho tổ chức của bạn</p>
+        <a href="#contact" class="btn-primary px-8 py-3 rounded-full font-semibold inline-block scroll-reveal text-white" data-translate="cta.button">Bắt đầu Chương trình Đào tạo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="logo-gradient w-10 h-10 rounded-lg flex items-center justify-center">
+              <span class="text-white font-bold text-lg">DB</span>
+            </div>
+            <span class="text-2xl font-bold">DigitizedBrains</span>
+          </div>
+          <p class="text-gray-400" data-translate="footer.description">Nhà cung cấp giải pháp đào tạo và phát triển nhân viên hàng đầu cho doanh nghiệp Việt Nam trong chuyển đổi số</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.quickLinks">Liên kết nhanh</h4>
+          <div class="grid grid-cols-2 gap-2">
+            <ul class="space-y-2">
+              <li><a href="../../index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.home">Trang chủ</a></li>
+              <li><a href="../about/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.about">Giới thiệu</a></li>
+              <li><a href="../digital-transformation/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.digitalTransformation">Chuyển đổi số</a></li>
+              <li><a href="../ai-agents/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.aiAgent">AI Agent</a></li>
+            </ul>
+            <ul class="space-y-2">
+              <li><a href="#blog" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.blog">Blog</a></li>
+              <li><a href="#resources" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.resources">Tài nguyên</a></li>
+              <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.contact">Liên hệ</a></li>
+              <li><a href="staff-training-multilang.html" class="text-gray-400 hover:text-white transition-colors">Đào tạo nhân viên</a></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.contact">Liên hệ</h4>
+          <ul class="space-y-2">
+            <li class="text-gray-400">training@digitizedbrains.com</li>
+            <li class="text-gray-400" data-translate="footer.location">Thành phố Hồ Chí Minh, Việt Nam</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-gray-400" data-translate="footer.copyright">© 2025 DigitizedBrains. Bản quyền thuộc về DigitizedBrains.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Page Functionality Script -->
+  <script>
+    // Mobile menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', function() {
+          const mobileMenu = document.getElementById('mobile-menu');
+          if (mobileMenu) {
+            mobileMenu.classList.toggle('hidden');
+          }
+        });
+      }
+    });
+
+    // Scroll reveal animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all scroll-reveal elements
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+  <!-- Language Switcher Script -->
+  <script src="../../js/multilang.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Page-specific translations for staff training
+      const pageTranslations = {
+        en: {
+          meta: {
+            title: "Staff Training & Development - DigitizedBrains",
+            description: "Comprehensive digital skills training programs for Vietnamese enterprises"
+          },
+          nav: {
+            home: "Home",
+            about: "About",
+            digitalTransformation: "Digital Transformation",
+            aiAgent: "AI Agent",
+            blog: "Blog",
+            resources: "Resources",
+            contact: "Contact"
+          },
+          language: {
+            current: "Language:"
+          },
+          hero: {
+            title: "Staff Training & Development for Vietnamese Enterprises",
+            subtitle: "Empower your workforce with comprehensive digital skills training and professional development programs tailored for Industry 4.0",
+            cta: "Explore Training Solutions"
+          },
+          situation: {
+            title: "Vietnam Human Resource Development Situation 2024-2025",
+            subtitle: "Understanding the current landscape and future needs of Vietnamese workforce development"
+          },
+          stats: {
+            skillGap: {
+              number: "800,000",
+              description: "IT workforce shortage projected by 2024"
+            },
+            willing: {
+              number: "84%",
+              description: "Vietnamese workers ready to learn new skills"
+            },
+            graduates: {
+              number: "35%",
+              description: "IT graduates meet enterprise requirements"
+            },
+            training: {
+              number: "1 million",
+              description: "people to be trained in digital skills by 2025"
+            }
+          },
+          content: {
+            overview: {
+              title: "Comprehensive Staff Training & Development Solutions",
+              description: "Build a future-ready workforce with our integrated training programs designed specifically for Vietnamese enterprises navigating digital transformation"
+            },
+            solutions: {
+              digital: {
+                title: "Digital Skills Training",
+                description: "Comprehensive programs covering AI, cloud computing, IoT, cybersecurity, blockchain, and big data analytics for modern business needs"
+              },
+              leadership: {
+                title: "Leadership Development",
+                description: "Leadership and management training programs to guide digital transformation initiatives and manage change effectively"
+              },
+              technical: {
+                title: "Technical Skills Enhancement",
+                description: "In-depth training on programming, system administration, data analysis, and emerging technologies for technical teams"
+              },
+              soft: {
+                title: "Soft Skills Development",
+                description: "Communication, problem-solving, teamwork, and critical thinking skills essential for success in modern workplaces"
+              },
+              industry: {
+                title: "Industry 4.0 Readiness",
+                description: "Specialized training programs to prepare workforce for automation, smart manufacturing, and digital business models"
+              },
+              continuous: {
+                title: "Continuous Learning Programs",
+                description: "Ongoing professional development with personalized learning paths and progress tracking systems"
+              }
+            },
+            approach: {
+              title: "Our Training Approach",
+              blended: {
+                title: "Blended Learning Method",
+                description: "Combining online digital platforms with hands-on practical sessions for optimal learning outcomes"
+              },
+              customized: {
+                title: "Customized Content",
+                description: "Training programs tailored to specific industry needs and organizational requirements"
+              },
+              practical: {
+                title: "Practical Application",
+                description: "Real-world projects and case studies relevant to Vietnamese business environment"
+              },
+              assessment: {
+                title: "Continuous Assessment",
+                description: "Regular evaluation and feedback to ensure learning objectives are met and skills are retained"
+              }
+            },
+            programs: {
+              title: "Our Training Programs",
+              foundation: {
+                title: "Digital Foundation Program",
+                duration: "4-6 weeks",
+                description: "Basic digital literacy, computer skills, and digital workplace fundamentals for all employees",
+                topics: [
+                  "Digital literacy basics",
+                  "Office productivity tools",
+                  "Digital communication",
+                  "Cybersecurity awareness"
+                ]
+              },
+              advanced: {
+                title: "Advanced Technical Program",
+                duration: "8-12 weeks", 
+                description: "In-depth technical skills for IT professionals and technical teams",
+                topics: [
+                  "Programming languages",
+                  "Database management",
+                  "Cloud platforms",
+                  "System administration"
+                ]
+              },
+              management: {
+                title: "Digital Leadership Program",
+                duration: "6-8 weeks",
+                description: "Leadership skills for managing digital transformation and leading remote teams",
+                topics: [
+                  "Digital strategy",
+                  "Change management", 
+                  "Team leadership",
+                  "Project management"
+                ]
+              },
+              industry: {
+                title: "Industry 4.0 Specialization",
+                duration: "10-16 weeks",
+                description: "Comprehensive preparation for Industry 4.0 technologies and smart manufacturing",
+                topics: [
+                  "IoT and sensors",
+                  "Automation systems",
+                  "Data analytics",
+                  "Smart manufacturing"
+                ]
+              }
+            },
+            benefits: {
+              title: "Benefits of Comprehensive Staff Training",
+              productivity: {
+                title: "Increased Productivity",
+                description: "Companies with comprehensive training see 17% increase in productivity and 218% higher income per employee"
+              },
+              retention: {
+                title: "Improved Employee Retention",
+                description: "90% of workers stay longer with organizations that support career development"
+              },
+              innovation: {
+                title: "Enhanced Innovation",
+                description: "Organizations with strong learning culture are 92% more likely to develop innovative solutions"
+              },
+              competitiveness: {
+                title: "Market Competitiveness",
+                description: "Well-trained workforce provides sustainable competitive advantage in the digital economy"
+              }
+            }
+          },
+          connection: {
+            title: "Our Digital Transformation Services",
+            description: "Staff training is just one part of our comprehensive digital transformation solutions",
+            service: {
+              title: "Staff Training & Development",
+              description: "Part of our integrated approach to digital transformation, ensuring your workforce is prepared for the digital future"
+            },
+            cta: "Explore All Services"
+          },
+          cta: {
+            title: "Build a Future-Ready Workforce Today",
+            description: "Contact us to assess your training needs and develop a customized staff development program for your organization",
+            button: "Start Training Program"
+          },
+          footer: {
+            description: "Leading staff training and development solutions provider for Vietnamese enterprises in digital transformation",
+            quickLinks: "Quick Links",
+            services: "Services",
+            contact: "Contact",
+            location: "Ho Chi Minh City, Vietnam",
+            email: "Email: info@digitizedbrains.com",
+            phone: "Phone: +84 123 456 789",
+            address: "Ho Chi Minh City, Vietnam",
+            copyright: "© 2024 DigitizedBrains. All rights reserved."
+          }
+        },
+        vi: {
+          meta: {
+            title: "Đào tạo & Phát triển Nhân viên - DigitizedBrains",
+            description: "Chương trình đào tạo kỹ năng số toàn diện cho doanh nghiệp Việt Nam"
+          },
+          nav: {
+            home: "Trang chủ",
+            about: "Giới thiệu",
+            digitalTransformation: "Chuyển đổi số",
+            aiAgent: "AI Agent",
+            blog: "Blog",
+            resources: "Tài nguyên",
+            contact: "Liên hệ"
+          },
+          language: {
+            current: "Ngôn ngữ:"
+          },
+          hero: {
+            title: "Đào tạo & Phát triển Nhân viên cho Doanh nghiệp Việt Nam",
+            subtitle: "Trao quyền cho lực lượng lao động với chương trình đào tạo kỹ năng số toàn diện và phát triển chuyên môn phù hợp với Công nghiệp 4.0",
+            cta: "Khám phá Giải pháp Đào tạo"
+          },
+          situation: {
+            title: "Tình hình Phát triển Nhân lực Việt Nam 2024-2025",
+            subtitle: "Hiểu rõ bối cảnh hiện tại và nhu cầu tương lai của phát triển lực lượng lao động Việt Nam"
+          },
+          stats: {
+            skillGap: {
+              number: "800,000",
+              description: "thiếu hụt lực lượng lao động IT dự báo đến 2024"
+            },
+            willing: {
+              number: "84%",
+              description: "lao động Việt Nam sẵn sàng học kỹ năng mới"
+            },
+            graduates: {
+              number: "35%",
+              description: "sinh viên IT tốt nghiệp đáp ứng yêu cầu doanh nghiệp"
+            },
+            training: {
+              number: "1 triệu",
+              description: "người được đào tạo kỹ năng số đến 2025"
+            }
+          },
+          content: {
+            overview: {
+              title: "Giải pháp Đào tạo & Phát triển Nhân viên Toàn diện",
+              description: "Xây dựng lực lượng lao động sẵn sàng tương lai với các chương trình đào tạo tích hợp được thiết kế đặc biệt cho doanh nghiệp Việt Nam trong quá trình chuyển đổi số"
+            },
+            solutions: {
+              digital: {
+                title: "Đào tạo Kỹ năng Số",
+                description: "Chương trình toàn diện bao gồm AI, điện toán đám mây, IoT, an ninh mạng, blockchain và phân tích dữ liệu lớn cho nhu cầu kinh doanh hiện đại"
+              },
+              leadership: {
+                title: "Phát triển Lãnh đạo",
+                description: "Chương trình đào tạo lãnh đạo và quản lý để dẫn dắt các sáng kiến chuyển đổi số và quản lý thay đổi hiệu quả"
+              },
+              technical: {
+                title: "Nâng cao Kỹ năng Kỹ thuật",
+                description: "Đào tạo chuyên sâu về lập trình, quản trị hệ thống, phân tích dữ liệu và công nghệ mới nổi cho đội ngũ kỹ thuật"
+              },
+              soft: {
+                title: "Phát triển Kỹ năng Mềm",
+                description: "Kỹ năng giao tiếp, giải quyết vấn đề, làm việc nhóm và tư duy phản biện cần thiết cho thành công tại nơi làm việc hiện đại"
+              },
+              industry: {
+                title: "Sẵn sàng Công nghiệp 4.0",
+                description: "Chương trình đào tạo chuyên biệt để chuẩn bị lực lượng lao động cho tự động hóa, sản xuất thông minh và mô hình kinh doanh số"
+              },
+              continuous: {
+                title: "Chương trình Học tập Liên tục",
+                description: "Phát triển chuyên môn liên tục với lộ trình học tập cá nhân hóa và hệ thống theo dõi tiến độ"
+              }
+            },
+            approach: {
+              title: "Phương pháp Đào tạo của chúng tôi",
+              blended: {
+                title: "Phương pháp Học tập Kết hợp",
+                description: "Kết hợp nền tảng số trực tuyến với các buổi thực hành để đạt kết quả học tập tối ưu"
+              },
+              customized: {
+                title: "Nội dung Tùy chỉnh",
+                description: "Chương trình đào tạo được thiết kế riêng theo nhu cầu ngành và yêu cầu tổ chức cụ thể"
+              },
+              practical: {
+                title: "Ứng dụng Thực tiễn",
+                description: "Dự án thực tế và nghiên cứu tình huống phù hợp với môi trường kinh doanh Việt Nam"
+              },
+              assessment: {
+                title: "Đánh giá Liên tục",
+                description: "Đánh giá và phản hồi thường xuyên để đảm bảo đạt được mục tiêu học tập và duy trì kỹ năng"
+              }
+            },
+            programs: {
+              title: "Chương trình Đào tạo của chúng tôi",
+              foundation: {
+                title: "Chương trình Nền tảng Số",
+                duration: "4-6 tuần",
+                description: "Kiến thức cơ bản về số hóa, kỹ năng máy tính và nền tảng nơi làm việc số cho tất cả nhân viên",
+                topics: [
+                  "Kiến thức cơ bản về số hóa",
+                  "Công cụ năng suất văn phòng",
+                  "Giao tiếp số",
+                  "Nhận thức an ninh mạng"
+                ]
+              },
+              advanced: {
+                title: "Chương trình Kỹ thuật Nâng cao",
+                duration: "8-12 tuần",
+                description: "Kỹ năng kỹ thuật chuyên sâu cho chuyên gia IT và đội ngũ kỹ thuật",
+                topics: [
+                  "Ngôn ngữ lập trình",
+                  "Quản lý cơ sở dữ liệu",
+                  "Nền tảng đám mây",
+                  "Quản trị hệ thống"
+                ]
+              },
+              management: {
+                title: "Chương trình Lãnh đạo Số",
+                duration: "6-8 tuần",
+                description: "Kỹ năng lãnh đạo để quản lý chuyển đổi số và dẫn dắt đội ngũ từ xa",
+                topics: [
+                  "Chiến lược số",
+                  "Quản lý thay đổi",
+                  "Lãnh đạo đội nhóm",
+                  "Quản lý dự án"
+                ]
+              },
+              industry: {
+                title: "Chuyên ngành Công nghiệp 4.0",
+                duration: "10-16 tuần",
+                description: "Chuẩn bị toàn diện cho công nghệ Công nghiệp 4.0 và sản xuất thông minh",
+                topics: [
+                  "IoT và cảm biến",
+                  "Hệ thống tự động",
+                  "Phân tích dữ liệu",
+                  "Sản xuất thông minh"
+                ]
+              }
+            },
+            benefits: {
+              title: "Lợi ích của Đào tạo Nhân viên Toàn diện",
+              productivity: {
+                title: "Tăng Năng suất",
+                description: "Các công ty có đào tạo toàn diện thấy tăng 17% năng suất và thu nhập cao hơn 218% trên mỗi nhân viên"
+              },
+              retention: {
+                title: "Cải thiện Giữ chân Nhân viên",
+                description: "90% người lao động ở lại lâu hơn với tổ chức hỗ trợ phát triển nghề nghiệp"
+              },
+              innovation: {
+                title: "Tăng cường Đổi mới",
+                description: "Tổ chức có văn hóa học tập mạnh có khả năng phát triển giải pháp sáng tạo cao hơn 92%"
+              },
+              competitiveness: {
+                title: "Cạnh tranh Thị trường",
+                description: "Lực lượng lao động được đào tạo tốt cung cấp lợi thế cạnh tranh bền vững trong nền kinh tế số"
+              }
+            }
+          },
+          connection: {
+            title: "Dịch vụ Chuyển đổi Số của chúng tôi",
+            description: "Đào tạo nhân viên chỉ là một phần trong giải pháp chuyển đổi số toàn diện của chúng tôi",
+            service: {
+              title: "Đào tạo & Phát triển Nhân viên",
+              description: "Là một phần trong cách tiếp cận tích hợp chuyển đổi số của chúng tôi, đảm bảo lực lượng lao động của bạn sẵn sàng cho tương lai số"
+            },
+            cta: "Khám phá Tất cả Dịch vụ"
+          },
+          cta: {
+            title: "Xây dựng Lực lượng Lao động Sẵn sàng Tương lai Ngay hôm nay",
+            description: "Liên hệ với chúng tôi để đánh giá nhu cầu đào tạo và phát triển chương trình phát triển nhân viên tùy chỉnh cho tổ chức của bạn",
+            button: "Bắt đầu Chương trình Đào tạo"
+          },
+          footer: {
+            description: "Nhà cung cấp giải pháp đào tạo và phát triển nhân viên hàng đầu cho doanh nghiệp Việt Nam trong chuyển đổi số",
+            quickLinks: "Liên kết nhanh",
+            services: "Dịch vụ",
+            contact: "Liên hệ",
+            location: "Thành phố Hồ Chí Minh, Việt Nam",
+            email: "Email: info@digitizedbrains.com",
+            phone: "Điện thoại: +84 123 456 789",
+            address: "Thành phố Hồ Chí Minh, Việt Nam",
+            copyright: "© 2025 DigitizedBrains. Bản quyền thuộc về DigitizedBrains."
+          }
+        },
+        de: {
+          meta: {
+            title: "Mitarbeiterschulung & -entwicklung - DigitizedBrains",
+            description: "Umfassende digitale Schulungsprogramme für vietnamesische Unternehmen"
+          },
+          nav: {
+            home: "Startseite",
+            about: "Über uns",
+            digitalTransformation: "Digitale Transformation",
+            aiAgent: "KI-Agent",
+            blog: "Blog",
+            resources: "Ressourcen",
+            contact: "Kontakt"
+          },
+          language: {
+            current: "Sprache:"
+          },
+          hero: {
+            title: "Mitarbeiterschulung & -entwicklung für vietnamesische Unternehmen",
+            subtitle: "Stärken Sie Ihre Belegschaft mit umfassenden digitalen Schulungsprogrammen und professioneller Entwicklung für Industrie 4.0",
+            cta: "Schulungslösungen erkunden"
+          },
+          situation: {
+            title: "Situation der Personalentwicklung in Vietnam 2024-2025",
+            subtitle: "Verständnis der aktuellen Landschaft und zukünftigen Bedürfnisse der vietnamesischen Personalentwicklung"
+          },
+          stats: {
+            skillGap: {
+              number: "800.000",
+              description: "prognostizierter IT-Fachkräftemangel bis 2024"
+            },
+            willing: {
+              number: "84%",
+              description: "vietnamesische Arbeiter bereit, neue Fähigkeiten zu erlernen"
+            },
+            graduates: {
+              number: "35%",
+              description: "IT-Absolventen erfüllen Unternehmensanforderungen"
+            },
+            training: {
+              number: "1 Million",
+              description: "Menschen sollen bis 2025 in digitalen Fähigkeiten geschult werden"
+            }
+          },
+          content: {
+            overview: {
+              title: "Umfassende Mitarbeiterschulung & -entwicklungslösungen",
+              description: "Aufbau einer zukunftsfähigen Belegschaft mit unseren integrierten Schulungsprogrammen speziell für vietnamesische Unternehmen in der digitalen Transformation"
+            },
+            solutions: {
+              digital: {
+                title: "Digitale Kompetenzschulung",
+                description: "Umfassende Programme mit KI, Cloud Computing, IoT, Cybersicherheit, Blockchain und Big Data-Analyse für moderne Geschäftsanforderungen"
+              },
+              leadership: {
+                title: "Führungsentwicklung",
+                description: "Führungs- und Managementschulungen zur Leitung digitaler Transformationsinitiativen und effektives Änderungsmanagement"
+              },
+              technical: {
+                title: "Technische Kompetenzverbesserung",
+                description: "Vertiefende Schulungen in Programmierung, Systemadministration, Datenanalyse und aufkommenden Technologien für technische Teams"
+              },
+              soft: {
+                title: "Soft Skills-Entwicklung",
+                description: "Kommunikation, Problemlösung, Teamarbeit und kritisches Denken für Erfolg in modernen Arbeitsplätzen"
+              },
+              industry: {
+                title: "Industrie 4.0-Bereitschaft",
+                description: "Spezialisierte Schulungsprogramme zur Vorbereitung der Belegschaft auf Automatisierung, intelligente Fertigung und digitale Geschäftsmodelle"
+              },
+              continuous: {
+                title: "Programme für kontinuierliches Lernen",
+                description: "Fortlaufende berufliche Entwicklung mit personalisierten Lernpfaden und Fortschrittsverfolgungssystemen"
+              }
+            },
+            approach: {
+              title: "Unser Schulungsansatz",
+              blended: {
+                title: "Blended Learning-Methode",
+                description: "Kombination von Online-Digitalplattformen mit praktischen Übungssitzungen für optimale Lernergebnisse"
+              },
+              customized: {
+                title: "Angepasste Inhalte",
+                description: "Schulungsprogramme zugeschnitten auf spezifische Branchenbedürfnisse und organisatorische Anforderungen"
+              },
+              practical: {
+                title: "Praktische Anwendung",
+                description: "Reale Projekte und Fallstudien relevant für das vietnamesische Geschäftsumfeld"
+              },
+              assessment: {
+                title: "Kontinuierliche Bewertung",
+                description: "Regelmäßige Evaluation und Feedback zur Sicherstellung, dass Lernziele erreicht und Fähigkeiten beibehalten werden"
+              }
+            },
+            programs: {
+              title: "Unsere Schulungsprogramme",
+              foundation: {
+                title: "Digitales Grundlagenprogramm",
+                duration: "4-6 Wochen",
+                description: "Grundlegende digitale Kompetenz, Computerfähigkeiten und digitale Arbeitsplatzgrundlagen für alle Mitarbeiter",
+                topics: [
+                  "Grundlagen digitaler Kompetenz",
+                  "Büro-Produktivitätstools",
+                  "Digitale Kommunikation",
+                  "Cybersicherheitsbewusstsein"
+                ]
+              },
+              advanced: {
+                title: "Fortgeschrittenes Technisches Programm",
+                duration: "8-12 Wochen",
+                description: "Vertiefende technische Fähigkeiten für IT-Fachkräfte und technische Teams",
+                topics: [
+                  "Programmiersprachen",
+                  "Datenbankmanagement",
+                  "Cloud-Plattformen",
+                  "Systemadministration"
+                ]
+              },
+              management: {
+                title: "Digitales Führungsprogramm",
+                duration: "6-8 Wochen",
+                description: "Führungskompetenzen für die Verwaltung digitaler Transformation und die Leitung von Remote-Teams",
+                topics: [
+                  "Digitale Strategie",
+                  "Änderungsmanagement",
+                  "Teamführung",
+                  "Projektmanagement"
+                ]
+              },
+              industry: {
+                title: "Industrie 4.0-Spezialisierung",
+                duration: "10-16 Wochen",
+                description: "Umfassende Vorbereitung auf Industrie 4.0-Technologien und intelligente Fertigung",
+                topics: [
+                  "IoT und Sensoren",
+                  "Automatisierungssysteme",
+                  "Datenanalyse",
+                  "Intelligente Fertigung"
+                ]
+              }
+            },
+            benefits: {
+              title: "Vorteile umfassender Mitarbeiterschulung",
+              productivity: {
+                title: "Erhöhte Produktivität",
+                description: "Unternehmen mit umfassender Schulung sehen 17% Produktivitätssteigerung und 218% höheres Einkommen pro Mitarbeiter"
+              },
+              retention: {
+                title: "Verbesserte Mitarbeiterbindung",
+                description: "90% der Arbeiter bleiben länger bei Organisationen, die Karriereentwicklung unterstützen"
+              },
+              innovation: {
+                title: "Verstärkte Innovation",
+                description: "Organisationen mit starker Lernkultur entwickeln 92% wahrscheinlicher innovative Lösungen"
+              },
+              competitiveness: {
+                title: "Marktwettbewerbsfähigkeit",
+                description: "Gut ausgebildete Belegschaft bietet nachhaltigen Wettbewerbsvorteil in der digitalen Wirtschaft"
+              }
+            }
+          },
+          connection: {
+            title: "Unsere digitalen Transformationsdienste",
+            description: "Mitarbeiterschulung ist nur ein Teil unserer umfassenden digitalen Transformationslösungen",
+            service: {
+              title: "Mitarbeiterschulung & -entwicklung",
+              description: "Teil unseres integrierten Ansatzes zur digitalen Transformation, der sicherstellt, dass Ihre Belegschaft für die digitale Zukunft bereit ist"
+            },
+            cta: "Alle Dienste erkunden"
+          },
+          cta: {
+            title: "Bauen Sie heute eine zukunftsfähige Belegschaft auf",
+            description: "Kontaktieren Sie uns, um Ihren Schulungsbedarf zu bewerten und ein maßgeschneidertes Mitarbeiterentwicklungsprogramm für Ihre Organisation zu entwickeln",
+            button: "Schulungsprogramm starten"
+          },
+          footer: {
+            description: "Führender Anbieter von Mitarbeiterschulung und -entwicklungslösungen für vietnamesische Unternehmen in der digitalen Transformation",
+            quickLinks: "Schnelle Links",
+            services: "Dienstleistungen",
+            contact: "Kontakt",
+            location: "Ho-Chi-Minh-Stadt, Vietnam",
+            email: "E-Mail: info@digitizedbrains.com",
+            phone: "Telefon: +84 123 456 789",
+            address: "Ho-Chi-Minh-Stadt, Vietnam",
+            copyright: "© 2024 DigitizedBrains. Alle Rechte vorbehalten."
+          }
+        }
+      };
+
+      // Initialize multilingual with page-specific translations
+      if (typeof initializeMultilingual === 'function') {
+        initializeMultilingual(pageTranslations);
+      }
+    });
+  </script>
+
+  <!-- Chatbot Integration -->
+  <script src="../../js/chatbot.js"></script>
+  <script>
+    // Initialize Chatbot
+    window.addEventListener('load', function() {
+      const chatbot = new DigitizedBrainsChatbot({
+        iframeSrc: 'https://ducnguyen1978-digitizedbrains-gemini.hf.space',
+        widgetTitle: 'Digitized Brains AI Agent',
+        position: { bottom: '30px', right: '30px' },
+        size: { width: '420px', height: '600px' }
+      });
+    });
+  </script>
+</body>
+</html>

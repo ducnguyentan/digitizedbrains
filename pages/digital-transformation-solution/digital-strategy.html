@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="vi" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="page-title">Chiến lược Chuyển đổi số - DigitizedBrains</title>
+  <meta name="description" content="Chiến lược chuyển đổi số toàn diện cho doanh nghiệp Việt Nam" id="page-description">
+  <link href="../../css/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    .font-nunito { 
+      font-family: 'Nunito', sans-serif; 
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Navigation styles */
+    .nav-link {
+      color: #374151;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .nav-link:hover { color: #ed7354; background-color: #fef2f2; }
+    .nav-link.active { color: #ed7354; font-weight: 600; }
+
+    /* Language Switcher Styles */
+    .language-switcher {
+      position: relative;
+    }
+    
+    .language-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      min-width: 160px;
+      display: none;
+      z-index: 1000;
+    }
+    
+    .language-menu.show {
+      display: block;
+    }
+    
+    .language-option {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+    
+    .language-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    /* Hero Section Styles */
+    .hero-section {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 120px 0;
+      color: white;
+    }
+
+    /* Scroll Reveal Animation */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+    
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Feature Cards */
+    .feature-card {
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Button Styles */
+    .btn-primary {
+      background: linear-gradient(135deg, #ed7354, #dc2626);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+    }
+
+    /* Mobile Language Switcher Styles */
+    .language-menu-mobile {
+      display: none;
+      margin-top: 8px;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .language-menu-mobile.show {
+      display: block;
+    }
+    
+    .language-option-mobile {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+    }
+    
+    .language-option-mobile:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option-mobile.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+
+    /* Mobile Language Switcher (legacy) */
+    .language-switcher-mobile {
+      position: relative;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+  <!-- Header -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <div class="logo-gradient w-10 h-10 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-lg">DB</span>
+          </div>
+          <a href="../../index.html" class="text-2xl font-bold text-gray-800">Digitized Brains</a>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="hidden md:flex space-x-4">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="#blog" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="#resources" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="#contact" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+        </nav>
+
+        <!-- Language Switcher -->
+        <div class="hidden md:block">
+          <div class="language-switcher">
+            <button id="language-btn" class="flex items-center space-x-1 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+              <img id="current-flag" src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+              <span id="current-lang">VI</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="language-menu" class="language-menu">
+              <a href="#" onclick="changeLanguage('en')" class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                English
+              </a>
+              <a href="#" onclick="changeLanguage('vi')" class="language-option active" data-lang="vi">
+                <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                Tiếng Việt
+              </a>
+              <a href="#" onclick="changeLanguage('de')" class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                Deutsch
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <nav class="flex flex-col space-y-2">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="../ai-agents/index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="#blog" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="#resources" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="#contact" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+          
+          <!-- Mobile Language Switcher -->
+          <div class="pt-2 border-t border-gray-200">
+            <div class="language-switcher-mobile">
+              <button id="mobile-language-btn" class="flex items-center justify-between w-full px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                <span data-translate="language.current">Ngôn ngữ:</span>
+                <div class="flex items-center space-x-1">
+                  <img id="mobile-current-flag" src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                  <span id="mobile-current-lang">VI</span>
+                </div>
+              </button>
+              <div id="mobile-language-menu" class="language-menu-mobile">
+                <a href="#" onclick="changeLanguage('en')" class="language-option-mobile" data-lang="en">
+                  <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                  English
+                </a>
+                <a href="#" onclick="changeLanguage('vi')" class="language-option-mobile active" data-lang="vi">
+                  <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
+                  Tiếng Việt
+                </a>
+                <a href="#" onclick="changeLanguage('de')" class="language-option-mobile" data-lang="de">
+                  <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+                  Deutsch
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 scroll-reveal" data-translate="hero.title">Chiến lược Chuyển đổi số cho Doanh nghiệp Việt Nam</h1>
+        <p class="text-xl opacity-90 mb-8 scroll-reveal" data-translate="hero.subtitle">Lộ trình chuyển đổi số toàn diện được thiết kế cho doanh nghiệp Việt Nam trong kỷ nguyên 4.0</p>
+        <div class="flex flex-wrap justify-center gap-4 scroll-reveal">
+          <a href="#strategy" class="btn-primary px-8 py-3 rounded-full font-semibold" data-translate="hero.cta">Khám phá Chiến lược Chuyển đổi số</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section id="strategy" class="py-20">
+    <div class="container mx-auto px-4">
+      <!-- Overview Section -->
+      <div class="max-w-4xl mx-auto mb-16 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal" data-translate="content.overview.title">Chiến lược Chuyển đổi số Toàn diện</h2>
+        <p class="text-xl text-gray-600 scroll-reveal" data-translate="content.overview.description">
+          Định hình tương lai kinh doanh với chiến lược chuyển đổi số toàn diện được thiết kế phù hợp với nhu cầu và thách thức của doanh nghiệp Việt Nam
+        </p>
+      </div>
+
+      <!-- Strategy Phases -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <!-- Phase 1 -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.phases.assessment.title">Đánh giá & Lập kế hoạch</h3>
+          <p class="text-gray-600" data-translate="content.phases.assessment.description">Đánh giá toàn diện về trưởng thành số, xác định cơ hội và thách thức, phát triển lộ trình chuyển đổi số phù hợp với mục tiêu kinh doanh.</p>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.phases.implementation.title">Triển khai & Tích hợp</h3>
+          <p class="text-gray-600" data-translate="content.phases.implementation.description">Triển khai các giải pháp số được ưu tiên, số hóa quy trình kinh doanh, tích hợp công nghệ và xây dựng năng lực cho nhân viên.</p>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="feature-card bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+          <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-translate="content.phases.optimization.title">Tối ưu hóa & Mở rộng</h3>
+          <p class="text-gray-600" data-translate="content.phases.optimization.description">Phân tích hiệu suất, tinh chỉnh chiến lược, mở rộng các giải pháp thành công và đổi mới liên tục để đạt được lợi thế cạnh tranh.</p>
+        </div>
+      </div>
+
+      <!-- Key Components -->
+      <div class="max-w-4xl mx-auto mt-20">
+        <h2 class="text-3xl font-bold mb-12 text-center scroll-reveal" data-translate="content.components.title">Các Thành phần Chính của Chiến lược Chuyển đổi số</h2>
+        
+        <!-- Digital Infrastructure -->
+        <div class="mb-16 scroll-reveal">
+          <div class="flex flex-col md:flex-row gap-8 items-center">
+            <div class="md:w-2/5">
+              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" alt="Digital Infrastructure" class="rounded-xl shadow-lg w-full">
+            </div>
+            <div class="md:w-3/5">
+              <h3 class="text-2xl font-bold mb-4" data-translate="content.components.infrastructure.title">Hạ tầng Số</h3>
+              <p class="text-gray-600 mb-4" data-translate="content.components.infrastructure.description">
+                Xây dựng nền tảng công nghệ vững chắc là nền móng cho mọi sáng kiến chuyển đổi số thành công. Chúng tôi giúp doanh nghiệp phát triển cơ sở hạ tầng số linh hoạt, bảo mật và hiệu quả về chi phí.
+              </p>
+              <ul class="space-y-2">
+                <li class="flex items-center">
+                  <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="content.components.infrastructure.point1">Giải pháp điện toán đám mây hiện đại</span>
+                </li>
+                <li class="flex items-center">
+                  <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="content.components.infrastructure.point2">Kiến trúc dữ liệu tiên tiến</span>
+                </li>
+                <li class="flex items-center">
+                  <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="content.components.infrastructure.point3">Giải pháp bảo mật và tuân thủ toàn diện</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Process Optimization -->
+        <div class="mb-16 scroll-reveal">
+          <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
+            <div class="md:w-2/5">
+              <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" alt="Process Optimization" class="rounded-xl shadow-lg w-full">
+            </div>
+            <div class="md:w-3/5">
+              <h3 class="text-2xl font-bold mb-4" data-translate="content.components.process.title">Tối ưu hóa Quy trình</h3>
+              <p class="text-gray-600 mb-4" data-translate="content.components.process.description">
+                Cải thiện hiệu quả và giảm chi phí thông qua số hóa và tối ưu hóa quy trình kinh doanh. Chúng tôi xác định các cơ hội để tự động hóa và tối ưu hóa, tạo ra các quy trình làm việc hiệu quả và liền mạch.
+              </p>
+              <ul class="space-y-2">
+                <li class="flex items-center">
+                  <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="content.components.process.point1">Phân tích và thiết kế lại quy trình</span>
+                </li>
+                <li class="flex items-center">
+                  <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="content.components.process.point2">Tự động hóa quy trình thông minh</span>
+                </li>
+                <li class="flex items-center">
+                  <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="content.components.process.point3">Tích hợp hệ thống và quản lý dữ liệu</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Digital Culture & Capabilities -->
+        <div class="mb-16 scroll-reveal">
+          <div class="flex flex-col md:flex-row gap-8 items-center">
+            <div class="md:w-2/5">
+              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" alt="Digital Culture" class="rounded-xl shadow-lg w-full">
+            </div>
+            <div class="md:w-3/5">
+              <h3 class="text-2xl font-bold mb-4" data-translate="content.components.culture.title">Văn hóa & Năng lực Số</h3>
+              <p class="text-gray-600 mb-4" data-translate="content.components.culture.description">
+                Thành công của chuyển đổi số phụ thuộc vào con người và văn hóa. Chúng tôi giúp doanh nghiệp phát triển tư duy số, xây dựng kỹ năng cần thiết và tạo ra văn hóa đổi mới liên tục.
+              </p>
+              <ul class="space-y-2">
+                <li class="flex items-center">
+                  <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="content.components.culture.point1">Phát triển kỹ năng số cho nhân viên</span>
+                </li>
+                <li class="flex items-center">
+                  <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="content.components.culture.point2">Quản lý thay đổi và đào tạo</span>
+                </li>
+                <li class="flex items-center">
+                  <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="content.components.culture.point3">Thúc đẩy sáng tạo và đổi mới</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Data Strategy -->
+        <div class="scroll-reveal">
+          <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
+            <div class="md:w-2/5">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" alt="Data Strategy" class="rounded-xl shadow-lg w-full">
+            </div>
+            <div class="md:w-3/5">
+              <h3 class="text-2xl font-bold mb-4" data-translate="content.components.data.title">Chiến lược Dữ liệu</h3>
+              <p class="text-gray-600 mb-4" data-translate="content.components.data.description">
+                Khai thác sức mạnh của dữ liệu để có được thông tin chi tiết có giá trị và thúc đẩy đổi mới. Chúng tôi giúp doanh nghiệp phát triển chiến lược dữ liệu toàn diện và khai thác giá trị từ tài sản dữ liệu.
+              </p>
+              <ul class="space-y-2">
+                <li class="flex items-center">
+                  <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="content.components.data.point1">Quản trị dữ liệu và quản lý chất lượng</span>
+                </li>
+                <li class="flex items-center">
+                  <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="content.components.data.point2">Phân tích dữ liệu nâng cao và trí tuệ kinh doanh</span>
+                </li>
+                <li class="flex items-center">
+                  <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span data-translate="content.components.data.point3">Tích hợp AI và học máy</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Success Factors -->
+      <div class="max-w-4xl mx-auto mt-20">
+        <h2 class="text-3xl font-bold mb-8 text-center scroll-reveal" data-translate="content.success.title">Yếu tố Thành công trong Chuyển đổi số</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Leadership -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.success.leadership.title">Lãnh đạo Cam kết</h3>
+              <p class="text-gray-600" data-translate="content.success.leadership.description">Sự tham gia và hỗ trợ từ ban lãnh đạo cấp cao để thúc đẩy tầm nhìn và phân bổ nguồn lực cần thiết cho các sáng kiến chuyển đổi số.</p>
+            </div>
+          </div>
+
+          <!-- Strategy -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.success.strategy.title">Chiến lược Rõ ràng</h3>
+              <p class="text-gray-600" data-translate="content.success.strategy.description">Phát triển lộ trình chuyển đổi số rõ ràng phù hợp với mục tiêu kinh doanh tổng thể và giải quyết các thách thức cụ thể.</p>
+            </div>
+          </div>
+
+          <!-- Customer -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.success.customer.title">Tập trung vào Khách hàng</h3>
+              <p class="text-gray-600" data-translate="content.success.customer.description">Đặt nhu cầu và mong đợi của khách hàng vào trung tâm của mọi sáng kiến chuyển đổi số để đảm bảo các giải pháp mang lại giá trị thực sự.</p>
+            </div>
+          </div>
+
+          <!-- Agility -->
+          <div class="flex items-start space-x-4 scroll-reveal">
+            <div class="flex-shrink-0 w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2" data-translate="content.success.agility.title">Tính linh hoạt và Khả năng thích ứng</h3>
+              <p class="text-gray-600" data-translate="content.success.agility.description">Áp dụng phương pháp linh hoạt cho phép thử nghiệm, học hỏi nhanh chóng và thích ứng với điều kiện thị trường và công nghệ đang thay đổi.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-gray-900 text-white py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-reveal" data-translate="cta.title">Sẵn sàng Bắt đầu Hành trình Chuyển đổi số?</h2>
+        <p class="text-xl opacity-90 mb-8 scroll-reveal" data-translate="cta.description">Liên hệ với chúng tôi ngay hôm nay để thảo luận về chiến lược chuyển đổi số phù hợp với mục tiêu và thách thức kinh doanh cụ thể của bạn</p>
+        <a href="#contact" class="btn-primary px-8 py-3 rounded-full font-semibold inline-block scroll-reveal" data-translate="cta.button">Liên hệ với chúng tôi</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="logo-gradient w-10 h-10 rounded-lg flex items-center justify-center">
+              <span class="text-white font-bold text-lg">DB</span>
+            </div>
+            <span class="text-2xl font-bold">Digitized Brains</span>
+          </div>
+          <p class="text-gray-400" data-translate="footer.description">Nhà cung cấp giải pháp chuyển đổi số hàng đầu cho doanh nghiệp Việt Nam</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.quickLinks">Liên kết nhanh</h4>
+          <div class="grid grid-cols-2 gap-4">
+            <ul class="space-y-2">
+              <li><a href="../../index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.home">Trang chủ</a></li>
+              <li><a href="../about/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.about">Giới thiệu</a></li>
+              <li><a href="../digital-transformation/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.digitalTransformation">Chuyển đổi số</a></li>
+              <li><a href="digital-strategy-multilang.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.digitalStrategy">Chiến lược số</a></li>
+            </ul>
+            <ul class="space-y-2">
+              <li><a href="../ai-agents/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.aiAgent">AI Agent</a></li>
+              <li><a href="#blog" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.blog">Blog</a></li>
+              <li><a href="#resources" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.resources">Tài nguyên</a></li>
+              <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.contact">Liên hệ</a></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.contact">Liên hệ</h4>
+          <ul class="space-y-2">
+            <li class="text-gray-400">contact@digitizedbrains.com</li>
+            <li class="text-gray-400" data-translate="footer.location">Thành phố Hồ Chí Minh, Việt Nam</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-gray-400" data-translate="footer.copyright">© 2025 DigitizedBrains. Bản quyền thuộc về DigitizedBrains.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Include JavaScript files -->
+  <script src="../../js/multilang.js"></script>
+  <script src="../../js/chatbot.js"></script>
+  
+  <!-- Page-specific translations and scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Page-specific translations
+      const pageTranslations = {
+        en: {
+          meta: {
+            title: "Digital Transformation Strategy - DigitizedBrains",
+            description: "Comprehensive digital transformation strategy for Vietnamese enterprises"
+          },
+          nav: {
+            home: "Home",
+            about: "About", 
+            digitalTransformation: "Digital Transformation",
+            aiAgent: "AI Agent",
+            blog: "Blog",
+            resources: "Resources",
+            contact: "Contact"
+          },
+          language: {
+            current: "Language:"
+          },
+          hero: {
+            title: "Digital Transformation Strategy for Vietnamese Enterprises",
+            subtitle: "Comprehensive digital transformation roadmap designed for Vietnamese enterprises in the 4.0 era",
+            cta: "Explore Digital Transformation Strategy"
+          },
+          content: {
+            overview: {
+              title: "Comprehensive Digital Transformation Strategy",
+              description: "Shape the future of business with comprehensive digital transformation strategy designed to meet the needs and challenges of Vietnamese enterprises"
+            },
+            phases: {
+              assessment: {
+                title: "Assessment & Planning",
+                description: "Comprehensive digital maturity assessment, identifying opportunities and challenges, developing digital transformation roadmap aligned with business objectives."
+              },
+              implementation: {
+                title: "Implementation & Integration",
+                description: "Deploy prioritized digital solutions, digitize business processes, integrate technology and build employee capabilities."
+              },
+              optimization: {
+                title: "Optimization & Scale",
+                description: "Analyze performance, refine strategy, scale successful solutions and continuously innovate to achieve competitive advantage."
+              }
+            },
+            components: {
+              title: "Key Components of Digital Transformation Strategy",
+              infrastructure: {
+                title: "Digital Infrastructure",
+                description: "Building a solid technology foundation is the cornerstone of every successful digital transformation initiative. We help businesses develop flexible, secure and cost-effective digital infrastructure.",
+                point1: "Modern cloud computing solutions",
+                point2: "Advanced data architecture",
+                point3: "Comprehensive security and compliance solutions"
+              },
+              process: {
+                title: "Process Optimization",
+                description: "Improve efficiency and reduce costs through digitization and optimization of business processes. We identify opportunities for automation and optimization, creating efficient and seamless workflows.",
+                point1: "Process analysis and redesign",
+                point2: "Intelligent process automation",
+                point3: "System integration and data management"
+              },
+              culture: {
+                title: "Digital Culture & Capabilities",
+                description: "The success of digital transformation depends on people and culture. We help businesses develop digital mindset, build necessary skills and create a culture of continuous innovation.",
+                point1: "Digital skills development for employees",
+                point2: "Change management and training",
+                point3: "Fostering creativity and innovation"
+              },
+              data: {
+                title: "Data Strategy",
+                description: "Harness the power of data to gain valuable insights and drive innovation. We help businesses develop comprehensive data strategies and extract value from data assets.",
+                point1: "Data governance and quality management",
+                point2: "Advanced data analytics and business intelligence",
+                point3: "AI and machine learning integration"
+              }
+            },
+            success: {
+              title: "Success Factors in Digital Transformation",
+              leadership: {
+                title: "Committed Leadership",
+                description: "Engagement and support from senior leadership to drive vision and allocate necessary resources for digital transformation initiatives."
+              },
+              strategy: {
+                title: "Clear Strategy",
+                description: "Develop a clear digital transformation roadmap aligned with overall business objectives and addressing specific challenges."
+              },
+              customer: {
+                title: "Customer Focus",
+                description: "Place customer needs and expectations at the center of all digital transformation initiatives to ensure solutions deliver real value."
+              },
+              agility: {
+                title: "Flexibility and Adaptability",
+                description: "Apply agile methodologies that allow for experimentation, rapid learning and adaptation to changing market and technology conditions."
+              }
+            }
+          },
+          cta: {
+            title: "Ready to Start Your Digital Transformation Journey?",
+            description: "Contact us today to discuss digital transformation strategies tailored to your specific business goals and challenges",
+            button: "Contact Us"
+          },
+          footer: {
+            description: "Leading digital transformation solution provider for Vietnamese enterprises",
+            quickLinks: "Quick Links",
+            contact: "Contact",
+            location: "Ho Chi Minh City, Vietnam",
+            copyright: "© 2025 DigitizedBrains. All rights reserved."
+          }
+        },
+        vi: {
+          meta: {
+            title: "Chiến lược Chuyển đổi số - DigitizedBrains",
+            description: "Chiến lược chuyển đổi số toàn diện cho doanh nghiệp Việt Nam"
+          },
+          nav: {
+            home: "Trang chủ",
+            about: "Giới thiệu",
+            digitalTransformation: "Chuyển đổi số",
+            aiAgent: "AI Agent",
+            blog: "Blog",
+            resources: "Tài nguyên",
+            contact: "Liên hệ"
+          },
+          language: {
+            current: "Ngôn ngữ:"
+          },
+          hero: {
+            title: "Chiến lược Chuyển đổi số cho Doanh nghiệp Việt Nam",
+            subtitle: "Lộ trình chuyển đổi số toàn diện được thiết kế cho doanh nghiệp Việt Nam trong kỷ nguyên 4.0",
+            cta: "Khám phá Chiến lược Chuyển đổi số"
+          },
+          content: {
+            overview: {
+              title: "Chiến lược Chuyển đổi số Toàn diện",
+              description: "Định hình tương lai kinh doanh với chiến lược chuyển đổi số toàn diện được thiết kế phù hợp với nhu cầu và thách thức của doanh nghiệp Việt Nam"
+            },
+            phases: {
+              assessment: {
+                title: "Đánh giá & Lập kế hoạch",
+                description: "Đánh giá toàn diện về trưởng thành số, xác định cơ hội và thách thức, phát triển lộ trình chuyển đổi số phù hợp với mục tiêu kinh doanh."
+              },
+              implementation: {
+                title: "Triển khai & Tích hợp",
+                description: "Triển khai các giải pháp số được ưu tiên, số hóa quy trình kinh doanh, tích hợp công nghệ và xây dựng năng lực cho nhân viên."
+              },
+              optimization: {
+                title: "Tối ưu hóa & Mở rộng",
+                description: "Phân tích hiệu suất, tinh chỉnh chiến lược, mở rộng các giải pháp thành công và đổi mới liên tục để đạt được lợi thế cạnh tranh."
+              }
+            },
+            components: {
+              title: "Các Thành phần Chính của Chiến lược Chuyển đổi số",
+              infrastructure: {
+                title: "Hạ tầng Số",
+                description: "Xây dựng nền tảng công nghệ vững chắc là nền móng cho mọi sáng kiến chuyển đổi số thành công. Chúng tôi giúp doanh nghiệp phát triển cơ sở hạ tầng số linh hoạt, bảo mật và hiệu quả về chi phí.",
+                point1: "Giải pháp điện toán đám mây hiện đại",
+                point2: "Kiến trúc dữ liệu tiên tiến",
+                point3: "Giải pháp bảo mật và tuân thủ toàn diện"
+              },
+              process: {
+                title: "Tối ưu hóa Quy trình",
+                description: "Cải thiện hiệu quả và giảm chi phí thông qua số hóa và tối ưu hóa quy trình kinh doanh. Chúng tôi xác định các cơ hội để tự động hóa và tối ưu hóa, tạo ra các quy trình làm việc hiệu quả và liền mạch.",
+                point1: "Phân tích và thiết kế lại quy trình",
+                point2: "Tự động hóa quy trình thông minh",
+                point3: "Tích hợp hệ thống và quản lý dữ liệu"
+              },
+              culture: {
+                title: "Văn hóa & Năng lực Số",
+                description: "Thành công của chuyển đổi số phụ thuộc vào con người và văn hóa. Chúng tôi giúp doanh nghiệp phát triển tư duy số, xây dựng kỹ năng cần thiết và tạo ra văn hóa đổi mới liên tục.",
+                point1: "Phát triển kỹ năng số cho nhân viên",
+                point2: "Quản lý thay đổi và đào tạo",
+                point3: "Thúc đẩy sáng tạo và đổi mới"
+              },
+              data: {
+                title: "Chiến lược Dữ liệu",
+                description: "Khai thác sức mạnh của dữ liệu để có được thông tin chi tiết có giá trị và thúc đẩy đổi mới. Chúng tôi giúp doanh nghiệp phát triển chiến lược dữ liệu toàn diện và khai thác giá trị từ tài sản dữ liệu.",
+                point1: "Quản trị dữ liệu và quản lý chất lượng",
+                point2: "Phân tích dữ liệu nâng cao và trí tuệ kinh doanh",
+                point3: "Tích hợp AI và học máy"
+              }
+            },
+            success: {
+              title: "Yếu tố Thành công trong Chuyển đổi số",
+              leadership: {
+                title: "Lãnh đạo Cam kết",
+                description: "Sự tham gia và hỗ trợ từ ban lãnh đạo cấp cao để thúc đẩy tầm nhìn và phân bổ nguồn lực cần thiết cho các sáng kiến chuyển đổi số."
+              },
+              strategy: {
+                title: "Chiến lược Rõ ràng",
+                description: "Phát triển lộ trình chuyển đổi số rõ ràng phù hợp với mục tiêu kinh doanh tổng thể và giải quyết các thách thức cụ thể."
+              },
+              customer: {
+                title: "Tập trung vào Khách hàng",
+                description: "Đặt nhu cầu và mong đợi của khách hàng vào trung tâm của mọi sáng kiến chuyển đổi số để đảm bảo các giải pháp mang lại giá trị thực sự."
+              },
+              agility: {
+                title: "Tính linh hoạt và Khả năng thích ứng",
+                description: "Áp dụng phương pháp linh hoạt cho phép thử nghiệm, học hỏi nhanh chóng và thích ứng với điều kiện thị trường và công nghệ đang thay đổi."
+              }
+            }
+          },
+          cta: {
+            title: "Sẵn sàng Bắt đầu Hành trình Chuyển đổi số?",
+            description: "Liên hệ với chúng tôi ngay hôm nay để thảo luận về chiến lược chuyển đổi số phù hợp với mục tiêu và thách thức kinh doanh cụ thể của bạn",
+            button: "Liên hệ với chúng tôi"
+          },
+          footer: {
+            description: "Nhà cung cấp giải pháp chuyển đổi số hàng đầu cho doanh nghiệp Việt Nam",
+            quickLinks: "Liên kết nhanh",
+            contact: "Liên hệ",
+            location: "Thành phố Hồ Chí Minh, Việt Nam",
+            copyright: "© 2025 DigitizedBrains. Bản quyền thuộc về DigitizedBrains."
+          }
+        },
+        de: {
+          meta: {
+            title: "Digitale Transformationsstrategie - DigitizedBrains",
+            description: "Umfassende digitale Transformationsstrategie für vietnamesische Unternehmen"
+          },
+          nav: {
+            home: "Startseite",
+            about: "Über uns",
+            digitalTransformation: "Digitale Transformation",
+            aiAgent: "KI-Agent",
+            blog: "Blog", 
+            resources: "Ressourcen",
+            contact: "Kontakt"
+          },
+          language: {
+            current: "Sprache:"
+          },
+          hero: {
+            title: "Digitale Transformationsstrategie für vietnamesische Unternehmen",
+            subtitle: "Umfassende digitale Transformations-Roadmap für vietnamesische Unternehmen in der Ära 4.0",
+            cta: "Digitale Transformationsstrategie erkunden"
+          },
+          content: {
+            overview: {
+              title: "Umfassende Digitale Transformationsstrategie",
+              description: "Gestalten Sie die Zukunft des Geschäfts mit einer umfassenden digitalen Transformationsstrategie, die auf die Bedürfnisse und Herausforderungen vietnamesischer Unternehmen zugeschnitten ist"
+            },
+            phases: {
+              assessment: {
+                title: "Bewertung & Planung",
+                description: "Umfassende Bewertung der digitalen Reife, Identifizierung von Chancen und Herausforderungen, Entwicklung einer digitalen Transformations-Roadmap im Einklang mit Geschäftszielen."
+              },
+              implementation: {
+                title: "Umsetzung & Integration",
+                description: "Bereitstellung priorisierter digitaler Lösungen, Digitalisierung von Geschäftsprozessen, Technologieintegration und Aufbau von Mitarbeiterkompetenzen."
+              },
+              optimization: {
+                title: "Optimierung & Skalierung",
+                description: "Leistungsanalyse, Strategieverfeinerung, Skalierung erfolgreicher Lösungen und kontinuierliche Innovation für Wettbewerbsvorteile."
+              }
+            },
+            components: {
+              title: "Schlüsselkomponenten der Digitalen Transformationsstrategie",
+              infrastructure: {
+                title: "Digitale Infrastruktur",
+                description: "Der Aufbau einer soliden Technologiegrundlage ist der Grundstein jeder erfolgreichen digitalen Transformationsinitiative. Wir helfen Unternehmen bei der Entwicklung flexibler, sicherer und kosteneffizienter digitaler Infrastrukturen.",
+                point1: "Moderne Cloud-Computing-Lösungen",
+                point2: "Fortgeschrittene Datenarchitektur",
+                point3: "Umfassende Sicherheits- und Compliance-Lösungen"
+              },
+              process: {
+                title: "Prozessoptimierung",
+                description: "Verbesserung der Effizienz und Kostensenkung durch Digitalisierung und Optimierung von Geschäftsprozessen. Wir identifizieren Automatisierungs- und Optimierungsmöglichkeiten und schaffen effiziente, nahtlose Workflows.",
+                point1: "Prozessanalyse und Neugestaltung",
+                point2: "Intelligente Prozessautomatisierung",
+                point3: "Systemintegration und Datenmanagement"
+              },
+              culture: {
+                title: "Digitale Kultur & Fähigkeiten",
+                description: "Der Erfolg der digitalen Transformation hängt von Menschen und Kultur ab. Wir helfen Unternehmen bei der Entwicklung digitaler Denkweisen, dem Aufbau notwendiger Fähigkeiten und der Schaffung einer Kultur kontinuierlicher Innovation.",
+                point1: "Entwicklung digitaler Fähigkeiten für Mitarbeiter",
+                point2: "Change Management und Schulungen",
+                point3: "Förderung von Kreativität und Innovation"
+              },
+              data: {
+                title: "Datenstrategie",
+                description: "Nutzen Sie die Macht der Daten, um wertvolle Erkenntnisse zu gewinnen und Innovation voranzutreiben. Wir helfen Unternehmen bei der Entwicklung umfassender Datenstrategien und der Wertschöpfung aus Datenbeständen.",
+                point1: "Data Governance und Qualitätsmanagement",
+                point2: "Erweiterte Datenanalyse und Business Intelligence",
+                point3: "KI- und Machine Learning-Integration"
+              }
+            },
+            success: {
+              title: "Erfolgsfaktoren bei der Digitalen Transformation",
+              leadership: {
+                title: "Engagierte Führung",
+                description: "Engagement und Unterstützung der Geschäftsleitung zur Förderung der Vision und Bereitstellung notwendiger Ressourcen für digitale Transformationsinitiativen."
+              },
+              strategy: {
+                title: "Klare Strategie",
+                description: "Entwicklung einer klaren digitalen Transformations-Roadmap im Einklang mit den Gesamtgeschäftszielen und zur Bewältigung spezifischer Herausforderungen."
+              },
+              customer: {
+                title: "Kundenfokus",
+                description: "Kundenbedürfnisse und -erwartungen in den Mittelpunkt aller digitalen Transformationsinitiativen stellen, um sicherzustellen, dass Lösungen echten Wert liefern."
+              },
+              agility: {
+                title: "Flexibilität und Anpassungsfähigkeit",
+                description: "Anwendung agiler Methoden, die Experimente, schnelles Lernen und Anpassung an sich ändernde Markt- und Technologiebedingungen ermöglichen."
+              }
+            }
+          },
+          cta: {
+            title: "Bereit, Ihre Digitale Transformationsreise zu beginnen?",
+            description: "Kontaktieren Sie uns noch heute, um digitale Transformationsstrategien zu besprechen, die auf Ihre spezifischen Geschäftsziele und Herausforderungen zugeschnitten sind",
+            button: "Kontaktieren Sie uns"
+          },
+          footer: {
+            description: "Führender Anbieter von digitalen Transformationslösungen für vietnamesische Unternehmen",
+            quickLinks: "Schnelle Links",
+            contact: "Kontakt",
+            location: "Ho-Chi-Minh-Stadt, Vietnam",
+            copyright: "© 2025 DigitizedBrains. Alle Rechte vorbehalten."
+          }
+        }
+      };
+
+      // Initialize multilingual with page-specific translations
+      if (typeof initializeMultilingual === 'function') {
+        initializeMultilingual(pageTranslations);
+      }
+      
+      // Scroll Reveal Animation
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.scroll-reveal').forEach(el => {
+        observer.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>
