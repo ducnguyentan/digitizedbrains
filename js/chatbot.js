@@ -1,15 +1,37 @@
 // DigitizedBrains Chatbot Integration
 // Standalone multilingual AI chatbot widget
 
-// Disable source map warnings
+// Disable source map warnings and related errors
 if (typeof console !== 'undefined' && console.warn) {
   const originalWarn = console.warn;
   console.warn = function(...args) {
     if (args[0] && typeof args[0] === 'string' && 
-        (args[0].includes('source map') || args[0].includes('sourcemap'))) {
+        (args[0].includes('source map') || 
+         args[0].includes('sourcemap') ||
+         args[0].includes('Could not read source map') ||
+         args[0].includes('marked') ||
+         args[0].includes('dompurify') ||
+         args[0].includes('ENOENT'))) {
       return; // Suppress source map warnings
     }
     originalWarn.apply(console, args);
+  };
+}
+
+// Also suppress console errors for source maps
+if (typeof console !== 'undefined' && console.error) {
+  const originalError = console.error;
+  console.error = function(...args) {
+    if (args[0] && typeof args[0] === 'string' && 
+        (args[0].includes('source map') || 
+         args[0].includes('sourcemap') ||
+         args[0].includes('Could not read source map') ||
+         args[0].includes('marked') ||
+         args[0].includes('dompurify') ||
+         args[0].includes('ENOENT'))) {
+      return; // Suppress these errors
+    }
+    originalError.apply(console, args);
   };
 }
 

@@ -219,6 +219,137 @@
     #webAnalysisContainer {
       animation: slideIn 0.3s ease-out;
     }
+
+    /* AI Container Controls Styles */
+    .control-btn {
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 6px;
+      color: white;
+      padding: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(10px);
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .control-btn:hover {
+      background: rgba(255,255,255,0.3);
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    /* Container Management Styles */
+    #webAnalysisContainer,
+    #speechAgentContainer,
+    #aiFriendsTalkContainer {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    #webAnalysisContainer.maximized,
+    #speechAgentContainer.maximized,
+    #aiFriendsTalkContainer.maximized {
+      position: fixed !important;
+      top: 2.5vh !important;
+      left: 2.5vw !important;
+      width: 95vw !important;
+      height: 95vh !important;
+      z-index: 10000 !important;
+      transform: none !important;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%) !important;
+    }
+
+    #webAnalysisContainer.minimized,
+    #speechAgentContainer.minimized,
+    #aiFriendsTalkContainer.minimized {
+      height: 60px !important;
+    }
+
+    #webAnalysisContainer.minimized .relative,
+    #speechAgentContainer.minimized .relative {
+      display: none;
+    }
+
+    #aiFriendsTalkContainer.minimized .p-6 {
+      display: none;
+    }
+
+    /* Drag functionality styles */
+    .draggable {
+      cursor: move;
+    }
+
+    .draggable:active {
+      cursor: grabbing;
+    }
+
+    /* Smooth animations for all containers */
+    @keyframes containerMaximize {
+      from {
+        transform: scale(0.9);
+        opacity: 0.8;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes containerMinimize {
+      from {
+        height: auto;
+        opacity: 1;
+      }
+      to {
+        height: 60px;
+        opacity: 0.9;
+      }
+    }
+
+    .maximizing {
+      animation: containerMaximize 0.3s ease-out;
+    }
+
+    .minimizing {
+      animation: containerMinimize 0.3s ease-out;
+    }
+
+    /* Responsive design for maximized containers */
+    @media (max-width: 768px) {
+      #webAnalysisContainer.maximized,
+      #speechAgentContainer.maximized,
+      #aiFriendsTalkContainer.maximized {
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+      }
+      
+      .control-btn {
+        width: 32px;
+        height: 32px;
+      }
+      
+      .control-btn svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    /* Ensure proper iframe sizing in maximized state */
+    #webAnalysisContainer.maximized iframe,
+    #speechAgentContainer.maximized iframe {
+      height: calc(95vh - 80px) !important;
+    }
+
+    #aiFriendsTalkContainer.maximized iframe {
+      height: calc(95vh - 120px) !important;
+    }
     
     @keyframes slideIn {
       from {
@@ -611,7 +742,23 @@
               <div class="bg-white rounded-xl shadow-2xl overflow-hidden">
                 <div class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-3 flex justify-between items-center">
                   <h3 class="font-semibold">AI Web Analysis Platform</h3>
-                  <button onclick="closeWebAnalysisPlatform()" class="text-white hover:text-gray-200 text-xl">&times;</button>
+                  <div class="header-controls flex gap-2">
+                    <button id="webAnalysis-minimize-btn" onclick="minimizeWebAnalysis()" class="control-btn" title="Thu gọn">
+                      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+                      </svg>
+                    </button>
+                    <button id="webAnalysis-maximize-btn" onclick="maximizeWebAnalysis()" class="control-btn" title="Phóng to">
+                      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+                      </svg>
+                    </button>
+                    <button onclick="closeWebAnalysisPlatform()" class="control-btn" title="Đóng">
+                      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                      </svg>
+                    </button>
+                  </div>
                 </div>
                 <div class="relative">
                   <iframe id="webAnalysisIframe" 
@@ -676,7 +823,23 @@
               <div class="bg-white rounded-xl shadow-2xl overflow-hidden">
                 <div class="bg-gradient-to-r from-purple-500 to-pink-600 text-white px-4 py-3 flex justify-between items-center">
                   <h3 class="font-semibold">🎤 Voice Studio - Text to Speech</h3>
-                  <button onclick="closeSpeechAgent()" class="text-white hover:text-gray-200 text-xl">&times;</button>
+                  <div class="header-controls flex gap-2">
+                    <button id="speechAgent-minimize-btn" onclick="minimizeSpeechAgent()" class="control-btn" title="Thu gọn">
+                      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+                      </svg>
+                    </button>
+                    <button id="speechAgent-maximize-btn" onclick="maximizeSpeechAgent()" class="control-btn" title="Phóng to">
+                      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+                      </svg>
+                    </button>
+                    <button onclick="closeSpeechAgent()" class="control-btn" title="Đóng">
+                      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                      </svg>
+                    </button>
+                  </div>
                 </div>
                 <div class="relative">
                   <iframe id="speechAgentIframe" 
@@ -939,15 +1102,33 @@
                 Launch the AI Friends Talk to see three AI personalities engage in real-time conversations.
               </p>
               <!-- AI Friends Talk Iframe -->
-              <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
-                <iframe
-                  src="https://ducnguyen1978-ai-game.hf.space"
-                  frameborder="0"
-                  width="850"
-                  height="450"
-                  class="w-full rounded-lg"
-                  style="max-width: 100%; min-height: 450px;"
-                ></iframe>
+              <div id="aiFriendsTalkContainer" class="bg-white rounded-xl shadow-lg overflow-hidden mb-6">
+                <div class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-3 flex justify-between items-center">
+                  <h3 class="font-semibold">🎭 AI Friends Talk - Interactive Demo</h3>
+                  <div class="header-controls flex gap-2">
+                    <button id="aiFriendsTalk-minimize-btn" onclick="minimizeAIFriendsTalk()" class="control-btn" title="Thu gọn">
+                      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+                      </svg>
+                    </button>
+                    <button id="aiFriendsTalk-maximize-btn" onclick="maximizeAIFriendsTalk()" class="control-btn" title="Phóng to">
+                      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="p-6">
+                  <iframe
+                    id="aiFriendsTalkIframe"
+                    src="https://ducnguyen1978-ai-game.hf.space"
+                    frameborder="0"
+                    width="850"
+                    height="450"
+                    class="w-full rounded-lg"
+                    style="max-width: 100%; min-height: 450px;"
+                  ></iframe>
+                </div>
               </div>
               <button id="launch-ai-friends-talk" class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-purple-700 hover:to-pink-700 transition-all transform hover:scale-105 shadow-lg">
                 <span data-translate="aiAgent.aiGameCenter.interface.launchBtn">🚀 Launch AI Friends Talk</span>
@@ -1798,6 +1979,43 @@
   <script src="../../js/multilang.js"></script>
   <script src="../../js/chatbot.js"></script>
   
+  <!-- Suppress Source Map Warnings -->
+  <script>
+    // Suppress source map warnings and console errors
+    if (typeof console !== 'undefined' && console.warn) {
+      const originalWarn = console.warn;
+      console.warn = function(...args) {
+        if (args[0] && typeof args[0] === 'string' && 
+            (args[0].includes('source map') || 
+             args[0].includes('sourcemap') ||
+             args[0].includes('Could not read source map') ||
+             args[0].includes('marked') ||
+             args[0].includes('dompurify') ||
+             args[0].includes('ENOENT'))) {
+          return; // Suppress these warnings
+        }
+        originalWarn.apply(console, args);
+      };
+    }
+
+    // Also suppress console errors for source maps
+    if (typeof console !== 'undefined' && console.error) {
+      const originalError = console.error;
+      console.error = function(...args) {
+        if (args[0] && typeof args[0] === 'string' && 
+            (args[0].includes('source map') || 
+             args[0].includes('sourcemap') ||
+             args[0].includes('Could not read source map') ||
+             args[0].includes('marked') ||
+             args[0].includes('dompurify') ||
+             args[0].includes('ENOENT'))) {
+          return; // Suppress these errors
+        }
+        originalError.apply(console, args);
+      };
+    }
+  </script>
+  
   <!-- Language Switcher Fix Script -->
   <script>
     // Fix language switcher dropdown functionality
@@ -2165,6 +2383,256 @@
         showMessage('Voice Studio đã được đóng.', 'info');
       }
     }
+
+    // AI Container Management System - Maximize/Minimize/Restore Functions
+    // State management objects
+    const containerStates = {
+      webAnalysis: { isMinimized: false, isMaximized: false, originalSize: null, originalPosition: null },
+      speechAgent: { isMinimized: false, isMaximized: false, originalSize: null, originalPosition: null },
+      aiFriendsTalk: { isMinimized: false, isMaximized: false, originalSize: null, originalPosition: null }
+    };
+
+    // Web Analysis Platform Functions
+    function maximizeWebAnalysis() {
+      const container = document.getElementById('webAnalysisContainer');
+      const btn = document.getElementById('webAnalysis-maximize-btn');
+      const state = containerStates.webAnalysis;
+      
+      if (!state.isMaximized) {
+        // Add animation class
+        container.classList.add('maximizing');
+        
+        // Apply maximized class
+        container.classList.add('maximized');
+        container.classList.remove('minimized');
+        
+        state.isMaximized = true;
+        state.isMinimized = false;
+        
+        // Update button to restore icon
+        btn.innerHTML = `
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h6v6H4zM14 14h6v6h-6z"/>
+          </svg>
+        `;
+        btn.onclick = restoreWebAnalysis;
+        btn.title = "Thu nhỏ";
+        
+        // Remove animation class after animation completes
+        setTimeout(() => {
+          container.classList.remove('maximizing');
+        }, 300);
+      }
+    }
+
+    function minimizeWebAnalysis() {
+      const container = document.getElementById('webAnalysisContainer');
+      const state = containerStates.webAnalysis;
+      
+      if (!state.isMinimized) {
+        container.classList.add('minimizing', 'minimized');
+        state.isMinimized = true;
+        
+        setTimeout(() => {
+          container.classList.remove('minimizing');
+        }, 300);
+      } else {
+        container.classList.remove('minimized');
+        state.isMinimized = false;
+      }
+    }
+
+    function restoreWebAnalysis() {
+      const container = document.getElementById('webAnalysisContainer');
+      const btn = document.getElementById('webAnalysis-maximize-btn');
+      const state = containerStates.webAnalysis;
+      
+      if (state.isMaximized) {
+        // Remove maximized class
+        container.classList.remove('maximized');
+        state.isMaximized = false;
+        
+        // Update button back to maximize icon
+        btn.innerHTML = `
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+          </svg>
+        `;
+        btn.onclick = maximizeWebAnalysis;
+        btn.title = "Phóng to";
+      }
+    }
+
+    // Speech Agent Functions
+    function maximizeSpeechAgent() {
+      const container = document.getElementById('speechAgentContainer');
+      const btn = document.getElementById('speechAgent-maximize-btn');
+      const state = containerStates.speechAgent;
+      
+      if (!state.isMaximized) {
+        // Add animation class
+        container.classList.add('maximizing');
+        
+        // Apply maximized class
+        container.classList.add('maximized');
+        container.classList.remove('minimized');
+        
+        state.isMaximized = true;
+        state.isMinimized = false;
+        
+        // Update button to restore icon
+        btn.innerHTML = `
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h6v6H4zM14 14h6v6h-6z"/>
+          </svg>
+        `;
+        btn.onclick = restoreSpeechAgent;
+        btn.title = "Thu nhỏ";
+        
+        // Remove animation class after animation completes
+        setTimeout(() => {
+          container.classList.remove('maximizing');
+        }, 300);
+      }
+    }
+
+    function minimizeSpeechAgent() {
+      const container = document.getElementById('speechAgentContainer');
+      const state = containerStates.speechAgent;
+      
+      if (!state.isMinimized) {
+        container.classList.add('minimizing', 'minimized');
+        state.isMinimized = true;
+        
+        setTimeout(() => {
+          container.classList.remove('minimizing');
+        }, 300);
+      } else {
+        container.classList.remove('minimized');
+        state.isMinimized = false;
+      }
+    }
+
+    function restoreSpeechAgent() {
+      const container = document.getElementById('speechAgentContainer');
+      const btn = document.getElementById('speechAgent-maximize-btn');
+      const state = containerStates.speechAgent;
+      
+      if (state.isMaximized) {
+        // Remove maximized class
+        container.classList.remove('maximized');
+        state.isMaximized = false;
+        
+        // Update button back to maximize icon
+        btn.innerHTML = `
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+          </svg>
+        `;
+        btn.onclick = maximizeSpeechAgent;
+        btn.title = "Phóng to";
+      }
+    }
+
+    // AI Friends Talk Functions
+    function maximizeAIFriendsTalk() {
+      const container = document.getElementById('aiFriendsTalkContainer');
+      const btn = document.getElementById('aiFriendsTalk-maximize-btn');
+      const state = containerStates.aiFriendsTalk;
+      
+      if (!state.isMaximized) {
+        // Add animation class
+        container.classList.add('maximizing');
+        
+        // Apply maximized class
+        container.classList.add('maximized');
+        container.classList.remove('minimized');
+        
+        // Adjust iframe height for maximized view
+        const iframe = document.getElementById('aiFriendsTalkIframe');
+        if (iframe) {
+          iframe.style.height = 'calc(95vh - 120px)';
+        }
+        
+        state.isMaximized = true;
+        state.isMinimized = false;
+        
+        // Update button to restore icon
+        btn.innerHTML = `
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h6v6H4zM14 14h6v6h-6z"/>
+          </svg>
+        `;
+        btn.onclick = restoreAIFriendsTalk;
+        btn.title = "Thu nhỏ";
+        
+        // Remove animation class after animation completes
+        setTimeout(() => {
+          container.classList.remove('maximizing');
+        }, 300);
+      }
+    }
+
+    function minimizeAIFriendsTalk() {
+      const container = document.getElementById('aiFriendsTalkContainer');
+      const state = containerStates.aiFriendsTalk;
+      
+      if (!state.isMinimized) {
+        container.classList.add('minimizing', 'minimized');
+        state.isMinimized = true;
+        
+        setTimeout(() => {
+          container.classList.remove('minimizing');
+        }, 300);
+      } else {
+        container.classList.remove('minimized');
+        state.isMinimized = false;
+        
+        // Restore iframe height
+        const iframe = document.getElementById('aiFriendsTalkIframe');
+        if (iframe && !state.isMaximized) {
+          iframe.style.height = '450px';
+        }
+      }
+    }
+
+    function restoreAIFriendsTalk() {
+      const container = document.getElementById('aiFriendsTalkContainer');
+      const btn = document.getElementById('aiFriendsTalk-maximize-btn');
+      const iframe = document.getElementById('aiFriendsTalkIframe');
+      const state = containerStates.aiFriendsTalk;
+      
+      if (state.isMaximized) {
+        // Remove maximized class
+        container.classList.remove('maximized');
+        
+        // Restore iframe height
+        if (iframe) {
+          iframe.style.height = '450px';
+        }
+        
+        state.isMaximized = false;
+        
+        // Update button back to maximize icon
+        btn.innerHTML = `
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+          </svg>
+        `;
+        btn.onclick = maximizeAIFriendsTalk;
+        btn.title = "Phóng to";
+      }
+    }
+
+    // Initialize Chatbot
+    window.addEventListener('load', function() {
+      const chatbot = new DigitizedBrainsChatbot({
+        iframeSrc: 'https://ducnguyen1978-digitizedgemini.hf.space',
+        widgetTitle: 'Digitized Brains AI Agent',
+        position: { bottom: '30px', right: '30px' },
+        size: { width: '420px', height: '600px' }
+      });
+    });
   </script>
 </body>
 </html>

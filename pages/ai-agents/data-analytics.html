@@ -506,5 +506,17 @@
   <!-- Include JavaScript files -->
   <script src="../../js/multilang.js"></script>
   <script src="../../js/chatbot.js"></script>
+  
+  <script>
+    // Initialize Chatbot
+    window.addEventListener('load', function() {
+      const chatbot = new DigitizedBrainsChatbot({
+        iframeSrc: 'https://ducnguyen1978-digitizedgemini.hf.space',
+        widgetTitle: 'Digitized Brains AI Agent',
+        position: { bottom: '30px', right: '30px' },
+        size: { width: '420px', height: '600px' }
+      });
+    });
+  </script>
 </body>
 </html>
