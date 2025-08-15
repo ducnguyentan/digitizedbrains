@@ -1,10 +1,22 @@
 // DigitizedBrains Chatbot Integration
 // Standalone multilingual AI chatbot widget
 
+// Disable source map warnings
+if (typeof console !== 'undefined' && console.warn) {
+  const originalWarn = console.warn;
+  console.warn = function(...args) {
+    if (args[0] && typeof args[0] === 'string' && 
+        (args[0].includes('source map') || args[0].includes('sourcemap'))) {
+      return; // Suppress source map warnings
+    }
+    originalWarn.apply(console, args);
+  };
+}
+
 class DigitizedBrainsChatbot {
   constructor(options = {}) {
     this.options = {
-      iframeSrc: options.iframeSrc || 'https://ducnguyen1978-digitizedbrains-gemini.hf.space',
+      iframeSrc: options.iframeSrc || 'https://ducnguyen1978-digitizedgemini.hf.space',
       widgetTitle: options.widgetTitle || 'Digitized Brains AI Agent',
       position: options.position || { bottom: '30px', right: '30px' },
       size: options.size || { width: '420px', height: '600px' },
@@ -977,7 +989,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   try {
     digitizedBrainsChatbot = new DigitizedBrainsChatbot({
-      iframeSrc: 'https://ducnguyen1978-digitizedbrains-gemini.hf.space',
+      iframeSrc: 'https://ducnguyen1978-digitizedgemini.hf.space',
       widgetTitle: 'Digitized Brains AI Agent',
       size: { width: '420px', height: '600px' },
       minSize: { width: '370px', height: '450px' },
