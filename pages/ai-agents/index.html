@@ -77,39 +77,160 @@
     /* Language Switcher Styles */
     .language-switcher {
       position: relative;
+      z-index: 101;
     }
     
     .language-menu {
+      position: absolute !important;
+      top: calc(100% + 8px) !important;
+      right: 0 !important;
+      background: white !important;
+      border: 1px solid #e5e7eb !important;
+      border-radius: 8px !important;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15) !important;
+      min-width: 160px !important;
+      display: none !important;
+      z-index: 9999 !important;
+      max-height: 200px !important;
+      overflow-y: auto !important;
+    }
+    
+    .language-menu.show {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+      z-index: 9999 !important;
+    }
+    
+    .language-option {
+      display: flex !important;
+      align-items: center !important;
+      padding: 8px 12px !important;
+      text-decoration: none !important;
+      color: #374151 !important;
+      transition: background-color 0.2s !important;
+      gap: 8px !important;
+      border-bottom: 1px solid #f3f4f6 !important;
+      cursor: pointer !important;
+    }
+    
+    .language-option:last-child {
+      border-bottom: none;
+    }
+    
+    .language-option:hover {
+      background-color: #f8fafc;
+    }
+    
+    .language-option.active {
+      background-color: #eff6ff;
+      color: #2563eb;
+    }
+    
+    .language-flag {
+      width: 20px;
+      height: 15px;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+    
+    /* Mobile Language Switcher */
+    .language-switcher-mobile {
+      position: relative;
+    }
+    
+    .language-menu-mobile {
       position: absolute;
-      top: 100%;
+      top: calc(100% + 8px);
+      left: 0;
       right: 0;
       background: white;
       border: 1px solid #e5e7eb;
       border-radius: 8px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      min-width: 160px;
       display: none;
-      z-index: 1000;
+      z-index: 100;
+      max-height: 200px;
+      overflow-y: auto;
     }
     
-    .language-menu.show {
-      display: block;
+    .language-menu-mobile.show {
+      display: block !important;
     }
     
-    .language-option {
+    .language-option-mobile {
       display: flex;
       align-items: center;
       padding: 8px 12px;
       text-decoration: none;
       color: #374151;
-      font-size: 14px;
       transition: background-color 0.2s;
       gap: 8px;
+      border-bottom: 1px solid #f3f4f6;
     }
     
-    .language-option:hover {
-      background-color: #f3f4f6;
+    .language-option-mobile:last-child {
+      border-bottom: none;
     }
+    
+    .language-option-mobile:hover {
+      background-color: #f8fafc;
+    }
+    
+    .language-option-mobile.active {
+      background-color: #eff6ff;
+      color: #2563eb;
+    }
+    
+    /* Responsive Header */
+    @media (max-width: 768px) {
+      header {
+        min-height: 70px;
+      }
+      
+      .container {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+      
+      /* Show mobile menu button on small screens */
+      .md\\:hidden {
+        display: block !important;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      header {
+        min-height: 60px;
+      }
+      
+      .flex.items-center.justify-between.py-4 {
+        padding-top: 12px;
+        padding-bottom: 12px;
+      }
+    }
+    
+    /* AI Agent Embedded Styles */
+    .demo-app-card {
+      transition: all 0.3s ease;
+    }
+    
+    #webAnalysisContainer {
+      animation: slideIn 0.3s ease-out;
+    }
+    
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
     
     .language-option.active {
       background-color: #fef2f2;
@@ -155,9 +276,9 @@
 <body class="bg-white text-gray-800">
 
   <!-- Header -->
-  <header class="bg-white shadow-lg sticky top-0 z-50">
+  <header class="bg-white shadow-lg sticky top-0 z-[100]" style="display: block !important; position: sticky !important; top: 0 !important; background: white !important;">
     <div class="container mx-auto px-4">
-      <div class="flex items-center justify-between py-4">
+      <div class="flex items-center justify-between py-4 relative">
         <!-- Logo -->
         <div class="flex items-center space-x-2">
           <div class="logo-gradient w-10 h-10 bg-gradient-to-r from-orange-400 to-pink-500 rounded-lg flex items-center justify-center">
@@ -167,7 +288,7 @@
         </div>
         
         <!-- Navigation and Language Switcher -->
-        <div class="hidden md:flex items-center space-x-4">
+        <div class="hidden md:flex items-center space-x-4" style="display: flex !important;">
           <nav class="flex space-x-2">
             <a href="../../index.html" class="nav-link" data-translate="nav.home">Home</a>
             <a href="../about/index.html" class="nav-link" data-translate="nav.about">About</a>
@@ -255,7 +376,7 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="hero-bg py-20 relative overflow-hidden">
+  <section class="hero-bg py-20 relative overflow-hidden" style="display: block !important; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;">
     <div class="absolute inset-0 bg-black bg-opacity-20"></div>
     <div class="relative z-10 text-center max-w-4xl mx-auto px-4">
       <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 scroll-reveal" data-translate="aiAgent.hero.title">
@@ -274,6 +395,7 @@
       </div>
     </div>
   </section>
+
 
   <!-- Features Section -->
   <section id="features" class="py-20 bg-white">
@@ -297,7 +419,7 @@
           <p class="text-gray-600" data-translate="aiAgent.features.feature1.description">Automated business process optimization, document generation, and workflow management using advanced AI algorithms tailored for Vietnamese business needs.</p>
           <div class="mt-4">
             <a href="process-automation.html" class="text-orange-600 hover:text-orange-800 font-medium flex items-center">
-              <span data-translate="aiAgent.features.feature1.learnMore">Tìm hiểu thêm</span>
+              <span data-translate="aiAgent.features.feature1.learnMore">Learn More</span>
               <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
               </svg>
@@ -316,7 +438,7 @@
           <p class="text-gray-600" data-translate="aiAgent.features.feature2.description">Real-time data analysis and personalized insights for Vietnamese enterprises to optimize business operations and customer experiences.</p>
           <div class="mt-4">
             <a href="data-analytics.html" class="text-orange-600 hover:text-orange-800 font-medium flex items-center">
-              <span data-translate="aiAgent.features.feature2.learnMore">Tìm hiểu thêm</span>
+              <span data-translate="aiAgent.features.feature2.learnMore">Learn More</span>
               <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
               </svg>
@@ -335,7 +457,7 @@
           <p class="text-gray-600" data-translate="aiAgent.features.feature3.description">Smart scheduling, performance monitoring, and automated business workflows optimized for Vietnamese enterprise operations.</p>
           <div class="mt-4">
             <a href="business-intelligence.html" class="text-orange-600 hover:text-orange-800 font-medium flex items-center">
-              <span data-translate="aiAgent.features.feature3.learnMore">Tìm hiểu thêm</span>
+              <span data-translate="aiAgent.features.feature3.learnMore">Learn More</span>
               <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
               </svg>
@@ -354,7 +476,7 @@
           <p class="text-gray-600" data-translate="aiAgent.features.feature4.description">Advanced Vietnamese language processing, translation, and localization capabilities for business documents, customer communication, and digital content.</p>
           <div class="mt-4">
             <a href="language-processing.html" class="text-orange-600 hover:text-orange-800 font-medium flex items-center">
-              <span data-translate="aiAgent.features.feature4.learnMore">Tìm hiểu thêm</span>
+              <span data-translate="aiAgent.features.feature4.learnMore">Learn More</span>
               <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
               </svg>
@@ -425,48 +547,333 @@
     </div>
   </section>
 
-  <!-- Demo Section -->
+  <!-- AI Agent in Action Section -->
   <section id="demo" class="py-20 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="text-center mb-16 scroll-reveal">
         <h2 class="text-3xl font-bold text-gray-800 mb-4" data-translate="aiAgent.demo.title">AI Agent in Action</h2>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-translate="aiAgent.demo.subtitle">
-          See how our AI agents transform business operations in real-world scenarios
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-translate="aiAgent.demo.subtitle">
+          Explore our diverse collection of AI Agents - from basic to advanced, designed to automate and optimize every aspect of business operations
         </p>
       </div>
-      
-      <div class="grid md:grid-cols-2 gap-8">
-        <!-- Demo 1 -->
-        <div class="demo-card rounded-2xl p-8 scroll-reveal">
-          <div class="mb-6">
-            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80" alt="Content Creation AI" class="w-full h-48 object-cover rounded-lg">
-          </div>
-          <h3 class="text-2xl font-bold text-gray-800 mb-4" data-translate="aiAgent.demo.demo1.title">Automated Business Process Management</h3>
-          <p class="text-gray-600 mb-6" data-translate="aiAgent.demo.demo1.description">
-            Watch our AI agent automatically generate business reports, create marketing content, and optimize communication materials for Vietnamese businesses.
-          </p>
-          <button class="btn-primary text-white px-6 py-3 rounded-lg font-semibold" data-translate="aiAgent.demo.demo1.button">
-            View Demo
-          </button>
-        </div>
 
-        <!-- Demo 2 -->
-        <div class="demo-card rounded-2xl p-8 scroll-reveal">
-          <div class="mb-6">
-            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=600&q=80" alt="Broadcasting AI" class="w-full h-48 object-cover rounded-lg">
+      <!-- Live Demo Applications -->
+      <div class="mb-16 scroll-reveal">
+        <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center" data-translate="aiAgent.liveDemo.title">
+          <span class="text-purple-600">🚀</span> Live Demo Applications
+        </h3>
+        <p class="text-gray-600 text-center mb-12 max-w-3xl mx-auto" data-translate="aiAgent.liveDemo.subtitle">
+          Experience our AI solutions in action. Try these live applications and see the power of AI automation.
+        </p>
+        
+        <div class="grid md:grid-cols-2 gap-8 mb-16">
+          <!-- Applied Agents Demo -->
+          <div class="demo-app-card bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 shadow-lg border border-blue-200">
+            <div class="text-center mb-6">
+              <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <span class="text-3xl text-white">🧠</span>
+              </div>
+              <h4 class="text-2xl font-bold text-gray-800 mb-2" data-translate="aiAgent.liveDemo.appliedAgents.title">AI Web Analysis Platform</h4>
+              <p class="text-gray-600 mb-6" data-translate="aiAgent.liveDemo.appliedAgents.description">
+                Advanced AI-powered web content analysis and automation platform. Upload files, analyze content, generate summaries, and extract insights using multiple AI models.
+              </p>
+            </div>
+            
+            <!-- Features List -->
+            <div class="grid grid-cols-2 gap-4 mb-6">
+              <div class="flex items-center gap-2">
+                <span class="text-green-500">✓</span>
+                <span class="text-sm text-gray-700" data-translate="aiAgent.liveDemo.appliedAgents.feature1">File Analysis</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-green-500">✓</span>
+                <span class="text-sm text-gray-700" data-translate="aiAgent.liveDemo.appliedAgents.feature2">Content Summarization</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-green-500">✓</span>
+                <span class="text-sm text-gray-700" data-translate="aiAgent.liveDemo.appliedAgents.feature3">SEO Analysis</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-green-500">✓</span>
+                <span class="text-sm text-gray-700" data-translate="aiAgent.liveDemo.appliedAgents.feature4">Multi-Model Support</span>
+              </div>
+            </div>
+            
+            <div class="text-center">
+              <button onclick="launchWebAnalysisPlatform()" class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:from-blue-600 hover:to-indigo-700 transition-all transform hover:scale-105 shadow-lg inline-block">
+                <span data-translate="aiAgent.liveDemo.appliedAgents.launchBtn">🚀 Launch Web Analysis Platform</span>
+              </button>
+              <p class="text-xs text-gray-500 mt-2" data-translate="aiAgent.liveDemo.appliedAgents.note">Embedded AI Agent • Applied_Agents</p>
+            </div>
+            
+            <!-- Embedded AI Agent Container -->
+            <div id="webAnalysisContainer" class="hidden mt-8">
+              <div class="bg-white rounded-xl shadow-2xl overflow-hidden">
+                <div class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-3 flex justify-between items-center">
+                  <h3 class="font-semibold">AI Web Analysis Platform</h3>
+                  <button onclick="closeWebAnalysisPlatform()" class="text-white hover:text-gray-200 text-xl">&times;</button>
+                </div>
+                <div class="relative">
+                  <iframe id="webAnalysisIframe" 
+                          src="" 
+                          width="100%" 
+                          height="600" 
+                          frameborder="0"
+                          class="w-full">
+                  </iframe>
+                  <div id="loadingSpinner" class="absolute inset-0 bg-white bg-opacity-90 flex items-center justify-center">
+                    <div class="text-center">
+                      <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+                      <p class="mt-2 text-gray-600">Loading AI Agent...</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <h3 class="text-2xl font-bold text-gray-800 mb-4" data-translate="aiAgent.demo.demo2.title">Smart Business Intelligence</h3>
-          <p class="text-gray-600 mb-6" data-translate="aiAgent.demo.demo2.description">
-            Experience how our AI analyzes business data, monitors performance metrics, and automatically provides insights for optimal business decisions.
+          
+          <!-- AI Speech Text Demo -->
+          <div class="demo-app-card bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 shadow-lg border border-purple-200">
+            <div class="text-center mb-6">
+              <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <span class="text-3xl text-white">🎙️</span>
+              </div>
+              <h4 class="text-2xl font-bold text-gray-800 mb-2" data-translate="aiAgent.liveDemo.speechText.title">AI Speech ↔ Text Agent</h4>
+              <p class="text-gray-600 mb-6" data-translate="aiAgent.liveDemo.speechText.description">
+                Advanced speech recognition and text-to-speech conversion with multi-language support. Convert voice to text, text to speech, and process various file formats.
+              </p>
+            </div>
+            
+            <!-- Features List -->
+            <div class="grid grid-cols-2 gap-4 mb-6">
+              <div class="flex items-center gap-2">
+                <span class="text-green-500">✓</span>
+                <span class="text-sm text-gray-700" data-translate="aiAgent.liveDemo.speechText.feature1">Speech to Text</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-green-500">✓</span>
+                <span class="text-sm text-gray-700" data-translate="aiAgent.liveDemo.speechText.feature2">Text to Speech</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-green-500">✓</span>
+                <span class="text-sm text-gray-700" data-translate="aiAgent.liveDemo.speechText.feature3">Multi-Language</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-green-500">✓</span>
+                <span class="text-sm text-gray-700" data-translate="aiAgent.liveDemo.speechText.feature4">File Export</span>
+              </div>
+            </div>
+            
+            <div class="text-center">
+              <button onclick="launchSpeechAgent()" class="bg-gradient-to-r from-purple-500 to-pink-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:from-purple-600 hover:to-pink-700 transition-all transform hover:scale-105 shadow-lg inline-block">
+                <span data-translate="aiAgent.liveDemo.speechText.launchBtn">🎤 Launch Speech Agent</span>
+              </button>
+              <p class="text-xs text-gray-500 mt-2" data-translate="aiAgent.liveDemo.speechText.note">Embedded AI Agent • Voice Studio</p>
+            </div>
+            
+            <!-- Embedded Voice Studio Container -->
+            <div id="speechAgentContainer" class="hidden mt-8">
+              <div class="bg-white rounded-xl shadow-2xl overflow-hidden">
+                <div class="bg-gradient-to-r from-purple-500 to-pink-600 text-white px-4 py-3 flex justify-between items-center">
+                  <h3 class="font-semibold">🎤 Voice Studio - Text to Speech</h3>
+                  <button onclick="closeSpeechAgent()" class="text-white hover:text-gray-200 text-xl">&times;</button>
+                </div>
+                <div class="relative">
+                  <iframe id="speechAgentIframe" 
+                          src="" 
+                          width="100%" 
+                          height="600" 
+                          frameborder="0"
+                          class="w-full">
+                  </iframe>
+                  <div id="speechLoadingSpinner" class="absolute inset-0 bg-white bg-opacity-90 flex items-center justify-center">
+                    <div class="text-center">
+                      <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-purple-500"></div>
+                      <p class="mt-2 text-gray-600">Loading Voice Studio...</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Starter AI Agents -->
+      <div class="mb-16 scroll-reveal">
+        <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center" data-translate="aiAgent.starter.title">
+          <span class="text-green-600">🌱</span> Starter AI Agents
+        </h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="agent-card bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
+            <div class="text-3xl mb-4">🎙️</div>
+            <h4 class="text-lg font-semibold text-gray-800 mb-2" data-translate="aiAgent.starter.agents.blogToPodcast.title">AI Blog to Podcast Agent</h4>
+            <p class="text-gray-600 text-sm" data-translate="aiAgent.starter.agents.blogToPodcast.description">Automatically convert blog content to podcast format</p>
+          </div>
+          <div class="agent-card bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
+            <div class="text-3xl mb-4">📊</div>
+            <h4 class="text-lg font-semibold text-gray-800 mb-2" data-translate="aiAgent.starter.agents.dataAnalysis.title">AI Data Analysis Agent</h4>
+            <p class="text-gray-600 text-sm" data-translate="aiAgent.starter.agents.dataAnalysis.description">Smart data analysis and insights with AI</p>
+          </div>
+          <div class="agent-card bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
+            <div class="text-3xl mb-4">🩻</div>
+            <h4 class="text-lg font-semibold text-gray-800 mb-2" data-translate="aiAgent.starter.agents.medicalImaging.title">AI Medical Imaging Agent</h4>
+            <p class="text-gray-600 text-sm" data-translate="aiAgent.starter.agents.medicalImaging.description">Medical imaging diagnosis support</p>
+          </div>
+          <div class="agent-card bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
+            <div class="text-3xl mb-4">😂</div>
+            <h4 class="text-lg font-semibold text-gray-800 mb-2" data-translate="aiAgent.starter.agents.memeGenerator.title">AI Meme Generator Agent</h4>
+            <p class="text-gray-600 text-sm" data-translate="aiAgent.starter.agents.memeGenerator.description">Create viral memes automatically</p>
+          </div>
+          <div class="agent-card bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
+            <div class="text-3xl mb-4">🎵</div>
+            <h4 class="text-lg font-semibold text-gray-800 mb-2" data-translate="aiAgent.starter.agents.musicGenerator.title">AI Music Generator Agent</h4>
+            <p class="text-gray-600 text-sm" data-translate="aiAgent.starter.agents.musicGenerator.description">Compose music with artificial intelligence</p>
+          </div>
+          <div class="agent-card bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
+            <div class="text-3xl mb-4">🛫</div>
+            <h4 class="text-lg font-semibold text-gray-800 mb-2" data-translate="aiAgent.starter.agents.travel.title">AI Travel Agent</h4>
+            <p class="text-gray-600 text-sm" data-translate="aiAgent.starter.agents.travel.description">Smart travel planning and recommendations</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Advanced AI Agents -->
+      <div class="mb-16 scroll-reveal">
+        <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center" data-translate="aiAgent.advanced.title">
+          <span class="text-blue-600">🚀</span> Advanced AI Agents
+        </h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="agent-card bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-blue-500">
+            <div class="text-3xl mb-4">🔍</div>
+            <h4 class="text-lg font-semibold text-gray-800 mb-2" data-translate="aiAgent.advanced.agents.deepResearch.title">AI Deep Research Agent</h4>
+            <p class="text-gray-600 text-sm" data-translate="aiAgent.advanced.agents.deepResearch.description">Multi-layer deep research with AI</p>
+          </div>
+          <div class="agent-card bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-blue-500">
+            <div class="text-3xl mb-4">🤝</div>
+            <h4 class="text-lg font-semibold text-gray-800 mb-2" data-translate="aiAgent.advanced.agents.consultant.title">AI Consultant Agent</h4>
+            <p class="text-gray-600 text-sm" data-translate="aiAgent.advanced.agents.consultant.description">Professional business consulting services</p>
+          </div>
+          <div class="agent-card bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-blue-500">
+            <div class="text-3xl mb-4">🏗️</div>
+            <h4 class="text-lg font-semibold text-gray-800 mb-2" data-translate="aiAgent.advanced.agents.systemArchitect.title">AI System Architect Agent</h4>
+            <p class="text-gray-600 text-sm" data-translate="aiAgent.advanced.agents.systemArchitect.description">Automated system architecture design</p>
+          </div>
+          <div class="agent-card bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-blue-500">
+            <div class="text-3xl mb-4">💰</div>
+            <h4 class="text-lg font-semibold text-gray-800 mb-2" data-translate="aiAgent.advanced.agents.financialCoach.title">AI Financial Coach Agent</h4>
+            <p class="text-gray-600 text-sm" data-translate="aiAgent.advanced.agents.financialCoach.description">Personal financial coaching and guidance</p>
+          </div>
+          <div class="agent-card bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-blue-500">
+            <div class="text-3xl mb-4">📈</div>
+            <h4 class="text-lg font-semibold text-gray-800 mb-2" data-translate="aiAgent.advanced.agents.investment.title">AI Investment Agent</h4>
+            <p class="text-gray-600 text-sm" data-translate="aiAgent.advanced.agents.investment.description">Smart investment strategies with AI</p>
+          </div>
+          <div class="agent-card bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-blue-500">
+            <div class="text-3xl mb-4">🧠</div>
+            <h4 class="text-lg font-semibold text-gray-800 mb-2" data-translate="aiAgent.advanced.agents.selfEvolving.title">AI Self-Evolving Agent</h4>
+            <p class="text-gray-600 text-sm" data-translate="aiAgent.advanced.agents.selfEvolving.description">Self-evolving and learning agent</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Multi-agent Teams -->
+      <div class="mb-16 scroll-reveal">
+        <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center" data-translate="aiAgent.teams.title">
+          <span class="text-purple-600">🤝</span> Multi-agent Teams
+        </h3>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="team-card bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-200">
+            <div class="text-3xl mb-4">💼</div>
+            <h4 class="text-xl font-semibold text-gray-800 mb-4" data-translate="aiAgent.teams.agents.servicesAgency.title">AI Services Agency Team</h4>
+            <p class="text-gray-600 mb-4" data-translate="aiAgent.teams.agents.servicesAgency.description">Automated AI team providing comprehensive business services</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-purple-100 text-purple-600 px-2 py-1 rounded">CrewAI</span>
+              <span class="text-xs bg-pink-100 text-pink-600 px-2 py-1 rounded">Multi-Agent</span>
+            </div>
+          </div>
+          <div class="team-card bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border border-blue-200">
+            <div class="text-3xl mb-4">💻</div>
+            <h4 class="text-xl font-semibold text-gray-800 mb-4" data-translate="aiAgent.teams.agents.multimodalCoding.title">Multimodal Coding Agent Team</h4>
+            <p class="text-gray-600 mb-4" data-translate="aiAgent.teams.agents.multimodalCoding.description">Software development team with multimodal capabilities</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded">Coding</span>
+              <span class="text-xs bg-cyan-100 text-cyan-600 px-2 py-1 rounded">Multimodal</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Voice AI Agents -->
+      <div class="mb-16 scroll-reveal">
+        <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center" data-translate="aiAgent.voice.title">
+          <span class="text-red-600">🗣️</span> Voice AI Agents
+        </h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="voice-agent bg-gradient-to-br from-red-50 to-orange-50 rounded-lg p-4 text-center border border-red-200">
+            <div class="text-2xl mb-2">🗣️</div>
+            <h5 class="font-semibold text-gray-800 text-sm">AI Audio Tour Agent</h5>
+          </div>
+          <div class="voice-agent bg-gradient-to-br from-red-50 to-orange-50 rounded-lg p-4 text-center border border-red-200">
+            <div class="text-2xl mb-2">📞</div>
+            <h5 class="font-semibold text-gray-800 text-sm">Customer Support Voice</h5>
+          </div>
+          <div class="voice-agent bg-gradient-to-br from-red-50 to-orange-50 rounded-lg p-4 text-center border border-red-200">
+            <div class="text-2xl mb-2">🔊</div>
+            <h5 class="font-semibold text-gray-800 text-sm">Voice RAG Agent</h5>
+          </div>
+          <div class="voice-agent bg-gradient-to-br from-red-50 to-orange-50 rounded-lg p-4 text-center border border-red-200">
+            <div class="text-2xl mb-2">🎯</div>
+            <h5 class="font-semibold text-gray-800 text-sm">Lead Generation Voice</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- RAG Agents -->
+      <div class="scroll-reveal">
+        <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center" data-translate="aiAgent.rag.title">
+          <span class="text-amber-600">📀</span> RAG (Retrieval Augmented Generation)
+        </h3>
+        <div class="bg-amber-50 rounded-xl p-8 border border-amber-200">
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="rag-item flex items-center gap-3 bg-white rounded-lg p-3 shadow-sm">
+              <span class="text-xl">🔗</span>
+              <span class="text-sm font-medium text-gray-700">Agentic RAG</span>
+            </div>
+            <div class="rag-item flex items-center gap-3 bg-white rounded-lg p-3 shadow-sm">
+              <span class="text-xl">🧐</span>
+              <span class="text-sm font-medium text-gray-700">RAG with Reasoning</span>
+            </div>
+            <div class="rag-item flex items-center gap-3 bg-white rounded-lg p-3 shadow-sm">
+              <span class="text-xl">🔍</span>
+              <span class="text-sm font-medium text-gray-700">Autonomous RAG</span>
+            </div>
+            <div class="rag-item flex items-center gap-3 bg-white rounded-lg p-3 shadow-sm">
+              <span class="text-xl">🔄</span>
+              <span class="text-sm font-medium text-gray-700">Corrective RAG</span>
+            </div>
+            <div class="rag-item flex items-center gap-3 bg-white rounded-lg p-3 shadow-sm">
+              <span class="text-xl">🖼️</span>
+              <span class="text-sm font-medium text-gray-700">Vision RAG</span>
+            </div>
+            <div class="rag-item flex items-center gap-3 bg-white rounded-lg p-3 shadow-sm">
+              <span class="text-xl">💾</span>
+              <span class="text-sm font-medium text-gray-700">Local RAG Agent</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- CTA Section -->
+      <div class="text-center mt-16 scroll-reveal">
+        <div class="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-8 text-white">
+          <h3 class="text-2xl font-bold mb-4" data-translate="aiAgent.ctaSection.title">Ready to Deploy AI Agents?</h3>
+          <p class="text-lg mb-6 opacity-90" data-translate="aiAgent.ctaSection.subtitle">
+            Contact us for consultation and implementation of AI Agents suitable for your business
           </p>
-          <div class="flex gap-4">
-            <button class="btn-primary text-white px-6 py-3 rounded-lg font-semibold" data-translate="aiAgent.demo.demo2.button">
-              Watch Demo
-            </button>
-            <a href="business-intelligence.html" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-semibold transition-colors" data-translate="aiAgent.demo.demo2.biLink">
-              Khám phá BI
-            </a>
-          </div>
+          <a href="../contact/index.html" class="inline-block bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors" data-translate="aiAgent.ctaSection.contactBtn">
+            Contact Now
+          </a>
         </div>
       </div>
     </div>
@@ -531,6 +938,17 @@
               <p class="text-gray-600 mb-8 max-w-md mx-auto" data-translate="aiAgent.aiGameCenter.interface.readyDescription">
                 Launch the AI Friends Talk to see three AI personalities engage in real-time conversations.
               </p>
+              <!-- AI Friends Talk Iframe -->
+              <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+                <iframe
+                  src="https://ducnguyen1978-ai-game.hf.space"
+                  frameborder="0"
+                  width="850"
+                  height="450"
+                  class="w-full rounded-lg"
+                  style="max-width: 100%; min-height: 450px;"
+                ></iframe>
+              </div>
               <button id="launch-ai-friends-talk" class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-purple-700 hover:to-pink-700 transition-all transform hover:scale-105 shadow-lg">
                 <span data-translate="aiAgent.aiGameCenter.interface.launchBtn">🚀 Launch AI Friends Talk</span>
               </button>
@@ -665,8 +1083,8 @@
         <div>
           <h4 class="text-lg font-semibold mb-4" data-translate="footer.contact">Contact</h4>
           <ul class="space-y-2">
-            <li class="text-gray-400">email@digitizedbrains.com</li>
-            <li class="text-gray-400">+84 123 456 789</li>
+            <li class="text-gray-400">ducnguyen@digitizedbrains.online</li>
+            <li class="text-gray-400">0913 723 667</li>
             <li class="text-gray-400" data-translate="footer.location">Ho Chi Minh City, Vietnam</li>
           </ul>
         </div>
@@ -795,7 +1213,7 @@
             },
             demo: {
               title: "AI Agent in Action",
-              subtitle: "See how our AI agents transform business operations in real-world scenarios",
+              subtitle: "Explore our diverse collection of AI Agents - from basic to advanced, designed to automate and optimize every aspect of business operations",
               demo1: {
                 title: "Automated Business Process Management",
                 description: "Watch our AI agent automatically generate business reports, create marketing content, and optimize communication materials for Vietnamese businesses.",
@@ -826,6 +1244,112 @@
                 title: "Cost Savings",
                 description: "Reduction in operational costs through automation"
               }
+            },
+            liveDemo: {
+              title: "Live Demo Applications",
+              subtitle: "Experience our AI solutions in action. Try these live applications and see the power of AI automation.",
+              appliedAgents: {
+                title: "AI Web Analysis Platform",
+                description: "Advanced AI-powered web content analysis and automation platform. Upload files, analyze content, generate summaries, and extract insights using multiple AI models.",
+                feature1: "File Analysis",
+                feature2: "Content Summarization",
+                feature3: "SEO Analysis",
+                feature4: "Multi-Model Support",
+                launchBtn: "🚀 Launch Web Analysis Platform",
+                note: "Opens in new window • Applied_Agents"
+              },
+              speechText: {
+                title: "AI Speech ↔ Text Agent",
+                description: "Advanced speech recognition and text-to-speech conversion with multi-language support. Convert voice to text, text to speech, and process various file formats.",
+                feature1: "Speech to Text",
+                feature2: "Text to Speech",
+                feature3: "Multi-Language",
+                feature4: "File Export",
+                launchBtn: "🎤 Launch Speech Agent",
+                note: "Opens in new window • AI_Speech_Text"
+              }
+            },
+            starter: {
+              title: "Starter AI Agents",
+              agents: {
+                blogToPodcast: {
+                  title: "AI Blog to Podcast Agent",
+                  description: "Automatically convert blog content to podcast format"
+                },
+                dataAnalysis: {
+                  title: "AI Data Analysis Agent", 
+                  description: "Smart data analysis and insights with AI"
+                },
+                medicalImaging: {
+                  title: "AI Medical Imaging Agent",
+                  description: "Medical imaging diagnosis support"
+                },
+                memeGenerator: {
+                  title: "AI Meme Generator Agent",
+                  description: "Create viral memes automatically"
+                },
+                musicGenerator: {
+                  title: "AI Music Generator Agent",
+                  description: "Compose music with artificial intelligence"
+                },
+                travel: {
+                  title: "AI Travel Agent",
+                  description: "Smart travel planning and recommendations"
+                }
+              }
+            },
+            advanced: {
+              title: "Advanced AI Agents",
+              agents: {
+                deepResearch: {
+                  title: "AI Deep Research Agent",
+                  description: "Multi-layer deep research with AI"
+                },
+                consultant: {
+                  title: "AI Consultant Agent",
+                  description: "Professional business consulting services"
+                },
+                systemArchitect: {
+                  title: "AI System Architect Agent",
+                  description: "Automated system architecture design"
+                },
+                financialCoach: {
+                  title: "AI Financial Coach Agent",
+                  description: "Personal financial coaching and guidance"
+                },
+                investment: {
+                  title: "AI Investment Agent",
+                  description: "Smart investment strategies with AI"
+                },
+                selfEvolving: {
+                  title: "AI Self-Evolving Agent",
+                  description: "Self-evolving and learning agent"
+                }
+              }
+            },
+            teams: {
+              title: "Multi-agent Teams",
+              agents: {
+                servicesAgency: {
+                  title: "AI Services Agency Team",
+                  description: "Automated AI team providing comprehensive business services"
+                },
+                multimodalCoding: {
+                  title: "Multimodal Coding Agent Team", 
+                  description: "Software development team with multimodal capabilities"
+                }
+              }
+            },
+            voice: {
+              title: "Voice AI Agents"
+            },
+            rag: {
+              title: "RAG (Retrieval Augmented Generation)"
+            },
+            ctaSection: {
+              title: "Ready to Deploy AI Agents?",
+              subtitle: "Contact us for consultation and implementation of AI Agents suitable for your business",
+              contactBtn: "Contact Now"
             },
             cta: {
               title: "Ready to Transform Your Business Operations?",
@@ -951,7 +1475,7 @@
             },
             demo: {
               title: "AI Agent Hoạt Động",
-              subtitle: "Xem cách AI agent của chúng tôi biến đổi hoạt động kinh doanh trong các tình huống thực tế",
+              subtitle: "Khám phá bộ sưu tập đa dạng các AI Agent của chúng tôi - từ cơ bản đến nâng cao, được thiết kế để tự động hóa và tối ưu hóa mọi khía cạnh của doanh nghiệp",
               demo1: {
                 title: "Quản Lý Quy Trình Kinh Doanh Tự Động",
                 description: "Xem AI agent của chúng tôi tự động tạo báo cáo kinh doanh, tạo nội dung marketing và tối ưu hóa tài liệu giao tiếp cho doanh nghiệp Việt Nam.",
@@ -982,6 +1506,116 @@
                 title: "Tiết Kiệm Chi Phí",
                 description: "Giảm chi phí vận hành thông qua tự động hóa"
               }
+            },
+            starter: {
+              title: "AI Agent Cơ Bản",
+              agents: {
+                blogToPodcast: {
+                  title: "AI Agent Blog Thành Podcast",
+                  description: "Chuyển đổi nội dung blog thành podcast tự động"
+                },
+                dataAnalysis: {
+                  title: "AI Agent Phân Tích Dữ Liệu", 
+                  description: "Phân tích dữ liệu thông minh với AI"
+                },
+                medicalImaging: {
+                  title: "AI Agent Hình Ảnh Y Tế",
+                  description: "Hỗ trợ chẩn đoán hình ảnh y tế"
+                },
+                memeGenerator: {
+                  title: "AI Agent Tạo Meme",
+                  description: "Tạo meme viral tự động"
+                },
+                musicGenerator: {
+                  title: "AI Agent Sáng Tác Nhạc",
+                  description: "Sáng tác nhạc với trí tuệ nhân tạo"
+                },
+                travel: {
+                  title: "AI Agent Du Lịch",
+                  description: "Lập kế hoạch du lịch thông minh"
+                }
+              }
+            },
+            advanced: {
+              title: "AI Agent Nâng Cao",
+              agents: {
+                deepResearch: {
+                  title: "AI Agent Nghiên Cứu Sâu",
+                  description: "Nghiên cứu sâu với AI đa tầng"
+                },
+                consultant: {
+                  title: "AI Agent Tư Vấn",
+                  description: "Tư vấn doanh nghiệp chuyên nghiệp"
+                },
+                systemArchitect: {
+                  title: "AI Agent Kiến Trúc Sư Hệ Thống",
+                  description: "Thiết kế kiến trúc hệ thống tự động"
+                },
+                financialCoach: {
+                  title: "AI Agent Huấn Luyện Viên Tài Chính",
+                  description: "Huấn luyện viên tài chính cá nhân"
+                },
+                investment: {
+                  title: "AI Agent Đầu Tư",
+                  description: "Đầu tư thông minh với AI"
+                },
+                selfEvolving: {
+                  title: "AI Agent Tự Tiến Hóa",
+                  description: "Agent tự tiến hóa và học hỏi"
+                }
+              }
+            },
+            teams: {
+              title: "Nhóm Multi-agent",
+              agents: {
+                servicesAgency: {
+                  title: "Đội AI Services Agency",
+                  description: "Đội ngũ AI tự động cung cấp dịch vụ toàn diện cho doanh nghiệp"
+                },
+                multimodalCoding: {
+                  title: "Đội Multimodal Coding Agent", 
+                  description: "Đội phát triển phần mềm với khả năng đa phương thức"
+                }
+              }
+            },
+            voice: {
+              title: "AI Agent Giọng Nói"
+            },
+            rag: {
+              title: "RAG (Retrieval Augmented Generation)"
+            },
+            liveDemo: {
+              title: "Ứng Dụng Demo Trực Tiếp",
+              subtitle: "Trải nghiệm các giải pháp AI của chúng tôi trong thực tế. Thử nghiệm những ứng dụng trực tiếp này và cảm nhận sức mạnh của tự động hóa AI.",
+              appliedAgents: {
+                title: "Nền Tảng Phân Tích Web AI",
+                description: "Nền tảng phân tích và tự động hóa nội dung web tiên tiến với AI. Trích xuất thông tin, tạo tóm tắt và tối ưu hóa nội dung với nhiều mô hình AI.",
+                features: [
+                  "Phân tích và tóm tắt nội dung web",
+                  "Tối ưu hóa SEO và trích xuất từ khóa",
+                  "Xử lý file đa định dạng (PDF, Word, Excel)",
+                  "Phân tích cảm xúc và thông tin nội dung",
+                  "Hỗ trợ nhiều mô hình AI (Gemini, GPT, Claude)"
+                ],
+                launchBtn: "🚀 Khởi Chạy Nền Tảng Phân Tích Web"
+              },
+              speechText: {
+                title: "AI Agent Giọng Nói ↔ Văn Bản",
+                description: "Nhận dạng giọng nói và chuyển đổi văn bản thành giọng nói tiên tiến với hỗ trợ đa ngôn ngữ. Hoàn hảo cho việc tạo nội dung và khả năng tiếp cận.",
+                features: [
+                  "Chuyển đổi giọng nói thành văn bản thời gian thực",
+                  "Tổng hợp văn bản thành giọng nói tự nhiên",
+                  "Hỗ trợ đa ngôn ngữ (Tiếng Việt, Tiếng Anh, Tiếng Đức)",
+                  "Xử lý và phiên mã file âm thanh",
+                  "Nhân bản giọng nói và tùy chỉnh"
+                ],
+                launchBtn: "🚀 Khởi Chạy Agent Giọng Nói & Văn Bản"
+              }
+            },
+            ctaSection: {
+              title: "Sẵn sàng triển khai AI Agent?",
+              subtitle: "Liên hệ với chúng tôi để được tư vấn và triển khai AI Agent phù hợp với doanh nghiệp của bạn",
+              contactBtn: "Liên hệ ngay"
             },
             cta: {
               title: "Sẵn Sàng Biến Đổi Hoạt Động Kinh Doanh Của Bạn?",
@@ -1089,6 +1723,34 @@
                 description: "Reduzierung der Betriebskosten durch Automatisierung"
               }
             },
+            liveDemo: {
+              title: "Live-Demo-Anwendungen",
+              subtitle: "Erleben Sie unsere KI-Lösungen in Aktion. Testen Sie diese Live-Anwendungen und spüren Sie die Kraft der KI-Automatisierung.",
+              appliedAgents: {
+                title: "KI-Web-Analyse-Plattform",
+                description: "Erweiterte KI-gestützte Web-Content-Analyse und Automatisierungsplattform. Extrahieren Sie Erkenntnisse, generieren Sie Zusammenfassungen und optimieren Sie Inhalte mit mehreren KI-Modellen.",
+                features: [
+                  "Web-Content-Analyse und -Zusammenfassung",
+                  "SEO-Optimierung und Keyword-Extraktion",
+                  "Multi-Format-Dateiverarbeitung (PDF, Word, Excel)",
+                  "Sentiment-Analyse und Content-Erkenntnisse",
+                  "Unterstützung mehrerer KI-Modelle (Gemini, GPT, Claude)"
+                ],
+                launchBtn: "🚀 Web-Analyse-Plattform Starten"
+              },
+              speechText: {
+                title: "KI-Sprache ↔ Text-Agent",
+                description: "Erweiterte Spracherkennung und Text-zu-Sprache-Konvertierung mit mehrsprachiger Unterstützung. Perfekt für Content-Erstellung und Barrierefreiheit.",
+                features: [
+                  "Echtzeit-Sprache-zu-Text-Konvertierung",
+                  "Natürliche Text-zu-Sprache-Synthese",
+                  "Mehrsprachige Unterstützung (Vietnamesisch, Englisch, Deutsch)",
+                  "Audio-Dateiverarbeitung und Transkription",
+                  "Stimmklonierung und Anpassung"
+                ],
+                launchBtn: "🚀 Sprache & Text-Agent Starten"
+              }
+            },
             cta: {
               title: "Bereit, Ihre Geschäftsabläufe Zu Transformieren?",
               subtitle: "Schließen Sie sich führenden vietnamesischen Unternehmen an, die bereits unsere KI-Agent-Lösungen nutzen",
@@ -1136,29 +1798,215 @@
   <script src="../../js/multilang.js"></script>
   <script src="../../js/chatbot.js"></script>
   
+  <!-- Language Switcher Fix Script -->
+  <script>
+    // Fix language switcher dropdown functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Initializing language switcher...');
+      
+      // Create custom language switcher
+      const languageBtn = document.getElementById('language-btn');
+      
+      if (languageBtn) {
+        console.log('Creating custom language switcher');
+        
+        // Remove existing menu if any
+        const existingMenu = document.getElementById('language-menu');
+        if (existingMenu) existingMenu.remove();
+        
+        let customMenu = null;
+        
+        languageBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          console.log('Language button clicked');
+          
+          if (customMenu && customMenu.style.display === 'block') {
+            // Hide menu
+            customMenu.style.display = 'none';
+            console.log('Hiding custom menu');
+          } else {
+            // Create and show menu
+            if (!customMenu) {
+              customMenu = document.createElement('div');
+              customMenu.id = 'custom-language-menu';
+              customMenu.innerHTML = `
+                <a href="#" data-lang="en" style="display: flex; align-items: center; padding: 12px 16px; text-decoration: none; color: #374151; gap: 8px; border-bottom: 1px solid #f3f4f6;">
+                  <img src="https://flagcdn.com/24x18/us.png" alt="English" style="width: 20px; height: 15px;">
+                  English
+                </a>
+                <a href="#" data-lang="vi" style="display: flex; align-items: center; padding: 12px 16px; text-decoration: none; color: #374151; gap: 8px; border-bottom: 1px solid #f3f4f6;">
+                  <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" style="width: 20px; height: 15px;">
+                  Tiếng Việt
+                </a>
+                <a href="#" data-lang="de" style="display: flex; align-items: center; padding: 12px 16px; text-decoration: none; color: #374151; gap: 8px;">
+                  <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" style="width: 20px; height: 15px;">
+                  Deutsch
+                </a>
+              `;
+              
+              // Add event listeners to options
+              customMenu.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const target = e.target.closest('a[data-lang]');
+                if (target) {
+                  const lang = target.getAttribute('data-lang');
+                  console.log('Language option clicked:', lang);
+                  if (typeof changeLanguage === 'function') {
+                    changeLanguage(lang);
+                  }
+                  customMenu.style.display = 'none';
+                }
+              });
+              
+              document.body.appendChild(customMenu);
+            }
+            
+            // Position and show menu
+            const btnRect = languageBtn.getBoundingClientRect();
+            Object.assign(customMenu.style, {
+              position: 'fixed',
+              top: (btnRect.bottom + 8) + 'px',
+              right: (window.innerWidth - btnRect.right) + 'px',
+              background: 'white',
+              border: '1px solid #e5e7eb',
+              borderRadius: '8px',
+              boxShadow: '0 15px 35px rgba(0,0,0,0.15)',
+              minWidth: '160px',
+              zIndex: '9999',
+              display: 'block'
+            });
+            
+            console.log('Showing custom menu');
+          }
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+          if (customMenu && !languageBtn.contains(e.target) && !customMenu.contains(e.target)) {
+            customMenu.style.display = 'none';
+          }
+        });
+        
+        console.log('Custom language switcher initialized');
+      }
+      
+      // Mobile language switcher
+      const mobileLanguageBtn = document.getElementById('mobile-language-btn');
+      const mobileLanguageMenu = document.getElementById('mobile-language-menu');
+      
+      if (mobileLanguageBtn && mobileLanguageMenu) {
+        mobileLanguageBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          console.log('Mobile language button clicked');
+          mobileLanguageMenu.classList.toggle('show');
+        });
+        
+        // Close mobile dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+          if (!mobileLanguageBtn.contains(e.target) && !mobileLanguageMenu.contains(e.target)) {
+            mobileLanguageMenu.classList.remove('show');
+          }
+        });
+        
+        console.log('Mobile language switcher initialized');
+      }
+      
+      // Test changeLanguage function
+      window.testChangeLanguage = function() {
+        if (typeof changeLanguage === 'function') {
+          console.log('changeLanguage function is available');
+          changeLanguage('vi');
+        } else {
+          console.error('changeLanguage function not found');
+        }
+      };
+      
+      // Add click handlers for language options
+      document.querySelectorAll('.language-option, .language-option-mobile').forEach(option => {
+        option.addEventListener('click', function(e) {
+          e.preventDefault();
+          const lang = this.getAttribute('data-lang');
+          console.log('Language option clicked:', lang);
+          if (typeof changeLanguage === 'function') {
+            changeLanguage(lang);
+          }
+          // Close dropdowns
+          document.querySelectorAll('.language-menu, .language-menu-mobile').forEach(menu => {
+            menu.classList.remove('show');
+          });
+        });
+      });
+    });
+  </script>
+
   <!-- AI Game Integration Script -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      
       // Get both launch buttons
       const launchButton1 = document.getElementById('launch-ai-game');
       const launchButton2 = document.getElementById('launch-ai-friends-talk');
       
       function launchAIGame() {
-        const gameContainer = document.getElementById('ai-game-container');
+        // Scroll to the iframe section smoothly
+        const iframeSection = document.querySelector('iframe[src*="ducnguyen1978-ai-game"]');
+        if (iframeSection) {
+          iframeSection.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center' 
+          });
+          
+          // Add a highlight effect to draw attention
+          const container = iframeSection.parentElement;
+          container.style.transition = 'all 0.3s ease';
+          container.style.transform = 'scale(1.02)';
+          container.style.boxShadow = '0 20px 40px rgba(0,0,0,0.15)';
+          
+          // Remove highlight after 2 seconds
+          setTimeout(() => {
+            container.style.transform = 'scale(1)';
+            container.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+          }, 2000);
+        }
         
-        // Show loading state
-        gameContainer.innerHTML = `
-          <div class="text-center py-20">
-            <div class="w-24 h-24 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
-              <span class="text-4xl">🤖</span>
-            </div>
-            <h4 class="text-2xl font-bold text-gray-800 mb-4">Launching AI Friends Talk...</h4>
-            <p class="text-gray-600 mb-8">Please wait while we load the AI conversation interface</p>
-            <div class="w-12 h-12 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
-          </div>
-        `;
+        // Show success message
+        showMessage('AI Friends Talk đã sẵn sàng! Scroll lên để tương tác với Alex, Blake và Charlie.', 'success');
+      }
+      
+      function showMessage(message, type = 'info') {
+        const toast = document.createElement('div');
+        toast.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg max-w-sm ${
+          type === 'success' ? 'bg-green-500 text-white' :
+          type === 'error' ? 'bg-red-500 text-white' :
+          'bg-blue-500 text-white'
+        }`;
+        toast.textContent = message;
         
-        // Simulate loading and then show iframe
+        document.body.appendChild(toast);
+        
+        // Animate in
+        toast.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+          toast.style.transition = 'transform 0.3s ease';
+          toast.style.transform = 'translateX(0)';
+        }, 10);
+        
+        // Remove after 4 seconds
+        setTimeout(() => {
+          toast.style.transform = 'translateX(100%)';
+          setTimeout(() => {
+            if (document.body.contains(toast)) {
+              document.body.removeChild(toast);
+            }
+          }, 300);
+        }, 4000);
+      }
+      
+      // Legacy code for backward compatibility
+      function legacyLaunchCode() {
         setTimeout(() => {
           gameContainer.innerHTML = `
             <div class="h-full">
@@ -1225,6 +2073,98 @@
         launchButton2.addEventListener('click', launchAIGame);
       }
     });
+    
+    // AI Web Analysis Platform Functions
+    function launchWebAnalysisPlatform() {
+      const container = document.getElementById('webAnalysisContainer');
+      const iframe = document.getElementById('webAnalysisIframe');
+      const spinner = document.getElementById('loadingSpinner');
+      
+      // Show container
+      container.classList.remove('hidden');
+      
+      // Set iframe source - Update this URL after HF Space deployment
+      iframe.src = 'https://ducnguyen1978-digitized-brains-ai-platform.hf.space';
+      
+      // Handle iframe load
+      iframe.onload = function() {
+        spinner.classList.add('hidden');
+        if (typeof showMessage === 'function') {
+          showMessage('🚀 AI Web Analysis Platform đã được kích hoạt!', 'success');
+        }
+      };
+      
+      // Smooth scroll to container
+      setTimeout(() => {
+        container.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'center' 
+        });
+      }, 100);
+    }
+    
+    function closeWebAnalysisPlatform() {
+      const container = document.getElementById('webAnalysisContainer');
+      const iframe = document.getElementById('webAnalysisIframe');
+      const spinner = document.getElementById('loadingSpinner');
+      
+      // Hide container
+      container.classList.add('hidden');
+      
+      // Stop iframe loading
+      iframe.src = '';
+      spinner.classList.remove('hidden');
+      
+      if (typeof showMessage === 'function') {
+        showMessage('AI Agent đã được đóng.', 'info');
+      }
+    }
+    
+    // Voice Studio Speech Agent Functions
+    function launchSpeechAgent() {
+      const container = document.getElementById('speechAgentContainer');
+      const iframe = document.getElementById('speechAgentIframe');
+      const spinner = document.getElementById('speechLoadingSpinner');
+      
+      // Show container
+      container.classList.remove('hidden');
+      
+      // Set iframe source for Voice Studio
+      iframe.src = 'https://ducnguyen1978-voice-agent.hf.space';
+      
+      // Handle iframe load
+      iframe.onload = function() {
+        spinner.classList.add('hidden');
+        if (typeof showMessage === 'function') {
+          showMessage('🎤 Voice Studio đã được kích hoạt!', 'success');
+        }
+      };
+      
+      // Smooth scroll to container
+      setTimeout(() => {
+        container.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'center' 
+        });
+      }, 100);
+    }
+    
+    function closeSpeechAgent() {
+      const container = document.getElementById('speechAgentContainer');
+      const iframe = document.getElementById('speechAgentIframe');
+      const spinner = document.getElementById('speechLoadingSpinner');
+      
+      // Hide container
+      container.classList.add('hidden');
+      
+      // Stop iframe loading
+      iframe.src = '';
+      spinner.classList.remove('hidden');
+      
+      if (typeof showMessage === 'function') {
+        showMessage('Voice Studio đã được đóng.', 'info');
+      }
+    }
   </script>
 </body>
 </html>

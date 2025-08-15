@@ -690,7 +690,8 @@
         <div>
           <h4 class="text-lg font-semibold mb-4" data-translate="footer.contact">Liên hệ</h4>
           <ul class="space-y-2">
-            <li class="text-gray-400">contact@digitizedbrains.com</li>
+            <li class="text-gray-400">ducnguyen@digitizedbrains.online</li>
+            <li class="text-gray-400">0913 723 667</li>
             <li class="text-gray-400" data-translate="footer.location">Thành phố Hồ Chí Minh, Việt Nam</li>
           </ul>
         </div>
@@ -712,14 +713,154 @@
     document.addEventListener('DOMContentLoaded', function() {
       const pageTranslations = {
         en: {
-          nav: { home: "Home", about: "About", digitalTransformation: "Digital Transformation", aiAgent: "AI Agent", blog: "Blog", resources: "Resources", contact: "Contact" },
+          // Meta translations
+          meta: {
+            title: "Cybersecurity & Compliance - DigitizedBrains",
+            description: "Comprehensive Cybersecurity and Compliance solutions with AI Agent for Vietnamese businesses, protecting data and ensuring legal compliance"
+          },
+          // Navigation
+          nav: { 
+            home: "Home", 
+            about: "About", 
+            digitalTransformation: "Digital Transformation", 
+            aiAgent: "AI Agent", 
+            blog: "Blog", 
+            resources: "Resources", 
+            contact: "Contact" 
+          },
+          // Language switcher
           language: { current: "Language:" },
+          // Hero section
           hero: {
             title: "AI Agent Cybersecurity & Compliance",
             subtitle: "Protect Vietnamese businesses with advanced Cybersecurity and Compliance solutions, ensuring network security and full compliance with domestic and international regulations",
             cta: "Explore Security Solutions",
             demo: "View Demo"
           },
+          // Situation/Stats section
+          situation: {
+            title: "Vietnam's Cybersecurity Landscape 2024-2025",
+            subtitle: "Vietnamese businesses face increasing cyber threats and need strict compliance with security regulations"
+          },
+          stats: {
+            attacks: {
+              number: "245%",
+              description: "increase in cyber attacks on Vietnamese businesses in 2024"
+            },
+            compliance: {
+              number: "78%",
+              description: "of Vietnamese businesses need compliance system upgrades"
+            },
+            cost: {
+              number: "4.2 billion",
+              description: "VND average cost per data breach incident"
+            },
+            detection: {
+              number: "287 days",
+              description: "average time to detect security breaches"
+            }
+          },
+          // Main content
+          content: {
+            overview: {
+              title: "Comprehensive Cybersecurity & Compliance Solutions",
+              description: "Protect Vietnamese businesses with advanced security systems and full compliance with Vietnam's Cybersecurity Law, personal data protection regulations, and international standards like ISO 27001, GDPR"
+            },
+            solutions: {
+              threatDetection: {
+                title: "AI-Powered Threat Detection",
+                description: "AI system automatically detects and prevents network threats, from malware to APT attacks, protecting systems 24/7"
+              },
+              compliance: {
+                title: "Compliance Automation",
+                description: "Automatically check and report compliance with Vietnam's Cybersecurity Law, GDPR, ISO 27001 and industry regulations"
+              },
+              monitoring: {
+                title: "Security Monitoring",
+                description: "Continuously monitor all network activities, detect anomalies and alert immediately when attack signs are detected"
+              },
+              riskAssessment: {
+                title: "Risk Assessment",
+                description: "Comprehensively analyze and assess security risks, provide improvement recommendations and response plans"
+              },
+              dataProtection: {
+                title: "Data Protection",
+                description: "Encrypt and protect personal data, business data in compliance with Vietnamese and international regulations"
+              },
+              incidentResponse: {
+                title: "Incident Response",
+                description: "Automated incident response plans, rapid recovery and detailed reporting to regulatory authorities"
+              }
+            },
+            vnCompliance: {
+              title: "Vietnam Regulatory Compliance",
+              cyberlaw: {
+                title: "Cybersecurity Law",
+                description: "Full compliance with Cybersecurity Law No. 24/2018/QH14, including protection of critical information infrastructure and data"
+              },
+              dataProtection: {
+                title: "Personal Data Protection",
+                description: "Comply with Decree 13/2023/ND-CP on personal data protection and related regulations"
+              },
+              iso27001: {
+                title: "ISO 27001",
+                description: "Support achieving ISO 27001 certification to enhance reputation and international competitiveness"
+              },
+              gdpr: {
+                title: "GDPR & International Regulations",
+                description: "GDPR compliance for businesses with international customers and global security standards"
+              }
+            },
+            industries: {
+              title: "Industry-Specific Security Applications",
+              subtitle: "Customized Cybersecurity & Compliance solutions for specific business sectors in Vietnam",
+              banking: {
+                title: "Banking & Finance",
+                description: "Protect transactions, comply with SBV regulations and prevent financial fraud",
+                feature1: "Real-time transaction security",
+                feature2: "Basel III and IFRS 9 compliance",
+                feature3: "AI fraud detection"
+              },
+              healthcare: {
+                title: "Healthcare & Medical Care",
+                description: "Protect medical records, comply with health regulations and ensure health information safety",
+                feature1: "Electronic medical record security",
+                feature2: "Ministry of Health regulation compliance",
+                feature3: "IoT medical device protection"
+              },
+              government: {
+                title: "Government & State Agencies",
+                description: "Protect classified information, comply with national security regulations and prevent cyber attacks",
+                feature1: "State classified information security",
+                feature2: "National security standard compliance",
+                feature3: "APT attack prevention"
+              },
+              manufacturing: {
+                title: "Manufacturing & Industrial",
+                description: "Protect industrial control systems, comply with safety standards and prevent industrial espionage",
+                feature1: "SCADA/ICS system security",
+                feature2: "IEC 62443 compliance",
+                feature3: "Industrial ransomware detection"
+              }
+            }
+          },
+          // AI Agent connection section
+          connection: {
+            title: "AI Agent Capabilities",
+            description: "Cybersecurity & Compliance powered by advanced AI Agent technology for intelligent and automated defense capabilities",
+            service: {
+              title: "Cybersecurity & Compliance",
+              description: "Integrated with comprehensive AI Agent solutions to provide intelligent protection that can learn and adapt to new threats"
+            },
+            cta: "Learn about AI Agent"
+          },
+          // Call to action
+          cta: {
+            title: "Ready to Protect Your Business?",
+            description: "Contact us to discover how Cybersecurity & Compliance can protect your business from all threats and ensure full compliance",
+            button: "Start Protection Now"
+          },
+          // Footer
           footer: {
             description: "Leading Cybersecurity & Compliance solution provider for Vietnamese enterprises in the digital era",
             quickLinks: "Quick Links",
@@ -729,14 +870,154 @@
           }
         },
         vi: {
-          nav: { home: "Trang chủ", about: "Giới thiệu", digitalTransformation: "Chuyển đổi số", aiAgent: "AI Agent", blog: "Blog", resources: "Tài nguyên", contact: "Liên hệ" },
+          // Meta translations
+          meta: {
+            title: "Bảo mật & Tuân thủ - DigitizedBrains",
+            description: "Giải pháp Cybersecurity và Compliance toàn diện với AI Agent cho doanh nghiệp Việt Nam, bảo vệ dữ liệu và tuân thủ quy định pháp luật"
+          },
+          // Navigation
+          nav: { 
+            home: "Trang chủ", 
+            about: "Giới thiệu", 
+            digitalTransformation: "Chuyển đổi số", 
+            aiAgent: "AI Agent", 
+            blog: "Blog", 
+            resources: "Tài nguyên", 
+            contact: "Liên hệ" 
+          },
+          // Language switcher
           language: { current: "Ngôn ngữ:" },
+          // Hero section
           hero: {
             title: "AI Agent Bảo mật & Tuân thủ",
             subtitle: "Bảo vệ doanh nghiệp Việt Nam với giải pháp Cybersecurity và Compliance tiên tiến, đảm bảo an ninh mạng và tuân thủ đầy đủ các quy định pháp luật trong nước và quốc tế",
             cta: "Khám phá Giải pháp Bảo mật",
             demo: "Xem Demo"
           },
+          // Situation/Stats section
+          situation: {
+            title: "Tình hình An ninh Mạng Việt Nam 2024-2025",
+            subtitle: "Doanh nghiệp Việt Nam đang đối mặt với nguy cơ tấn công mạng gia tăng và cần tuân thủ nghiêm ngặt các quy định bảo mật"
+          },
+          stats: {
+            attacks: {
+              number: "245%",
+              description: "gia tăng các cuộc tấn công mạng vào doanh nghiệp Việt Nam trong 2024"
+            },
+            compliance: {
+              number: "78%",
+              description: "doanh nghiệp Việt Nam cần nâng cấp hệ thống tuân thủ"
+            },
+            cost: {
+              number: "4.2 tỷ",
+              description: "VNĐ chi phí trung bình cho mỗi vụ vi phạm dữ liệu"
+            },
+            detection: {
+              number: "287 ngày",
+              description: "thời gian trung bình để phát hiện vi phạm bảo mật"
+            }
+          },
+          // Main content
+          content: {
+            overview: {
+              title: "Giải pháp Cybersecurity & Compliance Toàn diện",
+              description: "Bảo vệ doanh nghiệp Việt Nam với hệ thống bảo mật tiên tiến và tuân thủ đầy đủ Luật An ninh mạng, quy định bảo vệ dữ liệu cá nhân và các tiêu chuẩn quốc tế như ISO 27001, GDPR"
+            },
+            solutions: {
+              threatDetection: {
+                title: "Phát hiện Mối đe dọa bằng AI",
+                description: "Hệ thống AI phát hiện và ngăn chặn tự động các mối đe dọa mạng, từ malware đến tấn công APT, bảo vệ hệ thống 24/7"
+              },
+              compliance: {
+                title: "Tự động hóa Tuân thủ",
+                description: "Tự động kiểm tra và báo cáo tuân thủ Luật An ninh mạng Việt Nam, GDPR, ISO 27001 và các quy định ngành"
+              },
+              monitoring: {
+                title: "Giám sát Bảo mật",
+                description: "Giám sát liên tục mọi hoạt động mạng, phát hiện bất thường và cảnh báo ngay lập tức khi có dấu hiệu tấn công"
+              },
+              riskAssessment: {
+                title: "Đánh giá Rủi ro",
+                description: "Phân tích và đánh giá toàn diện các rủi ro bảo mật, đưa ra khuyến nghị cải thiện và kế hoạch ứng phó"
+              },
+              dataProtection: {
+                title: "Bảo vệ Dữ liệu",
+                description: "Mã hóa và bảo vệ dữ liệu cá nhân, dữ liệu doanh nghiệp tuân thủ quy định Việt Nam và quốc tế"
+              },
+              incidentResponse: {
+                title: "Ứng phó Sự cố",
+                description: "Kế hoạch ứng phó sự cố tự động, khôi phục nhanh chóng và báo cáo chi tiết cho cơ quan quản lý"
+              }
+            },
+            vnCompliance: {
+              title: "Tuân thủ Quy định Việt Nam",
+              cyberlaw: {
+                title: "Luật An ninh Mạng",
+                description: "Tuân thủ đầy đủ Luật An ninh mạng số 24/2018/QH14, bao gồm bảo vệ hạ tầng thông tin và dữ liệu quan trọng"
+              },
+              dataProtection: {
+                title: "Bảo vệ Dữ liệu Cá nhân",
+                description: "Tuân thủ Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân và các quy định liên quan"
+              },
+              iso27001: {
+                title: "ISO 27001",
+                description: "Hỗ trợ đạt chứng nhận ISO 27001 để nâng cao uy tín và khả năng cạnh tranh quốc tế"
+              },
+              gdpr: {
+                title: "GDPR & Quy định Quốc tế",
+                description: "Tuân thủ GDPR cho doanh nghiệp có khách hàng quốc tế và các tiêu chuẩn bảo mật toàn cầu"
+              }
+            },
+            industries: {
+              title: "Ứng dụng Bảo mật theo Ngành",
+              subtitle: "Giải pháp Cybersecurity & Compliance được tùy chỉnh cho từng lĩnh vực kinh doanh cụ thể tại Việt Nam",
+              banking: {
+                title: "Ngân hàng & Tài chính",
+                description: "Bảo vệ giao dịch, tuân thủ quy định NHNN và ngăn chặn gian lận tài chính",
+                feature1: "Bảo mật giao dịch thời gian thực",
+                feature2: "Tuân thủ Basel III và IFRS 9",
+                feature3: "Phát hiện gian lận AI"
+              },
+              healthcare: {
+                title: "Y tế & Chăm sóc Sức khỏe",
+                description: "Bảo vệ hồ sơ bệnh án, tuân thủ quy định y tế và đảm bảo an toàn thông tin sức khỏe",
+                feature1: "Bảo mật hồ sơ bệnh án điện tử",
+                feature2: "Tuân thủ quy định Bộ Y tế",
+                feature3: "Bảo vệ thiết bị y tế IoT"
+              },
+              government: {
+                title: "Chính phủ & Cơ quan Nhà nước",
+                description: "Bảo vệ thông tin mật, tuân thủ quy định an ninh quốc gia và phòng chống tấn công mạng",
+                feature1: "Bảo mật thông tin mật nhà nước",
+                feature2: "Tuân thủ tiêu chuẩn an ninh quốc gia",
+                feature3: "Phòng chống tấn công APT"
+              },
+              manufacturing: {
+                title: "Sản xuất & Công nghiệp",
+                description: "Bảo vệ hệ thống điều khiển công nghiệp, tuân thủ tiêu chuẩn an toàn và ngăn chặn gián điệp công nghiệp",
+                feature1: "Bảo mật hệ thống SCADA/ICS",
+                feature2: "Tuân thủ IEC 62443",
+                feature3: "Phát hiện ransomware công nghiệp"
+              }
+            }
+          },
+          // AI Agent connection section
+          connection: {
+            title: "Khả năng của AI Agent",
+            description: "Bảo mật & Tuân thủ được hỗ trợ bởi công nghệ AI Agent tiên tiến cho khả năng phòng thủ thông minh và tự động",
+            service: {
+              title: "Bảo mật & Tuân thủ",
+              description: "Tích hợp với giải pháp AI Agent toàn diện để cung cấp bảo vệ thông minh có thể tự học và thích ứng với các mối đe dọa mới"
+            },
+            cta: "Tìm hiểu về AI Agent"
+          },
+          // Call to action
+          cta: {
+            title: "Sẵn sàng Bảo vệ Doanh nghiệp của Bạn?",
+            description: "Liên hệ với chúng tôi để khám phá cách Cybersecurity & Compliance có thể bảo vệ doanh nghiệp của bạn khỏi mọi mối đe dọa và đảm bảo tuân thủ đầy đủ",
+            button: "Bắt đầu Bảo vệ Ngay"
+          },
+          // Footer
           footer: {
             description: "Nhà cung cấp giải pháp Cybersecurity & Compliance hàng đầu cho doanh nghiệp Việt Nam trong kỷ nguyên số",
             quickLinks: "Liên kết nhanh",
@@ -746,14 +1027,154 @@
           }
         },
         de: {
-          nav: { home: "Startseite", about: "Über uns", digitalTransformation: "Digitale Transformation", aiAgent: "KI-Agent", blog: "Blog", resources: "Ressourcen", contact: "Kontakt" },
+          // Meta translations
+          meta: {
+            title: "Cybersicherheit & Compliance - DigitizedBrains",
+            description: "Umfassende Cybersicherheits- und Compliance-Lösungen mit KI-Agent für vietnamesische Unternehmen, Datenschutz und Einhaltung gesetzlicher Bestimmungen"
+          },
+          // Navigation
+          nav: { 
+            home: "Startseite", 
+            about: "Über uns", 
+            digitalTransformation: "Digitale Transformation", 
+            aiAgent: "KI-Agent", 
+            blog: "Blog", 
+            resources: "Ressourcen", 
+            contact: "Kontakt" 
+          },
+          // Language switcher
           language: { current: "Sprache:" },
+          // Hero section
           hero: {
             title: "KI-Agent Cybersicherheit & Compliance",
             subtitle: "Schützen Sie vietnamesische Unternehmen mit fortschrittlichen Cybersicherheits- und Compliance-Lösungen, die Netzwerksicherheit und vollständige Einhaltung gesetzlicher Bestimmungen gewährleisten",
             cta: "Sicherheitslösungen erkunden",
             demo: "Demo ansehen"
           },
+          // Situation/Stats section
+          situation: {
+            title: "Vietnams Cybersicherheitslage 2024-2025",
+            subtitle: "Vietnamesische Unternehmen stehen vor zunehmenden Cyber-Bedrohungen und müssen strenge Sicherheitsvorschriften einhalten"
+          },
+          stats: {
+            attacks: {
+              number: "245%",
+              description: "Zunahme von Cyberangriffen auf vietnamesische Unternehmen im Jahr 2024"
+            },
+            compliance: {
+              number: "78%",
+              description: "der vietnamesischen Unternehmen benötigen Compliance-System-Upgrades"
+            },
+            cost: {
+              number: "4,2 Milliarden",
+              description: "VND durchschnittliche Kosten pro Datenschutzverletzung"
+            },
+            detection: {
+              number: "287 Tage",
+              description: "durchschnittliche Zeit zur Erkennung von Sicherheitsverletzungen"
+            }
+          },
+          // Main content
+          content: {
+            overview: {
+              title: "Umfassende Cybersicherheits- & Compliance-Lösungen",
+              description: "Schützen Sie vietnamesische Unternehmen mit fortschrittlichen Sicherheitssystemen und vollständiger Einhaltung des vietnamesischen Cybersicherheitsgesetzes, Datenschutzbestimmungen und internationaler Standards wie ISO 27001, GDPR"
+            },
+            solutions: {
+              threatDetection: {
+                title: "KI-gestützte Bedrohungserkennung",
+                description: "KI-System erkennt und verhindert automatisch Netzwerkbedrohungen, von Malware bis APT-Angriffen, schützt Systeme 24/7"
+              },
+              compliance: {
+                title: "Compliance-Automatisierung",
+                description: "Automatische Überprüfung und Berichterstattung der Einhaltung vietnamesischer Cybersicherheitsgesetze, GDPR, ISO 27001 und Branchenvorschriften"
+              },
+              monitoring: {
+                title: "Sicherheitsüberwachung",
+                description: "Kontinuierliche Überwachung aller Netzwerkaktivitäten, Anomalieerkennung und sofortige Warnung bei Angriffssignalen"
+              },
+              riskAssessment: {
+                title: "Risikobewertung",
+                description: "Umfassende Analyse und Bewertung von Sicherheitsrisiken, Verbesserungsempfehlungen und Notfallpläne"
+              },
+              dataProtection: {
+                title: "Datenschutz",
+                description: "Verschlüsselung und Schutz personenbezogener und Geschäftsdaten in Übereinstimmung mit vietnamesischen und internationalen Vorschriften"
+              },
+              incidentResponse: {
+                title: "Vorfallreaktion",
+                description: "Automatisierte Vorfallreaktionspläne, schnelle Wiederherstellung und detaillierte Berichterstattung an Aufsichtsbehörden"
+              }
+            },
+            vnCompliance: {
+              title: "Vietnam Regulatorische Compliance",
+              cyberlaw: {
+                title: "Cybersicherheitsgesetz",
+                description: "Vollständige Einhaltung des Cybersicherheitsgesetzes Nr. 24/2018/QH14, einschließlich Schutz kritischer Informationsinfrastruktur und Daten"
+              },
+              dataProtection: {
+                title: "Personendatenschutz",
+                description: "Einhaltung des Dekrets 13/2023/ND-CP zum Schutz personenbezogener Daten und verwandter Vorschriften"
+              },
+              iso27001: {
+                title: "ISO 27001",
+                description: "Unterstützung bei der ISO 27001-Zertifizierung zur Steigerung der Reputation und internationalen Wettbewerbsfähigkeit"
+              },
+              gdpr: {
+                title: "GDPR & Internationale Vorschriften",
+                description: "GDPR-Compliance für Unternehmen mit internationalen Kunden und globale Sicherheitsstandards"
+              }
+            },
+            industries: {
+              title: "Branchenspezifische Sicherheitsanwendungen",
+              subtitle: "Maßgeschneiderte Cybersicherheits- & Compliance-Lösungen für spezifische Geschäftsbereiche in Vietnam",
+              banking: {
+                title: "Banking & Finanzen",
+                description: "Transaktionsschutz, Einhaltung der SBV-Vorschriften und Verhinderung von Finanzbetrug",
+                feature1: "Echtzeit-Transaktionssicherheit",
+                feature2: "Basel III und IFRS 9 Compliance",
+                feature3: "KI-Betrugserkennung"
+              },
+              healthcare: {
+                title: "Gesundheitswesen & Medizin",
+                description: "Schutz von Krankenakten, Einhaltung von Gesundheitsvorschriften und Gewährleistung der Sicherheit von Gesundheitsinformationen",
+                feature1: "Elektronische Krankenaktensicherheit",
+                feature2: "Einhaltung der Vorschriften des Gesundheitsministeriums",
+                feature3: "IoT-Medizingeräteschutz"
+              },
+              government: {
+                title: "Regierung & Staatsbehörden",
+                description: "Schutz von Verschlusssachen, Einhaltung nationaler Sicherheitsvorschriften und Verhinderung von Cyberangriffen",
+                feature1: "Staatliche Verschlusssachensicherheit",
+                feature2: "Einhaltung nationaler Sicherheitsstandards",
+                feature3: "APT-Angriffsprävention"
+              },
+              manufacturing: {
+                title: "Fertigung & Industrie",
+                description: "Schutz industrieller Steuerungssysteme, Einhaltung von Sicherheitsstandards und Verhinderung von Industriespionage",
+                feature1: "SCADA/ICS-Systemsicherheit",
+                feature2: "IEC 62443 Compliance",
+                feature3: "Industrielle Ransomware-Erkennung"
+              }
+            }
+          },
+          // AI Agent connection section
+          connection: {
+            title: "KI-Agent Fähigkeiten",
+            description: "Cybersicherheit & Compliance unterstützt durch fortschrittliche KI-Agent-Technologie für intelligente und automatisierte Verteidigungsfähigkeiten",
+            service: {
+              title: "Cybersicherheit & Compliance",
+              description: "Integriert mit umfassenden KI-Agent-Lösungen zur Bereitstellung intelligenten Schutzes, der lernen und sich an neue Bedrohungen anpassen kann"
+            },
+            cta: "Über KI-Agent erfahren"
+          },
+          // Call to action
+          cta: {
+            title: "Bereit, Ihr Unternehmen zu schützen?",
+            description: "Kontaktieren Sie uns, um zu erfahren, wie Cybersicherheit & Compliance Ihr Unternehmen vor allen Bedrohungen schützen und vollständige Compliance gewährleisten kann",
+            button: "Schutz jetzt starten"
+          },
+          // Footer
           footer: {
             description: "Führender Anbieter von Cybersicherheits- und Compliance-Lösungen für vietnamesische Unternehmen im digitalen Zeitalter",
             quickLinks: "Schnelllinks",

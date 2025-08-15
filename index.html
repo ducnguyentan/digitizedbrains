@@ -340,8 +340,8 @@
         <div>
           <h4 class="text-lg font-semibold mb-4" data-translate="footer.contact">Contact</h4>
           <ul class="space-y-2">
-            <li class="text-gray-400">email@digitizedbrains.com</li>
-            <li class="text-gray-400">+84 123 456 789</li>
+            <li class="text-gray-400">ducnguyen@digitizedbrains.online</li>
+            <li class="text-gray-400">0913 723 667</li>
             <li class="text-gray-400" data-translate="footer.location">Ho Chi Minh City, Vietnam</li>
           </ul>
         </div>
@@ -655,12 +655,14 @@
 
     // Function to translate content
     function translateContent(targetLanguage) {
+      console.log('translateContent called with:', targetLanguage);
       const data = languages[targetLanguage];
       if (!data) {
         console.error(`Language data not found for '${targetLanguage}', falling back to English`);
         translateContent('en');
         return;
       }
+      console.log('Translation data found for:', targetLanguage);
 
       // Add transition effect
       document.body.classList.add('lang-transition', 'changing');
@@ -692,6 +694,7 @@
 
           // Remove transition effect
           document.body.classList.remove('changing');
+          console.log('Translation completed successfully for:', targetLanguage);
         } catch (error) {
           console.error('Error during content translation:', error);
           document.body.classList.remove('changing');
@@ -705,12 +708,23 @@
 
     // Function to change language
     function changeLanguage(newLanguage) {
-      if (newLanguage === currentLanguage) return;
+      console.log('changeLanguage called with:', newLanguage, 'current:', currentLanguage);
+      if (newLanguage === currentLanguage) {
+        console.log('Same language, skipping...');
+        return;
+      }
       
       currentLanguage = newLanguage;
       localStorage.setItem('preferredLanguage', newLanguage);
       
+      // Close dropdowns after selecting language
+      document.querySelectorAll('.language-menu, .language-menu-mobile').forEach(menu => {
+        menu.classList.remove('show');
+      });
+      
+      console.log('Updating language display...');
       updateLanguageDisplay();
+      console.log('Translating content...');
       translateContent(newLanguage);
     }
 
@@ -851,8 +865,7 @@
     </div>
   </div>
 
-  <!-- Multilingual System -->
-  <script src="js/multilang.js"></script>
+  <!-- Multilingual System - Using inline code instead of external multilang.js -->
   
   <!-- Chatbot Integration -->
   <script src="js/chatbot.js"></script>

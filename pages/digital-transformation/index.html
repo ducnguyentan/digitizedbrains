@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi" id="html-root">
+<html lang="en" id="html-root">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -256,22 +256,22 @@
           <!-- Language Switcher -->
           <div class="language-switcher">
             <button id="language-btn" class="flex items-center space-x-1 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
-              <img id="current-flag" src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
-              <span id="current-lang">VI</span>
+              <img id="current-flag" src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+              <span id="current-lang">EN</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
             <div id="language-menu" class="language-menu">
-              <a href="#" onclick="changeLanguage('en')" class="language-option" data-lang="en">
+              <a href="#" class="language-option active" data-lang="en">
                 <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
                 English
               </a>
-              <a href="#" onclick="changeLanguage('vi')" class="language-option active" data-lang="vi">
+              <a href="#" class="language-option" data-lang="vi">
                 <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
                 Tiếng Việt
               </a>
-              <a href="#" onclick="changeLanguage('de')" class="language-option" data-lang="de">
+              <a href="#" class="language-option" data-lang="de">
                 <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
                 Deutsch
               </a>
@@ -304,20 +304,20 @@
               <button id="mobile-language-btn" class="flex items-center justify-between w-full px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
                 <span data-translate="language.current">Language:</span>
                 <div class="flex items-center space-x-1">
-                  <img id="mobile-current-flag" src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
-                  <span id="mobile-current-lang">VI</span>
+                  <img id="mobile-current-flag" src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+                  <span id="mobile-current-lang">EN</span>
                 </div>
               </button>
               <div id="mobile-language-menu" class="language-menu-mobile">
-                <a href="#" onclick="changeLanguage('en')" class="language-option-mobile" data-lang="en">
+                <a href="#" class="language-option-mobile active" data-lang="en">
                   <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
                   English
                 </a>
-                <a href="#" onclick="changeLanguage('vi')" class="language-option-mobile active" data-lang="vi">
+                <a href="#" class="language-option-mobile" data-lang="vi">
                   <img src="https://flagcdn.com/24x18/vn.png" alt="Tiếng Việt" class="language-flag">
                   Tiếng Việt
                 </a>
-                <a href="#" onclick="changeLanguage('de')" class="language-option-mobile" data-lang="de">
+                <a href="#" class="language-option-mobile" data-lang="de">
                   <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
                   Deutsch
                 </a>
@@ -767,8 +767,8 @@
         <div>
           <h3 class="text-lg font-semibold mb-4" data-translate="footer.contact">Contact</h3>
           <ul class="space-y-2 text-gray-300">
-            <li data-translate="footer.email">Email: info@digitizedbrains.com</li>
-            <li data-translate="footer.phone">Phone: +84 123 456 789</li>
+            <li data-translate="footer.email">Email: ducnguyen@digitizedbrains.online</li>
+            <li data-translate="footer.phone">Phone: 0913 723 667</li>
             <li data-translate="footer.address">Ho Chi Minh City, Vietnam</li>
           </ul>
         </div>
@@ -783,12 +783,10 @@
   </footer>
 
   <!-- JavaScript -->
-  <script src="../../js/multilang.js"></script>
   <script src="../../js/chatbot.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Page-specific translations
-      const pageTranslations = {
+    // Page-specific translations (moved outside DOMContentLoaded)
+    const pageTranslations = {
         en: {
           meta: {
             title: "Digital Transformation - DigitizedBrains",
@@ -943,8 +941,8 @@
             quickLinks: "Quick Links",
             services: "Services",
             contact: "Contact",
-            email: "Email: info@digitizedbrains.com",
-            phone: "Phone: +84 123 456 789",
+            email: "Email: ducnguyen@digitizedbrains.online",
+            phone: "Phone: 0913 723 667",
             address: "Ho Chi Minh City, Vietnam",
             location: "Ho Chi Minh City, Vietnam",
             copyright: "© 2024 DigitizedBrains. All rights reserved."
@@ -1104,8 +1102,8 @@
             quickLinks: "Liên kết nhanh",
             services: "Dịch vụ",
             contact: "Liên hệ",
-            email: "Email: info@digitizedbrains.com",
-            phone: "Điện thoại: +84 123 456 789",
+            email: "Email: ducnguyen@digitizedbrains.online",
+            phone: "Điện thoại: 0913 723 667",
             address: "Thành phố Hồ Chí Minh, Việt Nam",
             location: "Thành phố Hồ Chí Minh, Việt Nam",
             copyright: "© 2024 DigitizedBrains. Tất cả quyền được bảo lưu."
@@ -1265,8 +1263,8 @@
             quickLinks: "Schnelle Links",
             services: "Dienstleistungen",
             contact: "Kontakt",
-            email: "E-Mail: info@digitizedbrains.com",
-            phone: "Telefon: +84 123 456 789",
+            email: "E-Mail: ducnguyen@digitizedbrains.online",
+            phone: "Telefon: 0913 723 667",
             address: "Ho-Chi-Minh-Stadt, Vietnam",
             location: "Ho-Chi-Minh-Stadt, Vietnam",
             copyright: "© 2024 DigitizedBrains. Alle Rechte vorbehalten."
@@ -1274,36 +1272,121 @@
         }
       };
 
-      // Initialize multilingual with page-specific translations
-      if (typeof initializeMultilingual === 'function') {
-        initializeMultilingual(pageTranslations);
-      }
-
-      // Scroll reveal animation
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+    // Global variables
+    let currentLanguage = localStorage.getItem('preferredLanguage') || 'en';
+    
+    // Change language function - SIMPLE VERSION
+    function changeLanguage(newLanguage) {
+      console.log('changeLanguage called:', newLanguage);
+      
+      currentLanguage = newLanguage;
+      localStorage.setItem('preferredLanguage', newLanguage);
+      
+      // Close menus
+      document.querySelectorAll('.language-menu, .language-menu-mobile').forEach(menu => {
+        menu.classList.remove('show');
+      });
+      
+      // Update flags
+      const flags = {
+        en: { src: "https://flagcdn.com/24x18/us.png", code: "EN" },
+        vi: { src: "https://flagcdn.com/24x18/vn.png", code: "VN" },
+        de: { src: "https://flagcdn.com/24x18/de.png", code: "DE" }
       };
-
+      
+      const flag = flags[newLanguage];
+      document.getElementById('current-flag').src = flag.src;
+      document.getElementById('current-lang').textContent = flag.code;
+      document.getElementById('mobile-current-flag').src = flag.src;
+      document.getElementById('mobile-current-lang').textContent = flag.code;
+      
+      // Update active states
+      document.querySelectorAll('.language-option, .language-option-mobile').forEach(opt => {
+        opt.classList.toggle('active', opt.dataset.lang === newLanguage);
+      });
+      
+      // Translate content
+      const data = pageTranslations[newLanguage];
+      if (data) {
+        document.getElementById('html-root').lang = newLanguage;
+        document.getElementById('page-title').textContent = data.meta.title;
+        
+        // Update all data-translate elements
+        document.querySelectorAll('[data-translate]').forEach(el => {
+          const keys = el.getAttribute('data-translate').split('.');
+          let value = data;
+          for (let key of keys) {
+            value = value[key];
+            if (!value) break;
+          }
+          if (value) el.textContent = value;
+        });
+      }
+      
+      console.log('Language changed to:', newLanguage);
+    }
+    
+    // Make function global
+    window.changeLanguage = changeLanguage;
+    
+    // Initialize when DOM loads
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM loaded, initializing...');
+      
+      // Language menu clicks
+      document.getElementById('language-btn')?.addEventListener('click', function(e) {
+        e.stopPropagation();
+        document.getElementById('language-menu').classList.toggle('show');
+      });
+      
+      document.getElementById('mobile-language-btn')?.addEventListener('click', function(e) {
+        e.stopPropagation();
+        document.getElementById('mobile-language-menu').classList.toggle('show');
+      });
+      
+      // Add direct event listeners to language options
+      document.querySelectorAll('.language-option, .language-option-mobile').forEach(option => {
+        option.addEventListener('click', function(e) {
+          e.preventDefault();
+          const lang = this.dataset.lang;
+          console.log('Language option clicked:', lang);
+          changeLanguage(lang);
+        });
+      });
+      
+      // Close menus on outside click
+      document.addEventListener('click', function() {
+        document.querySelectorAll('.language-menu, .language-menu-mobile').forEach(menu => {
+          menu.classList.remove('show');
+        });
+      });
+      
+      // Mobile menu
+      document.getElementById('mobile-menu-btn')?.addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+      });
+      
+      // Scroll reveal
       const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('active');
           }
         });
-      }, observerOptions);
-
-      // Observe all scroll-reveal elements
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      
       document.querySelectorAll('.scroll-reveal').forEach(el => {
         observer.observe(el);
       });
+      
+      // Initialize language
+      changeLanguage(currentLanguage);
     });
-
 
     // Initialize Chatbot
     window.addEventListener('load', function() {
       const chatbot = new DigitizedBrainsChatbot({
-        iframeSrc: 'https://ducnguyen1978-digitizedbrains-gemini.hf.space',
+        iframeSrc: 'https://ducnguyen1978-digitizedgemini.hf.space',
         widgetTitle: 'Digitized Brains AI Agent',
         position: { bottom: '30px', right: '30px' },
         size: { width: '420px', height: '600px' }
