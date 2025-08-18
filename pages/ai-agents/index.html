@@ -520,7 +520,7 @@
         <a href="#features" class="btn-primary text-white px-8 py-4 rounded-full font-semibold text-lg inline-block" data-translate="aiAgent.hero.exploreBtn">
           Explore Solutions
         </a>
-        <a href="#demo" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg inline-block hover:bg-white hover:text-gray-800 transition-all" data-translate="aiAgent.hero.demoBtn">
+        <a href="demo-ai-agent.html" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg inline-block hover:bg-white hover:text-gray-800 transition-all" data-translate="aiAgent.hero.demoBtn">
           See Demo
         </a>
       </div>
@@ -653,27 +653,6 @@
           </div>
         </div>
 
-        <!-- AI Game Center Feature -->
-        <div class="feature-card bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl p-8 shadow-lg scroll-reveal md:col-span-2 lg:col-span-3">
-          <div class="text-center">
-            <div class="mx-auto mb-6" style="width: 4rem; height: 4rem; background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center;">
-              <span style="color: white; font-size: 2rem;">🎮</span>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-800 mb-4" data-translate="aiAgent.features.aiGameCenter.title">AI Game Center</h3>
-            <p class="text-gray-600 mb-6 max-w-2xl mx-auto" data-translate="aiAgent.features.aiGameCenter.description">
-              Experience interactive AI conversations with our AI Friends Talk feature. Watch Alex, Blake, and Charlie engage in fun discussions and debates on various topics. 
-              A perfect demonstration of advanced AI communication and personality modeling.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-              <button id="launch-ai-game" class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:from-purple-700 hover:to-pink-700 transition-all transform hover:scale-105 shadow-lg">
-                <span data-translate="aiAgent.features.aiGameCenter.launchBtn">🚀 Launch AI Friends Talk</span>
-              </button>
-              <a href="#ai-game-section" class="bg-transparent border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-full font-semibold text-lg hover:bg-purple-600 hover:text-white transition-all">
-                <span data-translate="aiAgent.features.aiGameCenter.learnMoreBtn">Learn More</span>
-              </a>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -688,179 +667,6 @@
         </p>
       </div>
 
-      <!-- Live Demo Applications -->
-      <div class="mb-16 scroll-reveal">
-        <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center" data-translate="aiAgent.liveDemo.title">
-          <span class="text-purple-600">🚀</span> Live Demo Applications
-        </h3>
-        <p class="text-gray-600 text-center mb-12 max-w-3xl mx-auto" data-translate="aiAgent.liveDemo.subtitle">
-          Experience our AI solutions in action. Try these live applications and see the power of AI automation.
-        </p>
-        
-        <div class="grid md:grid-cols-2 gap-8 mb-16">
-          <!-- Applied Agents Demo -->
-          <div class="demo-app-card bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 shadow-lg border border-blue-200">
-            <div class="text-center mb-6">
-              <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <span class="text-3xl text-white">🧠</span>
-              </div>
-              <h4 class="text-2xl font-bold text-gray-800 mb-2" data-translate="aiAgent.liveDemo.appliedAgents.title">AI Web Analysis Platform</h4>
-              <p class="text-gray-600 mb-6" data-translate="aiAgent.liveDemo.appliedAgents.description">
-                Advanced AI-powered web content analysis and automation platform. Upload files, analyze content, generate summaries, and extract insights using multiple AI models.
-              </p>
-            </div>
-            
-            <!-- Features List -->
-            <div class="grid grid-cols-2 gap-4 mb-6">
-              <div class="flex items-center gap-2">
-                <span class="text-green-500">✓</span>
-                <span class="text-sm text-gray-700" data-translate="aiAgent.liveDemo.appliedAgents.feature1">File Analysis</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="text-green-500">✓</span>
-                <span class="text-sm text-gray-700" data-translate="aiAgent.liveDemo.appliedAgents.feature2">Content Summarization</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="text-green-500">✓</span>
-                <span class="text-sm text-gray-700" data-translate="aiAgent.liveDemo.appliedAgents.feature3">SEO Analysis</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="text-green-500">✓</span>
-                <span class="text-sm text-gray-700" data-translate="aiAgent.liveDemo.appliedAgents.feature4">Multi-Model Support</span>
-              </div>
-            </div>
-            
-            <div class="text-center">
-              <button onclick="launchWebAnalysisPlatform()" class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:from-blue-600 hover:to-indigo-700 transition-all transform hover:scale-105 shadow-lg inline-block">
-                <span data-translate="aiAgent.liveDemo.appliedAgents.launchBtn">🚀 Launch Web Analysis Platform</span>
-              </button>
-              <p class="text-xs text-gray-500 mt-2" data-translate="aiAgent.liveDemo.appliedAgents.note">Embedded AI Agent • Applied_Agents</p>
-            </div>
-            
-            <!-- Embedded AI Agent Container -->
-            <div id="webAnalysisContainer" class="hidden mt-8">
-              <div class="bg-white rounded-xl shadow-2xl overflow-hidden">
-                <div class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-3 flex justify-between items-center">
-                  <h3 class="font-semibold">AI Web Analysis Platform</h3>
-                  <div class="header-controls flex gap-2">
-                    <button id="webAnalysis-minimize-btn" onclick="minimizeWebAnalysis()" class="control-btn" title="Thu gọn">
-                      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
-                      </svg>
-                    </button>
-                    <button id="webAnalysis-maximize-btn" onclick="maximizeWebAnalysis()" class="control-btn" title="Phóng to">
-                      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
-                      </svg>
-                    </button>
-                    <button onclick="closeWebAnalysisPlatform()" class="control-btn" title="Đóng">
-                      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-                <div class="relative">
-                  <iframe id="webAnalysisIframe" 
-                          src="" 
-                          width="100%" 
-                          height="600" 
-                          frameborder="0"
-                          class="w-full">
-                  </iframe>
-                  <div id="loadingSpinner" class="absolute inset-0 bg-white bg-opacity-90 flex items-center justify-center">
-                    <div class="text-center">
-                      <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
-                      <p class="mt-2 text-gray-600">Loading AI Agent...</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- AI Speech Text Demo -->
-          <div class="demo-app-card bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 shadow-lg border border-purple-200">
-            <div class="text-center mb-6">
-              <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <span class="text-3xl text-white">🎙️</span>
-              </div>
-              <h4 class="text-2xl font-bold text-gray-800 mb-2" data-translate="aiAgent.liveDemo.speechText.title">AI Speech ↔ Text Agent</h4>
-              <p class="text-gray-600 mb-6" data-translate="aiAgent.liveDemo.speechText.description">
-                Advanced speech recognition and text-to-speech conversion with multi-language support. Convert voice to text, text to speech, and process various file formats.
-              </p>
-            </div>
-            
-            <!-- Features List -->
-            <div class="grid grid-cols-2 gap-4 mb-6">
-              <div class="flex items-center gap-2">
-                <span class="text-green-500">✓</span>
-                <span class="text-sm text-gray-700" data-translate="aiAgent.liveDemo.speechText.feature1">Speech to Text</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="text-green-500">✓</span>
-                <span class="text-sm text-gray-700" data-translate="aiAgent.liveDemo.speechText.feature2">Text to Speech</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="text-green-500">✓</span>
-                <span class="text-sm text-gray-700" data-translate="aiAgent.liveDemo.speechText.feature3">Multi-Language</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="text-green-500">✓</span>
-                <span class="text-sm text-gray-700" data-translate="aiAgent.liveDemo.speechText.feature4">File Export</span>
-              </div>
-            </div>
-            
-            <div class="text-center">
-              <button onclick="launchSpeechAgent()" class="bg-gradient-to-r from-purple-500 to-pink-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:from-purple-600 hover:to-pink-700 transition-all transform hover:scale-105 shadow-lg inline-block">
-                <span data-translate="aiAgent.liveDemo.speechText.launchBtn">🎤 Launch Speech Agent</span>
-              </button>
-              <p class="text-xs text-gray-500 mt-2" data-translate="aiAgent.liveDemo.speechText.note">Embedded AI Agent • Voice Studio</p>
-            </div>
-            
-            <!-- Embedded Voice Studio Container -->
-            <div id="speechAgentContainer" class="hidden mt-8">
-              <div class="bg-white rounded-xl shadow-2xl overflow-hidden">
-                <div class="bg-gradient-to-r from-purple-500 to-pink-600 text-white px-4 py-3 flex justify-between items-center">
-                  <h3 class="font-semibold">🎤 Voice Studio - Text to Speech</h3>
-                  <div class="header-controls flex gap-2">
-                    <button id="speechAgent-minimize-btn" onclick="minimizeSpeechAgent()" class="control-btn" title="Thu gọn">
-                      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
-                      </svg>
-                    </button>
-                    <button id="speechAgent-maximize-btn" onclick="maximizeSpeechAgent()" class="control-btn" title="Phóng to">
-                      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
-                      </svg>
-                    </button>
-                    <button onclick="closeSpeechAgent()" class="control-btn" title="Đóng">
-                      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-                <div class="relative">
-                  <iframe id="speechAgentIframe" 
-                          src="" 
-                          width="100%" 
-                          height="600" 
-                          frameborder="0"
-                          class="w-full">
-                  </iframe>
-                  <div id="speechLoadingSpinner" class="absolute inset-0 bg-white bg-opacity-90 flex items-center justify-center">
-                    <div class="text-center">
-                      <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-purple-500"></div>
-                      <p class="mt-2 text-gray-600">Loading Voice Studio...</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       
       <!-- Starter AI Agents -->
       <div class="mb-16 scroll-reveal">
@@ -1042,138 +848,6 @@
     </div>
   </section>
 
-  <!-- AI Game Center Section -->
-  <section id="ai-game-section" class="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16 scroll-reveal">
-        <h2 class="text-4xl font-bold text-gray-800 mb-4" data-translate="aiAgent.aiGameCenter.title">AI Game Center</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-translate="aiAgent.aiGameCenter.subtitle">
-          Explore the future of AI interaction with our AI Friends Talk demonstration. 
-          Three distinct AI personalities engage in real-time conversations on fun and interesting topics.
-        </p>
-      </div>
-      
-      <div class="max-w-6xl mx-auto">
-        <!-- AI Friends Introduction -->
-        <div class="grid md:grid-cols-3 gap-8 mb-12">
-          <div class="bg-white rounded-2xl p-6 shadow-lg text-center scroll-reveal">
-            <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="text-3xl">🎭</span>
-            </div>
-            <h3 class="text-xl font-bold text-gray-800 mb-2" data-translate="aiAgent.aiGameCenter.alex.name">Alex</h3>
-            <p class="text-gray-600 mb-2" data-translate="aiAgent.aiGameCenter.alex.model">Powered by Groq Llama3-70B</p>
-            <p class="text-sm text-gray-500" data-translate="aiAgent.aiGameCenter.alex.personality">Witty & Sarcastic - Quick with puns and wordplay</p>
-          </div>
-          
-          <div class="bg-white rounded-2xl p-6 shadow-lg text-center scroll-reveal">
-            <div class="w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="text-3xl">🌟</span>
-            </div>
-            <h3 class="text-xl font-bold text-gray-800 mb-2" data-translate="aiAgent.aiGameCenter.blake.name">Blake</h3>
-            <p class="text-gray-600 mb-2" data-translate="aiAgent.aiGameCenter.blake.model">Powered by Gemini 2.0 Flash</p>
-            <p class="text-sm text-gray-500" data-translate="aiAgent.aiGameCenter.blake.personality">Optimistic & Enthusiastic - Loves sharing facts and trivia</p>
-          </div>
-          
-          <div class="bg-white rounded-2xl p-6 shadow-lg text-center scroll-reveal">
-            <div class="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="text-3xl">🧠</span>
-            </div>
-            <h3 class="text-xl font-bold text-gray-800 mb-2" data-translate="aiAgent.aiGameCenter.charlie.name">Charlie</h3>
-            <p class="text-gray-600 mb-2" data-translate="aiAgent.aiGameCenter.charlie.model">Powered by Gemini 1.5 Flash</p>
-            <p class="text-sm text-gray-500" data-translate="aiAgent.aiGameCenter.charlie.personality">Philosophical & Thoughtful - Provides deeper insights</p>
-          </div>
-        </div>
-        
-        <!-- Game Interface Container -->
-        <div class="bg-white rounded-3xl shadow-2xl overflow-hidden scroll-reveal">
-          <div class="bg-gradient-to-r from-purple-600 to-pink-600 p-6 text-white text-center">
-            <h3 class="text-2xl font-bold mb-2" data-translate="aiAgent.aiGameCenter.interface.title">AI Friends Talk Interface</h3>
-            <p class="opacity-90" data-translate="aiAgent.aiGameCenter.interface.subtitle">Click Launch to start the interactive conversation experience</p>
-          </div>
-          
-          <!-- Embedded Game Container -->
-          <div id="ai-game-container" class="p-8 min-h-[600px] bg-gray-50">
-            <div class="text-center py-20">
-              <div class="w-24 h-24 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span class="text-4xl">🎮</span>
-              </div>
-              <h4 class="text-2xl font-bold text-gray-800 mb-4" data-translate="aiAgent.aiGameCenter.interface.readyTitle">Ready to Experience AI Conversations?</h4>
-              <p class="text-gray-600 mb-8 max-w-md mx-auto" data-translate="aiAgent.aiGameCenter.interface.readyDescription">
-                Launch the AI Friends Talk to see three AI personalities engage in real-time conversations.
-              </p>
-              <!-- AI Friends Talk Iframe -->
-              <div id="aiFriendsTalkContainer" class="bg-white rounded-xl shadow-lg overflow-hidden mb-6">
-                <div class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-3 flex justify-between items-center">
-                  <h3 class="font-semibold">🎭 AI Friends Talk - Interactive Demo</h3>
-                  <div class="header-controls flex gap-2">
-                    <button id="aiFriendsTalk-minimize-btn" onclick="minimizeAIFriendsTalk()" class="control-btn" title="Thu gọn">
-                      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
-                      </svg>
-                    </button>
-                    <button id="aiFriendsTalk-maximize-btn" onclick="maximizeAIFriendsTalk()" class="control-btn" title="Phóng to">
-                      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-                <div class="p-6">
-                  <iframe
-                    id="aiFriendsTalkIframe"
-                    src="https://ducnguyen1978-ai-game.hf.space"
-                    frameborder="0"
-                    width="850"
-                    height="450"
-                    class="w-full rounded-lg"
-                    style="max-width: 100%; min-height: 450px;"
-                  ></iframe>
-                </div>
-              </div>
-              <button id="launch-ai-friends-talk" class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-purple-700 hover:to-pink-700 transition-all transform hover:scale-105 shadow-lg">
-                <span data-translate="aiAgent.aiGameCenter.interface.launchBtn">🚀 Launch AI Friends Talk</span>
-              </button>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Features of AI Game -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-          <div class="bg-white rounded-xl p-6 shadow-md text-center scroll-reveal">
-            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <span class="text-2xl">🌍</span>
-            </div>
-            <h4 class="font-semibold text-gray-800 mb-2" data-translate="aiAgent.aiGameCenter.features.multilingual.title">Multilingual Support</h4>
-            <p class="text-sm text-gray-600" data-translate="aiAgent.aiGameCenter.features.multilingual.description">English, Vietnamese, and German conversations</p>
-          </div>
-          
-          <div class="bg-white rounded-xl p-6 shadow-md text-center scroll-reveal">
-            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <span class="text-2xl">💭</span>
-            </div>
-            <h4 class="font-semibold text-gray-800 mb-2" data-translate="aiAgent.aiGameCenter.features.topics.title">Fun Topics</h4>
-            <p class="text-sm text-gray-600" data-translate="aiAgent.aiGameCenter.features.topics.description">Engaging debate topics and custom conversations</p>
-          </div>
-          
-          <div class="bg-white rounded-xl p-6 shadow-md text-center scroll-reveal">
-            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <span class="text-2xl">🤖</span>
-            </div>
-            <h4 class="font-semibold text-gray-800 mb-2" data-translate="aiAgent.aiGameCenter.features.personalities.title">Unique Personalities</h4>
-            <p class="text-sm text-gray-600" data-translate="aiAgent.aiGameCenter.features.personalities.description">Each AI has distinct personality traits</p>
-          </div>
-          
-          <div class="bg-white rounded-xl p-6 shadow-md text-center scroll-reveal">
-            <div class="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <span class="text-2xl">⚡</span>
-            </div>
-            <h4 class="font-semibold text-gray-800 mb-2" data-translate="aiAgent.aiGameCenter.features.realtime.title">Real-time Chat</h4>
-            <p class="text-sm text-gray-600" data-translate="aiAgent.aiGameCenter.features.realtime.description">Live conversations and interactions</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Benefits Section -->
   <section class="py-20 bg-white">
@@ -1253,6 +927,7 @@
               <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.aiAgent">AI Agent</a></li>
             </ul>
             <ul class="space-y-2">
+              <li><a href="demo-ai-agent.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.demoAiAgent">Demo AI Agent</a></li>
               <li><a href="../blog/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.blog">Blog</a></li>
               <li><a href="../resources/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.resources">Resources</a></li>
               <li><a href="../contact/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.contact">Contact</a></li>
@@ -1295,6 +970,7 @@
             about: "About",
             digitalTransformation: "Digital Transformation",
             aiAgent: "AI Agent",
+            demoAiAgent: "Demo AI Agent",
             blog: "Blog",
             resources: "Resources",
             contact: "Contact"
@@ -1426,30 +1102,6 @@
                 description: "Reduction in operational costs through automation"
               }
             },
-            liveDemo: {
-              title: "Live Demo Applications",
-              subtitle: "Experience our AI solutions in action. Try these live applications and see the power of AI automation.",
-              appliedAgents: {
-                title: "AI Web Analysis Platform",
-                description: "Advanced AI-powered web content analysis and automation platform. Upload files, analyze content, generate summaries, and extract insights using multiple AI models.",
-                feature1: "File Analysis",
-                feature2: "Content Summarization",
-                feature3: "SEO Analysis",
-                feature4: "Multi-Model Support",
-                launchBtn: "🚀 Launch Web Analysis Platform",
-                note: "Opens in new window • Applied_Agents"
-              },
-              speechText: {
-                title: "AI Speech ↔ Text Agent",
-                description: "Advanced speech recognition and text-to-speech conversion with multi-language support. Convert voice to text, text to speech, and process various file formats.",
-                feature1: "Speech to Text",
-                feature2: "Text to Speech",
-                feature3: "Multi-Language",
-                feature4: "File Export",
-                launchBtn: "🎤 Launch Speech Agent",
-                note: "Opens in new window • AI_Speech_Text"
-              }
-            },
             starter: {
               title: "Starter AI Agents",
               agents: {
@@ -1557,6 +1209,7 @@
             about: "Giới thiệu",
             digitalTransformation: "Chuyển đổi số",
             aiAgent: "AI Agent",
+            demoAiAgent: "Demo AI Agent",
             blog: "Blog",
             resources: "Tài nguyên",
             contact: "Liên hệ"
@@ -1765,34 +1418,6 @@
             rag: {
               title: "RAG (Retrieval Augmented Generation)"
             },
-            liveDemo: {
-              title: "Ứng Dụng Demo Trực Tiếp",
-              subtitle: "Trải nghiệm các giải pháp AI của chúng tôi trong thực tế. Thử nghiệm những ứng dụng trực tiếp này và cảm nhận sức mạnh của tự động hóa AI.",
-              appliedAgents: {
-                title: "Nền Tảng Phân Tích Web AI",
-                description: "Nền tảng phân tích và tự động hóa nội dung web tiên tiến với AI. Trích xuất thông tin, tạo tóm tắt và tối ưu hóa nội dung với nhiều mô hình AI.",
-                features: [
-                  "Phân tích và tóm tắt nội dung web",
-                  "Tối ưu hóa SEO và trích xuất từ khóa",
-                  "Xử lý file đa định dạng (PDF, Word, Excel)",
-                  "Phân tích cảm xúc và thông tin nội dung",
-                  "Hỗ trợ nhiều mô hình AI (Gemini, GPT, Claude)"
-                ],
-                launchBtn: "🚀 Khởi Chạy Nền Tảng Phân Tích Web"
-              },
-              speechText: {
-                title: "AI Agent Giọng Nói ↔ Văn Bản",
-                description: "Nhận dạng giọng nói và chuyển đổi văn bản thành giọng nói tiên tiến với hỗ trợ đa ngôn ngữ. Hoàn hảo cho việc tạo nội dung và khả năng tiếp cận.",
-                features: [
-                  "Chuyển đổi giọng nói thành văn bản thời gian thực",
-                  "Tổng hợp văn bản thành giọng nói tự nhiên",
-                  "Hỗ trợ đa ngôn ngữ (Tiếng Việt, Tiếng Anh, Tiếng Đức)",
-                  "Xử lý và phiên mã file âm thanh",
-                  "Nhân bản giọng nói và tùy chỉnh"
-                ],
-                launchBtn: "🚀 Khởi Chạy Agent Giọng Nói & Văn Bản"
-              }
-            },
             ctaSection: {
               title: "Sẵn sàng triển khai AI Agent?",
               subtitle: "Liên hệ với chúng tôi để được tư vấn và triển khai AI Agent phù hợp với doanh nghiệp của bạn",
@@ -1823,6 +1448,7 @@
             about: "Über uns",
             digitalTransformation: "Digitale Transformation",
             aiAgent: "KI-Agent",
+            demoAiAgent: "Demo KI-Agent",
             blog: "Blog",
             resources: "Ressourcen",
             contact: "Kontakt"
@@ -1902,34 +1528,6 @@
                 number: "60%",
                 title: "Kosteneinsparungen",
                 description: "Reduzierung der Betriebskosten durch Automatisierung"
-              }
-            },
-            liveDemo: {
-              title: "Live-Demo-Anwendungen",
-              subtitle: "Erleben Sie unsere KI-Lösungen in Aktion. Testen Sie diese Live-Anwendungen und spüren Sie die Kraft der KI-Automatisierung.",
-              appliedAgents: {
-                title: "KI-Web-Analyse-Plattform",
-                description: "Erweiterte KI-gestützte Web-Content-Analyse und Automatisierungsplattform. Extrahieren Sie Erkenntnisse, generieren Sie Zusammenfassungen und optimieren Sie Inhalte mit mehreren KI-Modellen.",
-                features: [
-                  "Web-Content-Analyse und -Zusammenfassung",
-                  "SEO-Optimierung und Keyword-Extraktion",
-                  "Multi-Format-Dateiverarbeitung (PDF, Word, Excel)",
-                  "Sentiment-Analyse und Content-Erkenntnisse",
-                  "Unterstützung mehrerer KI-Modelle (Gemini, GPT, Claude)"
-                ],
-                launchBtn: "🚀 Web-Analyse-Plattform Starten"
-              },
-              speechText: {
-                title: "KI-Sprache ↔ Text-Agent",
-                description: "Erweiterte Spracherkennung und Text-zu-Sprache-Konvertierung mit mehrsprachiger Unterstützung. Perfekt für Content-Erstellung und Barrierefreiheit.",
-                features: [
-                  "Echtzeit-Sprache-zu-Text-Konvertierung",
-                  "Natürliche Text-zu-Sprache-Synthese",
-                  "Mehrsprachige Unterstützung (Vietnamesisch, Englisch, Deutsch)",
-                  "Audio-Dateiverarbeitung und Transkription",
-                  "Stimmklonierung und Anpassung"
-                ],
-                launchBtn: "🚀 Sprache & Text-Agent Starten"
               }
             },
             cta: {
@@ -2292,338 +1890,7 @@
       }
     });
     
-    // AI Web Analysis Platform Functions
-    function launchWebAnalysisPlatform() {
-      const container = document.getElementById('webAnalysisContainer');
-      const iframe = document.getElementById('webAnalysisIframe');
-      const spinner = document.getElementById('loadingSpinner');
-      
-      // Show container
-      container.classList.remove('hidden');
-      
-      // Set iframe source - Update this URL after HF Space deployment
-      iframe.src = 'https://ducnguyen1978-digitized-brains-ai-platform.hf.space';
-      
-      // Handle iframe load
-      iframe.onload = function() {
-        spinner.classList.add('hidden');
-        if (typeof showMessage === 'function') {
-          showMessage('🚀 AI Web Analysis Platform đã được kích hoạt!', 'success');
-        }
-      };
-      
-      // Smooth scroll to container
-      setTimeout(() => {
-        container.scrollIntoView({ 
-          behavior: 'smooth', 
-          block: 'center' 
-        });
-      }, 100);
-    }
     
-    function closeWebAnalysisPlatform() {
-      const container = document.getElementById('webAnalysisContainer');
-      const iframe = document.getElementById('webAnalysisIframe');
-      const spinner = document.getElementById('loadingSpinner');
-      
-      // Hide container
-      container.classList.add('hidden');
-      
-      // Stop iframe loading
-      iframe.src = '';
-      spinner.classList.remove('hidden');
-      
-      if (typeof showMessage === 'function') {
-        showMessage('AI Agent đã được đóng.', 'info');
-      }
-    }
-    
-    // Voice Studio Speech Agent Functions
-    function launchSpeechAgent() {
-      const container = document.getElementById('speechAgentContainer');
-      const iframe = document.getElementById('speechAgentIframe');
-      const spinner = document.getElementById('speechLoadingSpinner');
-      
-      // Show container
-      container.classList.remove('hidden');
-      
-      // Set iframe source for Voice Studio
-      iframe.src = 'https://ducnguyen1978-voice-agent.hf.space';
-      
-      // Handle iframe load
-      iframe.onload = function() {
-        spinner.classList.add('hidden');
-        if (typeof showMessage === 'function') {
-          showMessage('🎤 Voice Studio đã được kích hoạt!', 'success');
-        }
-      };
-      
-      // Smooth scroll to container
-      setTimeout(() => {
-        container.scrollIntoView({ 
-          behavior: 'smooth', 
-          block: 'center' 
-        });
-      }, 100);
-    }
-    
-    function closeSpeechAgent() {
-      const container = document.getElementById('speechAgentContainer');
-      const iframe = document.getElementById('speechAgentIframe');
-      const spinner = document.getElementById('speechLoadingSpinner');
-      
-      // Hide container
-      container.classList.add('hidden');
-      
-      // Stop iframe loading
-      iframe.src = '';
-      spinner.classList.remove('hidden');
-      
-      if (typeof showMessage === 'function') {
-        showMessage('Voice Studio đã được đóng.', 'info');
-      }
-    }
-
-    // AI Container Management System - Maximize/Minimize/Restore Functions
-    // State management objects
-    const containerStates = {
-      webAnalysis: { isMinimized: false, isMaximized: false, originalSize: null, originalPosition: null },
-      speechAgent: { isMinimized: false, isMaximized: false, originalSize: null, originalPosition: null },
-      aiFriendsTalk: { isMinimized: false, isMaximized: false, originalSize: null, originalPosition: null }
-    };
-
-    // Web Analysis Platform Functions
-    function maximizeWebAnalysis() {
-      const container = document.getElementById('webAnalysisContainer');
-      const btn = document.getElementById('webAnalysis-maximize-btn');
-      const state = containerStates.webAnalysis;
-      
-      if (!state.isMaximized) {
-        // Add animation class
-        container.classList.add('maximizing');
-        
-        // Apply maximized class
-        container.classList.add('maximized');
-        container.classList.remove('minimized');
-        
-        state.isMaximized = true;
-        state.isMinimized = false;
-        
-        // Update button to restore icon
-        btn.innerHTML = `
-          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h6v6H4zM14 14h6v6h-6z"/>
-          </svg>
-        `;
-        btn.onclick = restoreWebAnalysis;
-        btn.title = "Thu nhỏ";
-        
-        // Remove animation class after animation completes
-        setTimeout(() => {
-          container.classList.remove('maximizing');
-        }, 300);
-      }
-    }
-
-    function minimizeWebAnalysis() {
-      const container = document.getElementById('webAnalysisContainer');
-      const state = containerStates.webAnalysis;
-      
-      if (!state.isMinimized) {
-        container.classList.add('minimizing', 'minimized');
-        state.isMinimized = true;
-        
-        setTimeout(() => {
-          container.classList.remove('minimizing');
-        }, 300);
-      } else {
-        container.classList.remove('minimized');
-        state.isMinimized = false;
-      }
-    }
-
-    function restoreWebAnalysis() {
-      const container = document.getElementById('webAnalysisContainer');
-      const btn = document.getElementById('webAnalysis-maximize-btn');
-      const state = containerStates.webAnalysis;
-      
-      if (state.isMaximized) {
-        // Remove maximized class
-        container.classList.remove('maximized');
-        state.isMaximized = false;
-        
-        // Update button back to maximize icon
-        btn.innerHTML = `
-          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
-          </svg>
-        `;
-        btn.onclick = maximizeWebAnalysis;
-        btn.title = "Phóng to";
-      }
-    }
-
-    // Speech Agent Functions
-    function maximizeSpeechAgent() {
-      const container = document.getElementById('speechAgentContainer');
-      const btn = document.getElementById('speechAgent-maximize-btn');
-      const state = containerStates.speechAgent;
-      
-      if (!state.isMaximized) {
-        // Add animation class
-        container.classList.add('maximizing');
-        
-        // Apply maximized class
-        container.classList.add('maximized');
-        container.classList.remove('minimized');
-        
-        state.isMaximized = true;
-        state.isMinimized = false;
-        
-        // Update button to restore icon
-        btn.innerHTML = `
-          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h6v6H4zM14 14h6v6h-6z"/>
-          </svg>
-        `;
-        btn.onclick = restoreSpeechAgent;
-        btn.title = "Thu nhỏ";
-        
-        // Remove animation class after animation completes
-        setTimeout(() => {
-          container.classList.remove('maximizing');
-        }, 300);
-      }
-    }
-
-    function minimizeSpeechAgent() {
-      const container = document.getElementById('speechAgentContainer');
-      const state = containerStates.speechAgent;
-      
-      if (!state.isMinimized) {
-        container.classList.add('minimizing', 'minimized');
-        state.isMinimized = true;
-        
-        setTimeout(() => {
-          container.classList.remove('minimizing');
-        }, 300);
-      } else {
-        container.classList.remove('minimized');
-        state.isMinimized = false;
-      }
-    }
-
-    function restoreSpeechAgent() {
-      const container = document.getElementById('speechAgentContainer');
-      const btn = document.getElementById('speechAgent-maximize-btn');
-      const state = containerStates.speechAgent;
-      
-      if (state.isMaximized) {
-        // Remove maximized class
-        container.classList.remove('maximized');
-        state.isMaximized = false;
-        
-        // Update button back to maximize icon
-        btn.innerHTML = `
-          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
-          </svg>
-        `;
-        btn.onclick = maximizeSpeechAgent;
-        btn.title = "Phóng to";
-      }
-    }
-
-    // AI Friends Talk Functions
-    function maximizeAIFriendsTalk() {
-      const container = document.getElementById('aiFriendsTalkContainer');
-      const btn = document.getElementById('aiFriendsTalk-maximize-btn');
-      const state = containerStates.aiFriendsTalk;
-      
-      if (!state.isMaximized) {
-        // Add animation class
-        container.classList.add('maximizing');
-        
-        // Apply maximized class
-        container.classList.add('maximized');
-        container.classList.remove('minimized');
-        
-        // Adjust iframe height for maximized view
-        const iframe = document.getElementById('aiFriendsTalkIframe');
-        if (iframe) {
-          iframe.style.height = 'calc(95vh - 120px)';
-        }
-        
-        state.isMaximized = true;
-        state.isMinimized = false;
-        
-        // Update button to restore icon
-        btn.innerHTML = `
-          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h6v6H4zM14 14h6v6h-6z"/>
-          </svg>
-        `;
-        btn.onclick = restoreAIFriendsTalk;
-        btn.title = "Thu nhỏ";
-        
-        // Remove animation class after animation completes
-        setTimeout(() => {
-          container.classList.remove('maximizing');
-        }, 300);
-      }
-    }
-
-    function minimizeAIFriendsTalk() {
-      const container = document.getElementById('aiFriendsTalkContainer');
-      const state = containerStates.aiFriendsTalk;
-      
-      if (!state.isMinimized) {
-        container.classList.add('minimizing', 'minimized');
-        state.isMinimized = true;
-        
-        setTimeout(() => {
-          container.classList.remove('minimizing');
-        }, 300);
-      } else {
-        container.classList.remove('minimized');
-        state.isMinimized = false;
-        
-        // Restore iframe height
-        const iframe = document.getElementById('aiFriendsTalkIframe');
-        if (iframe && !state.isMaximized) {
-          iframe.style.height = '450px';
-        }
-      }
-    }
-
-    function restoreAIFriendsTalk() {
-      const container = document.getElementById('aiFriendsTalkContainer');
-      const btn = document.getElementById('aiFriendsTalk-maximize-btn');
-      const iframe = document.getElementById('aiFriendsTalkIframe');
-      const state = containerStates.aiFriendsTalk;
-      
-      if (state.isMaximized) {
-        // Remove maximized class
-        container.classList.remove('maximized');
-        
-        // Restore iframe height
-        if (iframe) {
-          iframe.style.height = '450px';
-        }
-        
-        state.isMaximized = false;
-        
-        // Update button back to maximize icon
-        btn.innerHTML = `
-          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
-          </svg>
-        `;
-        btn.onclick = maximizeAIFriendsTalk;
-        btn.title = "Phóng to";
-      }
-    }
-
     // Initialize Chatbot
     window.addEventListener('load', function() {
       const chatbot = new DigitizedBrainsChatbot({

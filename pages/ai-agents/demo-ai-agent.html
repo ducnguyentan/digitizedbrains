@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="vi" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="page-title">Demo AI Agent - DigitizedBrains</title>
+  <meta name="description" content="Trải nghiệm demo AI Agent tương tác với các ứng dụng thông minh cho doanh nghiệp Việt Nam" id="page-description">
+  <link href="../../css/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    .font-nunito { 
+      font-family: 'Nunito', sans-serif; 
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Navigation styles */
+    .nav-link {
+      color: #374151;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .nav-link:hover { color: #ed7354; background-color: #fef2f2; }
+    .nav-link.active { color: #ed7354; font-weight: 600; }
+
+    /* Language Switcher Styles */
+    .language-switcher {
+      position: relative;
+    }
+    
+    .language-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      min-width: 160px;
+      display: none;
+      z-index: 1000;
+    }
+    
+    .language-menu.show {
+      display: block;
+    }
+    
+    .language-option {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      gap: 8px;
+      background: none;
+      border: none;
+      width: 100%;
+      cursor: pointer;
+      text-align: left;
+    }
+    
+    .language-option:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .language-option.active {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+    
+    .language-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    /* Hero Section Styles */
+    .hero-section {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 120px 0;
+      color: white;
+    }
+
+    /* Scroll Reveal Animation */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+    
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Feature Cards */
+    .feature-card {
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Button Styles */
+    .btn-primary {
+      background: linear-gradient(135deg, #ed7354, #dc2626);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+    }
+
+    /* AI Container Styles */
+    .ai-app-container {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      margin: 20px 0;
+      overflow: hidden;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .app-header {
+      background: linear-gradient(45deg, #FF6B35, #FF69B4);
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .app-content {
+      padding: 20px;
+    }
+
+    .app-iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      border-radius: 10px;
+      display: none;
+    }
+
+    .control-buttons {
+      display: flex;
+      gap: 2px;
+      align-items: center;
+    }
+
+    /* App controls in launch section */
+    .app-controls {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px;
+      background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(255,105,180,0.1));
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* Launch button - beautiful style */
+    .launch-btn {
+      background: linear-gradient(45deg, #FF6B35, #FF69B4, #4F46E5);
+      background-size: 300% 300%;
+      animation: gradientShift 3s ease infinite;
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .launch-btn:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 12px 30px rgba(255, 107, 53, 0.4);
+      animation-duration: 1s;
+    }
+
+    .launch-btn:active {
+      transform: translateY(0) scale(1.02);
+    }
+
+    .launch-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .launch-btn:hover::before {
+      left: 100%;
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .control-btn {
+      background: transparent;
+      border: none;
+      color: white;
+      width: 46px;
+      height: 32px;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+      font-size: 10px;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .control-btn:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .control-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      background: transparent !important;
+    }
+
+    .control-btn:disabled:hover {
+      background: transparent !important;
+    }
+
+    /* Style for control buttons in app-controls */
+    .app-controls .control-btn {
+      background: rgba(255,255,255,0.15);
+      color: #333;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .app-controls .control-btn:hover {
+      background: rgba(255,255,255,0.25) !important;
+    }
+
+    .app-controls .control-btn:disabled {
+      background: rgba(0,0,0,0.1) !important;
+      color: #999 !important;
+      border-color: rgba(0,0,0,0.1) !important;
+    }
+
+    .app-controls .control-btn:disabled:hover {
+      background: rgba(0,0,0,0.1) !important;
+    }
+
+    .app-controls .control-btn.close:hover:not(:disabled) {
+      background: #e81123 !important;
+      color: white !important;
+    }
+
+    /* Runtime control buttons at top right */
+    .app-controls-runtime {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      display: flex;
+      gap: 6px;
+      z-index: 1000;
+      background: linear-gradient(135deg, rgba(255,107,53,0.9), rgba(255,105,180,0.9));
+      border-radius: 12px;
+      padding: 10px 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .app-controls-runtime .control-btn {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .app-controls-runtime .control-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .app-controls-runtime .control-btn:hover::before {
+      left: 100%;
+    }
+
+    .app-controls-runtime .control-btn:hover {
+      background: rgba(255,255,255,0.3) !important;
+      transform: scale(1.05);
+      box-shadow: 0 2px 10px rgba(255,255,255,0.3);
+    }
+
+    .app-controls-runtime .control-btn.minimize:hover {
+      background: linear-gradient(135deg, #4F46E5, #7C3AED) !important;
+    }
+
+    .app-controls-runtime .control-btn.maximize:hover {
+      background: linear-gradient(135deg, #059669, #10B981) !important;
+    }
+
+    .app-controls-runtime .control-btn.close:hover {
+      background: linear-gradient(135deg, #DC2626, #EF4444) !important;
+    }
+
+    /* App runtime section */
+    .app-runtime {
+      position: relative;
+      min-height: 500px;
+    }
+
+    .app-runtime .app-iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      border-radius: 10px;
+      display: block;
+    }
+
+    /* Minimize button */
+    .control-btn.minimize {
+      order: 1;
+    }
+
+    .control-btn.minimize:hover {
+      background: rgba(255,255,255,0.15);
+    }
+
+    /* Maximize button */
+    .control-btn.maximize {
+      order: 2;
+    }
+
+    .control-btn.maximize:hover {
+      background: rgba(255,255,255,0.15);
+    }
+
+    /* Close button */
+    .control-btn.close {
+      order: 3;
+    }
+
+    .control-btn.close:hover {
+      background: #e81123;
+      color: white;
+    }
+
+    /* Windows-style icons */
+    .minimize-icon {
+      width: 10px;
+      height: 1px;
+      background: currentColor;
+      display: block;
+    }
+
+    .maximize-icon {
+      width: 10px;
+      height: 10px;
+      border: 1px solid currentColor;
+      display: block;
+    }
+
+    .restore-icon {
+      position: relative;
+      width: 10px;
+      height: 10px;
+      display: block;
+    }
+
+    .restore-icon::before {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border: 1px solid currentColor;
+      top: 0;
+      right: 0;
+    }
+
+    .restore-icon::after {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border: 1px solid currentColor;
+      border-top: none;
+      border-right: none;
+      bottom: 0;
+      left: 0;
+    }
+
+    .close-icon {
+      position: relative;
+      width: 10px;
+      height: 10px;
+    }
+
+    .close-icon::before,
+    .close-icon::after {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 1px;
+      background: currentColor;
+      top: 50%;
+      left: 50%;
+      transform-origin: center;
+    }
+
+    .close-icon::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    .close-icon::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    /* Fullscreen Styles */
+    .fullscreen {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      z-index: 10000 !important;
+      border-radius: 0 !important;
+      margin: 0 !important;
+    }
+
+    .fullscreen .app-content {
+      height: 100vh;
+      padding: 0;
+    }
+
+    .fullscreen .app-runtime {
+      height: 100vh !important;
+      min-height: 100vh !important;
+    }
+
+    .fullscreen .app-runtime .app-iframe {
+      height: 100vh !important;
+      border-radius: 0 !important;
+      width: 100vw !important;
+    }
+
+    .fullscreen .app-controls-runtime {
+      position: fixed !important;
+      top: 20px !important;
+      right: 20px !important;
+      z-index: 10001 !important;
+    }
+
+    .minimized {
+      height: 60px !important;
+    }
+
+    .minimized .app-content {
+      display: none;
+    }
+
+    .minimized .app-runtime {
+      display: none;
+    }
+
+    .backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.8);
+      z-index: 9999;
+      display: none;
+    }
+
+    .backdrop.show {
+      display: block;
+    }
+
+    /* App specific gradients */
+    .web-analysis-header {
+      background: linear-gradient(45deg, #4F46E5, #7C3AED);
+    }
+
+    .speech-text-header {
+      background: linear-gradient(45deg, #EC4899, #F59E0B);
+    }
+
+    .friends-talk-header {
+      background: linear-gradient(45deg, #10B981, #3B82F6);
+    }
+
+    /* Language transition effects */
+    .lang-transition {
+      transition: opacity 0.3s ease;
+    }
+
+    .lang-transition.changing {
+      opacity: 0.7;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+      .app-header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+        padding: 15px;
+      }
+
+      .control-buttons {
+        justify-content: center;
+      }
+
+      .control-btn {
+        width: 40px;
+        height: 28px;
+      }
+
+      .control-btn:not(.minimize):not(.maximize):not(.close) {
+        padding: 6px 10px;
+        font-size: 11px;
+      }
+
+      .fullscreen .app-content {
+        height: calc(100vh - 80px);
+      }
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+  <!-- Header -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <div class="logo-gradient w-10 h-10 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-lg">DB</span>
+          </div>
+          <a href="../../index.html" class="text-2xl font-bold text-gray-800">Digitized Brains</a>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="hidden md:flex space-x-4">
+          <a href="../../index.html" class="nav-link" data-translate="nav.home">Trang chủ</a>
+          <a href="../about/index.html" class="nav-link" data-translate="nav.about">Giới thiệu</a>
+          <a href="../digital-transformation/index.html" class="nav-link" data-translate="nav.digitalTransformation">Chuyển đổi số</a>
+          <a href="index.html" class="nav-link" data-translate="nav.aiAgent">AI Agent</a>
+          <a href="demo-ai-agent.html" class="nav-link active" data-translate="nav.demoAiAgent">Demo AI Agent</a>
+          <a href="../blog/index.html" class="nav-link" data-translate="nav.blog">Blog</a>
+          <a href="../resources/index.html" class="nav-link" data-translate="nav.resources">Tài nguyên</a>
+          <a href="../contact/index.html" class="nav-link" data-translate="nav.contact">Liên hệ</a>
+        </nav>
+
+        <!-- Language Switcher -->
+        <div class="language-switcher hidden md:block">
+          <button id="language-btn" class="language-toggle flex items-center space-x-2 px-3 py-2 text-gray-700 hover:text-gray-900 transition" onclick="toggleLanguageDropdown()">
+            <img id="current-flag" src="https://flagcdn.com/24x18/vn.png" alt="Vietnamese" class="language-flag">
+            <span id="current-lang" class="font-medium">VI</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div id="language-menu" class="language-menu">
+            <button class="language-option active" data-lang="vi" onclick="switchLanguage('vi')">
+              <img src="https://flagcdn.com/24x18/vn.png" alt="Vietnamese" class="language-flag">
+              <span>Tiếng Việt</span>
+            </button>
+            <button class="language-option" data-lang="en" onclick="switchLanguage('en')">
+              <img src="https://flagcdn.com/24x18/us.png" alt="English" class="language-flag">
+              <span>English</span>
+            </button>
+            <button class="language-option" data-lang="de" onclick="switchLanguage('de')">
+              <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" class="language-flag">
+              <span>Deutsch</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <button class="md:hidden mobile-menu-btn">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6" data-translate="hero.title">🤖 Demo AI Agent</h1>
+      <p class="text-xl mb-8 max-w-3xl mx-auto" data-translate="hero.description">
+        Trải nghiệm tương tác trực tiếp với các ứng dụng AI Agent thông minh được thiết kế đặc biệt cho doanh nghiệp Việt Nam
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-16">
+    
+    <!-- AI Web Analysis Platform -->
+    <div class="ai-app-container scroll-reveal" id="webAnalysisApp">
+      <div class="app-header web-analysis-header">
+        <div>
+          <h3 class="text-2xl font-bold mb-2" data-translate="apps.webAnalysis.title">🧠 AI Web Analysis Platform</h3>
+          <p class="opacity-90 text-sm" data-translate="apps.webAnalysis.subtitle">Phân tích website với trí tuệ nhân tạo</p>
+        </div>
+      </div>
+      <div class="app-content">
+        <!-- App Description Section -->
+        <div class="app-description">
+        <!-- App Description -->
+        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl mb-6">
+          <div class="flex items-start gap-4">
+            <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0">
+              <span class="text-3xl text-white">🧠</span>
+            </div>
+            <div class="flex-1">
+              <h4 class="text-xl font-bold text-gray-800 mb-2" data-translate="apps.webAnalysis.title">AI Web Analysis Platform</h4>
+              <p class="text-gray-600 mb-4" data-translate="apps.webAnalysis.description">
+                Nền tảng phân tích website toàn diện sử dụng trí tuệ nhân tạo để đánh giá hiệu suất, SEO và trải nghiệm người dùng với độ chính xác cao.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="grid md:grid-cols-2 gap-4 mb-6">
+          <div class="bg-white border border-blue-100 rounded-lg p-4 hover:shadow-md transition-shadow">
+            <div class="flex items-center mb-3">
+              <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                </svg>
+              </div>
+              <h5 class="font-semibold text-gray-800" data-translate="apps.webAnalysis.feature1">Phân tích hiệu suất</h5>
+            </div>
+            <p class="text-sm text-gray-600" data-translate="apps.webAnalysis.feature1Desc">Đo lường tốc độ tải trang, Core Web Vitals và các metrics quan trọng</p>
+          </div>
+
+          <div class="bg-white border border-blue-100 rounded-lg p-4 hover:shadow-md transition-shadow">
+            <div class="flex items-center mb-3">
+              <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
+                <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+              </div>
+              <h5 class="font-semibold text-gray-800" data-translate="apps.webAnalysis.feature2">Phân tích SEO</h5>
+            </div>
+            <p class="text-sm text-gray-600" data-translate="apps.webAnalysis.feature2Desc">Kiểm tra meta tags, structured data và các yếu tố SEO On-page</p>
+          </div>
+
+          <div class="bg-white border border-blue-100 rounded-lg p-4 hover:shadow-md transition-shadow">
+            <div class="flex items-center mb-3">
+              <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center mr-3">
+                <svg class="w-4 h-4 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+                </svg>
+              </div>
+              <h5 class="font-semibold text-gray-800" data-translate="apps.webAnalysis.feature3">Trải nghiệm UX</h5>
+            </div>
+            <p class="text-sm text-gray-600" data-translate="apps.webAnalysis.feature3Desc">Đánh giá khả năng tiếp cận, mobile-friendly và usability</p>
+          </div>
+
+          <div class="bg-white border border-blue-100 rounded-lg p-4 hover:shadow-md transition-shadow">
+            <div class="flex items-center mb-3">
+              <div class="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center mr-3">
+                <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h5 class="font-semibold text-gray-800" data-translate="apps.webAnalysis.feature4">Báo cáo AI</h5>
+            </div>
+            <p class="text-sm text-gray-600" data-translate="apps.webAnalysis.feature4Desc">Tạo báo cáo chi tiết với đề xuất cải thiện từ AI</p>
+          </div>
+        </div>
+
+        <!-- Usage Instructions -->
+        <div class="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-6">
+          <h5 class="font-semibold text-gray-800 mb-3 flex items-center">
+            <svg class="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span data-translate="apps.webAnalysis.howToUse">Hướng dẫn sử dụng</span>
+          </h5>
+          <ol class="list-decimal list-inside space-y-2 text-sm text-gray-700">
+            <li data-translate="apps.webAnalysis.step1">Nhấp nút "Khởi chạy" để mở ứng dụng</li>
+            <li data-translate="apps.webAnalysis.step2">Nhập URL website cần phân tích vào ô input</li>
+            <li data-translate="apps.webAnalysis.step3">Chọn loại phân tích: Performance, SEO, hoặc Full Analysis</li>
+            <li data-translate="apps.webAnalysis.step4">Nhấp "Analyze" và chờ kết quả từ AI</li>
+            <li data-translate="apps.webAnalysis.step5">Xem báo cáo chi tiết và download PDF nếu cần</li>
+          </ol>
+        </div>
+
+        <!-- Launch Button with Controls -->
+        <div class="launch-section mb-4">
+          <div class="text-center mb-3">
+            <button class="launch-btn" onclick="launchApp('webAnalysisApp')" data-translate="buttons.launch">
+              🚀 Khởi chạy Web Analysis Platform
+            </button>
+          </div>
+        </div>
+        </div>
+
+        <!-- App Runtime Section -->
+        <div class="app-runtime" style="display: none;">
+          <!-- Control buttons at top right -->
+          <div class="app-controls-runtime">
+            <button class="control-btn minimize" onclick="minimizeApp('webAnalysisApp')" title="Thu nhỏ">
+              <span class="minimize-icon"></span>
+            </button>
+            <button class="control-btn maximize" onclick="toggleMaximizeApp('webAnalysisApp')" title="Toàn màn hình">
+              <span class="maximize-icon"></span>
+            </button>
+            <button class="control-btn close" onclick="closeApp('webAnalysisApp')" title="Đóng">
+              <span class="close-icon"></span>
+            </button>
+          </div>
+          <!-- App Frame -->
+          <iframe id="webAnalysisIframe" class="app-iframe" src="https://ducnguyen1978-digitized-brains-ai-platform.hf.space"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Speech Text Agent -->
+    <div class="ai-app-container scroll-reveal" id="speechTextApp">
+      <div class="app-header speech-text-header">
+        <div>
+          <h3 class="text-2xl font-bold mb-2" data-translate="apps.speechText.title">🎙️ AI Speech ↔ Text Agent</h3>
+          <p class="opacity-90 text-sm" data-translate="apps.speechText.subtitle">Chuyển đổi giọng nói và văn bản thông minh</p>
+        </div>
+      </div>
+      <div class="app-content">
+        <!-- App Description Section -->
+        <div class="app-description">
+        <!-- App Description -->
+        <div class="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-xl mb-6">
+          <div class="flex items-start gap-4">
+            <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl flex items-center justify-center flex-shrink-0">
+              <span class="text-3xl text-white">🎙️</span>
+            </div>
+            <div class="flex-1">
+              <h4 class="text-xl font-bold text-gray-800 mb-2" data-translate="apps.speechText.title">AI Speech ↔ Text Agent</h4>
+              <p class="text-gray-600 mb-4" data-translate="apps.speechText.description">
+                Agent chuyển đổi giọng nói và văn bản tiên tiến với hỗ trợ đa ngôn ngữ và xử lý âm thanh chuyên nghiệp.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <div class="bg-white p-4 rounded-lg border border-gray-200 hover:shadow-md transition-shadow">
+            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mb-3">
+              <span class="text-lg">🎯</span>
+            </div>
+            <h5 class="font-semibold text-gray-800 mb-2">Chuyển đổi chính xác</h5>
+            <p class="text-sm text-gray-600" data-translate="apps.speechText.feature1">Chuyển đổi speech-to-text chính xác cao</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-gray-200 hover:shadow-md transition-shadow">
+            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mb-3">
+              <span class="text-lg">🔊</span>
+            </div>
+            <h5 class="font-semibold text-gray-800 mb-2">Giọng tự nhiên</h5>
+            <p class="text-sm text-gray-600" data-translate="apps.speechText.feature2">Text-to-speech với giọng tự nhiên</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-gray-200 hover:shadow-md transition-shadow">
+            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mb-3">
+              <span class="text-lg">🌍</span>
+            </div>
+            <h5 class="font-semibold text-gray-800 mb-2">Đa ngôn ngữ</h5>
+            <p class="text-sm text-gray-600" data-translate="apps.speechText.feature3">Hỗ trợ đa ngôn ngữ và định dạng</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-gray-200 hover:shadow-md transition-shadow">
+            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mb-3">
+              <span class="text-lg">⚡</span>
+            </div>
+            <h5 class="font-semibold text-gray-800 mb-2">Xử lý nhanh</h5>
+            <p class="text-sm text-gray-600">Xử lý âm thanh thời gian thực</p>
+          </div>
+        </div>
+
+        <!-- Usage Instructions -->
+        <div class="bg-gray-50 p-6 rounded-xl mb-6">
+          <h5 class="text-lg font-semibold text-gray-800 mb-4">📋 Hướng dẫn sử dụng</h5>
+          <div class="space-y-3">
+            <div class="flex items-start gap-3">
+              <span class="flex-shrink-0 w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold">1</span>
+              <p class="text-gray-700">Chọn chế độ chuyển đổi: Speech-to-Text hoặc Text-to-Speech</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="flex-shrink-0 w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold">2</span>
+              <p class="text-gray-700">Với Speech-to-Text: Nhấn nút ghi âm và nói vào microphone</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="flex-shrink-0 w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold">3</span>
+              <p class="text-gray-700">Với Text-to-Speech: Nhập văn bản và chọn giọng đọc</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="flex-shrink-0 w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold">4</span>
+              <p class="text-gray-700">Tải xuống kết quả hoặc sao chép để sử dụng</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Launch Button with Controls -->
+        <div class="launch-section mb-4">
+          <div class="text-center mb-3">
+            <button class="launch-btn" onclick="launchApp('speechTextApp')" data-translate="buttons.launchSpeech">
+              🎤 Khởi chạy Speech Agent
+            </button>
+          </div>
+        </div>
+        </div>
+
+        <!-- App Runtime Section -->
+        <div class="app-runtime" style="display: none;">
+          <!-- Control buttons at top right -->
+          <div class="app-controls-runtime">
+            <button class="control-btn minimize" onclick="minimizeApp('speechTextApp')" title="Thu nhỏ">
+              <span class="minimize-icon"></span>
+            </button>
+            <button class="control-btn maximize" onclick="toggleMaximizeApp('speechTextApp')" title="Toàn màn hình">
+              <span class="maximize-icon"></span>
+            </button>
+            <button class="control-btn close" onclick="closeApp('speechTextApp')" title="Đóng">
+              <span class="close-icon"></span>
+            </button>
+          </div>
+          <!-- App Frame -->
+          <iframe id="speechTextIframe" class="app-iframe" src="https://ducnguyen1978-voice-agent.hf.space"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Friends Talk -->
+    <div class="ai-app-container scroll-reveal" id="friendsTalkApp">
+      <div class="app-header friends-talk-header">
+        <div>
+          <h3 class="text-2xl font-bold mb-2" data-translate="apps.friendsTalk.title">🎮 AI Friends Talk</h3>
+          <p class="opacity-90 text-sm" data-translate="apps.friendsTalk.subtitle">Trò chuyện tương tác với AI bạn bè</p>
+        </div>
+      </div>
+      <div class="app-content">
+        <!-- App Description Section -->
+        <div class="app-description">
+        <!-- App Description -->
+        <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-xl mb-6">
+          <div class="flex items-start gap-4">
+            <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-600 rounded-xl flex items-center justify-center flex-shrink-0">
+              <span class="text-3xl text-white">🎮</span>
+            </div>
+            <div class="flex-1">
+              <h4 class="text-xl font-bold text-gray-800 mb-2" data-translate="apps.friendsTalk.title">AI Friends Talk</h4>
+              <p class="text-gray-600 mb-4" data-translate="apps.friendsTalk.description">
+                Ứng dụng tương tác AI thông minh cho phép trò chuyện tự nhiên với các AI friends có tính cách độc đáo.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <div class="bg-white p-4 rounded-lg border border-gray-200 hover:shadow-md transition-shadow">
+            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mb-3">
+              <span class="text-lg">👥</span>
+            </div>
+            <h5 class="font-semibold text-gray-800 mb-2">AI Bạn bè đa dạng</h5>
+            <p class="text-sm text-gray-600" data-translate="apps.friendsTalk.feature1">AI friends với tính cách đa dạng</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-gray-200 hover:shadow-md transition-shadow">
+            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mb-3">
+              <span class="text-lg">💬</span>
+            </div>
+            <h5 class="font-semibold text-gray-800 mb-2">Trò chuyện tự nhiên</h5>
+            <p class="text-sm text-gray-600" data-translate="apps.friendsTalk.feature2">Trò chuyện tự nhiên và thông minh</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-gray-200 hover:shadow-md transition-shadow">
+            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mb-3">
+              <span class="text-lg">🎨</span>
+            </div>
+            <h5 class="font-semibold text-gray-800 mb-2">Giao diện đẹp</h5>
+            <p class="text-sm text-gray-600" data-translate="apps.friendsTalk.feature3">Giao diện thân thiện và hấp dẫn</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-gray-200 hover:shadow-md transition-shadow">
+            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mb-3">
+              <span class="text-lg">🎯</span>
+            </div>
+            <h5 class="font-semibold text-gray-800 mb-2">Tương tác thông minh</h5>
+            <p class="text-sm text-gray-600">Phản hồi tự động thông minh và cảm xúc</p>
+          </div>
+        </div>
+
+        <!-- Usage Instructions -->
+        <div class="bg-gray-50 p-6 rounded-xl mb-6">
+          <h5 class="text-lg font-semibold text-gray-800 mb-4">📋 Hướng dẫn sử dụng</h5>
+          <div class="space-y-3">
+            <div class="flex items-start gap-3">
+              <span class="flex-shrink-0 w-6 h-6 bg-purple-500 text-white rounded-full flex items-center justify-center text-sm font-bold">1</span>
+              <p class="text-gray-700">Chọn một chủ đề có sẵn hoặc tự nhập chủ đề của riêng bạn</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="flex-shrink-0 w-6 h-6 bg-purple-500 text-white rounded-full flex items-center justify-center text-sm font-bold">2</span>
+              <p class="text-gray-700">Bắt đầu cuộc trò chuyện với AI friends về chủ đề đã chọn</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="flex-shrink-0 w-6 h-6 bg-purple-500 text-white rounded-full flex items-center justify-center text-sm font-bold">3</span>
+              <p class="text-gray-700">Khám phá quan điểm và phong cách trả lời khác nhau của từng AI</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="flex-shrink-0 w-6 h-6 bg-purple-500 text-white rounded-full flex items-center justify-center text-sm font-bold">4</span>
+              <p class="text-gray-700">Tận hưởng cuộc trò chuyện đa chiều thú vị với nhiều AI cùng lúc</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Launch Button with Controls -->
+        <div class="launch-section mb-4">
+          <div class="text-center mb-3">
+            <button class="launch-btn" onclick="launchApp('friendsTalkApp')" data-translate="buttons.launchFriends">
+              🎯 Khởi chạy AI Friends Talk
+            </button>
+          </div>
+        </div>
+        </div>
+
+        <!-- App Runtime Section -->
+        <div class="app-runtime" style="display: none;">
+          <!-- Control buttons at top right -->
+          <div class="app-controls-runtime">
+            <button class="control-btn minimize" onclick="minimizeApp('friendsTalkApp')" title="Thu nhỏ">
+              <span class="minimize-icon"></span>
+            </button>
+            <button class="control-btn maximize" onclick="toggleMaximizeApp('friendsTalkApp')" title="Toàn màn hình">
+              <span class="maximize-icon"></span>
+            </button>
+            <button class="control-btn close" onclick="closeApp('friendsTalkApp')" title="Đóng">
+              <span class="close-icon"></span>
+            </button>
+          </div>
+          <!-- App Frame -->
+          <iframe id="friendsTalkIframe" class="app-iframe" src="https://ducnguyen1978-ai-game.hf.space"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="text-center bg-gradient-to-r from-orange-500 to-pink-600 text-white rounded-2xl p-12 scroll-reveal mt-16">
+      <h2 class="text-3xl font-bold mb-4" data-translate="cta.title">Sẵn sàng triển khai AI Agent cho doanh nghiệp?</h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto" data-translate="cta.description">
+        Liên hệ với chúng tôi để được tư vấn và triển khai các giải pháp AI Agent phù hợp với nhu cầu kinh doanh của bạn
+      </p>
+      <div class="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center">
+        <a href="../contact/index.html" class="btn bg-white text-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition inline-block" data-translate="cta.contact">
+          Liên hệ tư vấn
+        </a>
+        <a href="index.html" class="btn bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-orange-600 transition inline-block" data-translate="cta.viewMore">
+          Xem thêm AI Agent
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <!-- Company Info -->
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="logo-gradient w-10 h-10 rounded-lg flex items-center justify-center">
+              <span class="text-white font-bold text-lg">DB</span>
+            </div>
+            <span class="text-2xl font-bold">Digitized Brains</span>
+          </div>
+          <p class="text-gray-400" data-translate="footer.description">
+            Nhà cung cấp giải pháp chuyển đổi số hàng đầu cho doanh nghiệp Việt Nam
+          </p>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.quickLinks">Liên kết nhanh</h4>
+          <div class="grid grid-cols-2 gap-4">
+            <ul class="space-y-2">
+              <li><a href="../../index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.home">Trang chủ</a></li>
+              <li><a href="../about/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.about">Giới thiệu</a></li>
+              <li><a href="../digital-transformation/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.digitalTransformation">Chuyển đổi số</a></li>
+              <li><a href="../digital-transformation-solution/digital-strategy.html" class="text-gray-400 hover:text-white transition-colors">Chiến lược số</a></li>
+            </ul>
+            <ul class="space-y-2">
+              <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.aiAgent">AI Agent</a></li>
+              <li><a href="../blog/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.blog">Blog</a></li>
+              <li><a href="../resources/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.resources">Tài nguyên</a></li>
+              <li><a href="../contact/index.html" class="text-gray-400 hover:text-white transition-colors" data-translate="nav.contact">Liên hệ</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Contact Info -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4" data-translate="footer.contact">Liên hệ</h4>
+          <ul class="space-y-2">
+            <li class="text-gray-400">📧 ducnguyen@digitizedbrains.online</li>
+            <li class="text-gray-400">📱 0913 723 667</li>
+            <li class="text-gray-400" data-translate="footer.location">📍 Thành phố Hồ Chí Minh, Việt Nam</li>
+            <li class="text-gray-400">🌐 digitizedbrains.online</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-gray-400" data-translate="footer.copyright">
+          © 2025 DigitizedBrains. Bản quyền thuộc về DigitizedBrains.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Backdrop -->
+  <div id="backdrop" class="backdrop" onclick="exitFullscreen()"></div>
+
+  <!-- Scripts -->
+  <script src="../../js/multilang.js"></script>
+  <script src="../../js/chatbot.js"></script>
+  
+  <!-- Demo AI Agent JavaScript -->
+  <script>
+    // App control functions
+    function launchApp(appId) {
+      const app = document.getElementById(appId);
+      const appDescription = app.querySelector('.app-description');
+      const appRuntime = app.querySelector('.app-runtime');
+      
+      // Hide description section and show runtime section
+      if (appDescription) appDescription.style.display = 'none';
+      if (appRuntime) appRuntime.style.display = 'block';
+      
+      app.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function closeApp(appId) {
+      const app = document.getElementById(appId);
+      const appDescription = app.querySelector('.app-description');
+      const appRuntime = app.querySelector('.app-runtime');
+      
+      // Show description section and hide runtime section
+      if (appDescription) appDescription.style.display = 'block';
+      if (appRuntime) appRuntime.style.display = 'none';
+      
+      exitFullscreen();
+    }
+
+    function minimizeApp(appId) {
+      const app = document.getElementById(appId);
+      const appDescription = app.querySelector('.app-description');
+      const appRuntime = app.querySelector('.app-runtime');
+      
+      // If currently fullscreen, restore first
+      if (app.classList.contains('fullscreen')) {
+        restoreApp(appId);
+      }
+      
+      // Return to initial state - show description, hide runtime
+      if (appDescription) appDescription.style.display = 'block';
+      if (appRuntime) appRuntime.style.display = 'none';
+      
+      // Remove minimized class if it was applied
+      app.classList.remove('minimized');
+    }
+
+    function maximizeApp(appId) {
+      const app = document.getElementById(appId);
+      const backdrop = document.getElementById('backdrop');
+      
+      app.classList.remove('minimized');
+      app.classList.add('fullscreen');
+      backdrop.classList.add('show');
+      document.body.style.overflow = 'hidden';
+
+      // Update maximize button to restore icon
+      const maximizeBtn = app.querySelector('.control-btn.maximize');
+      const maximizeIcon = maximizeBtn.querySelector('span');
+      maximizeIcon.className = 'restore-icon';
+      maximizeBtn.title = 'Thu về cửa sổ';
+
+      // Add ESC key listener
+      document.addEventListener('keydown', handleEscapeKey);
+    }
+
+    function toggleMaximizeApp(appId) {
+      const app = document.getElementById(appId);
+      
+      if (app.classList.contains('fullscreen')) {
+        // Currently fullscreen, restore to normal
+        restoreApp(appId);
+      } else {
+        // Not fullscreen, maximize it
+        maximizeApp(appId);
+      }
+    }
+
+    function restoreApp(appId) {
+      const app = document.getElementById(appId);
+      const backdrop = document.getElementById('backdrop');
+      
+      app.classList.remove('fullscreen');
+      backdrop.classList.remove('show');
+      document.body.style.overflow = '';
+
+      // Update restore button back to maximize icon
+      const maximizeBtn = app.querySelector('.control-btn.maximize');
+      const maximizeIcon = maximizeBtn.querySelector('span');
+      maximizeIcon.className = 'maximize-icon';
+      maximizeBtn.title = 'Toàn màn hình';
+
+      document.removeEventListener('keydown', handleEscapeKey);
+    }
+
+    function exitFullscreen() {
+      const fullscreenApp = document.querySelector('.fullscreen');
+      const backdrop = document.getElementById('backdrop');
+      
+      if (fullscreenApp) {
+        fullscreenApp.classList.remove('fullscreen');
+        
+        // Reset maximize button icon
+        const maximizeBtn = fullscreenApp.querySelector('.control-btn.maximize');
+        if (maximizeBtn) {
+          const maximizeIcon = maximizeBtn.querySelector('span');
+          maximizeIcon.className = 'maximize-icon';
+          maximizeBtn.title = 'Toàn màn hình';
+        }
+      }
+      
+      backdrop.classList.remove('show');
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', handleEscapeKey);
+    }
+
+    function handleEscapeKey(e) {
+      if (e.key === 'Escape') {
+        exitFullscreen();
+      }
+    }
+
+    // Simple language switching function
+    window.switchLanguage = function(lang) {
+      console.log('Switching to language:', lang);
+      
+      // Language configuration
+      const languageConfig = {
+        en: { flag: "https://flagcdn.com/24x18/us.png", code: "EN" },
+        vi: { flag: "https://flagcdn.com/24x18/vn.png", code: "VI" },
+        de: { flag: "https://flagcdn.com/24x18/de.png", code: "DE" }
+      };
+      
+      // Update current language display
+      const currentFlag = document.getElementById('current-flag');
+      const currentLang = document.getElementById('current-lang');
+      
+      if (currentFlag && currentLang && languageConfig[lang]) {
+        currentFlag.src = languageConfig[lang].flag;
+        currentLang.textContent = languageConfig[lang].code;
+      }
+      
+      // Update active state
+      document.querySelectorAll('.language-option').forEach(option => {
+        option.classList.remove('active');
+        if (option.dataset.lang === lang) {
+          option.classList.add('active');
+        }
+      });
+      
+      // Translate content if translations available
+      if (pageTranslations && pageTranslations[lang]) {
+        const data = pageTranslations[lang];
+        
+        // Update page title and meta
+        const pageTitle = document.getElementById('page-title');
+        const pageDescription = document.getElementById('page-description');
+        const htmlRoot = document.getElementById('html-root');
+        
+        if (pageTitle && data.meta && data.meta.title) {
+          document.title = data.meta.title;
+          pageTitle.textContent = data.meta.title;
+        }
+        if (pageDescription && data.meta && data.meta.description) {
+          pageDescription.content = data.meta.description;
+        }
+        if (htmlRoot) {
+          htmlRoot.lang = lang;
+        }
+        
+        // Update all elements with data-translate attribute
+        document.querySelectorAll('[data-translate]').forEach(element => {
+          const key = element.getAttribute('data-translate');
+          const value = getNestedValue(data, key);
+          
+          if (value) {
+            if (element.tagName === 'INPUT' && element.hasAttribute('placeholder')) {
+              element.placeholder = value;
+            } else {
+              element.textContent = value;
+            }
+          }
+        });
+      }
+      
+      // Save language preference
+      localStorage.setItem("preferredLanguage", lang);
+      
+      // Close dropdown
+      const languageMenu = document.getElementById('language-menu');
+      if (languageMenu) {
+        languageMenu.classList.remove('show');
+      }
+      
+      console.log('Language switched to:', lang);
+    };
+    
+    // Helper function to get nested object values
+    function getNestedValue(obj, path) {
+      return path.split('.').reduce((current, key) => current && current[key], obj);
+    }
+    
+    // Toggle dropdown function
+    window.toggleLanguageDropdown = function() {
+      const languageMenu = document.getElementById('language-menu');
+      if (languageMenu) {
+        languageMenu.classList.toggle('show');
+      }
+    };
+
+    // Global variable for translations
+    var pageTranslations = {};
+
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', function() {
+      // Page-specific translations
+      pageTranslations = {
+        en: {
+          meta: {
+            title: "Demo AI Agent - DigitizedBrains",
+            description: "Experience interactive AI Agent demo applications for Vietnamese enterprises"
+          },
+          nav: {
+            home: "Home",
+            about: "About", 
+            digitalTransformation: "Digital Transformation",
+            aiAgent: "AI Agent",
+            demoAiAgent: "Demo AI Agent",
+            blog: "Blog",
+            resources: "Resources",
+            contact: "Contact"
+          },
+          hero: {
+            title: "🤖 Demo AI Agent",
+            description: "Experience direct interaction with intelligent AI Agent applications designed specifically for Vietnamese enterprises"
+          },
+          apps: {
+            webAnalysis: {
+              title: "🧠 AI Web Analysis Platform",
+              subtitle: "Website analysis with artificial intelligence",
+              description: "Comprehensive website analysis platform using artificial intelligence to evaluate performance, SEO and user experience.",
+              feature1: "Automatic website performance analysis",
+              feature2: "Detailed SEO reporting",
+              feature3: "User experience evaluation"
+            },
+            speechText: {
+              title: "🎙️ AI Speech ↔ Text Agent",
+              subtitle: "Smart voice and text conversion",
+              description: "Advanced voice and text conversion agent with multilingual support and professional audio processing.",
+              feature1: "High-accuracy speech-to-text conversion",
+              feature2: "Text-to-speech with natural voice",
+              feature3: "Multilingual and format support"
+            },
+            friendsTalk: {
+              title: "🎮 AI Friends Talk",
+              subtitle: "Interactive chat with AI friends",
+              description: "Intelligent AI interaction application allowing natural conversation with AI friends having unique personalities.",
+              feature1: "AI friends with diverse personalities",
+              feature2: "Natural and intelligent conversation",
+              feature3: "Friendly and attractive interface"
+            }
+          },
+          buttons: {
+            launch: "🚀 Launch Web Analysis Platform",
+            launchSpeech: "🎤 Launch Speech Agent", 
+            launchFriends: "🎯 Launch AI Friends Talk",
+            fullscreen: "Full Screen",
+            minimize: "Minimize",
+            close: "Close"
+          },
+          cta: {
+            title: "Ready to deploy AI Agent for your business?",
+            description: "Contact us for consultation and implementation of AI Agent solutions suitable for your business needs",
+            contact: "Contact for consultation",
+            viewMore: "View more AI Agents"
+          },
+          footer: {
+            description: "Leading provider of digital transformation solutions for Vietnamese enterprises",
+            quickLinks: "Quick Links",
+            contact: "Contact",
+            location: "Ho Chi Minh City, Vietnam",
+            copyright: "© 2025 DigitizedBrains. All rights reserved."
+          }
+        },
+        vi: {
+          meta: {
+            title: "Demo AI Agent - DigitizedBrains",
+            description: "Trải nghiệm demo AI Agent tương tác với các ứng dụng thông minh cho doanh nghiệp Việt Nam"
+          },
+          nav: {
+            home: "Trang chủ",
+            about: "Giới thiệu",
+            digitalTransformation: "Chuyển đổi số",
+            aiAgent: "AI Agent",
+            demoAiAgent: "Demo AI Agent",
+            blog: "Blog",
+            resources: "Tài nguyên",
+            contact: "Liên hệ"
+          },
+          hero: {
+            title: "🤖 Demo AI Agent",
+            description: "Trải nghiệm tương tác trực tiếp với các ứng dụng AI Agent thông minh được thiết kế đặc biệt cho doanh nghiệp Việt Nam"
+          },
+          apps: {
+            webAnalysis: {
+              title: "🧠 AI Web Analysis Platform",
+              subtitle: "Phân tích website với trí tuệ nhân tạo",
+              description: "Nền tảng phân tích website toàn diện sử dụng trí tuệ nhân tạo để đánh giá hiệu suất, SEO và trải nghiệm người dùng.",
+              feature1: "Phân tích hiệu suất website tự động",
+              feature2: "Báo cáo SEO chi tiết",
+              feature3: "Đánh giá trải nghiệm người dùng"
+            },
+            speechText: {
+              title: "🎙️ AI Speech ↔ Text Agent",
+              subtitle: "Chuyển đổi giọng nói và văn bản thông minh",
+              description: "Agent chuyển đổi giọng nói và văn bản tiên tiến với hỗ trợ đa ngôn ngữ và xử lý âm thanh chuyên nghiệp.",
+              feature1: "Chuyển đổi speech-to-text chính xác cao",
+              feature2: "Text-to-speech với giọng tự nhiên",
+              feature3: "Hỗ trợ đa ngôn ngữ và định dạng"
+            },
+            friendsTalk: {
+              title: "🎮 AI Friends Talk",
+              subtitle: "Trò chuyện tương tác với AI bạn bè",
+              description: "Ứng dụng tương tác AI thông minh cho phép trò chuyện tự nhiên với các AI friends có tính cách độc đáo.",
+              feature1: "AI friends với tính cách đa dạng",
+              feature2: "Trò chuyện tự nhiên và thông minh",
+              feature3: "Giao diện thân thiện và hấp dẫn"
+            }
+          },
+          buttons: {
+            launch: "🚀 Khởi chạy Web Analysis Platform",
+            launchSpeech: "🎤 Khởi chạy Speech Agent",
+            launchFriends: "🎯 Khởi chạy AI Friends Talk",
+            fullscreen: "Toàn màn hình",
+            minimize: "Thu nhỏ",
+            close: "Đóng"
+          },
+          cta: {
+            title: "Sẵn sàng triển khai AI Agent cho doanh nghiệp?",
+            description: "Liên hệ với chúng tôi để được tư vấn và triển khai các giải pháp AI Agent phù hợp với nhu cầu kinh doanh của bạn",
+            contact: "Liên hệ tư vấn",
+            viewMore: "Xem thêm AI Agent"
+          },
+          footer: {
+            description: "Nhà cung cấp giải pháp chuyển đổi số hàng đầu cho doanh nghiệp Việt Nam",
+            quickLinks: "Liên kết nhanh",
+            contact: "Liên hệ",
+            location: "Thành phố Hồ Chí Minh, Việt Nam",
+            copyright: "© 2025 DigitizedBrains. Bản quyền thuộc về DigitizedBrains."
+          }
+        },
+        de: {
+          meta: {
+            title: "Demo AI Agent - DigitizedBrains",
+            description: "Erleben Sie interaktive AI Agent Demo-Anwendungen für vietnamesische Unternehmen"
+          },
+          nav: {
+            home: "Home",
+            about: "Über uns",
+            digitalTransformation: "Digitale Transformation",
+            aiAgent: "AI Agent",
+            demoAiAgent: "Demo AI Agent",
+            blog: "Blog",
+            resources: "Ressourcen",
+            contact: "Kontakt"
+          },
+          hero: {
+            title: "🤖 Demo AI Agent",
+            description: "Erleben Sie direkte Interaktion mit intelligenten AI Agent-Anwendungen, die speziell für vietnamesische Unternehmen entwickelt wurden"
+          },
+          apps: {
+            webAnalysis: {
+              title: "🧠 AI Web Analysis Platform",
+              subtitle: "Website-Analyse mit künstlicher Intelligenz",
+              description: "Umfassende Website-Analyseplattform mit künstlicher Intelligenz zur Bewertung von Leistung, SEO und Benutzererfahrung.",
+              feature1: "Automatische Website-Leistungsanalyse",
+              feature2: "Detaillierte SEO-Berichterstattung",
+              feature3: "Bewertung der Benutzererfahrung"
+            },
+            speechText: {
+              title: "🎙️ AI Speech ↔ Text Agent",
+              subtitle: "Intelligente Sprach- und Textkonvertierung",
+              description: "Fortschrittlicher Sprach- und Textkonvertierungs-Agent mit mehrsprachiger Unterstützung und professioneller Audioverarbeitung.",
+              feature1: "Hochpräzise Sprache-zu-Text-Konvertierung",
+              feature2: "Text-zu-Sprache mit natürlicher Stimme",
+              feature3: "Mehrsprachige und Format-Unterstützung"
+            },
+            friendsTalk: {
+              title: "🎮 AI Friends Talk",
+              subtitle: "Interaktiver Chat mit AI-Freunden",
+              description: "Intelligente AI-Interaktionsanwendung, die natürliche Gespräche mit AI-Freunden mit einzigartigen Persönlichkeiten ermöglicht.",
+              feature1: "AI-Freunde mit vielfältigen Persönlichkeiten",
+              feature2: "Natürliche und intelligente Gespräche",
+              feature3: "Freundliche und attraktive Benutzeroberfläche"
+            }
+          },
+          buttons: {
+            launch: "🚀 Web Analysis Platform starten",
+            launchSpeech: "🎤 Speech Agent starten",
+            launchFriends: "🎯 AI Friends Talk starten",
+            fullscreen: "Vollbild",
+            minimize: "Minimieren",
+            close: "Schließen"
+          },
+          cta: {
+            title: "Bereit, AI Agent für Ihr Unternehmen einzusetzen?",
+            description: "Kontaktieren Sie uns für Beratung und Implementierung von AI Agent-Lösungen, die auf Ihre Geschäftsanforderungen zugeschnitten sind",
+            contact: "Beratung kontaktieren",
+            viewMore: "Mehr AI Agents anzeigen"
+          },
+          footer: {
+            description: "Führender Anbieter von digitalen Transformationslösungen für vietnamesische Unternehmen",
+            quickLinks: "Schnelle Links",
+            contact: "Kontakt",
+            location: "Ho-Chi-Minh-Stadt, Vietnam",
+            copyright: "© 2025 DigitizedBrains. Alle Rechte vorbehalten."
+          }
+        }
+      };
+
+      // Initialize language switcher
+      const languageMenu = document.getElementById('language-menu');
+      
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function(e) {
+        if (languageMenu && !e.target.closest('.language-switcher')) {
+          languageMenu.classList.remove('show');
+        }
+      });
+      
+      // Initialize with saved language or default
+      const savedLang = localStorage.getItem("preferredLanguage") || "vi";
+      window.switchLanguage(savedLang);
+      
+      console.log('Language switcher initialized with:', savedLang);
+      
+      // Scroll Reveal Animation
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.scroll-reveal').forEach(el => {
+        observer.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>
