@@ -870,6 +870,10 @@
             <button class="launch-btn" onclick="launchApp('speechTextApp')" data-translate="buttons.launchSpeech">
               🎤 Khởi chạy Speech Agent
             </button>
+            <br>
+            <button id="micActivateBtn" onclick="activateMicrophoneDirectly()" style="background: linear-gradient(45deg, #10b981, #3b82f6); color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-weight: bold; margin-top: 10px; display: none;">
+              🎙️ Kích hoạt Microphone
+            </button>
           </div>
         </div>
         </div>
@@ -889,7 +893,16 @@
             </button>
           </div>
           <!-- App Frame -->
-          <iframe id="speechTextIframe" class="app-iframe" src="https://ducnguyen1978-voice-agent.hf.space"></iframe>
+          <iframe id="speechTextIframe" class="app-iframe" 
+            src="https://ducnguyen1978-voice-agent.hf.space" 
+            width="100%" 
+            height="800"
+            allow="microphone https://ducnguyen1978-voice-agent.hf.space; camera https://ducnguyen1978-voice-agent.hf.space; display-capture https://ducnguyen1978-voice-agent.hf.space; autoplay https://ducnguyen1978-voice-agent.hf.space; fullscreen https://ducnguyen1978-voice-agent.hf.space"
+            permissions-policy="microphone=(self https://ducnguyen1978-voice-agent.hf.space), camera=(self https://ducnguyen1978-voice-agent.hf.space), display-capture=(self https://ducnguyen1978-voice-agent.hf.space), autoplay=(self https://ducnguyen1978-voice-agent.hf.space)"
+            sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-modals allow-presentation allow-downloads allow-top-navigation-by-user-activation"
+            referrerpolicy="strict-origin-when-cross-origin"
+            frameborder="0">
+          </iframe>
         </div>
       </div>
     </div>
@@ -1099,6 +1112,20 @@
       if (appDescription) appDescription.style.display = 'none';
       if (appRuntime) appRuntime.style.display = 'block';
       
+      // Auto-activate microphone for Speech Text App
+      if (appId === 'speechTextApp') {
+        // Show microphone activation button for HTTPS domains
+        const micBtn = document.getElementById('micActivateBtn');
+        if (micBtn) {
+          micBtn.style.display = 'inline-block';
+        }
+        
+        // Wait a bit more for iframe to fully initialize on HTTPS
+        setTimeout(function() {
+          activateMicrophone();
+        }, 1000);
+      }
+      
       app.scrollIntoView({ behavior: 'smooth' });
     }
 
@@ -1205,6 +1232,269 @@
       if (e.key === 'Escape') {
         exitFullscreen();
       }
+    }
+
+    // Microphone activation function
+    function activateMicrophone() {
+      // Only show prompt on localhost, on HTTPS domain just try direct access
+      if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+        showMicrophonePrompt();
+      } else {
+        console.log('HTTPS domain detected, attempting direct microphone access');
+      }
+      
+      try {
+        // Check if we're on HTTPS for secure contexts
+        if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+          console.warn('Microphone requires HTTPS context for remote access');
+          // Still try to communicate with iframe
+          setTimeout(function() {
+            sendAudioTranslationMessage();
+          }, 2000);
+          return;
+        }
+
+        // Check if mediaDevices is available
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+          console.warn('MediaDevices API not available');
+          setTimeout(function() {
+            sendAudioTranslationMessage();
+          }, 2000);
+          return;
+        }
+
+        // Request microphone access with explicit constraints
+        navigator.mediaDevices.getUserMedia({ 
+          audio: {
+            echoCancellation: true,
+            noiseSuppression: true,
+            autoGainControl: true,
+            sampleRate: 44100
+          }
+        })
+          .then(function(stream) {
+            console.log('Microphone activated successfully');
+            if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+              showMicrophoneStatus('granted');
+            }
+            
+            // Keep the stream active for a brief moment to establish permissions
+            setTimeout(function() {
+              // Stop the stream after permission is established
+              stream.getTracks().forEach(track => track.stop());
+              
+              // Send message to iframe
+              sendAudioTranslationMessage();
+              
+              // Hide the prompt after success (only on localhost)
+              if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+                hideMicrophonePrompt();
+              }
+            }, 2000);
+          })
+          .catch(function(error) {
+            console.warn('Microphone access denied or unavailable:', error);
+            if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+              showMicrophoneStatus('denied');
+              setTimeout(function() {
+                hideMicrophonePrompt();
+              }, 3000);
+            }
+            
+            // Still try to communicate with iframe even if microphone access is denied
+            setTimeout(function() {
+              sendAudioTranslationMessage();
+            }, 3000);
+          });
+      } catch (error) {
+        console.error('Error accessing microphone:', error);
+        if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+          showMicrophoneStatus('error');
+          setTimeout(function() {
+            hideMicrophonePrompt();
+          }, 2000);
+        }
+        
+        // Fallback: still try to communicate with iframe
+        setTimeout(function() {
+          sendAudioTranslationMessage();
+        }, 2000);
+      }
+    }
+
+    // Send message to iframe to activate Audio Translation tab
+    function sendAudioTranslationMessage() {
+      const iframe = document.getElementById('speechTextIframe');
+      if (iframe && iframe.contentWindow) {
+        try {
+          // Target origin for Hugging Face Space
+          const targetOrigin = 'https://ducnguyen1978-voice-agent.hf.space';
+          
+          // Try multiple message formats for better compatibility
+          iframe.contentWindow.postMessage({
+            action: 'activateAudioTranslation',
+            type: 'demo-ai-agent-request',
+            source: 'digitizedbrains'
+          }, targetOrigin);
+          
+          // Alternative message format
+          iframe.contentWindow.postMessage({
+            type: 'switchTab',
+            tab: 'audio-translation',
+            source: 'digitizedbrains'
+          }, targetOrigin);
+          
+          // Gradio specific message format
+          iframe.contentWindow.postMessage({
+            type: 'gradio-tab-switch',
+            tabIndex: 1, // Assuming Audio Translation is the second tab
+            source: 'digitizedbrains'
+          }, targetOrigin);
+          
+          console.log('Audio Translation activation messages sent to iframe');
+        } catch (error) {
+          console.error('Error sending message to iframe:', error);
+        }
+      } else {
+        console.warn('Iframe not ready or contentWindow not available');
+      }
+    }
+
+    // Microphone prompt functions
+    function showMicrophonePrompt() {
+      // Create or show microphone prompt overlay
+      let micPrompt = document.getElementById('microphonePrompt');
+      if (!micPrompt) {
+        micPrompt = document.createElement('div');
+        micPrompt.id = 'microphonePrompt';
+        micPrompt.innerHTML = `
+          <div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); z-index: 10000; display: flex; align-items: center; justify-content: center;">
+            <div style="background: white; padding: 30px; border-radius: 15px; text-align: center; max-width: 400px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+              <div style="font-size: 48px; margin-bottom: 20px;">🎤</div>
+              <h3 style="margin: 0 0 15px 0; color: #333;">Kích hoạt Microphone</h3>
+              <p style="margin: 0 0 20px 0; color: #666; line-height: 1.5;">Để sử dụng tính năng Speech-to-Text, vui lòng cho phép truy cập microphone khi trình duyệt yêu cầu.</p>
+              <button onclick="requestMicrophoneAccess()" style="background: linear-gradient(45deg, #FF6B35, #FF69B4); color: white; border: none; padding: 12px 24px; border-radius: 25px; cursor: pointer; font-weight: bold; margin: 10px;">🎤 Cho phép Microphone</button>
+              <div id="micStatus" style="margin-top: 15px; font-weight: bold;"></div>
+            </div>
+          </div>
+        `;
+        document.body.appendChild(micPrompt);
+      }
+      micPrompt.style.display = 'flex';
+    }
+
+    function hideMicrophonePrompt() {
+      const micPrompt = document.getElementById('microphonePrompt');
+      if (micPrompt) {
+        setTimeout(function() {
+          micPrompt.style.display = 'none';
+        }, 1000);
+      }
+    }
+
+    function showMicrophoneStatus(status) {
+      const micStatus = document.getElementById('micStatus');
+      if (micStatus) {
+        switch(status) {
+          case 'granted':
+            micStatus.innerHTML = '<span style="color: #10b981;">✓ Microphone được kích hoạt thành công!</span>';
+            break;
+          case 'denied':
+            micStatus.innerHTML = '<span style="color: #ef4444;">✗ Quyền truy cập microphone bị từ chối</span>';
+            break;
+          case 'error':
+            micStatus.innerHTML = '<span style="color: #f59e0b;">⚠ Có lỗi khi truy cập microphone</span>';
+            break;
+        }
+      }
+    }
+
+    // Direct microphone activation function (for HTTPS domains)
+    function activateMicrophoneDirectly() {
+      const micBtn = document.getElementById('micActivateBtn');
+      if (micBtn) {
+        micBtn.innerHTML = '🔄 Đang kích hoạt...';
+        micBtn.disabled = true;
+      }
+      
+      console.log('Direct microphone activation requested');
+      
+      navigator.mediaDevices.getUserMedia({ 
+        audio: {
+          echoCancellation: true,
+          noiseSuppression: true,
+          autoGainControl: true,
+          sampleRate: 44100
+        }
+      })
+      .then(function(stream) {
+        console.log('Direct microphone access granted');
+        
+        if (micBtn) {
+          micBtn.innerHTML = '✅ Microphone được kích hoạt';
+          micBtn.style.background = 'linear-gradient(45deg, #10b981, #059669)';
+        }
+        
+        // Keep stream for a moment then close
+        setTimeout(function() {
+          stream.getTracks().forEach(track => track.stop());
+          sendAudioTranslationMessage();
+          
+          if (micBtn) {
+            micBtn.style.display = 'none';
+          }
+        }, 2000);
+      })
+      .catch(function(error) {
+        console.error('Direct microphone access denied:', error);
+        
+        if (micBtn) {
+          micBtn.innerHTML = '❌ Quyền bị từ chối - Thử lại';
+          micBtn.style.background = 'linear-gradient(45deg, #ef4444, #dc2626)';
+          micBtn.disabled = false;
+        }
+        
+        setTimeout(function() {
+          sendAudioTranslationMessage();
+        }, 1000);
+      });
+    }
+
+    // Manual microphone request function
+    function requestMicrophoneAccess() {
+      const micStatus = document.getElementById('micStatus');
+      if (micStatus) {
+        micStatus.innerHTML = '<span style="color: #3b82f6;">🔄 Đang yêu cầu quyền truy cập...</span>';
+      }
+      
+      navigator.mediaDevices.getUserMedia({ 
+        audio: {
+          echoCancellation: true,
+          noiseSuppression: true,
+          autoGainControl: true,
+          sampleRate: 44100
+        }
+      })
+      .then(function(stream) {
+        console.log('Manual microphone access granted');
+        showMicrophoneStatus('granted');
+        
+        // Keep stream for a moment then close
+        setTimeout(function() {
+          stream.getTracks().forEach(track => track.stop());
+          sendAudioTranslationMessage();
+          hideMicrophonePrompt();
+        }, 2000);
+      })
+      .catch(function(error) {
+        console.error('Manual microphone access denied:', error);
+        showMicrophoneStatus('denied');
+        
+        setTimeout(function() {
+          sendAudioTranslationMessage();
+          hideMicrophonePrompt();
+        }, 3000);
+      });
     }
 
     // Simple language switching function
